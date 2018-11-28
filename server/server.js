@@ -7,6 +7,8 @@ const cors = require('cors');
 app.use(express.static("public"));
 
 //Import in models
+const Users = require('./knex/models/Users.js');
+
 
 app.use(cors());
 
@@ -58,6 +60,8 @@ app.post('/login', (req, res) => {
 //POST /register
 app.post('/register', (req, res) => {
   console.log('\nPOST /register...');
+  console.log("\nreq.body:", req.body);
+
 })
 
 //POST /create_trip
