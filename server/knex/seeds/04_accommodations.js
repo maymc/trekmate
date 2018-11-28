@@ -1,10 +1,10 @@
 
 exports.seed = function (knex, Promise) {
   // Deletes ALL existing entries
-  return knex('accomodations').del()
+  return knex('accom,odations').del()
     .then(function () {
       // Inserts seed entries
-      return knex('accomodations').insert([
+      return knex('accommodations').insert([
         {
           lodging_name: 'Sheraton',
           address: '123 Beachwalk Ave',
