@@ -4,12 +4,12 @@ const activityRouter = express.Router();
 //Bookshelf data models
 const Activities = require('../db/models/Activities.js');
 
-//Get all Activity in database
+//GET all activities in database
 activityRouter.get('/', (req, res) => {
-    Activity
+    Activities
         .fetchAll()
-        .then(items => {
-            res.json(items.serialize())
+        .then(activitiesList => {
+            res.json(activitiesList.serialize())
         })
         .catch(err => {
             console.log('err', err)
@@ -17,15 +17,15 @@ activityRouter.get('/', (req, res) => {
         })
 })
 
-//Get Activity by user_id
+//GET an activity by user_id <-- need to fix this, it is grabbing by activity id NOT user_id
 activityRouter.get('/:id', (req, res) => {
     const { id } = req.params
 
-    Activity
+    Activities
         .where({ id })
         .fetch()
-        .then((ActivityItem) => {
-            res.json(ActivityItem)
+        .then((activity) => {
+            res.json(activity)
         })
         .catch((err) => {
             console.log('err', err)
@@ -69,6 +69,5 @@ activityRouter.post('/add', (req, res) => {
             res.json("POST - adding new activity error");
         })
 })
-
 
 module.exports = activityRouter
