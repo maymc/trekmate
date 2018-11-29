@@ -4,12 +4,12 @@ const userRouter = express.Router();
 //Bookshelf data models
 const Users = require('../db/models/Users.js');
 
-//Get all User in database
+//GET all User in database
 userRouter.get('/', (req, res) => {
-  User
+  Users
     .fetchAll()
-    .then(items => {
-      res.json(items.serialize())
+    .then(usersList => {
+      res.json(usersList.serialize())
     })
     .catch(err => {
       console.log('err', err)
@@ -21,7 +21,7 @@ userRouter.get('/', (req, res) => {
 userRouter.get('/:id', (req, res) => {
   const { id } = req.params
 
-  User
+  Users
     .where({ id })
     .fetch()
     .then((UserItem) => {
