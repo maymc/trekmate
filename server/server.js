@@ -4,10 +4,13 @@ const PORT = process.env.EXPRESS_CONTAINER_PORT;
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
-// app.use(express.static("public"));
-
 //Import in models
-const Users = require('./db/models/Users');
+const Users = require('./db/models/Users.js');
+// const Accommodation = require('./db/models/Accommodations.js');
+// const Activities = require('./db/models/Activities.js');
+// const Flights = require('./db/models/Flights.js');
+// const Transit = require('./db/models/Transit.js');
+// const Trip = require('./db/models/Trips.js');
 
 app.use(cors());
 
@@ -15,15 +18,29 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-//~~~~~~~Routes~~~~~~~~~//
+//~~~~~ Routes~~~~~~ //
+const userRoutes = require('./routes/userRoutes.js');
+// const activityRoutes = require('./routes/activityRoutes.js');
+// const accommodationRoutes = require('./routes/accommodationRoutes.js');
+// const flightRoutes = require('./routes/flightRoutes.js');
+// const transitRoutes = require('./routes/transitRoutes.js');
+const tripRoutes = require('./routes/tripRoutes.js');
 
-//~~ GET ROUTES ~~//
+// app.use('/activity', activityRoutes);
+// app.use('/accommodation', accommodationRoutes);
+// app.use('/flight', flightRoutes);
+// app.use('/transit', transitRoutes);
+app.use('/trip', tripRoutes);
+// app.use('/user', userRoutes);
 
-// //GET /home
-// app.get('/home', (req, res) => {
-//   console.log('\nGET /home...');
 
-// })
+//GET /home
+app.get('/', (req, res) => {
+  res.json('HOMEPAGE, ola!!!!!')  //work, check with postman
+})
+// app.get('/account/:id', (req, res) => {
+//   console.log('\nGET /account/:id...');
+//})
 
 // app.get('/account/:id', (req, res) => {
 //   console.log('\nGET /account/:id...');
@@ -42,18 +59,16 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // })
 
 // //GET /register form
-// // app.get('/login/register', (req, res) => {
-// //   console.log('\nGET /register...');
+// app.get('/register', (req, res) => {
+//   console.log('\nGET /register...');
 
-// // })
+// })
 
 // //GET /forgot_password
 // app.get('/forgot_password', (req, res) => {
 //   console.log('\nGET /forgot_password...');
 
 // })
-
-//~~ POST ROUTES ~~//
 
 // //POST /login
 // app.post('/login', (req, res) => {
@@ -121,11 +136,6 @@ app.post('/login/register', (req, res) => {
 // app.put(`/trip/:id/edit`, (req, res) => {
 //   console.log('\nPUT /trip/:id/edit...');
 // })
-
-
-
-
-
 
 
 
