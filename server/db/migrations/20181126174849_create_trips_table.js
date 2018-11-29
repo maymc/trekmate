@@ -1,22 +1,24 @@
 
 exports.up = function (knex, Promise) {
   return knex.schema.createTable('trips', (table) => {
-    table.increments('id').primary();
-    table.string('city').notNullable();
-    table.string('state').notNullable();
-    table.string('country').notNullable();
-    table.string('start_date').notNullable();
-    table.string('end_date').notNullable();
-    table.integer('collaborators').notNullable();
-    table.timestamp('created_at').defaultTo(knex.fn.now()).notNullable();
-    table.timestamp('updated_at').defaultTo(knex.fn.now()).notNullable();
-    table.integer('user_id')
-      .notNullable()
-      .references('id')
-      .inTable('trips')
-      .onDelete('CASCADE')
-      .onUpdate('CASCADE')
-
+    table.increments();
+    table.string('city', 200).notNullable();
+    table.string('state', 30).notNullable();
+    table.string('country', 90).notNullable();
+    table.string('start_date', 20).notNullable();
+    table.string('end_date', 20).notNullable();
+    table.string('collaborators').notNullable();
+    table.timestamp('created_at').defaultTo(knex.fn.now());
+    table.timestamp('updated_at').defaultTo(knex.fn.now());
+    // table.integer('user_id')
+    //   .notNullable()
+    //   .references('id')
+    //   .inTable('trips')
+    //   .onDelete('CASCADE')
+    //   .onUpdate('CASCADE')
+    //Create the column then add foreign key
+    table.integer('user_id').unsigned().notNullable();
+    table.foreign('user_id').references('id').inTable('users');
   });
 }
 
