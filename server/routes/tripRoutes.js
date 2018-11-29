@@ -18,7 +18,21 @@ tripRouter.get('/', (req, res) => {
 })
 
 //Get trip by user_id
-// tripRouter.get('/')
+tripRouter.get('/:id', (req, res) => {
+    const { id } = req.params
+    console.log(' is this trip by id work?');
+
+    Trip
+        .where({ id })
+        .fetch()
+        .then((tripItem) => {
+            res.json(tripItem)
+        })
+        .catch((err) => {
+            console.log('err', err)
+            res.json(err)
+        })
+})
 
 
 
