@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 
-class Register extends Component {
+class Login extends Component {
   constructor(props) {
     super(props)
 
@@ -23,25 +23,18 @@ class Register extends Component {
     this.setState({
       [name]: value
     })
-    console.log("Register - handleChange this.state:", this.state);
+    console.log("Login - handleChange this.state:", this.state);
   }
 
   handleSubmit = (e) => {
-    console.log("Register - handleSubmit this.props:", this.props);
+    console.log("Login - handleSubmit this.props:", this.props);
     e.preventDefault();
-    console.log("New user has been registered!", this.state);
+    console.log("User has logged in!", this.state);
   }
 
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <label>First Name</label>
-        <input onChange={this.handleChange} type='text' name="firstName" placeholder="enter first name" />
-        <br /><br />
-
-        <label>Last Name</label>
-        <input onChange={this.handleChange} type='text' name="lastName" placeholder="enter last name" />
-        <br /><br />
 
         <label>Email</label>
         <input onChange={this.handleChange} type='text' name="email" placeholder="enter email" />
@@ -51,11 +44,7 @@ class Register extends Component {
         <input onChange={this.handleChange} type='text' name="password" placeholder="enter password" />
         <br /><br />
 
-        <label>Confirm Password</label>
-        <input onChange={this.handleChange} type='text' name="confirmPassword" placeholder="confirm password" />
-        <br /><br />
-
-        <button type="submit">Register</button>
+        <button type="submit">Login</button>
 
       </form>
     )
@@ -63,4 +52,4 @@ class Register extends Component {
 }
 
 
-export default Register;
+export default Login;
