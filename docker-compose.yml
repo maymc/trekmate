@@ -2,4 +2,4 @@ version: '3'
 services:
   trekmate:
     build: .
-    image: maymc/trekmate:local
+    image: abby/trekmate:local
