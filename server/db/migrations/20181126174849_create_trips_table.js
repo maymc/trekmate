@@ -10,7 +10,7 @@ exports.up = function (knex, Promise) {
     table.integer('collaborators').notNullable();
     table.timestamp('created_at').defaultTo(knex.fn.now()).notNullable();
     table.timestamp('updated_at').defaultTo(knex.fn.now()).notNullable();
-    table.interger('user_id')
+    table.integer('user_id')
       .notNullable()
       .references('id')
       .inTable('trips')
