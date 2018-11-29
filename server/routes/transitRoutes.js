@@ -4,7 +4,7 @@ const transitRouter = express.Router();
 //Bookshelf data models
 const Transit = require('../db/models/Transit.js');
 
-//Get all trips in database
+//Get all transit in database
 transitRouter.get('/', (req, res) => {
     Transit
         .fetchAll()
@@ -17,7 +17,7 @@ transitRouter.get('/', (req, res) => {
         })
 })
 
-//Get trip by user_id
+//Get transit by user_id
 transitRouter.get('/:id', (req, res) => {
     const { id } = req.params
 
@@ -33,7 +33,7 @@ transitRouter.get('/:id', (req, res) => {
         })
 })
 
-//post new trip into 'Trip' table
+//post new transit into 'Transit' table
 
 
 
