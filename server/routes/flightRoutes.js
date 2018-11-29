@@ -17,7 +17,7 @@ flightRouter.get('/', (req, res) => {
         })
 })
 
-//GET flights by user_id
+//GET flights by user_id <-- need to fix this, it is grabbing by flight id NOT user_id
 flightRouter.get('/:id', (req, res) => {
     const { id } = req.params
 

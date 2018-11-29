@@ -2,14 +2,14 @@ const express = require('express');
 const tripRouter = express.Router();
 
 //Bookshelf data models
-const Trip = require('../db/models/Trips.js');
+const Trips = require('../db/models/Trips.js');
 
-//Get all trips in database
+//GET all trips in database
 tripRouter.get('/', (req, res) => {
-    Trip
+    Trips
         .fetchAll()
-        .then(items => {
-            res.json(items.serialize())
+        .then(tripsList => {
+            res.json(tripsList.serialize())
         })
         .catch(err => {
             console.log('err', err)
@@ -17,15 +17,15 @@ tripRouter.get('/', (req, res) => {
         })
 })
 
-//Get trip by user_id
+//GET trip by user_id <-- need to fix this, it is grabbing by trip id NOT user_id
 tripRouter.get('/:id', (req, res) => {
     const { id } = req.params
 
-    Trip
+    Trips
         .where({ id })
         .fetch()
-        .then((tripItem) => {
-            res.json(tripItem)
+        .then((trip) => {
+            res.json(trip)
         })
         .catch((err) => {
             console.log('err', err)
@@ -33,7 +33,7 @@ tripRouter.get('/:id', (req, res) => {
         })
 })
 
-//post new trip into 'Trip' table
+//POST new trip into 'Trips' table
 tripRouter.post('/add', (req, res) => {
 
     const payload = {
@@ -57,6 +57,5 @@ tripRouter.post('/add', (req, res) => {
             res.json(err)
         })
 })
-
 
 module.exports = tripRouter

@@ -17,7 +17,7 @@ transitRouter.get('/', (req, res) => {
         })
 })
 
-//GET transit by user_id
+//GET transit by user_id <-- need to fix this, it is grabbing by transit id NOT user_id
 transitRouter.get('/:id', (req, res) => {
     const { id } = req.params
 
