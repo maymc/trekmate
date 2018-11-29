@@ -2,14 +2,14 @@ const express = require('express');
 const flightRouter = express.Router();
 
 //Bookshelf data models
-const Flight = require('../db/models/Flights.js');
+const Flights = require('../db/models/Flights.js');
 
-//Get all Flight in database
+//GET all flights in database
 flightRouter.get('/', (req, res) => {
-    Flight
+    Flights
         .fetchAll()
-        .then(items => {
-            res.json(items.serialize())
+        .then(flightsList => {
+            res.json(flightsList.serialize())
         })
         .catch(err => {
             console.log('err', err)
@@ -17,15 +17,15 @@ flightRouter.get('/', (req, res) => {
         })
 })
 
-//Get Flight by user_id
+//GET flights by user_id
 flightRouter.get('/:id', (req, res) => {
     const { id } = req.params
 
-    Flight
+    Flights
         .where({ id })
         .fetch()
-        .then((FlightItem) => {
-            res.json(FlightItem)
+        .then((flight) => {
+            res.json(flight)
         })
         .catch((err) => {
             console.log('err', err)
@@ -33,7 +33,7 @@ flightRouter.get('/:id', (req, res) => {
         })
 })
 
-//post new Flight into 'Flight' table
+//POST new flight into 'Flights' table
 
 
 
