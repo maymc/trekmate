@@ -20,7 +20,6 @@ tripRouter.get('/', (req, res) => {
 //Get trip by user_id
 tripRouter.get('/:id', (req, res) => {
     const { id } = req.params
-    console.log(' is this trip by id work?');
 
     Trip
         .where({ id })
@@ -35,7 +34,29 @@ tripRouter.get('/:id', (req, res) => {
 })
 
 //post new trip into 'Trip' table
+tripRouter.post('/add', (req, res) => {
 
+    const payload = {
+        city: req.body.city,
+        state: req.body.state,
+        country: req.body.country,
+        start_date: req.body.start_date,
+        end_date: req.body.end_date,
+        collaborators: req.body.collaborators,
+        user_id: req.body.user_id   //take it off later---------------->
+
+    }
+    Trip
+        .forge(payload)
+        .save()
+        .then(tripItems => {
+            res.json(tripItems.serialize())
+        })
+        .catch(err => {
+            console.log('err', err);
+            res.json(err)
+        })
+})
 
 
 module.exports = tripRouter
