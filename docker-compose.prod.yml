@@ -1,7 +1,7 @@
 version: '3'
 services:
   trekmate:
-    image: maymc/trekmate:${IMAGE_VERSION}
+    image: abby/trekmate:${IMAGE_VERSION}
     depends_on:
       - postgres-primary-db
       - redis-session-store

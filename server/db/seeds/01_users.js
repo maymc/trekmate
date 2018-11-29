@@ -9,25 +9,29 @@ exports.seed = function (knex, Promise) {
           first_name: 'Abby',
           last_name: 'Zhang',
           email: 'Abby Zhang',
-          password: "test1",
+          password: "admin",
+          has_trip: true
         },
         {
           first_name: 'Jamie',
           last_name: 'Frady',
           email: 'Jamie Frady',
-          password: "test2",
+          password: "admin",
+          has_trip: true
         },
         {
           first_name: 'Jason',
           last_name: 'Hoe',
           email: 'Jason Hoe',
-          password: "test3",
+          password: "admin",
+          has_trip: true
         },
         {
           first_name: 'May',
           last_name: 'Chen',
           email: 'May Chen',
-          password: "test4",
+          password: "admin",
+          has_trip: true
         },
 
       ]);

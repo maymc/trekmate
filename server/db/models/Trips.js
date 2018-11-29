@@ -1,8 +1,13 @@
 const bookshelf = require('./bookshelf.js')
+const Users = require('./Users.js')
 
 const Trips = bookshelf.Model.extend({
   tableName: 'trips',
-  idAttribute: 'id'
+  user_id: function () {
+    return this.belongsTo(Users, 'user_id');
+  },
+  idAttribute: 'id',
+  hasTimestamps: true
 })
 
 
