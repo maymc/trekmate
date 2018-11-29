@@ -18,20 +18,20 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-//~~~~~ Routes~~~~~~ //
+//Routes
 const userRoutes = require('./routes/userRoutes.js');
-// const activityRoutes = require('./routes/activityRoutes.js');
-// const accommodationRoutes = require('./routes/accommodationRoutes.js');
+const activityRoutes = require('./routes/activityRoutes.js');
+const accommodationRoutes = require('./routes/accommodationRoutes.js');
 const flightRoutes = require('./routes/flightRoutes.js');
 const transitRoutes = require('./routes/transitRoutes.js');
 const tripRoutes = require('./routes/tripRoutes.js');
 
-// app.use('/activity', activityRoutes);
-// app.use('/accommodation', accommodationRoutes);
+app.use('/activity', activityRoutes);
+app.use('/accommodation', accommodationRoutes);
 app.use('/flight', flightRoutes);
 app.use('/transit', transitRoutes);
 app.use('/trip', tripRoutes);
-// app.use('/user', userRoutes);
+app.use('/user', userRoutes);
 
 
 //GET /home
