@@ -22,13 +22,25 @@ class App extends Component {
 
   //Lifecycle Methods
   componentDidMount() {
-
+    console.log("App - this.props:", this.props);
   }
 
   //App Component - functions
   //Never mutate 'state' directly, use 'this.setState' (use ES6 to bind)
 
+  addUser = (userFromRegisterForm) => {
+    console.log("Axios - Adding new user:", userFromRegisterForm);
+    axios
+      .post('/login/register', userFromRegisterForm)
+      .then(serverData => {
+        console.log("\nserverData.data:", serverData.data);
+        this.setState({ users: serverData.data })
+      })
+      .catch(err => {
+        console.log("Error w/axios POST/login/register");
+      })
 
+  }
 
 
 
@@ -46,11 +58,11 @@ class App extends Component {
             <Link to="/home">
               <button type="button">Home</button>
             </Link>
-            <Link to="/register">
+            <Link to="/login/register">
               <button type="button">Register</button>
             </Link>
 
-            <Route path="/register" component={Register} />
+            <Route path="/login/register" component={Register} />
           </div>
         </Router>
       </div>
