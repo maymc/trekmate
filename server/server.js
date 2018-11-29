@@ -44,7 +44,7 @@ app.get('/', (req, res) => {
 
 // })
 
-// //GET /login form
+//GET /login form
 // app.get('/login', (req, res) => {
 //   console.log('\nGET /login...');
 
