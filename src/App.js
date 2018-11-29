@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import axios from 'axios';
 
 //Import JSX component files
-
+import Register from './components/Forms/Register.jsx';
 
 //Setup for redux
 // import { connect } from 'react-redux';
@@ -39,6 +39,20 @@ class App extends Component {
         <header className="App-header">
           <h1>Trekmate</h1>
         </header>
+
+        <Router>
+          <div>
+
+            <Link to="/home">
+              <button type="button">Home</button>
+            </Link>
+            <Link to="/register">
+              <button type="button">Register</button>
+            </Link>
+
+            <Route path="/register" component={Register} />
+          </div>
+        </Router>
       </div>
     );
   }
