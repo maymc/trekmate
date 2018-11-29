@@ -39,8 +39,8 @@ userRouter.post('/login/register', (req, res) => {
   console.log("\nreq.body:", req.body);
 
   const newUser = {
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
+    first_name: req.body.first_name,
+    last_name: req.body.last_name,
     email: req.body.email,
     password: req.body.password
   }
@@ -54,7 +54,7 @@ userRouter.post('/login/register', (req, res) => {
       return Users.fetchAll()
     })
     .then(users => {
-      res.json(users);
+      res.json(users.serialize());
     })
     .catch(err => {
       console.log("\nPOST - adding new user error", err);
