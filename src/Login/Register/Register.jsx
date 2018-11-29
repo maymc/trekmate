@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-// import { connect } from 'react-redux';
-import { addUser } from '../../actions/actions.js';
+import axios from 'axios';
+import { connect } from 'react-redux';
 
 class Register extends Component {
   constructor(props) {
@@ -52,7 +52,11 @@ class Register extends Component {
         <input onChange={this.handleChange} type='text' name="password" placeholder="enter password" />
         <br /><br />
 
-        <button type="submit">Submit</button>
+        <label>Confirm Password</label>
+        <input onChange={this.handleChange} type='text' name="confirmPassword" placeholder="confirm password" />
+        <br /><br />
+
+        <button type="submit">Register</button>
 
       </form>
     )
