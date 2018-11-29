@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import axios from 'axios';
 
 //Import JSX component files
-import Register from './components/Forms/Register.jsx';
+import Register from './Login/Register/Register.jsx';
 
 //Setup for redux
 // import { connect } from 'react-redux';
