@@ -4,14 +4,6 @@ const PORT = process.env.EXPRESS_CONTAINER_PORT;
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
-//Import in models
-const Users = require('./db/models/Users.js');
-// const Accommodation = require('./db/models/Accommodations.js');
-// const Activities = require('./db/models/Activities.js');
-// const Flights = require('./db/models/Flights.js');
-// const Transit = require('./db/models/Transit.js');
-// const Trip = require('./db/models/Trips.js');
-
 app.use(cors());
 
 //Returns already parsed info/object as "req.body"
