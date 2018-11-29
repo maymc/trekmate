@@ -34,6 +34,8 @@ tripRouter.get('/:id', (req, res) => {
         })
 })
 
+//post new trip into 'Trip' table
+
 
 
 module.exports = tripRouter
