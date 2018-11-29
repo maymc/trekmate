@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+// import { connect } from 'react-redux';
+import { addUser } from '../../actions/actions.js';
 
 class Register extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      firstName: null,
-      lastName: null,
+      first_name: null,
+      last_name: null,
       email: null,
       password: null
     }
@@ -29,17 +30,18 @@ class Register extends Component {
     console.log("Register - handleSubmit this.props:", this.props);
     e.preventDefault();
     console.log("New user has been registered!", this.state);
+    this.props.dispatch(addUser(this.state));
   }
 
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>First Name</label>
-        <input onChange={this.handleChange} type='text' name="firstName" placeholder="enter first name" />
+        <input onChange={this.handleChange} type='text' name="first_name" placeholder="enter first name" />
         <br /><br />
 
         <label>Last Name</label>
-        <input onChange={this.handleChange} type='text' name="lastName" placeholder="enter last name" />
+        <input onChange={this.handleChange} type='text' name="last_name" placeholder="enter last name" />
         <br /><br />
 
         <label>Email</label>
@@ -58,4 +60,5 @@ class Register extends Component {
 }
 
 
+// export default connect()(Register);
 export default Register;
