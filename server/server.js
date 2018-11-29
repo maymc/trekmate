@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //Routes
-// const userRoutes = require('./routes/userRoutes.js');
+const userRoutes = require('./routes/userRoutes.js');
 const activityRoutes = require('./routes/activityRoutes.js');
 const accommodationRoutes = require('./routes/accommodationRoutes.js');
 const flightRoutes = require('./routes/flightRoutes.js');
@@ -31,7 +31,7 @@ app.use('/accommodation', accommodationRoutes);
 app.use('/flight', flightRoutes);
 app.use('/transit', transitRoutes);
 app.use('/trip', tripRoutes);
-// app.use('/user', userRoutes);
+app.use('/user', userRoutes);
 
 
 //GET /home
