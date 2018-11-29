@@ -2,14 +2,14 @@ const express = require('express');
 const accommodationRouter = express.Router();
 
 //Bookshelf data models
-const Accommodation = require('../db/models/Accommodations.js');
+const Accommodations = require('../db/models/Accommodations.js');
 
-//Get all Accommodation in database
+//GET all accommodations in database
 accommodationRouter.get('/', (req, res) => {
-    Accommodation
+    Accommodations
         .fetchAll()
-        .then(items => {
-            res.json(items.serialize())
+        .then(accommodationsList => {
+            res.json(accommodationsList.serialize())
         })
         .catch(err => {
             console.log('err', err)
@@ -17,15 +17,15 @@ accommodationRouter.get('/', (req, res) => {
         })
 })
 
-//Get Accommodation by user_id
+//GET accommodation by user_id <---- need to fix, this is grabbing by accommodation id NOT user id
 accommodationRouter.get('/:id', (req, res) => {
-    const { id } = req.params
+    const { id } = req.params;
 
-    Accommodation
+    Accommodations
         .where({ id })
         .fetch()
-        .then((AccommodationItem) => {
-            res.json(AccommodationItem)
+        .then((accommodation) => {
+            res.json(accommodation)
         })
         .catch((err) => {
             console.log('err', err)
@@ -33,7 +33,7 @@ accommodationRouter.get('/:id', (req, res) => {
         })
 })
 
-//post new Accommodation into 'Accommodation' table
+//POST new Accommodation into 'Accommodations' table
 accommodationRouter.post('/add', (req, res) => {
     const newAccommodation = {
         lodging_name: req.body.lodging_name,
@@ -48,22 +48,21 @@ accommodationRouter.post('/add', (req, res) => {
         trip_id: req.body.trip_id
     }
 
-    // console.log("\nNew User check:", newAccommodation);
+    // console.log("\nNew Accommodation check:", newAccommodation);
 
-    Accommodation
+    Accommodations
         .forge(newAccommodation)
         .save()
         .then(() => {
-            return Accommodation.fetchAll()
+            return Accommodations.fetchAll()
         })
-        .then(Accommodation => {
-            res.json(Accommodation.serialize());
+        .then(accommodations => {
+            res.json(accommodations.serialize());
         })
         .catch(err => {
-            console.log("\nPOST - adding new user error", err);
-            res.json("error");
+            console.log("\nPOST - adding new accommodation error", err);
+            res.json("POST - adding new accommodation error");
         })
 });
-
 
 module.exports = accommodationRouter
