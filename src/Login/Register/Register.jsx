@@ -53,6 +53,10 @@ class Register extends Component {
         <input onChange={this.handleChange} type='text' name="password" placeholder="enter password" />
         <br /><br />
 
+        <label>Confirm Password</label>
+        <input onChange={this.handleChange} type='text' name="confirmPassword" placeholder="confirm password" />
+        <br /><br />
+
         <button type="submit">Submit</button>
 
       </form>
