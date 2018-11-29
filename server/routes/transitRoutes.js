@@ -4,12 +4,12 @@ const transitRouter = express.Router();
 //Bookshelf data models
 const Transit = require('../db/models/Transit.js');
 
-//Get all transit in database
+//GET all transit in database
 transitRouter.get('/', (req, res) => {
     Transit
         .fetchAll()
-        .then(items => {
-            res.json(items.serialize())
+        .then(transitList => {
+            res.json(transitList.serialize())
         })
         .catch(err => {
             console.log('err', err)
@@ -17,7 +17,7 @@ transitRouter.get('/', (req, res) => {
         })
 })
 
-//Get transit by user_id
+//GET transit by user_id
 transitRouter.get('/:id', (req, res) => {
     const { id } = req.params
 
@@ -33,7 +33,7 @@ transitRouter.get('/:id', (req, res) => {
         })
 })
 
-//post new transit into 'Transit' table
+//POST new transit into 'Transit' table
 
 
 
