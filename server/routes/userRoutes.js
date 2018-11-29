@@ -34,33 +34,33 @@ userRouter.get('/:id', (req, res) => {
 })
 
 //POST /login/register
-userRouter.post('/login/register', (req, res) => {
-  console.log('\nPOST /login/register...');
-  console.log("\nreq.body:", req.body);
+// userRouter.post('/login/register', (req, res) => {
+//   console.log('\nPOST /login/register...');
+//   console.log("\nreq.body:", req.body);
 
-  const newUser = {
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    email: req.body.email,
-    password: req.body.password
-  }
+//   const newUser = {
+//     firstName: req.body.firstName,
+//     lastName: req.body.lastName,
+//     email: req.body.email,
+//     password: req.body.password
+//   }
 
-  console.log("\nNew User check:", newUser);
+//   console.log("\nNew User check:", newUser);
 
-  Users
-    .forge(newUser)
-    .save()
-    .then(() => {
-      return Users.fetchAll()
-    })
-    .then(users => {
-      res.json(users);
-    })
-    .catch(err => {
-      console.log("\nPOST - adding new user error", err);
-      res.json("POST - adding new user error");
-    })
-});
+//   Users
+//     .forge(newUser)
+//     .save()
+//     .then(() => {
+//       return Users.fetchAll()
+//     })
+//     .then(users => {
+//       res.json(users);
+//     })
+//     .catch(err => {
+//       console.log("\nPOST - adding new user error", err);
+//       res.json("POST - adding new user error");
+//     })
+// });
 
 
 module.exports = userRouter
