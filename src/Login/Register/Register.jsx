@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import { connect } from 'react-redux';
+// import axios from 'axios';
+// import { connect } from 'react-redux';
 
 class Register extends Component {
   constructor(props) {
@@ -30,7 +30,7 @@ class Register extends Component {
     console.log("Register - handleSubmit this.props:", this.props);
     e.preventDefault();
     console.log("New user has been registered!", this.state);
-    this.props.dispatch(addUser(this.state));
+    // this.props.dispatch(addUser(this.state));
   }
 
   render() {
