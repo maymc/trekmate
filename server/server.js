@@ -18,12 +18,12 @@ const flightRoutes = require('./routes/flightRoutes.js');
 const transitRoutes = require('./routes/transitRoutes.js');
 const tripRoutes = require('./routes/tripRoutes.js');
 
-app.use('/activity', activityRoutes);
-app.use('/accommodation', accommodationRoutes);
-app.use('/flight', flightRoutes);
+app.use('/activities', activityRoutes);
+app.use('/accommodations', accommodationRoutes);
+app.use('/flights', flightRoutes);
 app.use('/transit', transitRoutes);
-app.use('/trip', tripRoutes);
-app.use('/user', userRoutes);
+app.use('/trips', tripRoutes);
+app.use('/users', userRoutes);
 
 
 //GET /home

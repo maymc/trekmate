@@ -12,30 +12,45 @@ tripRouter.get('/', (req, res) => {
             res.json(tripsList.serialize())
         })
         .catch(err => {
-            console.log('err', err)
-            res.json('err')
+            console.log("\nGET - getting trip list error", err);
+            res.json("GET - getting trip list error", err);
         })
 })
 
-//GET trip by user_id <-- need to fix this, it is grabbing by trip id NOT user_id
+//GET trips by user_id
+tripRouter.get('/user/:user_id', (req, res) => {
+    const { user_id } = req.params
+
+    Trips
+        .where({ user_id })
+        .fetchAll()
+        .then((trip) => {
+            res.json(trip.serialize())
+        })
+        .catch(err => {
+            console.log("\nGET - getting trip by user_id error", err);
+            res.json("GET - getting trip by user_id error", err);
+        })
+})
+
+//GET trip by trip_id
 tripRouter.get('/:id', (req, res) => {
-    const { id } = req.params
+    const { id } = req.params;
 
     Trips
         .where({ id })
-        .fetch()
-        .then((trip) => {
-            res.json(trip)
-        })
-        .catch((err) => {
-            console.log('err', err)
-            res.json(err)
+        .fetchAll()
+        .then((filteredTrip => {
+            res.json(filteredTrip.serialize())
+        }))
+        .catch(err => {
+            console.log("\nGET - get trip by trip_id error", err);
+            res.json("GET - get trip by trip_id error");
         })
 })
 
 //POST new trip into 'Trips' table
 tripRouter.post('/add', (req, res) => {
-
     const payload = {
         city: req.body.city,
         state: req.body.state,
@@ -46,15 +61,64 @@ tripRouter.post('/add', (req, res) => {
         user_id: req.body.user_id   //take it off later---------------->
 
     }
-    Trip
+    Trips
         .forge(payload)
         .save()
-        .then(tripItems => {
-            res.json(tripItems.serialize())
+        .then(() => {
+            return Trips.fetchAll()
+        })
+        .then(trips => {
+            res.json(trips.serialize());
         })
         .catch(err => {
-            console.log('err', err);
-            res.json(err)
+            console.log("\nPOST - adding new trip error", err);
+            res.json("POST - adding new trip error", err);
+        })
+})
+
+//PUT - edit trip by trip id
+tripRouter.put('/edit/:id', (req, res) => {
+    const { id } = req.params;
+
+    const updatedTrip = {
+        city: req.body.city,
+        state: req.body.state,
+        country: req.body.country,
+        start_date: req.body.start_date,
+        end_date: req.body.end_date,
+        collaborators: req.body.collaborators,
+        user_id: req.body.user_id
+    }
+
+    Trips
+        .where({ id })
+        .fetch()
+        .then((currentTrip) => {
+            return currentTrip.save(updatedTrip)
+        })
+        .then((result) => {
+            console.log('Updated trip', result)
+            res.json(result)
+        })
+        .catch(err => {
+            console.log("\nPUT - edit trip error", err);
+            res.json("PUT - edit trip error", err);
+        })
+})
+
+// Delete trip by 'id' from the 'trip' table
+tripRouter.delete('/delete/:id', (req, res) => {
+    const { id } = req.params
+
+    Trips
+        .where({ id })
+        .destroy()
+        .then(
+            res.send('Trip was deleted')
+        )
+        .catch(err => {
+            console.log("\nDELETE - delete trip error", err);
+            res.json("DELETE - delete trip error", err);
         })
 })
 

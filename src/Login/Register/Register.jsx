@@ -39,30 +39,30 @@ class Register extends Component {
   render() {
     return (
       <div>
-      <form onSubmit={this.handleSubmit}>
-        <label>First Name</label>
-        <input onChange={this.handleChange} type='text' name="first_name" placeholder="enter first name" />
-        <br /><br />
+        <form onSubmit={this.handleSubmit}>
+          <label>First Name</label>
+          <input onChange={this.handleChange} type='text' name="first_name" placeholder="enter first name" />
+          <br /><br />
 
-        <label>Last Name</label>
-        <input onChange={this.handleChange} type='text' name="last_name" placeholder="enter last name" />
-        <br /><br />
+          <label>Last Name</label>
+          <input onChange={this.handleChange} type='text' name="last_name" placeholder="enter last name" />
+          <br /><br />
 
-        <label>Email</label>
-        <input onChange={this.handleChange} type='text' name="email" placeholder="enter email" />
-        <br /><br />
+          <label>Email</label>
+          <input onChange={this.handleChange} type='text' name="email" placeholder="enter email" />
+          <br /><br />
 
-        <label>Password</label>
-        <input onChange={this.handleChange} type='text' name="password" placeholder="enter password" />
-        <br /><br />
+          <label>Password</label>
+          <input onChange={this.handleChange} type='text' name="password" placeholder="enter password" />
+          <br /><br />
 
-        <label>Confirm Password</label>
-        <input onChange={this.handleChange} type='text' name="confirmPassword" placeholder="confirm password" />
-        <br /><br />
+          <label>Confirm Password</label>
+          <input onChange={this.handleChange} type='text' name="confirmPassword" placeholder="confirm password" />
+          <br /><br />
 
-        <button type="submit">Register</button>
+          <button type="submit">Register</button>
 
-      </form>
+        </form>
 
         <Link to="/forgotPassword">
           <button type="button">Forgot Password?</button>
