@@ -34,7 +34,32 @@ transitRouter.get('/:id', (req, res) => {
 })
 
 //POST new transit into 'Transit' table
+transitRouter.post('/add', (req, res) => {
 
+    const newtransit = {
+        type: req.body.type,
+        date: req.body.date,
+        time: req.body.time,
+        reservation: req.body.reservation,
+        price: req.body.price,
+        user_id: req.body.user_id,
+        trip_id: req.body.trip_id
+    }
+
+    Transit
+        .forge(newtransit)
+        .save()
+        .then(() => {
+            return Transit.fetchAll()
+        })
+        .then(Transit => {
+            res.json(Transit.serialize());
+        })
+        .catch(err => {
+            console.log("\nPOST - adding new transit error", err);
+            res.json("POST - adding new transit error");
+        })
+});
 
 
 module.exports = transitRouter

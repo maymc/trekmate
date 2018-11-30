@@ -34,7 +34,34 @@ flightRouter.get('/:id', (req, res) => {
 })
 
 //POST new flight into 'Flights' table
+flightRouter.post('/add', (req, res) => {
 
+    const newflight = {
+        airlines: req.body.airlines,
+        departure_time: req.body.departure_time,
+        arrival_time: req.body.arrival_time,
+        reservation_code: req.body.reservation_code,
+        checked_in_baggage: req.body.checked_in_baggage,
+        price: req.body.price,
+        notes: req.body.notes,
+        user_id: req.body.user_id,
+        trip_id: req.body.trip_id
+    }
+
+    Flights
+        .forge(newflight)
+        .save()
+        .then(() => {
+            return Flights.fetchAll()
+        })
+        .then(Flights => {
+            res.json(Flights.serialize());
+        })
+        .catch(err => {
+            console.log("\nPOST - adding new flight error", err);
+            res.json("POST - adding new flight error");
+        })
+});
 
 
 module.exports = flightRouter
