@@ -13,10 +13,10 @@ class Header extends Component {
 
       return (
         <div className="header">
-          <a href="/"><h1>TREKmate</h1></a>
-          {/* <form method="get" action="/login">
-            <button type="submit">Login</button>
-          </form> */}
+          <a href="/"><h1>TREK<span>mate</span></h1></a>
+          <form method="get" action="/login">
+            <button className="ghost" type="submit">Login</button>
+          </form>
         </div>
       );
     }

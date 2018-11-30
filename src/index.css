@@ -40,15 +40,15 @@ i {
 /* Link styles */
 a:link, a:visited {
   text-decoration: none;
-  color: #116466;
+  color: #305BED;
 }
 
   a:hover {
-    color: #2d7778;
+    color: #B3007B;
   }
 
   a:active {
-    color: #2c3531
+    color: #9E0066
   }
 
 /* Link styles for dark backgrounds */
@@ -57,7 +57,7 @@ a.drk:link, a.drk:visited {
 }
 
   a.drk:hover {
-    color: #ffcb9a;
+    color: #BBE6FD;
   }
 
   a.drk:active {
@@ -66,37 +66,59 @@ a.drk:link, a.drk:visited {
 
 /* Button styles */
 button {
-  height: 44px;
+  height: 36px;
   font-size: 1em;
   text-transform: uppercase;
   padding: 0px 15px 0px 15px;
   margin: 15px;
-  border: 3px solid #116466;
+  border: 2px solid #B3007B;
   color: #fff;
-  background: #116466;
+  background: #B3007B;
+  cursor: pointer;
+  transition: all 0.3s;
 }
 
   button:hover {
-    background: #2d7778;
+    border: 2px solid #C7009A;
+    background: #C7009A;
   }
 
   button:active {
-    background: #2d7778;
-    border: 3px solid #2d7778;
+    background: #9E0066;
+    border: 2px solid #9E0066;
   }
+
+
+/* Button styles for ghost buttons */
+button.ghost {
+  background: #fff;
+  color: #B3007B;
+}
+
+button.ghost:hover {
+  background: #C7009A;
+  color: #fff;
+}
+
+button.ghost:active {
+  background: #9E0066;
+  color: #ffffff;
+}
+
 
 /* Button Styles for dark background */
 button.drk {
-  border: 2px solid #d9b08c;
-  color: #2c3531;
-  background: #d9b08c;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  background: #870056;
 }
 
   button.drk:hover {
-    background: #ffcb9a;
+    background: #ffffff;
+    color: #870056;
   }
 
   button.drk:active {
-    background: #ffcb9a;
-    border: 2px solid #ffcb9a;
+    background: #ffffff;
+    color: #C7009A;
   }
