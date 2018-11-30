@@ -61,5 +61,30 @@ transitRouter.post('/add', (req, res) => {
         })
 });
 
+//PUT tansit into 'Transit' table
+transitRouter.put('/edit/:id', (req, res) => {
+    const { id } = req.params
+    const newTransit = {
+        id: id,
+        type: req.body.type,
+        date: req.body.date,
+        time: req.body.time,
+        reservation: req.body.reservation,
+        price: req.body.price,
+        user_id: req.body.user_id,
+        trip_id: req.body.trip_id
+    }
+
+    Transit
+        .where({ id })
+        .fetch()
+        .then((transitItem) => {
+            return transitItem.save(newTransit)
+        })
+        .then((result) => {
+            console.log('updated activity', result)
+            res.json(result)
+        })
+})
 
 module.exports = transitRouter
