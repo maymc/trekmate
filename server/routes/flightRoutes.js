@@ -86,7 +86,7 @@ flightRouter.put('/edit/:id', (req, res) => {
             return flightItem.save(newFlight)
         })
         .then((result) => {
-            console.log('updated activity', result)
+            console.log('updated flight', result)
             res.json(result)
         })
 })

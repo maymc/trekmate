@@ -82,7 +82,7 @@ transitRouter.put('/edit/:id', (req, res) => {
             return transitItem.save(newTransit)
         })
         .then((result) => {
-            console.log('updated activity', result)
+            console.log('updated transit', result)
             res.json(result)
         })
 })

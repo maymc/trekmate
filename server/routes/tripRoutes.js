@@ -46,7 +46,7 @@ tripRouter.post('/add', (req, res) => {
         user_id: req.body.user_id   //take it off later---------------->
 
     }
-    Trip
+    Trips
         .forge(payload)
         .save()
         .then(tripItems => {
@@ -57,5 +57,32 @@ tripRouter.post('/add', (req, res) => {
             res.json(err)
         })
 })
+
+//PUT trip into 'Trip' table
+tripRouter.put('/edit/:id', (req, res) => {
+    const { id } = req.params
+    const newTrip = {
+        id: id,
+        city: req.body.city,
+        state: req.body.state,
+        country: req.body.country,
+        start_date: req.body.start_date,
+        end_date: req.body.end_date,
+        collaborators: req.body.collaborators,
+        user_id: req.body.user_id
+    }
+
+    Trips
+        .where({ id })
+        .fetch()
+        .then((tripItem) => {
+            return tripItem.save(newTrip)
+        })
+        .then((result) => {
+            console.log('updated trip', result)
+            res.json(result)
+        })
+})
+
 
 module.exports = tripRouter
