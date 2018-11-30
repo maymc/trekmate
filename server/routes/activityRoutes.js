@@ -100,4 +100,23 @@ activityRouter.put('/edit/:id', (req, res) => {
         })
 })
 
+// Delete activity by 'id' from the 'activity' table
+activityRouter.delete('/delete/:id', (req, res) => {
+
+    const { id } = req.params
+
+    Activities
+        .where({ id })
+        .destroy()
+        .then(
+            res.send('This activity was deleted')
+        )
+        .catch(err => {
+            console.log('err: ', err)
+            res.json(err)
+        })
+
+
+})
+
 module.exports = activityRouter

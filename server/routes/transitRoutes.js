@@ -87,4 +87,23 @@ transitRouter.put('/edit/:id', (req, res) => {
         })
 })
 
+// Delete transit by 'id' from the 'transit' table
+transitRouter.delete('/delete/:id', (req, res) => {
+
+    const { id } = req.params
+
+    Transit
+        .where({ id })
+        .destroy()
+        .then(
+            res.send('This transit was deleted')
+        )
+        .catch(err => {
+            console.log('err: ', err)
+            res.json(err)
+        })
+
+
+})
+
 module.exports = transitRouter

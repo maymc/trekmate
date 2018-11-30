@@ -84,4 +84,23 @@ userRouter.put('/account/edit/:id', (req, res) => {
       res.json(result)
     })
 })
+
+// Delete user by 'id' from the 'user' table
+userRouter.delete('/account/delete/:id', (req, res) => {
+
+  const { id } = req.params
+
+  Users
+    .where({ id })
+    .destroy()
+    .then(
+      res.send('This user was deleted')
+    )
+    .catch(err => {
+      console.log('err: ', err)
+      res.json(err)
+    })
+
+
+})
 module.exports = userRouter

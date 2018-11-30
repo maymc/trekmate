@@ -91,4 +91,23 @@ flightRouter.put('/edit/:id', (req, res) => {
         })
 })
 
+// Delete flight by 'id' from the 'flight' table
+flightRouter.delete('/delete/:id', (req, res) => {
+
+    const { id } = req.params
+
+    Flights
+        .where({ id })
+        .destroy()
+        .then(
+            res.send('This flight was deleted')
+        )
+        .catch(err => {
+            console.log('err: ', err)
+            res.json(err)
+        })
+
+
+})
+
 module.exports = flightRouter

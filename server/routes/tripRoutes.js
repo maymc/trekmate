@@ -84,5 +84,23 @@ tripRouter.put('/edit/:id', (req, res) => {
         })
 })
 
+// Delete trip by 'id' from the 'trip' table
+tripRouter.delete('/delete/:id', (req, res) => {
+
+    const { id } = req.params
+
+    Trips
+        .where({ id })
+        .destroy()
+        .then(
+            res.send('This trip was deleted')
+        )
+        .catch(err => {
+            console.log('err: ', err)
+            res.json(err)
+        })
+
+
+})
 
 module.exports = tripRouter
