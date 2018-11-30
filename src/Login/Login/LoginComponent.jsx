@@ -15,6 +15,7 @@ class Login extends Component {
   //Lifecycle Methods
   componentDidMount() { }
 
+  //Helper functions
   handleChange = (e) => {
     e.preventDefault();
 
