@@ -18,7 +18,7 @@ accommodationRouter.get('/', (req, res) => {
 })
 
 //GET accommodation by user_id 
-accommodationRouter.get('/:user_id', (req, res) => {
+accommodationRouter.get('/user/:user_id', (req, res) => {
     const { user_id } = req.params;
 
     Accommodations
@@ -30,6 +30,22 @@ accommodationRouter.get('/:user_id', (req, res) => {
         .catch(err => {
             console.log("\nGET - getting accommodation by user_id error", err);
             res.json("GET - getting accommodation by user_id error", err);
+        })
+})
+
+//GET accommodations by trip_id
+accommodationRouter.get('/trip/:trip_id', (req, res) => {
+    const { trip_id } = req.params;
+
+    Accommodations
+        .where({ trip_id })
+        .fetchAll()
+        .then((filteredAccommodations => {
+            res.json(filteredAccommodations.serialize())
+        }))
+        .catch(err => {
+            console.log("\nGET - get accommodations by trip_id error", err);
+            res.json("GET - get accommodations by trip_id error");
         })
 })
 
