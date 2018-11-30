@@ -5,7 +5,7 @@ import axios from 'axios';
 //Import JSX component files
 
 
-class Activity extends Component {
+class Transit extends Component {
   constructor(props) {
     super(props)
 
@@ -37,4 +37,4 @@ class Activity extends Component {
   }
 }
 
-export default Activity;
+export default Transit;

@@ -49,8 +49,6 @@ class App extends Component {
 
   // }
 
-
-
   //App Component - render html elements
   render() {
     return (

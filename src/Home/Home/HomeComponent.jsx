@@ -6,7 +6,8 @@ class Home extends Component {
   render() {
     return (
       <div className="home">
-        Test home
+        {/* <a href="">Test Link</a>
+        <button>Test button</button> */}
       </div>
     );
   }
