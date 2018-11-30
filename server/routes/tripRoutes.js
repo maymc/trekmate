@@ -17,7 +17,7 @@ tripRouter.get('/', (req, res) => {
         })
 })
 
-//GET trip by user_id
+//GET trips by user_id
 tripRouter.get('/:user_id', (req, res) => {
     const { user_id } = req.params
 
