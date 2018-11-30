@@ -17,25 +17,26 @@ class Register extends Component {
   //Lifecycle Methods
   componentDidMount() { }
 
+  //Helper functions
   handleChange = (e) => {
     e.preventDefault();
+
     const { name, value } = e.target;
     this.setState({
       [name]: value
     })
-    console.log("Register - handleChange this.state:", this.state);
   }
 
-  handleSubmit = (e) => {
-    console.log("Register - handleSubmit this.props:", this.props);
+  handleRegister = (e) => {
     e.preventDefault();
+    console.log("Register - handleSubmit this.props:", this.props);
     console.log("New user has been registered!", this.state);
     // this.props.dispatch(addUser(this.state));
   }
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleRegister}>
         <label>First Name</label>
         <input onChange={this.handleChange} type='text' name="first_name" placeholder="enter first name" />
         <br /><br />
@@ -49,11 +50,11 @@ class Register extends Component {
         <br /><br />
 
         <label>Password</label>
-        <input onChange={this.handleChange} type='text' name="password" placeholder="enter password" />
+        <input onChange={this.handleChange} type='password' name="password" placeholder="enter password" />
         <br /><br />
 
         <label>Confirm Password</label>
-        <input onChange={this.handleChange} type='text' name="confirmPassword" placeholder="confirm password" />
+        <input onChange={this.handleChange} type='password' name="confirmPassword" placeholder="confirm password" />
         <br /><br />
 
         <button type="submit">Register</button>

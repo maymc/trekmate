@@ -59,9 +59,9 @@ class App extends Component {
         <Router className="maincontent">
           <Switch>
             <Route exact path='/' component={Home} />
-            <Route path='/login' component={Login} />
-            <Route path='/login/register' component={Register} />
             <Route path='/login/forgot_password' component={ForgotPassword} />
+            <Route path='/login/register' component={Register} />
+            <Route path='/login' component={Login} />
             <Route path='/account/edit_password/:id' component={EditPassword} />
             <Route path='/account/edit/:id' component={EditAccount} />
             <Route path='/account/:id' component={Account} />

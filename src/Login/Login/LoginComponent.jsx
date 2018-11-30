@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import { connect } from 'react-redux';
+// import axios from 'axios';
+// import { connect } from 'react-redux';
 
 class Login extends Component {
   constructor(props) {
