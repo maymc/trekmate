@@ -32,6 +32,7 @@ class EditPassword extends Component {
 
   render() {
     return (
+      <div>
       <form onSubmit={this.handleSubmit}>
 
         <label>Previous Password</label>
@@ -49,6 +50,7 @@ class EditPassword extends Component {
         <button type="submit">Submit</button>
 
       </form>
+      </div>
     )
   }
 }

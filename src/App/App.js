@@ -49,8 +49,6 @@ class App extends Component {
 
   // }
 
-
-
   //App Component - render html elements
   render() {
     return (
@@ -70,7 +68,7 @@ class App extends Component {
             <Route path='/trip/:id' component={Trip} />
           </Switch>
         </Router>
-        
+
       </div>
     );
   }

@@ -5,7 +5,7 @@ import axios from 'axios';
 //Import JSX component files
 
 
-class Activity extends Component {
+class EditAccount extends Component {
   constructor(props) {
     super(props)
 
@@ -31,10 +31,10 @@ class Activity extends Component {
   render() {
     return (
       <div>
-        Home Activity Page
+       Edit Account Page
       </div>
     );
   }
 }
 
-export default Activity;
+export default EditAccount;
