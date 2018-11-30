@@ -69,4 +69,35 @@ activityRouter.post('/add', (req, res) => {
         })
 })
 
+//PUT activity into 'Activity' table
+activityRouter.put('/edit/:id', (req, res) => {
+    const { id } = req.params
+    const newActivity = {
+        id: id,
+        activity_name: req.body.activity_name,
+        location: req.body.location,
+        date: req.body.date,
+        time: req.body.time,
+        price: req.body.price,
+        type: req.body.type,
+        votes: req.body.votes,
+        reservation: req.body.reservation,
+        notes: req.body.notes,
+        image: req.body.image,
+        user_id: req.body.user_id,
+        trip_id: req.body.trip_id
+    }
+
+    Activities
+        .where({ id })
+        .fetch()
+        .then((activityItem) => {
+            return activityItem.save(newActivity)
+        })
+        .then((result) => {
+            console.log('updated activity', result)
+            res.json(result)
+        })
+})
+
 module.exports = activityRouter
