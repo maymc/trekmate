@@ -18,7 +18,7 @@ transitRouter.get('/', (req, res) => {
 })
 
 //GET transit by user_id 
-transitRouter.get('/:user_id', (req, res) => {
+transitRouter.get('/user/:user_id', (req, res) => {
     const { user_id } = req.params;
 
     Transit
@@ -30,6 +30,22 @@ transitRouter.get('/:user_id', (req, res) => {
         .catch(err => {
             console.log("\nGET - getting transit by user_id error", err);
             res.json("GET - getting transit by user_id error", err);
+        })
+})
+
+//GET transit by trip_id
+transitRouter.get('/trip/:trip_id', (req, res) => {
+    const { trip_id } = req.params;
+
+    Transit
+        .where({ trip_id })
+        .fetchAll()
+        .then((filteredTransit => {
+            res.json(filteredTransit.serialize())
+        }))
+        .catch(err => {
+            console.log("\nGET - get transit by trip_id error", err);
+            res.json("GET - get transit by trip_id error");
         })
 })
 
