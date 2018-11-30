@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import ForgotPassword from '../ForgotPassword/ForgotPassword.jsx';
+import Login from '../Login/Login.jsx';
 
 class Register extends Component {
   constructor(props) {
@@ -34,6 +37,7 @@ class Register extends Component {
 
   render() {
     return (
+      <div>
       <form onSubmit={this.handleSubmit}>
         <label>First Name</label>
         <input onChange={this.handleChange} type='text' name="firstName" placeholder="enter first name" />
@@ -58,6 +62,16 @@ class Register extends Component {
         <button type="submit">Register</button>
 
       </form>
+
+        <Link to="/forgotPassword">
+          <button type="button">Forgot Password?</button>
+        </Link>
+        <Link to="/login">
+          <button type="button">Cancel</button>
+        </Link>
+        <Route path="/forgotPassword" component={ForgotPassword} />
+        <Route path="/login" component={Login} />
+      </div>
     )
   }
 }

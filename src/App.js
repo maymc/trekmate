@@ -5,6 +5,10 @@ import axios from 'axios';
 
 //Import JSX component files
 import Register from './Login/Register/Register.jsx';
+import EditPassword from './Login/EditPassword/EditPassword.jsx';
+import ForgotPassword from './Login/ForgotPassword/ForgotPassword.jsx';
+import Login from './Login/Login/Login.jsx';
+import Activity from './Home/Activity/Activity.jsx';
 
 //Setup for redux
 // import { connect } from 'react-redux';
@@ -49,8 +53,22 @@ class App extends Component {
             <Link to="/register">
               <button type="button">Register</button>
             </Link>
+            <Link to="/editPassword">
+              <button type="button">Edit Password</button>
+            </Link>
+            <Link to="/forgotPassword">
+              <button type="button">Forgot Password</button>
+            </Link>
+            <Link to="/login">
+              <button type="button">Login</button>
+            </Link>
 
+            <Route path="/home" component={Activity} />
             <Route path="/register" component={Register} />
+            <Route path="/editPassword" component={EditPassword} />
+            <Route path="/forgotPassword" component={ForgotPassword} />
+            <Route path="/login" component={Login} />
+
           </div>
         </Router>
       </div>
