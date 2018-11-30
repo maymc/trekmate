@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import ForgotPassword from '../ForgotPassword/ForgotPassword.jsx';
-import Register from '../Register/Register.jsx';
+import ForgotPassword from '../ForgotPassword/ForgotPasswordComponent.jsx';
+import Register from '../Register/RegisterComponent.jsx';
 
 class Login extends Component {
   constructor(props) {
@@ -38,30 +38,30 @@ class Login extends Component {
   render() {
     return (
       <div>
-      <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit}>
 
-        <label>Email</label>
-        <input onChange={this.handleChange} type='text' name="email" placeholder="enter email" />
-        <br /><br />
+          <label>Email</label>
+          <input onChange={this.handleChange} type='text' name="email" placeholder="enter email" />
+          <br /><br />
 
-        <label>Password</label>
-        <input onChange={this.handleChange} type='text' name="password" placeholder="enter password" />
-        <br /><br />
+          <label>Password</label>
+          <input onChange={this.handleChange} type='text' name="password" placeholder="enter password" />
+          <br /><br />
 
-        <button type="submit">Login</button>
+          <button type="submit">Login</button>
 
-      </form>
+        </form>
 
-      <Link to="/forgotPassword">
-        <button type="button">Forgot Password?</button>
-      </Link>
-      <Link to="/register">
-        <button type="button">Register</button>
-      </Link>
+        <Link to="/forgotPassword">
+          <button type="button">Forgot Password?</button>
+        </Link>
+        <Link to="/register">
+          <button type="button">Register</button>
+        </Link>
 
 
-      <Route path="/forgotPassword" component={ForgotPassword} />
-      <Route path="/register" component={Register} />
+        <Route path="/forgotPassword" component={ForgotPassword} />
+        <Route path="/register" component={Register} />
       </div>
     )
   }

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import Login from '../Login/Login.jsx';
+import Login from '../Login/LoginComponent.jsx';
 
 class ForgotPassword extends Component {
   constructor(props) {
@@ -36,21 +36,21 @@ class ForgotPassword extends Component {
   render() {
     return (
       <div>
-      <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit}>
 
-        <label>Email</label>
-        <input onChange={this.handleChange} type='text' name="email" placeholder="enter email" />
-        <br /><br />
+          <label>Email</label>
+          <input onChange={this.handleChange} type='text' name="email" placeholder="enter email" />
+          <br /><br />
 
-        <button type="submit">Send email</button>
+          <button type="submit">Send email</button>
 
-      </form>
+        </form>
 
-      <Link to="/login">
-        <button type="button">Cancel</button>
-      </Link>
+        <Link to="/login">
+          <button type="button">Cancel</button>
+        </Link>
 
-      <Route path="/login" component={Login} />
+        <Route path="/login" component={Login} />
       </div>
     )
   }

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import ForgotPassword from '../ForgotPassword/ForgotPassword.jsx';
-import Login from '../Login/Login.jsx';
+import ForgotPassword from '../ForgotPassword/ForgotPasswordComponent.jsx';
+import Login from '../Login/LoginComponent.jsx';
 
 class Register extends Component {
   constructor(props) {
