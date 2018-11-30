@@ -33,7 +33,7 @@ activityRouter.get('/user/:user_id', (req, res) => {
         })
 })
 
-//GET flights by trip_id
+//GET activities by trip_id
 activityRouter.get('/trip/:trip_id', (req, res) => {
     const { trip_id } = req.params;
 
