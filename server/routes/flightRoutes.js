@@ -12,8 +12,8 @@ flightRouter.get('/', (req, res) => {
             res.json(flightsList.serialize())
         })
         .catch(err => {
-            console.log('err', err)
-            res.json('err')
+            console.log("\nGET - getting flight list error", err);
+            res.json("GET - getting flight list error", err);
         })
 })
 
@@ -27,15 +27,14 @@ flightRouter.get('/:user_id', (req, res) => {
         .then((flight) => {
             res.json(flight.serialize())
         })
-        .catch((err) => {
-            console.log('err', err)
-            res.json(err)
+        .catch(err => {
+            console.log("\nGET - getting flight by user_id error", err);
+            res.json("GET - getting flight by user_id error", err);
         })
 })
 
 //POST new flight into 'Flights' table
 flightRouter.post('/add', (req, res) => {
-
     const newflight = {
         airlines: req.body.airlines,
         departure_time: req.body.departure_time,
@@ -54,8 +53,8 @@ flightRouter.post('/add', (req, res) => {
         .then(() => {
             return Flights.fetchAll()
         })
-        .then(Flights => {
-            res.json(Flights.serialize());
+        .then(flights => {
+            res.json(flights.serialize());
         })
         .catch(err => {
             console.log("\nPOST - adding new flight error", err);
@@ -63,11 +62,11 @@ flightRouter.post('/add', (req, res) => {
         })
 });
 
-//PUT flight into 'FLight' table
+//PUT - edit flight by flight id
 flightRouter.put('/edit/:id', (req, res) => {
-    const { id } = req.params
-    const newFlight = {
-        id: id,
+    const { id } = req.params;
+
+    const updatedFlight = {
         airlines: req.body.airlines,
         departure_time: req.body.departure_time,
         arrival_time: req.body.arrival_time,
@@ -82,32 +81,33 @@ flightRouter.put('/edit/:id', (req, res) => {
     Flights
         .where({ id })
         .fetch()
-        .then((flightItem) => {
-            return flightItem.save(newFlight)
+        .then((currentFlight) => {
+            return currentFlight.save(updatedFlight);
         })
         .then((result) => {
-            console.log('updated flight', result)
+            console.log('Updated flight', result)
             res.json(result)
+        })
+        .catch(err => {
+            console.log("\nPUT - edit flight error", err);
+            res.json("PUT - edit flight error", err);
         })
 })
 
 // Delete flight by 'id' from the 'flight' table
 flightRouter.delete('/delete/:id', (req, res) => {
-
     const { id } = req.params
 
     Flights
         .where({ id })
         .destroy()
         .then(
-            res.send('This flight was deleted')
+            res.send('Flight was deleted')
         )
         .catch(err => {
-            console.log('err: ', err)
-            res.json(err)
+            console.log("\nDELETE - delete flight error", err);
+            res.json("DELETE - delete flight error", err);
         })
-
-
 })
 
 module.exports = flightRouter

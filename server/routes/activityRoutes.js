@@ -70,7 +70,7 @@ activityRouter.post('/add', (req, res) => {
         })
 })
 
-//PUT activity into 'Activity' table
+//PUT - edit activity by activity id
 activityRouter.put('/edit/:id', (req, res) => {
     const { id } = req.params;
 
