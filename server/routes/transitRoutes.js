@@ -12,14 +12,14 @@ transitRouter.get('/', (req, res) => {
             res.json(transitList.serialize())
         })
         .catch(err => {
-            console.log('err', err)
-            res.json('err')
+            console.log("\nGET - getting transit list error", err);
+            res.json("GET - getting transit list error", err);
         })
 })
 
 //GET transit by user_id 
 transitRouter.get('/:user_id', (req, res) => {
-    const { user_id } = req.params
+    const { user_id } = req.params;
 
     Transit
         .where({ user_id })
@@ -27,15 +27,14 @@ transitRouter.get('/:user_id', (req, res) => {
         .then((transitItem) => {
             res.json(transitItem.serialize())
         })
-        .catch((err) => {
-            console.log('err', err)
-            res.json(err)
+        .catch(err => {
+            console.log("\nGET - getting transit by user_id error", err);
+            res.json("GET - getting transit by user_id error", err);
         })
 })
 
 //POST new transit into 'Transit' table
 transitRouter.post('/add', (req, res) => {
-
     const newtransit = {
         type: req.body.type,
         date: req.body.date,
@@ -52,20 +51,20 @@ transitRouter.post('/add', (req, res) => {
         .then(() => {
             return Transit.fetchAll()
         })
-        .then(Transit => {
-            res.json(Transit.serialize());
+        .then(transit => {
+            res.json(transit.serialize());
         })
         .catch(err => {
             console.log("\nPOST - adding new transit error", err);
-            res.json("POST - adding new transit error");
+            res.json("POST - adding new transit error", err);
         })
 });
 
-//PUT tansit into 'Transit' table
+//PUT - edit transit by transit id
 transitRouter.put('/edit/:id', (req, res) => {
-    const { id } = req.params
-    const newTransit = {
-        id: id,
+    const { id } = req.params;
+
+    const updatedTransit = {
         type: req.body.type,
         date: req.body.date,
         time: req.body.time,
@@ -78,32 +77,33 @@ transitRouter.put('/edit/:id', (req, res) => {
     Transit
         .where({ id })
         .fetch()
-        .then((transitItem) => {
-            return transitItem.save(newTransit)
+        .then((currentTransit) => {
+            return currentTransit.save(updatedTransit)
         })
         .then((result) => {
-            console.log('updated transit', result)
+            console.log('Updated transit', result)
             res.json(result)
+        })
+        .catch(err => {
+            console.log("\nPUT - edit transit error", err);
+            res.json("PUT - edit transit error", err);
         })
 })
 
 // Delete transit by 'id' from the 'transit' table
 transitRouter.delete('/delete/:id', (req, res) => {
-
-    const { id } = req.params
+    const { id } = req.params;
 
     Transit
         .where({ id })
         .destroy()
         .then(
-            res.send('This transit was deleted')
+            res.send('Transit was deleted')
         )
         .catch(err => {
-            console.log('err: ', err)
-            res.json(err)
+            console.log("\nDELETE - delete transit error", err);
+            res.json("DELETE - delete transit error", err);
         })
-
-
 })
 
 module.exports = transitRouter
