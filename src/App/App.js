@@ -1,14 +1,22 @@
 import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import axios from 'axios';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+// import axios from 'axios';
 
 //Import JSX component files
-import Register from '../Login/Register/Register.jsx';
+import Header from '../Global/Header/HeaderComponent';
+import Home from '../Home/Home/HomeComponent';
+import Login from '../Login/Login/LoginComponent';
+import Register from '../Login/Register/RegisterComponent';
+import ForgotPassword from '../Login/ForgotPassword/ForgotPasswordComponent';
+import Account from '../Account/Account/AccountComponent';
+import EditAccount from '../Account/EditAccount/EditAccountComponent';
+import EditPassword from '../Account/EditPassword/EditPasswordComponent';
+import Trip from '../Trip/Trip/TripComponent';
+import CreateTrip from '../Trip/CreateTrip/CreateTripComponent';
+import EditTrip from '../Trip/EditTrip/EditTrip';
 
-//Setup for redux
-// import { connect } from 'react-redux';
-// import { getAllTasks } from './actions/actions.js';
+
 
 class App extends Component {
   constructor(props) {
@@ -26,45 +34,43 @@ class App extends Component {
   }
 
   //App Component - functions
-  //Never mutate 'state' directly, use 'this.setState' (use ES6 to bind)
 
-  addUser = (userFromRegisterForm) => {
-    console.log("Axios - Adding new user:", userFromRegisterForm);
-    axios
-      .post('/login/register', userFromRegisterForm)
-      .then(serverData => {
-        console.log("\nserverData.data:", serverData.data);
-        this.setState({ users: serverData.data })
-      })
-      .catch(err => {
-        console.log("Error w/axios POST/login/register");
-      })
+  // addUser = (userFromRegisterForm) => {
+  //   console.log("Axios - Adding new user:", userFromRegisterForm);
+  //   axios
+  //     .post('/login/register', userFromRegisterForm)
+  //     .then(serverData => {
+  //       console.log("\nserverData.data:", serverData.data);
+  //       this.setState({ users: serverData.data })
+  //     })
+  //     .catch(err => {
+  //       console.log("Error w/axios POST/login/register");
+  //     })
 
-  }
+  // }
 
 
 
   //App Component - render html elements
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1>Trekmate</h1>
-        </header>
-
-        <Router>
-          <div>
-
-            <Link to="/home">
-              <button type="button">Home</button>
-            </Link>
-            <Link to="/login/register">
-              <button type="button">Register</button>
-            </Link>
-
-            <Route path="/login/register" component={Register} />
-          </div>
+      <div className="app">
+        <Header />
+        <Router className="maincontent">
+          <Switch>
+            <Route exact path='/' component={Home} />
+            <Route path='/login' component={Login} />
+            <Route path='/login/register' component={Register} />
+            <Route path='/login/forgot_password' component={ForgotPassword} />
+            <Route path='/account/edit_password/:id' component={EditPassword} />
+            <Route path='/account/edit/:id' component={EditAccount} />
+            <Route path='/account/:id' component={Account} />
+            <Route path='/trip/create' component={CreateTrip} />
+            <Route path='/trip/edit/:id' component={EditTrip} />
+            <Route path='/trip/:id' component={Trip} />
+          </Switch>
         </Router>
+        
       </div>
     );
   }

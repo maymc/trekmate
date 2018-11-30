@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import './styles.css';
 
-class EditTrip extends Component {
+class Home extends Component {
 
   render() {
     return (
-      <div className="edittrip">
-        Test edit trip
+      <div className="home">
+        Test home
       </div>
     );
   }
 }
 
-export default EditTrip;
+export default Home;
