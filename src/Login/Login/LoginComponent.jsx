@@ -51,16 +51,16 @@ class Login extends Component {
 
         </form>
 
-        <Link to="/forgotPassword">
+        <Link to="/login/forgotPassword">
           <button type="button">Forgot Password?</button>
         </Link>
-        <Link to="/register">
+        <Link to="/login/register">
           <button type="button">Register</button>
         </Link>
 
 
-        <Route path="/forgotPassword" component={ForgotPassword} />
-        <Route path="/register" component={Register} />
+        <Route path="/login/forgotPassword" component={ForgotPassword} />
+        <Route path="/login/register" component={Register} />
       </div>
     )
   }
