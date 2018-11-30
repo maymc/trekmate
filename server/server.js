@@ -4,14 +4,6 @@ const PORT = process.env.EXPRESS_CONTAINER_PORT;
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
-//Import in models
-// const Users = require('./db/models/Users.js');
-// const Accommodation = require('./db/models/Accommodations.js');
-// const Activities = require('./db/models/Activities.js');
-// const Flights = require('./db/models/Flights.js');
-// const Transit = require('./db/models/Transit.js');
-// const Trip = require('./db/models/Trips.js');
-
 app.use(cors());
 
 //Returns already parsed info/object as "req.body"
@@ -19,26 +11,28 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //Routes
-// const userRoutes = require('./routes/userRoutes.js');
-// const activityRoutes = require('./routes/activityRoutes.js');
-// const accommodationRoutes = require('./routes/accommodationRoutes.js');
-// const flightRoutes = require('./routes/flightRoutes.js');
-// const transitRoutes = require('./routes/transitRoutes.js');
+const userRoutes = require('./routes/userRoutes.js');
+const activityRoutes = require('./routes/activityRoutes.js');
+const accommodationRoutes = require('./routes/accommodationRoutes.js');
+const flightRoutes = require('./routes/flightRoutes.js');
+const transitRoutes = require('./routes/transitRoutes.js');
 const tripRoutes = require('./routes/tripRoutes.js');
 
-// app.use('/activity', activityRoutes);
-// app.use('/accommodation', accommodationRoutes);
-// app.use('/flight', flightRoutes);
-// app.use('/transit', transitRoutes);
+app.use('/activity', activityRoutes);
+app.use('/accommodation', accommodationRoutes);
+app.use('/flight', flightRoutes);
+app.use('/transit', transitRoutes);
 app.use('/trip', tripRoutes);
-// app.use('/user', userRoutes);
+app.use('/user', userRoutes);
 
 
 //GET /home
 app.get('/', (req, res) => {
   res.json('HOMEPAGE, ola!!!!!')  //work, check with postman
-
 })
+// app.get('/account/:id', (req, res) => {
+//   console.log('\nGET /account/:id...');
+//})
 
 // app.get('/account/:id', (req, res) => {
 //   console.log('\nGET /account/:id...');
@@ -50,7 +44,7 @@ app.get('/', (req, res) => {
 
 // })
 
-// //GET /login form
+//GET /login form
 // app.get('/login', (req, res) => {
 //   console.log('\nGET /login...');
 
@@ -74,12 +68,7 @@ app.get('/', (req, res) => {
 
 // })
 
-// //POST /register
-// app.post('/register', (req, res) => {
-//   console.log('\nPOST /register...');
-//   console.log("\nreq.body:", req.body);
 
-// })
 
 // //POST /create_trip
 // app.post('/create_trip', (req, res) => {
@@ -96,6 +85,8 @@ app.get('/', (req, res) => {
 // })
 
 
+//~~ PUT ROUTES ~~//
+
 // //PUT /edit_password/:id (user id)
 // app.put(`/edit_password/:id`, (req, res) => {
 //   console.log('\nPUT /edit_password/:id...');
@@ -110,11 +101,6 @@ app.get('/', (req, res) => {
 // app.put(`/trip/:id/edit`, (req, res) => {
 //   console.log('\nPUT /trip/:id/edit...');
 // })
-
-
-
-
-
 
 
 
