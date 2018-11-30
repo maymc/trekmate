@@ -63,5 +63,32 @@ flightRouter.post('/add', (req, res) => {
         })
 });
 
+//PUT flight into 'FLight' table
+flightRouter.put('/edit/:id', (req, res) => {
+    const { id } = req.params
+    const newFlight = {
+        id: id,
+        airlines: req.body.airlines,
+        departure_time: req.body.departure_time,
+        arrival_time: req.body.arrival_time,
+        reservation_code: req.body.reservation_code,
+        checked_in_baggage: req.body.checked_in_baggage,
+        price: req.body.price,
+        notes: req.body.notes,
+        user_id: req.body.user_id,
+        trip_id: req.body.trip_id
+    }
+
+    Flights
+        .where({ id })
+        .fetch()
+        .then((flightItem) => {
+            return flightItem.save(newFlight)
+        })
+        .then((result) => {
+            console.log('updated activity', result)
+            res.json(result)
+        })
+})
 
 module.exports = flightRouter
