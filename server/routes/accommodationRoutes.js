@@ -48,8 +48,6 @@ accommodationRouter.post('/add', (req, res) => {
         trip_id: req.body.trip_id
     }
 
-    // console.log("\nNew Accommodation check:", newAccommodation);
-
     Accommodations
         .forge(newAccommodation)
         .save()
@@ -64,5 +62,34 @@ accommodationRouter.post('/add', (req, res) => {
             res.json("POST - adding new accommodation error");
         })
 });
+
+//PUT Accommodation into 'Accommodations' table
+accommodationRouter.put('/edit/:id', (req, res) => {
+    const { id } = req.params
+    const newAccommodation = {
+        id: id,
+        lodging_name: req.body.lodging_name,
+        address: req.body.address,
+        check_in_date: req.body.check_in_date,
+        check_out_date: req.body.check_out_date,
+        price: req.body.price,
+        is_paid: req.body.is_paid,
+        reservation_code: req.body.reservation_code,
+        notes: req.body.notes,
+        user_id: req.body.user_id,
+        trip_id: req.body.trip_id
+    }
+
+    Accommodations
+        .where({ id })
+        .fetch()
+        .then((acccommodationItem) => {
+            return acccommodationItem.save(newAccommodation)
+        })
+        .then((result) => {
+            console.log('updated accommodation', result)
+            res.json(result)
+        })
+})
 
 module.exports = accommodationRouter
