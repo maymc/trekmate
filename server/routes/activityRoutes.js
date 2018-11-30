@@ -18,7 +18,7 @@ activityRouter.get('/', (req, res) => {
 })
 
 //GET an activity by user_id
-activityRouter.get('/:user_id', (req, res) => {
+activityRouter.get('/user/:user_id', (req, res) => {
     const { user_id } = req.params;
 
     Activities
@@ -30,6 +30,22 @@ activityRouter.get('/:user_id', (req, res) => {
         .catch(err => {
             console.log("\nGET - getting activity by user_id error", err);
             res.json("GET - getting activity by user_id error", err);
+        })
+})
+
+//GET flights by trip_id
+activityRouter.get('/trip/:trip_id', (req, res) => {
+    const { trip_id } = req.params;
+
+    Activities
+        .where({ trip_id })
+        .fetchAll()
+        .then((filteredActivities => {
+            res.json(filteredActivities.serialize())
+        }))
+        .catch(err => {
+            console.log("\nGET - get activities by trip_id error", err);
+            res.json("GET - get activities by trip_id error");
         })
 })
 
