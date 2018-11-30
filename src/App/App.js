@@ -9,6 +9,7 @@ import EditPassword from '../Login/EditPassword/EditPassword.jsx';
 import ForgotPassword from '../Login/ForgotPassword/ForgotPassword.jsx';
 import Login from '../Login/Login/Login.jsx';
 import Activity from '../Home/Activity/Activity.jsx';
+import AccommodationAdd from '../Accommodation/AccommodationAdd.jsx';
 
 //Setup for redux
 // import { connect } from 'react-redux';
@@ -74,12 +75,16 @@ class App extends Component {
             <Link to="/login">
               <button type="button">Login</button>
             </Link>
+            <Link to="/accommodationAdd">
+              <button type="button">Accommodation Add</button>
+            </Link>
 
             <Route path="/home" component={Activity} />
             <Route path="/register" component={Register} />
             <Route path="/editPassword" component={EditPassword} />
             <Route path="/forgotPassword" component={ForgotPassword} />
             <Route path="/login" component={Login} />
+            <Route path="/accommodationAdd" component={AccommodationAdd} />
 
           </div>
         </Router>
