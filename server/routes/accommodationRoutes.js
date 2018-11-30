@@ -65,9 +65,9 @@ accommodationRouter.post('/add', (req, res) => {
 
 //PUT - edit accommodation by accommodation id
 accommodationRouter.put('/edit/:id', (req, res) => {
-    const { id } = req.params
+    const { id } = req.params;
+
     const updatedAccommodation = {
-        id: id,
         lodging_name: req.body.lodging_name,
         address: req.body.address,
         check_in_date: req.body.check_in_date,

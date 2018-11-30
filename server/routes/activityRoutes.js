@@ -12,23 +12,24 @@ activityRouter.get('/', (req, res) => {
             res.json(activitiesList.serialize())
         })
         .catch(err => {
-            console.log('err', err)
-            res.json('err')
+            console.log("\nGET - getting activity list error", err);
+            res.json("GET - getting activity list error", err);
         })
 })
 
 //GET an activity by user_id
 activityRouter.get('/:user_id', (req, res) => {
-    const { user_id } = req.params
+    const { user_id } = req.params;
+
     Activities
         .where({ user_id })
         .fetchAll()
         .then((activity) => {
             res.json(activity.serialize())
         })
-        .catch((err) => {
-            console.log('err', err)
-            res.json(err)
+        .catch(err => {
+            console.log("\nGET - getting activity by user_id error", err);
+            res.json("GET - getting activity by user_id error", err);
         })
 })
 
@@ -71,9 +72,9 @@ activityRouter.post('/add', (req, res) => {
 
 //PUT activity into 'Activity' table
 activityRouter.put('/edit/:id', (req, res) => {
-    const { id } = req.params
-    const newActivity = {
-        id: id,
+    const { id } = req.params;
+
+    const updatedActivity = {
         activity_name: req.body.activity_name,
         location: req.body.location,
         date: req.body.date,
@@ -91,32 +92,33 @@ activityRouter.put('/edit/:id', (req, res) => {
     Activities
         .where({ id })
         .fetch()
-        .then((activityItem) => {
-            return activityItem.save(newActivity)
+        .then((currentActivity) => {
+            return currentActivity.save(updatedActivity)
         })
         .then((result) => {
-            console.log('updated activity', result)
+            console.log('Updated activity', result)
             res.json(result)
+        })
+        .catch(err => {
+            console.log("\nPUT - edit activity error", err);
+            res.json("PUT - edit activity error", err);
         })
 })
 
 // Delete activity by 'id' from the 'activity' table
 activityRouter.delete('/delete/:id', (req, res) => {
-
     const { id } = req.params
 
     Activities
         .where({ id })
         .destroy()
         .then(
-            res.send('This activity was deleted')
+            res.send('Activity was deleted')
         )
         .catch(err => {
-            console.log('err: ', err)
-            res.json(err)
+            console.log("\nDELETE - delete activity error", err);
+            res.json("DELETE - delete activity error", err);
         })
-
-
 })
 
 module.exports = activityRouter
