@@ -12,8 +12,8 @@ accommodationRouter.get('/', (req, res) => {
             res.json(accommodationsList.serialize())
         })
         .catch(err => {
-            console.log('err', err)
-            res.json('err')
+            console.log("\nGET - getting accommodation list error", err);
+            res.json("GET - getting accommodation list error", err);
         })
 })
 
@@ -27,9 +27,9 @@ accommodationRouter.get('/:user_id', (req, res) => {
         .then((accommodation) => {
             res.json(accommodation.serialize())
         })
-        .catch((err) => {
-            console.log('err', err)
-            res.json(err)
+        .catch(err => {
+            console.log("\nGET - getting accommodation by user_id error", err);
+            res.json("GET - getting accommodation by user_id error", err);
         })
 })
 
@@ -59,14 +59,14 @@ accommodationRouter.post('/add', (req, res) => {
         })
         .catch(err => {
             console.log("\nPOST - adding new accommodation error", err);
-            res.json("POST - adding new accommodation error");
+            res.json("POST - adding new accommodation error", err);
         })
 });
 
-//PUT Accommodation into 'Accommodations' table
+//PUT - edit accommodation by accommodation id
 accommodationRouter.put('/edit/:id', (req, res) => {
     const { id } = req.params
-    const newAccommodation = {
+    const updatedAccommodation = {
         id: id,
         lodging_name: req.body.lodging_name,
         address: req.body.address,
@@ -83,32 +83,33 @@ accommodationRouter.put('/edit/:id', (req, res) => {
     Accommodations
         .where({ id })
         .fetch()
-        .then((acccommodationItem) => {
-            return acccommodationItem.save(newAccommodation)
+        .then((currentAcccommodation) => {
+            return currentAcccommodation.save(updatedAccommodation);
         })
         .then((result) => {
-            console.log('updated accommodation', result)
-            res.json(result)
+            console.log('Updated accommodation:', result);
+            res.json(result);
+        })
+        .catch(err => {
+            console.log("\nPUT - edit accommodation error", err);
+            res.json("PUT - edit accommodation error", err);
         })
 })
 
-// Delete accommodation by 'id' from the 'accommodation' table
+//DELETE - accommodation by 'id' from the 'accommodation' table
 accommodationRouter.delete('/delete/:id', (req, res) => {
-
-    const { id } = req.params
+    const { id } = req.params;
 
     Accommodations
         .where({ id })
         .destroy()
         .then(
-            res.send('This accommodation was deleted')
+            res.send('Accommodation was deleted')
         )
         .catch(err => {
-            console.log('err: ', err)
-            res.json(err)
+            console.log("\nDELETE - delete accommodation error", err);
+            res.json("DELETE - delete accommodation error", err);
         })
-
-
 })
 
 module.exports = accommodationRouter
