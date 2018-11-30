@@ -7,8 +7,6 @@ class Login extends Component {
     super(props)
 
     this.state = {
-      firstName: null,
-      lastName: null,
       email: null,
       password: null
     }
@@ -19,29 +17,29 @@ class Login extends Component {
 
   handleChange = (e) => {
     e.preventDefault();
+
     const { name, value } = e.target;
     this.setState({
       [name]: value
     })
-    console.log("Login - handleChange this.state:", this.state);
   }
 
-  handleSubmit = (e) => {
-    console.log("Login - handleSubmit this.props:", this.props);
+  handleLogin = (e) => {
     e.preventDefault();
-    console.log("User has logged in!", this.state);
+    console.log("Login - handleSubmit this.props:", this.props);
+    console.log("Login Successful! User credentials:", this.state);
   }
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleLogin}>
 
         <label>Email</label>
         <input onChange={this.handleChange} type='text' name="email" placeholder="enter email" />
         <br /><br />
 
         <label>Password</label>
-        <input onChange={this.handleChange} type='text' name="password" placeholder="enter password" />
+        <input onChange={this.handleChange} type='password' name="password" placeholder="enter password" />
         <br /><br />
 
         <button type="submit">Login</button>

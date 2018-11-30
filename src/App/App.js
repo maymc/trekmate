@@ -70,7 +70,7 @@ class App extends Component {
             <Route path='/trip/:id' component={Trip} />
           </Switch>
         </Router>
-        
+
       </div>
     );
   }
