@@ -62,4 +62,26 @@ userRouter.post('/login/register', (req, res) => {
     })
 });
 
+//PUT user into 'User' table
+userRouter.put('/account/edit/:id', (req, res) => {
+  const { id } = req.params
+  const newUser = {
+    id: id,
+    first_name: req.body.first_name,
+    last_name: req.body.last_name,
+    email: req.body.email,
+    password: req.body.password
+  }
+
+  Users
+    .where({ id })
+    .fetch()
+    .then((userItem) => {
+      return userItem.save(newUser)
+    })
+    .then((result) => {
+      console.log('updated user', result)
+      res.json(result)
+    })
+})
 module.exports = userRouter
