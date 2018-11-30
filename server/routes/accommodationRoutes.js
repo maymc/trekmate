@@ -92,4 +92,23 @@ accommodationRouter.put('/edit/:id', (req, res) => {
         })
 })
 
+// Delete accommodation by 'id' from the 'accommodation' table
+accommodationRouter.delete('/delete/:id', (req, res) => {
+
+    const { id } = req.params
+
+    Accommodations
+        .where({ id })
+        .destroy()
+        .then(
+            res.send('This accommodation was deleted')
+        )
+        .catch(err => {
+            console.log('err: ', err)
+            res.json(err)
+        })
+
+
+})
+
 module.exports = accommodationRouter
