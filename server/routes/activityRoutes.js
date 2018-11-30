@@ -17,15 +17,14 @@ activityRouter.get('/', (req, res) => {
         })
 })
 
-//GET an activity by user_id <-- need to fix this, it is grabbing by activity id NOT user_id
-activityRouter.get('/:id', (req, res) => {
-    const { id } = req.params
-
+//GET an activity by user_id
+activityRouter.get('/:user_id', (req, res) => {
+    const { user_id } = req.params
     Activities
-        .where({ id })
-        .fetch()
+        .where({ user_id })
+        .fetchAll()
         .then((activity) => {
-            res.json(activity)
+            res.json(activity.serialize())
         })
         .catch((err) => {
             console.log('err', err)

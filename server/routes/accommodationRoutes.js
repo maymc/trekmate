@@ -17,15 +17,15 @@ accommodationRouter.get('/', (req, res) => {
         })
 })
 
-//GET accommodation by user_id <---- need to fix, this is grabbing by accommodation id NOT user id
-accommodationRouter.get('/:id', (req, res) => {
-    const { id } = req.params;
+//GET accommodation by user_id 
+accommodationRouter.get('/:user_id', (req, res) => {
+    const { user_id } = req.params;
 
     Accommodations
-        .where({ id })
-        .fetch()
+        .where({ user_id })
+        .fetchAll()
         .then((accommodation) => {
-            res.json(accommodation)
+            res.json(accommodation.serialize())
         })
         .catch((err) => {
             console.log('err', err)

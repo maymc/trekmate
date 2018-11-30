@@ -17,15 +17,15 @@ tripRouter.get('/', (req, res) => {
         })
 })
 
-//GET trip by user_id <-- need to fix this, it is grabbing by trip id NOT user_id
-tripRouter.get('/:id', (req, res) => {
-    const { id } = req.params
+//GET trip by user_id
+tripRouter.get('/:user_id', (req, res) => {
+    const { user_id } = req.params
 
     Trips
-        .where({ id })
-        .fetch()
+        .where({ user_id })
+        .fetchAll()
         .then((trip) => {
-            res.json(trip)
+            res.json(trip.serialize())
         })
         .catch((err) => {
             console.log('err', err)

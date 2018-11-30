@@ -17,15 +17,15 @@ transitRouter.get('/', (req, res) => {
         })
 })
 
-//GET transit by user_id <-- need to fix this, it is grabbing by transit id NOT user_id
-transitRouter.get('/:id', (req, res) => {
-    const { id } = req.params
+//GET transit by user_id 
+transitRouter.get('/:user_id', (req, res) => {
+    const { user_id } = req.params
 
     Transit
-        .where({ id })
-        .fetch()
+        .where({ user_id })
+        .fetchAll()
         .then((transitItem) => {
-            res.json(transitItem)
+            res.json(transitItem.serialize())
         })
         .catch((err) => {
             console.log('err', err)
