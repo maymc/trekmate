@@ -12,8 +12,8 @@ tripRouter.get('/', (req, res) => {
             res.json(tripsList.serialize())
         })
         .catch(err => {
-            console.log('err', err)
-            res.json('err')
+            console.log("\nGET - getting trip list error", err);
+            res.json("GET - getting trip list error", err);
         })
 })
 
@@ -27,15 +27,14 @@ tripRouter.get('/:user_id', (req, res) => {
         .then((trip) => {
             res.json(trip.serialize())
         })
-        .catch((err) => {
-            console.log('err', err)
-            res.json(err)
+        .catch(err => {
+            console.log("\nGET - getting trip by user_id error", err);
+            res.json("GET - getting trip by user_id error", err);
         })
 })
 
 //POST new trip into 'Trips' table
 tripRouter.post('/add', (req, res) => {
-
     const payload = {
         city: req.body.city,
         state: req.body.state,
@@ -49,20 +48,23 @@ tripRouter.post('/add', (req, res) => {
     Trips
         .forge(payload)
         .save()
-        .then(tripItems => {
-            res.json(tripItems.serialize())
+        .then(() => {
+            return Trips.fetchAll()
+        })
+        .then(trips => {
+            res.json(trips.serialize());
         })
         .catch(err => {
-            console.log('err', err);
-            res.json(err)
+            console.log("\nPOST - adding new trip error", err);
+            res.json("POST - adding new trip error", err);
         })
 })
 
-//PUT trip into 'Trip' table
+//PUT - edit trip by trip id
 tripRouter.put('/edit/:id', (req, res) => {
-    const { id } = req.params
-    const newTrip = {
-        id: id,
+    const { id } = req.params;
+
+    const updatedTrip = {
         city: req.body.city,
         state: req.body.state,
         country: req.body.country,
@@ -75,32 +77,33 @@ tripRouter.put('/edit/:id', (req, res) => {
     Trips
         .where({ id })
         .fetch()
-        .then((tripItem) => {
-            return tripItem.save(newTrip)
+        .then((currentTrip) => {
+            return currentTrip.save(updatedTrip)
         })
         .then((result) => {
-            console.log('updated trip', result)
+            console.log('Updated trip', result)
             res.json(result)
+        })
+        .catch(err => {
+            console.log("\nPUT - edit trip error", err);
+            res.json("PUT - edit trip error", err);
         })
 })
 
 // Delete trip by 'id' from the 'trip' table
 tripRouter.delete('/delete/:id', (req, res) => {
-
     const { id } = req.params
 
     Trips
         .where({ id })
         .destroy()
         .then(
-            res.send('This trip was deleted')
+            res.send('Trip was deleted')
         )
         .catch(err => {
-            console.log('err: ', err)
-            res.json(err)
+            console.log("\nDELETE - delete trip error", err);
+            res.json("DELETE - delete trip error", err);
         })
-
-
 })
 
 module.exports = tripRouter
