@@ -18,7 +18,7 @@ tripRouter.get('/', (req, res) => {
 })
 
 //GET trips by user_id
-tripRouter.get('/:user_id', (req, res) => {
+tripRouter.get('/user/:user_id', (req, res) => {
     const { user_id } = req.params
 
     Trips
@@ -30,6 +30,22 @@ tripRouter.get('/:user_id', (req, res) => {
         .catch(err => {
             console.log("\nGET - getting trip by user_id error", err);
             res.json("GET - getting trip by user_id error", err);
+        })
+})
+
+//GET trip by trip_id
+tripRouter.get('/:id', (req, res) => {
+    const { id } = req.params;
+
+    Trips
+        .where({ id })
+        .fetchAll()
+        .then((filteredTrip => {
+            res.json(filteredTrip.serialize())
+        }))
+        .catch(err => {
+            console.log("\nGET - get trip by trip_id error", err);
+            res.json("GET - get trip by trip_id error");
         })
 })
 
