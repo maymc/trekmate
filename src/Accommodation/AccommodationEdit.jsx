@@ -56,7 +56,7 @@ class AccommodationEdit extends Component {
         <br /><br />
 
         <label>Pay Status</label>
-        <input onChange={this.handleChange} type='boolean' name="payStatus" placeholder="have you paid for this lodging?" />
+        <input onChange={this.handleChange} type='text' name="payStatus" placeholder="have you paid for this lodging?" />
         <br /><br />
 
         <label>Reservation Code</label>

@@ -10,6 +10,9 @@ import ForgotPassword from '../Login/ForgotPassword/ForgotPassword.jsx';
 import Login from '../Login/Login/Login.jsx';
 import Activity from '../Home/Activity/Activity.jsx';
 import AccommodationAdd from '../Accommodation/AccommodationAdd.jsx';
+import AccommodationEdit from '../Accommodation/AccommodationEdit.jsx';
+import FlightAdd from '../Flight/FlightAdd.jsx';
+import FlightEdit from '../Flight/FlightEdit.jsx';
 
 //Setup for redux
 // import { connect } from 'react-redux';
@@ -78,6 +81,15 @@ class App extends Component {
             <Link to="/accommodationAdd">
               <button type="button">Accommodation Add</button>
             </Link>
+            <Link to="/accommodationEdit">
+              <button type="button">Accommodation Edit</button>
+            </Link>
+            <Link to="/flightAdd">
+              <button type="button">Flight Add</button>
+            </Link>
+            <Link to="/flightEdit">
+              <button type="button">Flight Edit</button>
+            </Link>
 
             <Route path="/home" component={Activity} />
             <Route path="/register" component={Register} />
@@ -85,6 +97,9 @@ class App extends Component {
             <Route path="/forgotPassword" component={ForgotPassword} />
             <Route path="/login" component={Login} />
             <Route path="/accommodationAdd" component={AccommodationAdd} />
+            <Route path="/accommodationEdit" component={AccommodationEdit} />
+            <Route path="/flightAdd" component={FlightAdd} />
+            <Route path="/flightEdit" component={FlightEdit} />
 
           </div>
         </Router>

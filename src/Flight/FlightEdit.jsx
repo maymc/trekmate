@@ -36,31 +36,31 @@ class FlightAdd extends Component {
       <form onSubmit={this.handleSubmit}>
 
         <label>Airlines</label>
-        <input onChange={this.handleChange} type='text' name="airlines" placeholder="enter name of airline" />
+        <input onChange={this.handleChange} type='text' name="airlines" placeholder="edit name of airline" />
         <br /><br />
 
         <label>Departure Time</label>
-        <input onChange={this.handleChange} type='time' name="departureTime" placeholder="enter departure time" />
+        <input onChange={this.handleChange} type='time' name="departureTime" placeholder="edit departure time" />
         <br /><br />
 
         <label>Arrival Time</label>
-        <input onChange={this.handleChange} type='time' name="arrivalTime" placeholder="enter arrival time" />
+        <input onChange={this.handleChange} type='time' name="arrivalTime" placeholder="edit arrival time" />
         <br /><br />
 
         <label>Reservation Code</label>
-        <input onChange={this.handleChange} type='text' name="reservationCode" placeholder="enter reservation code" />
+        <input onChange={this.handleChange} type='text' name="reservationCode" placeholder="edit reservation code" />
         <br /><br />
 
         <label>Baggage</label>
-        <input onChange={this.handleChange} type='number' name="baggage" placeholder="enter amount of check in baggage" />
+        <input onChange={this.handleChange} type='number' name="baggage" placeholder="edit amount of check in baggage" />
         <br /><br />
 
         <label>Price</label>
-        <input onChange={this.handleChange} type='number' name="price" placeholder="enter price of flight" />
+        <input onChange={this.handleChange} type='number' name="price" placeholder="edit price of flight" />
         <br /><br />
 
         <label>Notes</label>
-        <input onChange={this.handleChange} type='text' name="notes" placeholder="enter any notes" />
+        <input onChange={this.handleChange} type='text' name="notes" placeholder="edit any notes" />
         <br /><br />
 
         
