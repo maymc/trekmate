@@ -48,7 +48,6 @@ class ForgotPassword extends Component {
           <button type="button">Cancel</button>
         </Link>
 
-        <Route path="/login" component={Login} />
       </div>
     )
   }

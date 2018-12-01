@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import { connect } from 'react-redux';
+// import axios from 'axios';
+// import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import ForgotPassword from '../ForgotPassword/ForgotPasswordComponent.jsx';
 import Login from '../Login/LoginComponent.jsx';
@@ -40,6 +40,7 @@ class Register extends Component {
   render() {
     return (
       <div>
+        <h1>Test</h1>
         <form onSubmit={this.handleRegister}>
           <label>First Name</label>
           <input onChange={this.handleChange} type='text' name="first_name" placeholder="enter first name" />
@@ -71,8 +72,6 @@ class Register extends Component {
         <Link to="/login">
           <button type="button">Cancel</button>
         </Link>
-        <Route path="/forgotPassword" component={ForgotPassword} />
-        <Route path="/login" component={Login} />
       </div>
     )
   }
