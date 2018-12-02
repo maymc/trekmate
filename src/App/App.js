@@ -6,12 +6,17 @@ import axios from 'axios';
 //Import JSX component files
 import Header from '../Global/Header/HeaderComponent';
 import Home from '../Home/Home/HomeComponent';
+
 import Login from '../Login/Login/LoginComponent';
 import Register from '../Login/Register/RegisterComponent';
 import ForgotPassword from '../Login/ForgotPassword/ForgotPasswordComponent';
+
 import Account from '../Account/Account/AccountComponent';
 import EditAccount from '../Account/EditAccount/EditAccountComponent';
 import EditPassword from '../Account/EditPassword/EditPasswordComponent';
+
+import AccommodationAdd from '../Accommodation/AccommodationAdd';
+
 import Trip from '../Trip/Trip/TripComponent';
 import CreateTrip from '../Trip/CreateTrip/CreateTripComponent';
 import EditTrip from '../Trip/EditTrip/EditTrip';
@@ -69,6 +74,9 @@ class App extends Component {
             <Route path='/account/edit_password/:id' component={EditPassword} />
             <Route path='/account/edit/:id' component={EditAccount} />
             <Route path='/account/:id' component={Account} />
+
+            {/* Accommodation Routes */}
+            <Route path='/accommodations/add' component={AccommodationAdd} />
 
             {/* Trip Routes */}
             <Route path='/trip/create' component={CreateTrip} />
