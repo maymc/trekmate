@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
-// import axios from 'axios';
-// import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+// import axios from 'axios';
+
+//Import components
 import ForgotPassword from '../ForgotPassword/ForgotPasswordComponent.jsx';
 import Login from '../Login/LoginComponent.jsx';
+
+//Redux Setup
+import { connect } from 'react-redux';
+
+//Import actions
+import { addUser } from '../../actions/actions.js';
+
 
 class Register extends Component {
   constructor(props) {
@@ -34,7 +42,8 @@ class Register extends Component {
     e.preventDefault();
     console.log("Register - handleSubmit this.props:", this.props);
     console.log("New user has been registered!", this.state);
-    // this.props.dispatch(addUser(this.state));
+
+    this.props.dispatch(addUser(this.state));
   }
 
   render() {
@@ -58,9 +67,9 @@ class Register extends Component {
           <input onChange={this.handleChange} type='password' name="password" placeholder="enter password" />
           <br /><br />
 
-          <label>Confirm Password</label>
+          {/* <label>Confirm Password</label>
           <input onChange={this.handleChange} type='password' name="confirmPassword" placeholder="confirm password" />
-          <br /><br />
+          <br /><br /> */}
 
           <button type="submit">Register</button>
 
@@ -73,6 +82,13 @@ class Register extends Component {
   }
 }
 
+//Gives access to state, returns an object. This is store state. You already have data in store, want it to be available as props so create a mapping. Redux provides API to do that
+const mapStateToProps = state => {
+  return {
+    users: state
+  }
+}
 
-// export default connect()(Register);
-export default Register;
+
+export default connect(mapStateToProps)(Register);
+// export default Register;

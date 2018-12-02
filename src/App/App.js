@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-// import axios from 'axios';
+import axios from 'axios';
 
 //Import JSX component files
 import Header from '../Global/Header/HeaderComponent';
@@ -19,23 +19,25 @@ import EditTrip from '../Trip/EditTrip/EditTrip';
 //Redux setup
 import { connect } from 'react-redux';
 
+//Import actions
 
 class App extends Component {
   constructor(props) {
     super(props)
 
-    //State is an object, React handles state to do updates
-    this.state = {
+    // //State is an object, React handles state to do updates
+    // this.state = {
 
-    }
+    // }
   }
 
   //Lifecycle Methods
   componentDidMount() {
     console.log("App - this.props:", this.props);
+    // this.props.dispatch(addUser());
   }
 
-  //App Component - functions
+  // //App Component - functions
 
   // addUser = (userFromRegisterForm) => {
   //   console.log("Axios - Adding new user:", userFromRegisterForm);
@@ -48,7 +50,6 @@ class App extends Component {
   //     .catch(err => {
   //       console.log("Error w/axios POST/login/register");
   //     })
-
   // }
 
   //App Component - render html elements

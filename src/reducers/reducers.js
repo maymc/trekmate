@@ -1,14 +1,26 @@
 import {
+  GET_ALL_ACCOMMODATIONS,
+  GET_ALL_USERS,
   ADD_USER
 }
   from '../actions/actions.js';
 
 //Takes in action and current state, if there is no state then it will be an empty array
-const itemReducer = (state = [], action) => {
-  //action is an object {type:...payload:...}
+const reducer = (state = {
+  users: [],
+  accommodations: []
+}, action) => {
+
+  //Action is an object {type:...payload:...}
+  //action.payload = array of objects
   console.log("\nREDUCER ACTION: ", action);
   console.log("\nCURRENT STATE:", state);
+
   switch (action.type) {
+    // case GET_ALL_ACCOMMODATIONS:
+    //   return { ...state, accommodations: action.payload };
+    // case GET_ALL_USERS:
+    //   return { ...state, users: action.payload }
     case ADD_USER:
       return [...state, action.payload];
     default:
@@ -17,4 +29,4 @@ const itemReducer = (state = [], action) => {
   }
 }
 
-export default itemReducer;
+export default reducer;
