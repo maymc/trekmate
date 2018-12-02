@@ -16,6 +16,8 @@ import Trip from '../Trip/Trip/TripComponent';
 import CreateTrip from '../Trip/CreateTrip/CreateTripComponent';
 import EditTrip from '../Trip/EditTrip/EditTrip';
 
+//Redux setup
+import { connect } from 'react-redux';
 
 
 class App extends Component {
@@ -56,13 +58,18 @@ class App extends Component {
         <Header />
         <Router className="maincontent">
           <Switch>
+            {/* Login Routes */}
             <Route exact path='/' component={Home} />
             <Route path='/login/forgotPassword' component={ForgotPassword} />
             <Route path='/login/register' component={Register} />
             <Route path='/login' component={Login} />
+
+            {/* User account Routes */}
             <Route path='/account/edit_password/:id' component={EditPassword} />
             <Route path='/account/edit/:id' component={EditAccount} />
             <Route path='/account/:id' component={Account} />
+
+            {/* Trip Routes */}
             <Route path='/trip/create' component={CreateTrip} />
             <Route path='/trip/edit/:id' component={EditTrip} />
             <Route path='/trip/:id' component={Trip} />
@@ -75,4 +82,4 @@ class App extends Component {
 }
 
 //Export App component so other components can use it
-export default App;
+export default connect()(App);
