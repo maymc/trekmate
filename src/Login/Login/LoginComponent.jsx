@@ -30,20 +30,21 @@ class Login extends Component {
 
   handleLogin = (e) => {
     e.preventDefault();
-    console.log("Login - handleSubmit this.props:", this.props);
+    console.log("Login - handleLogin this.props:", this.props);
     console.log("Login Successful! User credentials:", this.state);
+    this.props.history.push(`/`); //change this to authenticated view when created
   }
 
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleLogin}>
 
-          <label>Email</label>
+          <label>Email:</label>
           <input onChange={this.handleChange} type='text' name="email" placeholder="enter email" />
           <br /><br />
 
-          <label>Password</label>
+          <label>Password:</label>
           <input onChange={this.handleChange} type='password' name="password" placeholder="enter password" />
           <br /><br />
 
@@ -58,9 +59,6 @@ class Login extends Component {
           <button type="button">Register</button>
         </Link>
 
-
-        <Route path="/login/forgotPassword" component={ForgotPassword} />
-        <Route path="/login/register" component={Register} />
       </div>
     )
   }
