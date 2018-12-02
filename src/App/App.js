@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import axios from 'axios';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+// import axios from 'axios';
 
 //Import JSX component files
-import Register from '../Login/Register/Register.jsx';
-import EditPassword from '../Login/EditPassword/EditPassword.jsx';
-import ForgotPassword from '../Login/ForgotPassword/ForgotPassword.jsx';
-import Login from '../Login/Login/Login.jsx';
-import Activity from '../Home/Activity/Activity.jsx';
-import AccommodationAdd from '../Accommodation/AccommodationAdd.jsx';
-import AccommodationEdit from '../Accommodation/AccommodationEdit.jsx';
-import FlightAdd from '../Flight/FlightAdd.jsx';
-import FlightEdit from '../Flight/FlightEdit.jsx';
+import Header from '../Global/Header/HeaderComponent';
+import Home from '../Home/Home/HomeComponent';
+import Login from '../Login/Login/LoginComponent';
+import Register from '../Login/Register/RegisterComponent';
+import ForgotPassword from '../Login/ForgotPassword/ForgotPasswordComponent';
+import Account from '../Account/Account/AccountComponent';
+import EditAccount from '../Account/EditAccount/EditAccountComponent';
+import EditPassword from '../Account/EditPassword/EditPasswordComponent';
+import Trip from '../Trip/Trip/TripComponent';
+import CreateTrip from '../Trip/CreateTrip/CreateTripComponent';
+import EditTrip from '../Trip/EditTrip/EditTrip';
 
-//Setup for redux
-// import { connect } from 'react-redux';
-// import { getAllTasks } from './actions/actions.js';
+
 
 class App extends Component {
   constructor(props) {
@@ -34,73 +34,41 @@ class App extends Component {
   }
 
   //App Component - functions
-  //Never mutate 'state' directly, use 'this.setState' (use ES6 to bind)
 
-  addUser = (userFromRegisterForm) => {
-    console.log("Axios - Adding new user:", userFromRegisterForm);
-    axios
-      .post('/login/register', userFromRegisterForm)
-      .then(serverData => {
-        console.log("\nserverData.data:", serverData.data);
-        this.setState({ users: serverData.data })
-      })
-      .catch(err => {
-        console.log("Error w/axios POST/login/register");
-      })
+  // addUser = (userFromRegisterForm) => {
+  //   console.log("Axios - Adding new user:", userFromRegisterForm);
+  //   axios
+  //     .post('/login/register', userFromRegisterForm)
+  //     .then(serverData => {
+  //       console.log("\nserverData.data:", serverData.data);
+  //       this.setState({ users: serverData.data })
+  //     })
+  //     .catch(err => {
+  //       console.log("Error w/axios POST/login/register");
+  //     })
 
-  }
+  // }
 
   //App Component - render html elements
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1>Trekmate</h1>
-        </header>
-
-        <Router>
-          <div>
-
-            <Link to="/home">
-              <button type="button">Home</button>
-            </Link>
-            <Link to="/login/register">
-              <button type="button">Register</button>
-            </Link>
-            <Link to="/editPassword">
-              <button type="button">Edit Password</button>
-            </Link>
-            <Link to="/forgotPassword">
-              <button type="button">Forgot Password</button>
-            </Link>
-            <Link to="/login">
-              <button type="button">Login</button>
-            </Link>
-            <Link to="/accommodationAdd">
-              <button type="button">Accommodation Add</button>
-            </Link>
-            <Link to="/accommodationEdit">
-              <button type="button">Accommodation Edit</button>
-            </Link>
-            <Link to="/flightAdd">
-              <button type="button">Flight Add</button>
-            </Link>
-            <Link to="/flightEdit">
-              <button type="button">Flight Edit</button>
-            </Link>
-
-            <Route path="/home" component={Activity} />
-            <Route path="/register" component={Register} />
-            <Route path="/editPassword" component={EditPassword} />
-            <Route path="/forgotPassword" component={ForgotPassword} />
-            <Route path="/login" component={Login} />
-            <Route path="/accommodationAdd" component={AccommodationAdd} />
-            <Route path="/accommodationEdit" component={AccommodationEdit} />
-            <Route path="/flightAdd" component={FlightAdd} />
-            <Route path="/flightEdit" component={FlightEdit} />
-
-          </div>
+      <div className="app">
+        <Header />
+        <Router className="maincontent">
+          <Switch>
+            <Route exact path='/' component={Home} />
+            <Route path='/login/forgotPassword' component={ForgotPassword} />
+            <Route path='/login/register' component={Register} />
+            <Route path='/login' component={Login} />
+            <Route path='/account/edit_password/:id' component={EditPassword} />
+            <Route path='/account/edit/:id' component={EditAccount} />
+            <Route path='/account/:id' component={Account} />
+            <Route path='/trip/create' component={CreateTrip} />
+            <Route path='/trip/edit/:id' component={EditTrip} />
+            <Route path='/trip/:id' component={Trip} />
+          </Switch>
         </Router>
+
       </div>
     );
   }

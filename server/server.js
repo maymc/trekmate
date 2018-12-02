@@ -10,6 +10,9 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+//Bookshelf data models
+const Users = require('../server/db/models/Users.js');
+
 //Routes
 const userRoutes = require('./routes/userRoutes.js');
 const activityRoutes = require('./routes/activityRoutes.js');
@@ -25,11 +28,41 @@ app.use('/transit', transitRoutes);
 app.use('/trips', tripRoutes);
 app.use('/users', userRoutes);
 
-
 //GET /home
 app.get('/', (req, res) => {
   res.json('HOMEPAGE, ola!!!!!')  //work, check with postman
 })
+
+//POST /login/register
+app.post('/login/register', (req, res) => {
+  console.log('\nPOST /login/register...');
+  console.log("\nreq.body:", req.body);
+
+  const newUser = {
+    first_name: req.body.first_name,
+    last_name: req.body.last_name,
+    email: req.body.email,
+    password: req.body.password
+  }
+
+  console.log("\nNew User check:", newUser);
+
+  Users
+    .forge(newUser)
+    .save()
+    .then(() => {
+      return Users.fetchAll()
+    })
+    .then(users => {
+      res.json(users.serialize());
+    })
+    .catch(err => {
+      console.log("\nPOST - adding new user error", err);
+      res.json("POST - adding new user error");
+    })
+});
+
+
 // app.get('/account/:id', (req, res) => {
 //   console.log('\nGET /account/:id...');
 //})
@@ -39,20 +72,9 @@ app.get('/', (req, res) => {
 
 // })
 
-// app.get('/trip/:id', (req, res) => {
-//   console.log('\nGET /trip/:id...');
-
-// })
-
 //GET /login form
 // app.get('/login', (req, res) => {
 //   console.log('\nGET /login...');
-
-// })
-
-// //GET /register form
-// app.get('/register', (req, res) => {
-//   console.log('\nGET /register...');
 
 // })
 
@@ -60,46 +82,6 @@ app.get('/', (req, res) => {
 // app.get('/forgot_password', (req, res) => {
 //   console.log('\nGET /forgot_password...');
 
-// })
-
-// //POST /login
-// app.post('/login', (req, res) => {
-//   console.log('\nPOST /login...');
-
-// })
-
-
-
-// //POST /create_trip
-// app.post('/create_trip', (req, res) => {
-//   console.log('\nPOST /create_trip...');
-// })
-// //POST /add_collaborator/:id
-// app.post('/add_collaborator/:id', (req, res) => {
-//   console.log('\nPOST /add_collaborator/:id...');
-// })
-
-// //POST /create_trip
-// app.post('/add_activity/:id', (req, res) => {
-//   console.log('\nPOST /add_activity/:id...');
-// })
-
-
-//~~ PUT ROUTES ~~//
-
-// //PUT /edit_password/:id (user id)
-// app.put(`/edit_password/:id`, (req, res) => {
-//   console.log('\nPUT /edit_password/:id...');
-// })
-
-// //PUT /account/:id/edit (user id)
-// app.put(`/account/:id/edit`, (req, res) => {
-//   console.log('\nPUT /account/:id/edit...');
-// })
-
-// //PUT /trip/:id/edit (user id)
-// app.put(`/trip/:id/edit`, (req, res) => {
-//   console.log('\nPUT /trip/:id/edit...');
 // })
 
 

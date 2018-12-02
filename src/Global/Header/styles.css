@@ -1,0 +1,31 @@
+.header {
+    z-index: 2;
+    grid-column: 1/7;
+    grid-row: 1/1;
+    color: #116466;
+    height: 55px;
+    vertical-align: middle;
+    background: #ffffff;
+}
+
+.header h1 {
+    display: inline-block;
+    /* height: 100%; */
+    vertical-align: middle;
+    font-size: 2em;
+    padding: 5px 15px 0px 15px;
+    color: #57A4F5;
+}
+
+.header h1 span {
+    color: #86CCFA;
+}
+
+.header form {
+    float: right;
+    margin: 0px;
+}
+
+.header button {
+    margin: 7px 15px 0px 15px;
+}
