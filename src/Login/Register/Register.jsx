@@ -63,15 +63,6 @@ class Register extends Component {
           <button type="submit">Register</button>
 
         </form>
-
-        <Link to="/forgotPassword">
-          <button type="button">Forgot Password?</button>
-        </Link>
-        <Link to="/login">
-          <button type="button">Cancel</button>
-        </Link>
-        <Route path="/forgotPassword" component={ForgotPassword} />
-        <Route path="/login" component={Login} />
       </div>
     )
   }
