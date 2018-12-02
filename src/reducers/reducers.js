@@ -1,7 +1,8 @@
 import {
   GET_ALL_ACCOMMODATIONS,
   GET_ALL_USERS,
-  ADD_USER
+  ADD_USER,
+  ADD_ACCOMMODATION
 }
   from '../actions/actions.js';
 
@@ -22,6 +23,8 @@ const reducer = (state = {
     // case GET_ALL_USERS:
     //   return { ...state, users: action.payload }
     case ADD_USER:
+      return { ...state, form: action.payload }
+    case ADD_ACCOMMODATION:
       return { ...state, form: action.payload }
     default:
       //default is to return original state to do nothing 

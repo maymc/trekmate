@@ -7,16 +7,20 @@ import axios from 'axios';
 import Header from '../Global/Header/HeaderComponent';
 import Home from '../Home/Home/HomeComponent';
 
+//~~~ User Login JSX files ~~~~//
 import Login from '../Login/Login/LoginComponent';
 import Register from '../Login/Register/RegisterComponent';
 import ForgotPassword from '../Login/ForgotPassword/ForgotPasswordComponent';
 
+//~~~ User Account JSX files ~~~~//
 import Account from '../Account/Account/AccountComponent';
 import EditAccount from '../Account/EditAccount/EditAccountComponent';
 import EditPassword from '../Account/EditPassword/EditPasswordComponent';
 
+//~~~ Accommodations JSX files ~~~~//
 import AccommodationAdd from '../Accommodation/AccommodationAdd';
 
+//~~~ Trip JSX files ~~~~//
 import Trip from '../Trip/Trip/TripComponent';
 import CreateTrip from '../Trip/CreateTrip/CreateTripComponent';
 import EditTrip from '../Trip/EditTrip/EditTrip';
