@@ -20,6 +20,9 @@ import EditPassword from '../Account/EditPassword/EditPasswordComponent';
 //~~~ Accommodations JSX files ~~~~//
 import AccommodationAdd from '../Accommodation/AccommodationAdd';
 
+//~~~ Flights JSX files ~~~~//
+import FlightAdd from '../Flight/FlightAdd';
+
 //~~~ Trip JSX files ~~~~//
 import Trip from '../Trip/Trip/TripComponent';
 import CreateTrip from '../Trip/CreateTrip/CreateTripComponent';
@@ -81,6 +84,9 @@ class App extends Component {
 
             {/* Accommodation Routes */}
             <Route path='/accommodations/add' component={AccommodationAdd} />
+
+            {/* Flight Routes */}
+            <Route path='/flights/add' component={FlightAdd} />
 
             {/* Trip Routes */}
             <Route path='/trip/create' component={CreateTrip} />

@@ -7,10 +7,15 @@ class FlightAdd extends Component {
     super(props)
 
     this.state = {
-      firstName: null,
-      lastName: null,
-      email: null,
-      password: null
+      airlines: null,
+      departure_time: null,
+      arrival_time: null,
+      reservation_code: null,
+      checked_in_baggage: null,
+      price: null,
+      notes: null,
+      user_id: 1,
+      trip_id: 1
     }
   }
 
@@ -33,40 +38,40 @@ class FlightAdd extends Component {
   render() {
     return (
       <div>
-      <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit}>
 
-        <label>Airlines</label>
-        <input onChange={this.handleChange} type='text' name="airlines" placeholder="enter name of airline" />
-        <br /><br />
+          <label>Airlines</label>
+          <input onChange={this.handleChange} type='text' name="airlines" placeholder="enter name of airline" />
+          <br /><br />
 
-        <label>Departure Time</label>
-        <input onChange={this.handleChange} type='time' name="departureTime" placeholder="enter departure time" />
-        <br /><br />
+          <label>Departure Time</label>
+          <input onChange={this.handleChange} type='time' name="departureTime" placeholder="enter departure time" />
+          <br /><br />
 
-        <label>Arrival Time</label>
-        <input onChange={this.handleChange} type='time' name="arrivalTime" placeholder="enter arrival time" />
-        <br /><br />
+          <label>Arrival Time</label>
+          <input onChange={this.handleChange} type='time' name="arrivalTime" placeholder="enter arrival time" />
+          <br /><br />
 
-        <label>Reservation Code</label>
-        <input onChange={this.handleChange} type='text' name="reservationCode" placeholder="enter reservation code" />
-        <br /><br />
+          <label>Reservation Code</label>
+          <input onChange={this.handleChange} type='text' name="reservationCode" placeholder="enter reservation code" />
+          <br /><br />
 
-        <label>Baggage</label>
-        <input onChange={this.handleChange} type='number' name="baggage" placeholder="enter amount of check in baggage" />
-        <br /><br />
+          <label>Baggage</label>
+          <input onChange={this.handleChange} type='number' name="baggage" placeholder="enter amount of check in baggage" />
+          <br /><br />
 
-        <label>Price</label>
-        <input onChange={this.handleChange} type='number' name="price" placeholder="enter price of flight" />
-        <br /><br />
+          <label>Price</label>
+          <input onChange={this.handleChange} type='number' name="price" placeholder="enter price of flight" />
+          <br /><br />
 
-        <label>Notes</label>
-        <input onChange={this.handleChange} type='text' name="notes" placeholder="enter any notes" />
-        <br /><br />
+          <label>Notes</label>
+          <input onChange={this.handleChange} type='text' name="notes" placeholder="enter any notes" />
+          <br /><br />
 
-        
-        <button type="submit">Submit</button>
 
-      </form>
+          <button type="submit">Submit</button>
+
+        </form>
       </div>
     )
   }
