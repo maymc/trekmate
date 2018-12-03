@@ -1,25 +1,26 @@
 import axios from 'axios';
 
 //Storing constant data
-export const GET_ALL_ACCOMMODATIONS = 'GET_ALL_ACCOMMODATIONS';
 export const GET_ALL_USERS = 'GET_ALL_USERS';
 export const ADD_USER = 'ADD_USER';
 
-//Action = has type and payload
-//Action creater- function that returns an action which is an object with type and payload
-// export const getAllUsers = () => {
-//   return {
-//     type: GET_ALL_USERS,
-//     payload: initialState
-//   }
-// }
 
-// export const getAllAccommodations = () => {
-//   return {
-//     type: GET_ALL_ACCOMMODATIONS,
-//     payload: initialState
-//   }
-// }
+export const GET_ALL_ACCOMMODATIONS = 'GET_ALL_ACCOMMODATIONS';
+
+//---------User Action----------//
+export const getAllUsers = () => {
+  return dispatch => {
+    axios.get('/users')
+      .then(response => {
+        console.log('users response......:', response.data)
+
+        dispatch({
+          type: GET_ALL_USERS,
+          payload: response.data
+        })
+      })
+  }
+}
 
 export const addUser = (user) => {
   console.log("\nACTION: addUser:", user)
@@ -36,4 +37,26 @@ export const addUser = (user) => {
         console.log("ERROR - actions axios addUser:", err);
       })
   }
+}
+
+//---------Accommodation Action----------//
+export const getAllAccommodations = () => {
+
+  return dispatch => {
+    axios.get('/accommodations')
+      .then(response => {
+        console.log('accommodation response......:', response.data)
+        dispatch({
+          type: GET_ALL_ACCOMMODATIONS,
+          payload: response.data
+        })
+      })
+      .catch(err => {
+        dispatch({
+          type: GET_ALL_ACCOMMODATIONS,
+          payload: 'err'
+        })
+      })
+  }
+
 }
