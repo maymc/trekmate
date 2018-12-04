@@ -1,79 +1,96 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+
+//Redux Setup
 import { connect } from 'react-redux';
+
+//Import actions
+import { editAccommodation } from '../actions/actions';
+
 
 class AccommodationEdit extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      firstName: null,
-      lastName: null,
-      email: null,
-      password: null
+      id: props.id,
+      lodging_name: props.lodging_name,
+      address: props.address,
+      check_in_date: props.check_in_date,
+      check_out_date: props.check_out_date,
+      price: props.price,
+      is_paid: props.is_paid,
+      reservation_code: props.reservation_code,
+      notes: props.notes,
+      user_id: 1,
+      trip_id: 1
     }
   }
 
-  //Lifecycle Methods
-  componentDidMount() { }
-
+  //Helper Functions
   handleChange = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
     this.setState({
+      id: this.props.accommodations.id,
       [name]: value
     })
   }
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Accommodation Edit!", this.state);
+    console.log("\nhandleSubmit - AccommodationEdit - this.props:", this.props);
+    console.log("Updated id:", this.props.accommodations.id);
+    console.log("Updated this.state:", this.state);
+    console.log("\nAccommodation has been updated.", this.state, this.props.accommodations.id);
+    this.props.dispatch(editAccommodation(this.state, this.props.accommodations.id));
   }
 
   render() {
+    console.log("AccommodationEdit - this.props:", this.props);
     return (
       <div>
-      <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit}>
 
-        <label>Lodging</label>
-        <input onChange={this.handleChange} type='text' name="lodgingName" placeholder="edit name of lodging" />
-        <br /><br />
+          <label>Lodging</label><br />
+          <input onChange={this.handleChange} type='text' name="lodging_name" placeholder={this.props.accommodations.lodging_name} />
+          <br /><br />
 
-        <label>Address</label>
-        <input onChange={this.handleChange} type='text' name="address" placeholder="edit address of lodging" />
-        <br /><br />
+          <label>Address</label><br />
+          <input onChange={this.handleChange} type='text' name="address" placeholder={this.props.accommodations.address} />
+          <br /><br />
 
-        <label>Check In</label>
-        <input onChange={this.handleChange} type='text' name="checkInDate" placeholder="edit check in date" />
-        <br /><br />
+          <label>Check In</label><br />
+          <input onChange={this.handleChange} type='date' name="check_in_date" />
+          <br /><br />
 
-        <label>Check Out</label>
-        <input onChange={this.handleChange} type='text' name="checkOutDate" placeholder="edit check out date" />
-        <br /><br />
+          <label>Check Out</label><br />
+          <input onChange={this.handleChange} type='date' name="check_out_date" />
+          <br /><br />
 
-        <label>Price</label>
-        <input onChange={this.handleChange} type='number' name="price" placeholder="edit price of lodging" />
-        <br /><br />
+          <label>Price</label><br />
+          <input onChange={this.handleChange} type='number' name="price" placeholder={this.props.accommodations.price} />
+          <br /><br />
 
-        <label>Pay Status</label>
-        <input onChange={this.handleChange} type='text' name="payStatus" placeholder="have you paid for this lodging?" />
-        <br /><br />
+          <label>Pay Status</label><br />
+          <input onChange={this.handleChange} type="radio" name="is_paid" value="Yes" />Paid<br />
+          <input onChange={this.handleChange} type="radio" name="is_paid" value="No" />Not Paid
+          <br /><br />
 
-        <label>Reservation Code</label>
-        <input onChange={this.handleChange} type='text' name="reservationCode" placeholder="edit reservation code" />
-        <br /><br />
+          <label>Reservation Code</label><br />
+          <input onChange={this.handleChange} type='text' name="reservation_code" placeholder={this.props.accommodations.reservation_code} />
+          <br /><br />
 
-        <label>Notes</label>
-        <input onChange={this.handleChange} type='text' name="notes" placeholder="edit any notes" />
-        <br /><br />
-        
-        <button type="submit">Submit</button>
+          <label>Notes</label><br />
+          <input onChange={this.handleChange} type='text' name="notes" placeholder={this.props.accommodations.notes} />
+          <br /><br />
 
-      </form>
+          <button type="submit">Update Accommodation</button>
+
+        </form>
       </div>
     )
   }
 }
 
 
-export default AccommodationEdit;
+export default connect()(AccommodationEdit);

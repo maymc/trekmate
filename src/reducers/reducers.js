@@ -22,11 +22,10 @@ const reducer = (state = {
   //Action is an object {type:...payload:...}
   //action.payload = array of objects
   console.log("\nREDUCER ACTION: ", action);
-  console.log("\nCURRENT STATE:", state);
 
   switch (action.type) {
-    // case GET_ALL_ACCOMMODATIONS:
-    //   return { ...state, accommodations: action.payload };
+    case GET_ALL_ACCOMMODATIONS:
+      return { ...state, accommodations: action.payload }
     // case GET_ALL_USERS:
     //   return { ...state, users: action.payload }
     case ADD_USER:

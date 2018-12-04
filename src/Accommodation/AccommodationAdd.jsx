@@ -69,8 +69,8 @@ class AccommodationAdd extends Component {
           <br /><br />
 
           <label>Pay Status</label><br />
-          <input onChange={this.handleChange} type="radio" name="is_paid" value="paid" />Paid<br />
-          <input onChange={this.handleChange} type="radio" name="is_paid" value="not paid" />Not Paid
+          <input onChange={this.handleChange} type="radio" name="is_paid" value="Yes" />Paid<br />
+          <input onChange={this.handleChange} type="radio" name="is_paid" value="No" />Not Paid
           <br /><br />
 
           <label>Reservation Code</label><br />

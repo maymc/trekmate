@@ -81,6 +81,9 @@ accommodationRouter.post('/add', (req, res) => {
 
 //PUT - edit accommodation by accommodation id
 accommodationRouter.put('/edit/:id', (req, res) => {
+    console.log("\nEDIT - accommodation req.params:", req.params);
+    console.log("\nEDIT - accommodation req.body:", req.body);
+
     const { id } = req.params;
 
     const updatedAccommodation = {

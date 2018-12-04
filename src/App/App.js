@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import axios from 'axios';
+
+//Setup for redux
+import { connect } from 'react-redux';
+import { getAllAccommodations } from '../actions/actions';
 
 //Import JSX component files
 import Header from '../Global/Header/HeaderComponent';
@@ -19,7 +22,9 @@ import EditAccount from '../Account/EditAccount/EditAccountComponent';
 import EditPassword from '../Account/EditPassword/EditPasswordComponent';
 
 //~~~ Accommodations JSX files ~~~~//
+
 import AccommodationAdd from '../Accommodation/AccommodationAdd';
+import AccommodationEdit from '../Accommodation/AccommodationEdit';
 
 //~~~ Flights JSX files ~~~~//
 import FlightAdd from '../Flight/FlightAdd';
@@ -35,9 +40,6 @@ import Trip from '../Trip/Trip/TripComponent';
 import CreateTrip from '../Trip/CreateTrip/CreateTripComponent';
 import EditTrip from '../Trip/EditTrip/EditTrip';
 
-//Redux setup
-import { connect } from 'react-redux';
-
 //Import actions
 
 class App extends Component {
@@ -45,18 +47,20 @@ class App extends Component {
     super(props)
 
     // //State is an object, React handles state to do updates
-    // this.state = {
-
-    // }
+    this.state = {
+      accommodations: []
+    }
   }
 
   //Lifecycle Methods
   componentDidMount() {
     console.log("App - this.props:", this.props);
+    this.props.dispatch(getAllAccommodations());
   }
 
   //App Component - render html elements
   render() {
+    console.log("this.state:", this.state)
     return (
       <div className="app">
         <Header />
@@ -80,6 +84,7 @@ class App extends Component {
 
             {/* Accommodation Routes */}
             <Route path='/accommodations/add' component={AccommodationAdd} />
+            <Route path='/accommodations/edit/:id' component={() => <AccommodationEdit accommodations={this.state.accommodations} />} />
 
             {/* Flight Routes */}
             <Route path='/flights/add' component={FlightAdd} />

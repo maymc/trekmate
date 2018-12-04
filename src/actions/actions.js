@@ -9,6 +9,7 @@ export const ADD_ACCOMMODATION = 'ADD_ACCOMMODATION';
 export const ADD_FLIGHT = 'ADD_FLIGHT';
 export const ADD_ACTIVITY = 'ADD_ACTIVITY';
 export const ADD_TRANSIT = 'ADD_TRANSIT';
+export const EDIT_ACCOMMODATION = 'EDIT_ACCOMMODATION';
 
 //Action = has type and payload
 //Action creater- function that returns an action which is an object with type and payload
@@ -19,12 +20,21 @@ export const ADD_TRANSIT = 'ADD_TRANSIT';
 //   }
 // }
 
-// export const getAllAccommodations = () => {
-//   return {
-//     type: GET_ALL_ACCOMMODATIONS,
-//     payload: initialState
-//   }
-// }
+export const getAllAccommodations = () => {
+  return dispatch => {
+    axios.get('/accommodations')
+      .then(responseFromDB => {
+        console.log("data in actionCreator:", responseFromDB);
+        dispatch({
+          type: GET_ALL_ACCOMMODATIONS,
+          payload: responseFromDB.data
+        })
+      })
+      .catch(err => {
+        console.log("\nERROR - actions axios getAllAccommodations", err)
+      })
+  }
+}
 
 export const addUser = (user) => {
   console.log("\nACTION: addUser:", user)
@@ -73,6 +83,20 @@ export const addAccommodation = (accommodation) => {
       })
       .catch(err => {
         console.log("ERROR - actions axios addAccommodation:", err);
+      })
+  }
+}
+
+export const editAccommodation = (accommodation) => {
+  console.log("\nACTION: editAccommodation:", accommodation)
+  return dispatch => {
+    axios.put("accommodations/edit/:id", accommodation)
+      .then(responseFromDB => {
+        console.log("\nCheck - responseFromDB:", responseFromDB.data)
+        dispatch({ type: EDIT_ACCOMMODATION, payload: responseFromDB.data });
+      })
+      .catch(err => {
+        console.log("ERROR - actions editAccommodation:", err);
       })
   }
 }
