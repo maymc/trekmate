@@ -12,8 +12,10 @@ class Home extends Component {
         <div className="animation">
           <img src="https://cdn.dribbble.com/users/722246/screenshots/4400319/loading_crescor_dribbble.gif" alt="Travel animation"></img>
         </div>
-        <div className="locationsearch">
-          <LocationSearch />
+        <div className="homecontent">
+          <div className="homelocationsearch">
+            <LocationSearch />
+          </div>
         </div>
         {/* <a href="">Test Link</a>
         <button>Test button</button> */}
