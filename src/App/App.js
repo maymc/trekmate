@@ -26,6 +26,9 @@ import FlightAdd from '../Flight/FlightAdd';
 //~~~ Activities JSX files ~~~~//
 import ActivityAdd from '../Activity/ActivityAdd';
 
+//~~~ Activities JSX files ~~~~//
+import TransitAdd from '../Transit/TransitAdd';
+
 //~~~ Trip JSX files ~~~~//
 import Trip from '../Trip/Trip/TripComponent';
 import CreateTrip from '../Trip/CreateTrip/CreateTripComponent';
@@ -75,8 +78,11 @@ class App extends Component {
             {/* Flight Routes */}
             <Route path='/flights/add' component={FlightAdd} />
 
-            {/* Flight Routes */}
+            {/* Activity Routes */}
             <Route path='/activities/add' component={ActivityAdd} />
+
+            {/* Transit Routes */}
+            <Route path='/transit/add' component={TransitAdd} />
 
             {/* Trip Routes */}
             <Route path='/trip/create' component={CreateTrip} />

@@ -7,6 +7,7 @@ export const ADD_USER = 'ADD_USER';
 export const ADD_ACCOMMODATION = 'ADD_ACCOMMODATION';
 export const ADD_FLIGHT = 'ADD_FLIGHT';
 export const ADD_ACTIVITY = 'ADD_ACTIVITY';
+export const ADD_TRANSIT = 'ADD_TRANSIT';
 
 //Action = has type and payload
 //Action creater- function that returns an action which is an object with type and payload
@@ -88,6 +89,23 @@ export const addActivity = (activity) => {
       })
       .catch(err => {
         console.log("ERROR - actions axios addActivity:", err);
+      })
+  }
+}
+
+export const addTransit = (transit) => {
+  console.log("\nACTION: addTransit:", transit)
+  return dispatch => {
+    axios.post('/transit/add', transit)
+      .then(responseFromDB => {
+        console.log("\naddTransit - responseFromDB.data:", responseFromDB.data);
+        dispatch({
+          type: ADD_TRANSIT,
+          payload: responseFromDB.data
+        })
+      })
+      .catch(err => {
+        console.log("ERROR - actions axios addTransit:", err);
       })
   }
 }

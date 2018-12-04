@@ -74,9 +74,9 @@ class ActivityAdd extends Component {
           <select name="type" onChange={this.handleChange}>
             <option value="select">Select</option>
             <option value="sightseeing">Sightseeing</option>
-            <option value="Outdoors">Outdoors</option>
-            <option value="Indoors">Indoors</option>
-            <option value="Food">Food</option>
+            <option value="outdoors">Outdoors</option>
+            <option value="indoors">Indoors</option>
+            <option value="food">Food</option>
           </select>
           <br /><br />
 

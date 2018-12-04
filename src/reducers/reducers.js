@@ -4,7 +4,8 @@ import {
   ADD_USER,
   ADD_ACCOMMODATION,
   ADD_FLIGHT,
-  ADD_ACTIVITY
+  ADD_ACTIVITY,
+  ADD_TRANSIT
 }
   from '../actions/actions.js';
 
@@ -33,6 +34,8 @@ const reducer = (state = {
     case ADD_FLIGHT:
       return { ...state, form: action.payload }
     case ADD_ACTIVITY:
+      return { ...state, form: action.payload }
+    case ADD_TRANSIT:
       return { ...state, form: action.payload }
     default:
       //default is to return original state to do nothing 
