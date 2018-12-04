@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 //Import JSX component files
 import Header from '../Global/Header/HeaderComponent';
+import Footer from '../Global/Footer/FooterComponent';
 import Home from '../Home/Home/HomeComponent';
 import Login from '../Login/Login/LoginComponent';
 import Register from '../Login/Register/RegisterComponent';
@@ -54,10 +55,10 @@ class App extends Component {
     return (
       <div className="app">
         <Header />
-        <Router className="maincontent">
+        <Router>
           <Switch>
             <Route exact path='/' component={Home} />
-            {/* <Route path='/login/forgotPassword' component={ForgotPassword} /> */}
+            <Route path='/login/forgotPassword' component={ForgotPassword} />
             <Route path='/login/register' component={Register} />
             <Route path='/login' component={Login} />
             <Route path='/account/edit_password/:id' component={EditPassword} />
@@ -68,7 +69,7 @@ class App extends Component {
             <Route path='/trip/:id' component={Trip} />
           </Switch>
         </Router>
-
+        <Footer />
       </div>
     );
   }
