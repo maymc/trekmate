@@ -4,6 +4,7 @@ import axios from 'axios';
 export const GET_ALL_ACCOMMODATIONS = 'GET_ALL_ACCOMMODATIONS';
 export const GET_ALL_USERS = 'GET_ALL_USERS';
 export const ADD_USER = 'ADD_USER';
+export const ADD_TRIP = 'ADD_TRIP';
 export const ADD_ACCOMMODATION = 'ADD_ACCOMMODATION';
 export const ADD_FLIGHT = 'ADD_FLIGHT';
 export const ADD_ACTIVITY = 'ADD_ACTIVITY';
@@ -38,6 +39,23 @@ export const addUser = (user) => {
       })
       .catch(err => {
         console.log("ERROR - actions axios addUser:", err);
+      })
+  }
+}
+
+export const addTrip = (trip) => {
+  console.log("\nACTION: addTrip:", trip)
+  return dispatch => {
+    axios.post('/trips/add', trip)
+      .then(responseFromDB => {
+        console.log("\naddTrip - responseFromDB.data:", responseFromDB.data);
+        dispatch({
+          type: ADD_TRIP,
+          payload: responseFromDB.data
+        })
+      })
+      .catch(err => {
+        console.log("ERROR - actions axios addTrip:", err);
       })
   }
 }
@@ -109,3 +127,4 @@ export const addTransit = (transit) => {
       })
   }
 }
+

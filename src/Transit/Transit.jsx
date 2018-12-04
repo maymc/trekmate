@@ -31,7 +31,7 @@ class Transit extends Component {
   render() {
     return (
       <div>
-        Home Activity Page
+        Home Transit Page
       </div>
     );
   }

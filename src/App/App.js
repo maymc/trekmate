@@ -72,6 +72,11 @@ class App extends Component {
             <Route path='/account/edit/:id' component={EditAccount} />
             <Route path='/account/:id' component={Account} />
 
+            {/* Trip Routes */}
+            <Route path='/trips/add' component={CreateTrip} />
+            <Route path='/trip/edit/:id' component={EditTrip} />
+            <Route path='/trip/:id' component={Trip} />
+
             {/* Accommodation Routes */}
             <Route path='/accommodations/add' component={AccommodationAdd} />
 
@@ -84,10 +89,6 @@ class App extends Component {
             {/* Transit Routes */}
             <Route path='/transit/add' component={TransitAdd} />
 
-            {/* Trip Routes */}
-            <Route path='/trip/create' component={CreateTrip} />
-            <Route path='/trip/edit/:id' component={EditTrip} />
-            <Route path='/trip/:id' component={Trip} />
           </Switch>
         </Router>
 

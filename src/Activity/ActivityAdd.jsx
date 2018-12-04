@@ -29,6 +29,7 @@ class ActivityAdd extends Component {
   //Lifecycle Methods
   componentDidMount() { }
 
+  //Helper Functions
   handleChange = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
