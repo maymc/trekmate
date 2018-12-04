@@ -23,6 +23,9 @@ import AccommodationAdd from '../Accommodation/AccommodationAdd';
 //~~~ Flights JSX files ~~~~//
 import FlightAdd from '../Flight/FlightAdd';
 
+//~~~ Activities JSX files ~~~~//
+import ActivityAdd from '../Activity/ActivityAdd';
+
 //~~~ Trip JSX files ~~~~//
 import Trip from '../Trip/Trip/TripComponent';
 import CreateTrip from '../Trip/CreateTrip/CreateTripComponent';
@@ -46,23 +49,7 @@ class App extends Component {
   //Lifecycle Methods
   componentDidMount() {
     console.log("App - this.props:", this.props);
-    // this.props.dispatch(addUser());
   }
-
-  // //App Component - functions
-
-  // addUser = (userFromRegisterForm) => {
-  //   console.log("Axios - Adding new user:", userFromRegisterForm);
-  //   axios
-  //     .post('/login/register', userFromRegisterForm)
-  //     .then(serverData => {
-  //       console.log("\nserverData.data:", serverData.data);
-  //       this.setState({ users: serverData.data })
-  //     })
-  //     .catch(err => {
-  //       console.log("Error w/axios POST/login/register");
-  //     })
-  // }
 
   //App Component - render html elements
   render() {
@@ -87,6 +74,9 @@ class App extends Component {
 
             {/* Flight Routes */}
             <Route path='/flights/add' component={FlightAdd} />
+
+            {/* Flight Routes */}
+            <Route path='/activities/add' component={ActivityAdd} />
 
             {/* Trip Routes */}
             <Route path='/trip/create' component={CreateTrip} />

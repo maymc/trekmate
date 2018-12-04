@@ -3,7 +3,8 @@ import {
   GET_ALL_USERS,
   ADD_USER,
   ADD_ACCOMMODATION,
-  ADD_FLIGHT
+  ADD_FLIGHT,
+  ADD_ACTIVITY
 }
   from '../actions/actions.js';
 
@@ -11,7 +12,8 @@ import {
 const reducer = (state = {
   users: [],
   accommodations: [],
-  flights: []
+  flights: [],
+  activities: []
 }, action) => {
 
   //Action is an object {type:...payload:...}
@@ -29,6 +31,8 @@ const reducer = (state = {
     case ADD_ACCOMMODATION:
       return { ...state, form: action.payload }
     case ADD_FLIGHT:
+      return { ...state, form: action.payload }
+    case ADD_ACTIVITY:
       return { ...state, form: action.payload }
     default:
       //default is to return original state to do nothing 

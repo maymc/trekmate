@@ -75,7 +75,7 @@ class FlightAdd extends Component {
           <input onChange={this.handleChange} type='text' name="notes" placeholder="enter any notes" />
           <br /><br />
 
-          <button type="submit">Submit</button>
+          <button type="submit">Add Flight</button>
 
         </form>
       </div>
