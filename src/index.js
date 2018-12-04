@@ -1,15 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
-import { Provider } from 'react-redux';
-
 import './index.css';
 import App from './App/App.js';
 import * as serviceWorker from './serviceWorker';
-import reducer from './store/reducer';
 
-const store = createStore(reducer);
+//Redux Setup
+import { createStore, applyMiddleware, compose } from 'redux';
+import { Provider } from 'react-redux';
+import reducers from '../src/reducers/reducers.js';
+import ReduxThunk from 'redux-thunk';
 
+//Store is where all data is
+const store = createStore(
+  reducers,
+  compose(
+    applyMiddleware(ReduxThunk),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  )
+);
+
+
+//Hook up react to communicate with redux
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import { connect } from 'react-redux';
+// import axios from 'axios';
+// import { connect } from 'react-redux';
 
 class EditPassword extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      firstName: null,
-      lastName: null,
-      email: null,
       password: null
     }
   }
@@ -27,29 +24,30 @@ class EditPassword extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Edit Password!", this.state);
+    console.log("User password has been updated!", this.state);
+    this.props.history.push(`/account/:id`); //change this to authenticated view when created
   }
 
   render() {
     return (
       <div>
-      <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit}>
 
-        <label>Previous Password</label>
-        <input onChange={this.handleChange} type='text' name="previousPassword" placeholder="enter previous password" />
-        <br /><br />
+          <label>Previous Password</label>
+          <input onChange={this.handleChange} type='password' name="previousPassword" placeholder="enter previous password" />
+          <br /><br />
 
-        <label>Password</label>
-        <input onChange={this.handleChange} type='text' name="password" placeholder="enter new password" />
-        <br /><br />
+          <label>Password</label>
+          <input onChange={this.handleChange} type='password' name="password" placeholder="enter new password" />
+          <br /><br />
 
-        <label>Confirm Password</label>
-        <input onChange={this.handleChange} type='text' name="confirmPassword" placeholder="confirm password" />
-        <br /><br />
+          <label>Confirm Password</label>
+          <input onChange={this.handleChange} type='password' name="confirmPassword" placeholder="confirm password" />
+          <br /><br />
 
-        <button type="submit">Submit</button>
+          <button type="submit">Submit</button>
 
-      </form>
+        </form>
       </div>
     )
   }

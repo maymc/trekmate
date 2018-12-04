@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import { connect } from 'react-redux';
+// import axios from 'axios';
+// import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import Login from '../Login/LoginComponent.jsx';
 
 class ForgotPassword extends Component {
   constructor(props) {
@@ -35,9 +34,9 @@ class ForgotPassword extends Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-
-          <label>Email</label>
-          <input onChange={this.handleChange} type='text' name="email" placeholder="enter email" />
+          <p>Forgot your password?</p>
+          <label>Please enter your email address:</label>
+          <input onChange={this.handleChange} type='text' name="email" placeholder="email" />
           <br /><br />
 
           <button type="submit">Send email</button>

@@ -66,18 +66,18 @@ userRouter.get('/:id', (req, res) => {
 userRouter.put('/account/edit/:id', (req, res) => {
   const { id } = req.params;
 
-  const updatedUser = {
+  const updatedUserPassword = {
     first_name: req.body.first_name,
     last_name: req.body.last_name,
     email: req.body.email,
-    password: req.body.password
+    // password: req.body.password
   }
 
   Users
     .where({ id })
     .fetch()
-    .then((currentUser) => {
-      return currentUser.save(updatedUser)
+    .then((currentUserPassword) => {
+      return currentUserPassword.save(updatedUserPassword)
     })
     .then((result) => {
       console.log('Updated user', result)
@@ -86,6 +86,30 @@ userRouter.put('/account/edit/:id', (req, res) => {
     .catch(err => {
       console.log("\nPUT - edit user error", err);
       res.json("PUT - edit user error", err);
+    })
+})
+
+//PUT - edit user password by user id
+userRouter.put('/account/edit_password/:id', (req, res) => {
+  const { id } = req.params;
+
+  const updatedUserPassword = {
+    password: req.body.password
+  }
+
+  Users
+    .where({ id })
+    .fetch()
+    .then((currentUserPassword) => {
+      return currentUserPassword.save(updatedUserPassword)
+    })
+    .then((result) => {
+      console.log('Updated user', result)
+      res.json(result)
+    })
+    .catch(err => {
+      console.log("\nPUT - edit user password error", err);
+      res.json("PUT - edit user password error", err);
     })
 })
 
