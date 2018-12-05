@@ -1,17 +1,22 @@
 import React, { Component } from 'react';
 import './styles.css';
 
+import { connect } from 'react-redux';    //part of Abby's template
+import { getAllTrips } from '../../actions/actions'; //part of Abby's template
+
 // import { Collaborators } from '../Trip/collaboratorcomponent'
 
 class Trip extends Component {
 
   componentDidMount() {
+    this.props.dispatch(getAllTrips());   //part of Abby's template
     let tripId = this.props.match.params.dreams_id;
     // this.props.dispatch()
-    console.log("props",this.props)
+    console.log("props", this.props)
   }
 
   render() {
+    const trips = this.props.trips; //part of Abby's template
     return (
       <div className="trip">
         <div className="tripbanner">
@@ -28,7 +33,23 @@ class Trip extends Component {
         </div>
       </div>
     );
+
+    //Below is Abby's template stuff for redux
+    // return trips.map(item => {
+    //   return (
+    //     <div key={item.id}>
+    //       city name: {item.city}
+    //     </div>
+    //   )
+    // })
   }
 }
 
-export default Trip;
+const mapStateToProps = state => {
+  return {
+    trips: state,
+  }
+}
+
+
+export default connect(mapStateToProps)(Trip);

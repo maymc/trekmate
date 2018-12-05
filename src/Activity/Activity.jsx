@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import axios from 'axios';
 
-//Import JSX component files
+import { connect } from 'react-redux';
+import { getAllActivities } from '../actions/actions';
 
 
 class Activity extends Component {
@@ -17,24 +16,27 @@ class Activity extends Component {
 
   //Lifecycle Methods
   componentDidMount() {
-
+    this.props.dispatch(getAllActivities());
   }
-
-  //App Component - functions
-  //Never mutate 'state' directly, use 'this.setState' (use ES6 to bind)
-
-
-
-
 
   //App Component - render html elements
   render() {
-    return (
-      <div>
-        Home Activity Page
-      </div>
-    );
+    const activities = this.props.activities;
+    return activities.map(item => {
+      return (
+        <div key={item.id}>
+          <p>{item.activity_name}</p>
+        </div>
+      )
+    })
+
   }
 }
 
-export default Activity;
+const mapStateToProps = state => {
+  return {
+    activities: state,
+  }
+}
+
+export default connect(mapStateToProps)(Activity);

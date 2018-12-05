@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import axios from 'axios';
+// import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
-//Import JSX component files
+//------Redux------//
+import { connect } from 'react-redux';
+import { getAllAccommodations } from '../actions/actions';
 
 
 class Accommodation extends Component {
@@ -10,31 +11,41 @@ class Accommodation extends Component {
     super(props)
 
     //State is an object, React handles state to do updates
-    this.state = {
-
-    }
+    this.state = {}
   }
-
   //Lifecycle Methods
   componentDidMount() {
+    console.log('COMPONENT MOUNTED :)');
+    this.props.dispatch(getAllAccommodations());
 
   }
-
-  //App Component - functions
-  //Never mutate 'state' directly, use 'this.setState' (use ES6 to bind)
-
-
-
-
 
   //App Component - render html elements
   render() {
-    return (
-      <div>
-        Home Activity Page
-      </div>
-    );
+    const accommodations = this.props.accommodations;
+    console.log('accommodation prop:', accommodations)
+    return accommodations.map(item => {
+      return (
+        <div key={item.id}>
+          <p>{item.lodging_name}</p>
+          <p>{item.address}</p>
+          <p>{item.check_in_date}</p>
+          <p>{item.check_out_date}</p>
+          <p>{item.price}</p>
+          <p>{item.notes}</p>
+          <p>{item.reservation_code}</p>
+        </div>
+      )
+    })
   }
 }
 
-export default Accommodation;
+
+const mapStateToProps = state => {
+  return {
+    accommodations: state,
+  }
+}
+
+
+export default connect(mapStateToProps)(Accommodation);

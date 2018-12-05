@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import axios from 'axios';
 
-//Import JSX component files
-
+//------Redux------//
+import { connect } from 'react-redux';
+import { getAllTransits } from '../actions/actions';
 
 class Transit extends Component {
   constructor(props) {
@@ -17,24 +16,31 @@ class Transit extends Component {
 
   //Lifecycle Methods
   componentDidMount() {
+    this.props.dispatch(getAllTransits());
 
   }
-
-  //App Component - functions
-  //Never mutate 'state' directly, use 'this.setState' (use ES6 to bind)
-
-
-
 
 
   //App Component - render html elements
   render() {
-    return (
-      <div>
-        Home Transit Page
-      </div>
-    );
+    const transits = this.props.transits;
+    return transits.map(item => {
+      return (
+        <div key={item.id}>
+          <p>{item.type}</p>
+        </div>
+      )
+    })
+
   }
 }
 
-export default Transit;
+
+const mapStateToProps = state => {
+  return {
+    transits: state,
+  }
+}
+
+
+export default connect(mapStateToProps)(Transit);
