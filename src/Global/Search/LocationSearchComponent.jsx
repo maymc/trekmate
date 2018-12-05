@@ -1,37 +1,39 @@
 import React, { Component } from 'react';
 import './styles.css';
 
-import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
+import PlacesAutocomplete, { geocodeByAddress, getLatLng, geocodeByPlaceId } from 'react-places-autocomplete';
 
 class LocationSearch extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            address: null,
+            address: ""
         }
     }
     handleChange = address => { this.setState({ address })}
-    handleSelect = address => { geocodeByAddress(address).then(results => getLatLng(results[0])).then(latLng => console.log('Success', latLng)).catch(error => console.error('Error', error)) };
+    handleSelect = address => { geocodeByAddress(address).then(results => console.log('Success', results[0], "address", address)).catch(error => console.error('Error', error)) };
 
     render() {
         return (
             <PlacesAutocomplete value={this.state.address} onChange={this.handleChange} onSelect={this.handleSelect}>{({getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-            <div>
+            <div className="search-box">
                 <input {...getInputProps({
                     placeholder: 'Where should we go?',
-                    classname:  'locationsearch',
+                    className:  'locationsearch',
                 })}></input>
+                <a className="search-btn"><i class="fa fa-search"></i></a>
+       
                 <div className='autocomplete-dropdown-container'>{loading && <div>Loading...</div>}
                 {suggestions.map(suggestion => {
-                    const classname = suggestion.active 
+                    const className = suggestion.active 
                     ? 'suggestion-item--action'
                     : 'suggestion-item';
                     
                     const style = suggestion.active
-                    ? {background: '#fafafa', cursor: 'pointer'} 
-                    : {background: '#ffffff', cursor: 'pointer'};
+                    ? {background: '#861C58', cursor: 'pointer', padding: '5px', width: '100%'} 
+                    : {background: '#bf268f', cursor: 'pointer', padding: '5px', width: '100%'};
                     return (
-                        <div {...getSuggestionItemProps(suggestion, {classname, style
+                        <div {...getSuggestionItemProps(suggestion, {className, style
                         })}><span>{suggestion.description}</span></div>
                     );
                 })}
