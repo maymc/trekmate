@@ -16,9 +16,7 @@ import {
   from '../actions/actions.js';
 
 //Takes in action and current state, if there is no state then it will be an empty array
-const reducer = (state = {
-  currentUser: []
-}, action) => {
+const reducer = (state = [], action) => {
 
   //Action is an object {type:...payload:...}
   //action.payload = array of objects
