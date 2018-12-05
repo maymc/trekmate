@@ -5,6 +5,7 @@ import {
   GET_ALL_FLIGHTS,
   GET_ALL_ACTIVITIES,
   GET_ALL_TRANSITS,
+  GET_USER_BY_ID,
   ADD_USER,
   ADD_TRIP,
   ADD_ACCOMMODATION,
@@ -15,7 +16,9 @@ import {
   from '../actions/actions.js';
 
 //Takes in action and current state, if there is no state then it will be an empty array
-const reducer = (state = [], action) => {
+const reducer = (state = {
+  currentUser: []
+}, action) => {
 
   //Action is an object {type:...payload:...}
   //action.payload = array of objects
@@ -30,7 +33,8 @@ const reducer = (state = [], action) => {
       return { ...state, users: action.payload }
     case ADD_USER:
       return { ...state, form: action.payload }
-
+    case GET_USER_BY_ID:
+      return action.payload
 
     //-------Accommodation --------//
     case GET_ALL_ACCOMMODATIONS:

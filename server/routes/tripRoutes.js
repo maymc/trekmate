@@ -17,6 +17,21 @@ tripRouter.get('/', (req, res) => {
         })
 })
 
+//GET trips by id
+tripRouter.get('/:id', (req, res) => {
+    const { id } = req.params
+
+    Trips
+        .where({ id })
+        .fetchAll()
+        .then((trip) => {
+            res.json(trip.serialize())
+        })
+        .catch(err => {
+            console.log("\nGET - getting trip by id error", err);
+            res.json("GET - getting trip by id error", err);
+        })
+})
 //GET trips by user_id
 tripRouter.get('/user/:user_id', (req, res) => {
     const { user_id } = req.params

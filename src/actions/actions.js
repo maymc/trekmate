@@ -2,12 +2,14 @@ import axios from 'axios';
 
 //Storing constant data
 export const GET_ALL_USERS = 'GET_ALL_USERS';
+export const GET_USER_BY_ID = 'GET_USER_BY_ID';
+export const ADD_USER = 'ADD_USER';
+
 export const GET_ALL_ACCOMMODATIONS = 'GET_ALL_ACCOMMODATIONS';
 export const GET_ALL_TRIPS = 'GET_ALL_TRIPS';
 export const GET_ALL_ACTIVITIES = 'GET_ALL_ACTIVITIES';
 export const GET_ALL_TRANSITS = 'GET_ALL_TRANSITS';
 export const GET_ALL_FLIGHTS = 'GET_ALL_FLIGHTS';
-export const ADD_USER = 'ADD_USER';
 export const ADD_TRIP = 'ADD_TRIP';
 export const ADD_ACCOMMODATION = 'ADD_ACCOMMODATION';
 export const ADD_FLIGHT = 'ADD_FLIGHT';
@@ -26,6 +28,17 @@ export const getAllUsers = () => {
           type: GET_ALL_USERS,
           payload: response.data
         })
+      })
+  }
+}
+export const getUser = (id) => {
+  return dispatch => {
+    axios.get(`/users/${id}`)
+      .then(response => {
+        dispatch({ type: GET_USER_BY_ID, payload: response.data })
+      })
+      .catch(err => {
+        console.log('error in getting individual user')
       })
   }
 }
