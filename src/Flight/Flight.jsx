@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import axios from 'axios';
 
-//Import JSX component files
+
+import { connect } from 'react-redux';
+import { getAllFlights } from '../actions/actions';
 
 
 class Flight extends Component {
@@ -17,24 +17,29 @@ class Flight extends Component {
 
   //Lifecycle Methods
   componentDidMount() {
+    this.props.dispatch(getAllFlights());
 
   }
-
-  //App Component - functions
-  //Never mutate 'state' directly, use 'this.setState' (use ES6 to bind)
-
-
-
-
 
   //App Component - render html elements
   render() {
-    return (
-      <div>
-       Flight Page
-      </div>
-    );
+    const flights = this.props.flights;
+    return flights.map(item => {
+      return (
+        <div key={item.id}>
+          <p>
+            {item.airlines}
+          </p>
+        </div>
+      )
+    })
+
   }
 }
 
-export default Flight;
+const mapStateToProps = state => {
+  return {
+    flights: state,
+  }
+}
+export default connect(mapStateToProps)(Flight);

@@ -3,8 +3,8 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 //Setup for redux
-import { connect } from 'react-redux';
-import { getAllAccommodations } from '../actions/actions';
+// import { connect } from 'react-redux';
+// import { getAllUsers, getAllAccommodations } from '../actions/actions.js';
 
 //Import JSX component files
 import Header from '../Global/Header/HeaderComponent';
@@ -24,15 +24,19 @@ import EditPassword from '../Account/EditPassword/EditPasswordComponent';
 //~~~ Accommodations JSX files ~~~~//
 
 import AccommodationAdd from '../Accommodation/AccommodationAdd';
-import AccommodationEdit from '../Accommodation/AccommodationEdit';
+// import AccommodationEdit from '../Accommodation/AccommodationEdit';
+import Accommodation from '../Accommodation/Accommodation';
 
 //~~~ Flights JSX files ~~~~//
+import Flight from '../Flight/Flight';
 import FlightAdd from '../Flight/FlightAdd';
 
 //~~~ Activities JSX files ~~~~//
+import Activity from '../Activity/Activity';
 import ActivityAdd from '../Activity/ActivityAdd';
 
 //~~~ Activities JSX files ~~~~//
+import Transit from '../Transit/Transit';
 import TransitAdd from '../Transit/TransitAdd';
 
 //~~~ Trip JSX files ~~~~//
@@ -47,15 +51,15 @@ class App extends Component {
     super(props)
 
     // //State is an object, React handles state to do updates
-    this.state = {
-      accommodations: []
-    }
+    // this.state = {
+    //   accommodations: []
+    // }
   }
 
   //Lifecycle Methods
   componentDidMount() {
     console.log("App - this.props:", this.props);
-    this.props.dispatch(getAllAccommodations());
+    // this.props.dispatch(getAllAccommodations());
   }
 
   //App Component - render html elements
@@ -78,21 +82,26 @@ class App extends Component {
             <Route path='/account/:id' component={Account} />
 
             {/* Trip Routes */}
+            <Route path='/trips' component={Trip} />
             <Route path='/trips/add' component={CreateTrip} />
             <Route path='/trip/edit/:id' component={EditTrip} />
             <Route path='/trip/:id' component={Trip} />
 
             {/* Accommodation Routes */}
+            <Route path='/accommodations' component={Accommodation} />
             <Route path='/accommodations/add' component={AccommodationAdd} />
-            <Route path='/accommodations/edit/:id' component={() => <AccommodationEdit accommodations={this.state.accommodations} />} />
+            {/* <Route path='/accommodations/edit/:id' component={() => <AccommodationEdit accommodations={this.state.accommodations} />} /> */}
 
             {/* Flight Routes */}
+            <Route path='/flights' component={Flight} />
             <Route path='/flights/add' component={FlightAdd} />
 
             {/* Activity Routes */}
+            <Route path='/activities' component={Activity} />
             <Route path='/activities/add' component={ActivityAdd} />
 
             {/* Transit Routes */}
+            <Route path='/transits' component={Transit} />
             <Route path='/transit/add' component={TransitAdd} />
 
           </Switch>
@@ -103,5 +112,19 @@ class App extends Component {
   }
 }
 
+//Redux----------------
+// const mapStateToProps = (state) => {   // listening to reducers
+//   return {
+//     users: state,
+//     accommodations: state
+
+//   }
+// }
+
+// const ConnectedApp = connect( //connect app to access the 'store'
+//   mapStateToProps,
+//   { getAllUsers, getAllAccommodations }
+// )(App);
+
 //Export App component so other components can use it
-export default connect()(App);
+export default App;
