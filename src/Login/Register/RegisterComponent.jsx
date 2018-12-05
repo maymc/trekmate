@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
-//Import components
-import ForgotPassword from '../ForgotPassword/ForgotPasswordComponent.jsx';
-import Login from '../Login/LoginComponent.jsx';
-
 //Redux Setup
 import { connect } from 'react-redux';
 

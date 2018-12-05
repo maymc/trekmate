@@ -4,13 +4,32 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 //Import JSX component files
 import Header from '../Global/Header/HeaderComponent';
+import Footer from '../Global/Footer/FooterComponent';
 import Home from '../Home/Home/HomeComponent';
+
+//~~~ User Login JSX files ~~~~//
 import Login from '../Login/Login/LoginComponent';
 import Register from '../Login/Register/RegisterComponent';
 import ForgotPassword from '../Login/ForgotPassword/ForgotPasswordComponent';
+
+//~~~ User Account JSX files ~~~~//
 import Account from '../Account/Account/AccountComponent';
 import EditAccount from '../Account/EditAccount/EditAccountComponent';
 import EditPassword from '../Account/EditPassword/EditPasswordComponent';
+
+//~~~ Accommodations JSX files ~~~~//
+import AccommodationAdd from '../Accommodation/AccommodationAdd';
+
+//~~~ Flights JSX files ~~~~//
+import FlightAdd from '../Flight/FlightAdd';
+
+//~~~ Activities JSX files ~~~~//
+import ActivityAdd from '../Activity/ActivityAdd';
+
+//~~~ Activities JSX files ~~~~//
+import TransitAdd from '../Transit/TransitAdd';
+
+//~~~ Trip JSX files ~~~~//
 import Trip from '../Trip/Trip/TripComponent';
 import CreateTrip from '../Trip/CreateTrip/CreateTripComponent';
 import EditTrip from '../Trip/EditTrip/EditTrip';
@@ -28,20 +47,16 @@ class App extends Component {
   // }
 
   //Lifecycle Methods
-  // componentDidMount() {
-  // console.log("App - this.props:", this.props);
-  // this.props.dispatch(getAllUsers());
-  // this.props.dispatch(getAllAccommodations());
-
-  // }
-
+  componentDidMount() {
+    console.log("App - this.props:", this.props);
+  }
 
   //App Component - render html elements
   render() {
     return (
       <div className="app">
         <Header />
-        <Router className="maincontent">
+        <Router>
           <Switch>
             {/* Login Routes */}
             <Route exact path='/' component={Home} />
@@ -55,15 +70,26 @@ class App extends Component {
             <Route path='/account/:id' component={Account} />
 
             {/* Trip Routes */}
-            <Route path='/trip/create' component={CreateTrip} />
+            <Route path='/trips/add' component={CreateTrip} />
             <Route path='/trip/edit/:id' component={EditTrip} />
             <Route path='/trip/:id' component={Trip} />
 
             {/* Accommodation Routes */}
             <Route path='/accommodation' component={Accommodation} />
+            <Route path='/accommodations/add' component={AccommodationAdd} />
+
+            {/* Flight Routes */}
+            <Route path='/flights/add' component={FlightAdd} />
+
+            {/* Activity Routes */}
+            <Route path='/activities/add' component={ActivityAdd} />
+
+            {/* Transit Routes */}
+            <Route path='/transit/add' component={TransitAdd} />
+
           </Switch>
         </Router>
-
+        <Footer />
       </div>
     );
   }
