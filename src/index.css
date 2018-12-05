@@ -123,3 +123,39 @@ button.drk {
     background: #ffffff;
     color: #C7009A;
   }
+
+  .form-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+    margin-top: 50px;
+  }
+  .form-control {
+    display: block;
+    padding: .5rem .75rem;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #919195; 
+  }
+  .form-control:hover {
+    border-bottom: 1px solid #C7009A;
+  }
+  .form-control:focus {
+    border-bottom: 1px solid #9E0066;
+  }
+  .form-control-placeholder {
+    position: absolute;
+    top: 0;
+    padding: 7px 0 0 13px;
+    transition: all 200ms;
+    opacity: 0.5;
+  }
+  
+  .form-control:focus + .form-control-placeholder,
+  .form-control:valid + .form-control-placeholder {
+    font-size: 75%;
+    transform: translate3d(0, -100%, 0);
+    opacity: 1;
+    color: #9E0066;
+ 
+  }
+  

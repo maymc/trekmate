@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
 import './styles.css';
+
+
+/// External imports
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import ForgotPassword from '../ForgotPassword/ForgotPasswordComponent.jsx';
-import Register from '../Register/RegisterComponent.jsx';
+
+/// Internal imports
+// import ForgotPassword from '../ForgotPassword/ForgotPasswordComponent.jsx';
+// import Register from '../Register/RegisterComponent.jsx';
 
 class Login extends Component {
   constructor(props) {
     super(props)
-
     this.state = {
       email: null,
       password: null
@@ -26,6 +30,7 @@ class Login extends Component {
     const { name, value } = e.target;
     this.setState({
       [name]: value
+
     })
   }
 
@@ -47,36 +52,29 @@ class Login extends Component {
         </div>
         <div className="maptwo">
         </div>
-        <div className="mapthree">
-          <form onSubmit={this.handleChange}>
-
+        <div className="mapthreeform">
+          <h1>Login</h1>
+          <form className="loginform" onSubmit={this.handleChange}>
+            <div class="form-group">
+              <input type="text" id="email" name="email" onChange={this.handleChange}  className="form-control" required></input>
+              <label class="form-control-placeholder" for="email">Email</label>
+            </div>
+            <div class="form-group">
+              <input type="text" id="password" name="password" onChange={this.handleChange}  className="form-control" required></input>
+              <label class="form-control-placeholder" for="password">Password</label>
+            </div>
+            <button type="submit">Login</button>
+            
           </form>
+          <Link to="/login/register">
+            <button className="ghost" type="button">Register</button>
+          </Link>
+          <Link to="/login/forgotPassword">
+            <a type="button">Forgot Password?</a>
+          </Link>
         </div>
-
-
-
-
-        {/* <form onSubmit={this.handleLogin}>
-
-          <label>Email:</label>
-          <input onChange={this.handleChange} type='text' name="email" placeholder="enter email" />
-          <br /><br />
-
-          <label>Password:</label>
-          <input onChange={this.handleChange} type='password' name="password" placeholder="enter password" />
-          <br /><br />
-
-          <button type="submit">Login</button>
-
-        </form>
-
-        <Link to="/login/forgotPassword">
-          <a type="button">Forgot Password?</a>
-        </Link>
-        <Link to="/login/register">
-          <button className="ghost" type="button">Register</button>
-        </Link> */}
-
+        <div className="mapthree">
+        </div>
       </div>
     )
   }
