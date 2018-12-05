@@ -19,21 +19,24 @@ import EditPassword from '../Account/EditPassword/EditPasswordComponent';
 
 //~~~ Accommodations JSX files ~~~~//
 import AccommodationAdd from '../Accommodation/AccommodationAdd';
+import Accommodation from '../Accommodation/Accommodation';
 
 //~~~ Flights JSX files ~~~~//
+import Flight from '../Flight/Flight';
 import FlightAdd from '../Flight/FlightAdd';
 
 //~~~ Activities JSX files ~~~~//
+import Activity from '../Activity/Activity';
 import ActivityAdd from '../Activity/ActivityAdd';
 
 //~~~ Activities JSX files ~~~~//
+import Transit from '../Transit/Transit';
 import TransitAdd from '../Transit/TransitAdd';
 
 //~~~ Trip JSX files ~~~~//
 import Trip from '../Trip/Trip/TripComponent';
 import CreateTrip from '../Trip/CreateTrip/CreateTripComponent';
 import EditTrip from '../Trip/EditTrip/EditTrip';
-import Accommodation from '../Accommodation/Accommodation';
 
 //Redux setup
 // import { connect } from 'react-redux';
@@ -70,21 +73,25 @@ class App extends Component {
             <Route path='/account/:id' component={Account} />
 
             {/* Trip Routes */}
+            <Route path='/trips' component={Trip} />
             <Route path='/trips/add' component={CreateTrip} />
             <Route path='/trip/edit/:id' component={EditTrip} />
             <Route path='/trip/:id' component={Trip} />
 
             {/* Accommodation Routes */}
-            <Route path='/accommodation' component={Accommodation} />
+            <Route path='/accommodations' component={Accommodation} />
             <Route path='/accommodations/add' component={AccommodationAdd} />
 
             {/* Flight Routes */}
+            <Route path='/flights' component={Flight} />
             <Route path='/flights/add' component={FlightAdd} />
 
             {/* Activity Routes */}
+            <Route path='/activities' component={Activity} />
             <Route path='/activities/add' component={ActivityAdd} />
 
             {/* Transit Routes */}
+            <Route path='/transits' component={Transit} />
             <Route path='/transit/add' component={TransitAdd} />
 
           </Switch>

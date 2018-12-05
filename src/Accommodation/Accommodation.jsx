@@ -24,12 +24,19 @@ class Accommodation extends Component {
   render() {
     const accommodations = this.props.accommodations;
     console.log('accommodation prop:', accommodations)
-
-    return (
-      <>
-        Accommodation
-      </>
-    );
+    return accommodations.map(item => {
+      return (
+        <div key={item.id}>
+          <p>{item.lodging_name}</p>
+          <p>{item.address}</p>
+          <p>{item.check_in_date}</p>
+          <p>{item.check_out_date}</p>
+          <p>{item.price}</p>
+          <p>{item.notes}</p>
+          <p>{item.reservation_code}</p>
+        </div>
+      )
+    })
   }
 }
 
