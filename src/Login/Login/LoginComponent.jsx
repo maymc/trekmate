@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './styles.css';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
@@ -37,8 +38,25 @@ class Login extends Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleLogin}>
+      <div className="login-container">
+        <div className="maponegrad">
+        </div>
+        <div className="mapone">
+        </div>
+        <div className="maptwograd">
+        </div>
+        <div className="maptwo">
+        </div>
+        <div className="mapthree">
+          <form onSubmit={this.handleChange}>
+
+          </form>
+        </div>
+
+
+
+
+        {/* <form onSubmit={this.handleLogin}>
 
           <label>Email:</label>
           <input onChange={this.handleChange} type='text' name="email" placeholder="enter email" />
@@ -53,11 +71,11 @@ class Login extends Component {
         </form>
 
         <Link to="/login/forgotPassword">
-          <button type="button">Forgot Password?</button>
+          <a type="button">Forgot Password?</a>
         </Link>
         <Link to="/login/register">
-          <button type="button">Register</button>
-        </Link>
+          <button className="ghost" type="button">Register</button>
+        </Link> */}
 
       </div>
     )

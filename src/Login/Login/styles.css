@@ -1,0 +1,60 @@
+.login-container {
+    grid-column: 1/7;
+    grid-row: 2/2;
+    background: #BBE6FD;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 10% 80% 10%;
+    padding: 0 auto;
+
+}
+.maponegrad {
+    grid-column: 2 / 4;
+    grid-row: 2/2;
+    z-index: 10;
+    height: 100%;
+    transform: skew(0deg, 7.5deg);
+    background: rgb(255,255,255);
+    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(0,0,0,0.68) 80%, rgba(0,0,0,0.7) 100%);
+}
+.mapone {
+    grid-column: 2 / 4;
+    grid-row: 2/2;
+    z-index: 2;
+
+    background-image: url('https://snazzy-maps-cdn.azureedge.net/assets/43848-linnu-kaart.png?v=20170626025958');
+    height: 100%;
+    transform: skew(0deg, 7deg);
+    /* box-shadow: -5px 0px 10px -5px black; */
+}
+
+.maptwograd {
+    grid-column: 4 / 7;
+    grid-row: 2/2;
+    z-index: 10;
+    height: 100%;
+    transform: skew(0deg, -5deg);
+    background: rgb(0,0,0);
+    background: linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.65) 20%, rgba(255,255,255,0) 100%);
+}
+ 
+.maptwo {
+    grid-column: 4 / 7;
+    grid-row: 2/2;
+    z-index: 2;
+    background-image: url('https://snazzy-maps-cdn.azureedge.net/assets/43848-linnu-kaart.png?v=20170626025958');
+    height: 100%;
+    transform: skew(0deg, -5deg);
+    /* box-shadow: 6px 0px 10px 0px black; */
+}
+
+
+.mapthree {
+    grid-column: 7 / 12;
+    grid-row: 2/2;
+    z-index: 3;
+    margin-top: -9px;
+    height: 100%;
+    background: white;
+    /* box-shadow: 0 0 20px rgba(0,0,0,0.55); */
+}

@@ -5,6 +5,12 @@ import './styles.css';
 
 class Trip extends Component {
 
+  componentDidMount() {
+    let tripId = this.props.match.params.dreams_id;
+    // this.props.dispatch()
+    console.log("props",this.props)
+  }
+
   render() {
     return (
       <div className="trip">
@@ -15,10 +21,10 @@ class Trip extends Component {
         </div>
         <div className="tripbar">
           <h3>Add event:</h3>
-          <button><i class="fas fa-hiking"></i> Activity</button>
-          <button><i class="fas fa-plane"></i> Flight</button>
-          <button><i class="fas fa-car-side"></i> Transit</button>
-          <button><i class="fas fa-hotel"></i> Accommodation</button>
+          <button><i className="fas fa-hiking"></i> Activity</button>
+          <button><i className="fas fa-plane"></i> Flight</button>
+          <button><i className="fas fa-car-side"></i> Transit</button>
+          <button><i className="fas fa-hotel"></i> Accommodation</button>
         </div>
       </div>
     );
