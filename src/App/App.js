@@ -3,8 +3,8 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 //Setup for redux
-// import { connect } from 'react-redux';
-// import { getAllUsers, getAllAccommodations } from '../actions/actions.js';
+import { connect } from 'react-redux';
+// import { getAllAccommodations } from '../actions/actions';
 
 //Import JSX component files
 import Header from '../Global/Header/HeaderComponent';
@@ -24,7 +24,6 @@ import EditPassword from '../Account/EditPassword/EditPasswordComponent';
 //~~~ Accommodations JSX files ~~~~//
 
 import AccommodationAdd from '../Accommodation/AccommodationAdd';
-// import AccommodationEdit from '../Accommodation/AccommodationEdit';
 import Accommodation from '../Accommodation/Accommodation';
 
 //~~~ Flights JSX files ~~~~//
@@ -58,13 +57,13 @@ class App extends Component {
 
   //Lifecycle Methods
   componentDidMount() {
-    console.log("App - this.props:", this.props);
+    console.log("\nApp Mounting...:", this.props);
     // this.props.dispatch(getAllAccommodations());
   }
 
   //App Component - render html elements
   render() {
-    console.log("this.state:", this.state)
+
     return (
       <div className="app">
         <Header />
@@ -90,7 +89,7 @@ class App extends Component {
             {/* Accommodation Routes */}
             <Route path='/accommodations' component={Accommodation} />
             <Route path='/accommodations/add' component={AccommodationAdd} />
-            {/* <Route path='/accommodations/edit/:id' component={() => <AccommodationEdit accommodations={this.state.accommodations} />} /> */}
+            {/* <Route path='/accommodations/edit/:id' component={() => <AccommodationEdit />} /> */}
 
             {/* Flight Routes */}
             <Route path='/flights' component={Flight} />
@@ -112,7 +111,7 @@ class App extends Component {
   }
 }
 
-//Redux----------------
+// //Redux----------------
 // const mapStateToProps = (state) => {   // listening to reducers
 //   return {
 //     users: state,
@@ -123,8 +122,8 @@ class App extends Component {
 
 // const ConnectedApp = connect( //connect app to access the 'store'
 //   mapStateToProps,
-//   { getAllUsers, getAllAccommodations }
+//   { getAllAccommodations }
 // )(App);
 
 //Export App component so other components can use it
-export default App;
+export default connect()(App);

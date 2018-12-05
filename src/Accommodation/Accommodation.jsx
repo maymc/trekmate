@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-// import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+
+import AccommodationEdit from '../Accommodation/AccommodationEdit';
 
 //------Redux------//
 import { connect } from 'react-redux';
@@ -15,7 +17,7 @@ class Accommodation extends Component {
   }
   //Lifecycle Methods
   componentDidMount() {
-    console.log('COMPONENT MOUNTED :)');
+    console.log('\nAccommodation Component Mounted Successfully!');
     this.props.dispatch(getAllAccommodations());
 
   }
@@ -23,7 +25,7 @@ class Accommodation extends Component {
   //App Component - render html elements
   render() {
     const accommodations = this.props.accommodations;
-    console.log('accommodation prop:', accommodations)
+    console.log('\nAccommodations prop:', accommodations)
     return accommodations.map(item => {
       return (
         <div key={item.id}>
@@ -34,6 +36,16 @@ class Accommodation extends Component {
           <p>{item.price}</p>
           <p>{item.notes}</p>
           <p>{item.reservation_code}</p>
+
+          <Router>
+            <div>
+              <Link to={`/accommodations/edit/${item.id}`}>
+                <button type='button'>Edit Accommodation</button>
+              </Link>
+
+              <Route path={`/accommodations/edit/${item.id}`} component={() => <AccommodationEdit accommodations={this.props.accommodations} accommodation_id={item.id} />} />
+            </div>
+          </Router>
         </div>
       )
     })

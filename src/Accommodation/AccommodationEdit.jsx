@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 //Import actions
 import { editAccommodation } from '../actions/actions';
 
-
 class AccommodationEdit extends Component {
   constructor(props) {
     super(props)
@@ -47,16 +46,17 @@ class AccommodationEdit extends Component {
 
   render() {
     console.log("AccommodationEdit - this.props:", this.props);
+    console.log("AccommodationEdit - id:", this.props.accommodations[this.props.accommodation_id]);
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
 
           <label>Lodging</label><br />
-          <input onChange={this.handleChange} type='text' name="lodging_name" placeholder={this.props.accommodations.lodging_name} />
+          <input onChange={this.handleChange} type='text' name="lodging_name" placeholder={this.props.accommodations[this.props.accommodation_id].lodging_name} />
           <br /><br />
 
           <label>Address</label><br />
-          <input onChange={this.handleChange} type='text' name="address" placeholder={this.props.accommodations.address} />
+          <input onChange={this.handleChange} type='text' name="address" placeholder={this.props.accommodations[this.props.accommodation_id].address} />
           <br /><br />
 
           <label>Check In</label><br />
@@ -68,7 +68,7 @@ class AccommodationEdit extends Component {
           <br /><br />
 
           <label>Price</label><br />
-          <input onChange={this.handleChange} type='number' name="price" placeholder={this.props.accommodations.price} />
+          <input onChange={this.handleChange} type='number' name="price" placeholder={this.props.accommodations[this.props.accommodation_id].price} />
           <br /><br />
 
           <label>Pay Status</label><br />
@@ -77,11 +77,11 @@ class AccommodationEdit extends Component {
           <br /><br />
 
           <label>Reservation Code</label><br />
-          <input onChange={this.handleChange} type='text' name="reservation_code" placeholder={this.props.accommodations.reservation_code} />
+          <input onChange={this.handleChange} type='text' name="reservation_code" placeholder={this.props.accommodations[this.props.accommodation_id].reservation_code} />
           <br /><br />
 
           <label>Notes</label><br />
-          <input onChange={this.handleChange} type='text' name="notes" placeholder={this.props.accommodations.notes} />
+          <input onChange={this.handleChange} type='text' name="notes" placeholder={this.props.accommodations[this.props.accommodation_id].notes} />
           <br /><br />
 
           <button type="submit">Update Accommodation</button>
