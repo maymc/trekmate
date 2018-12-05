@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './styles.css';
 
-import PlacesAutocomplete, { geocodeByAddress, getLatLng, geocodeByPlaceId } from 'react-places-autocomplete';
+import PlacesAutocomplete, { geocodeByAddress} from 'react-places-autocomplete';
 
 class LocationSearch extends Component {
     constructor(props) {
@@ -21,7 +21,7 @@ class LocationSearch extends Component {
                     placeholder: 'Where should we go?',
                     className:  'locationsearch',
                 })}></input>
-                <a className="search-btn"><i class="fa fa-search"></i></a>
+                <a href="" className="search-btn"><i class="fa fa-search"></i></a>
        
                 <div className='autocomplete-dropdown-container'>{loading && <div>Loading...</div>}
                 {suggestions.map(suggestion => {

@@ -1,0 +1,49 @@
+.trip {
+    grid-column: 1/7;
+    grid-row: 2/2;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: min-content;
+    grid-column-gap: 10px;
+    padding: 0 0;
+    /* background: aqua; */
+}
+
+.tripbanner {
+    grid-column: 1/ span 3;
+    height: 240px;
+    background: green;
+    margin-bottom: 30px;
+}
+.tripfeed {
+    grid-column: 1 / span 2;
+    background: blue;
+    margin-bottom: 30px;
+}
+.tripbar {
+    grid-column: 3 / span 1;
+    /* background: red; */
+    margin-bottom: 30px;
+    margin-right: 10px;
+}
+
+.tripbar button {
+    width: 100%;
+    margin: 0px;
+    margin-bottom: 5px;
+    text-align: left;
+    font-size: .75em;
+}
+
+
+
+@media only screen and (max-width: 600px) {
+    .tripfeed {
+        grid-column: 1 / span 3;
+        grid-row: 3/3;
+    }
+    .tripbar {
+        grid-column: 1 / span 3;
+        grid-row: 2/2;  
+    }
+}
