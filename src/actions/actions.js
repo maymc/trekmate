@@ -220,7 +220,7 @@ export const addActivity = (activity) => {
 export const getAllTransits = () => {
 
   return dispatch => {
-    axios.get('/transit')
+    axios.get('/transits')
       .then(response => {
         console.log('transits response......:', response.data)
         dispatch({
