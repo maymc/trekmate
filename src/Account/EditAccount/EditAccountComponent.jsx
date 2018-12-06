@@ -1,15 +1,57 @@
 import React, { Component } from 'react';
 import './styles.css';
 
-class EditAccount extends Component {
+class EditAccountComponent extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      id: null,
+      firstName: null,
+      lastName: null,
+      email: null
+    }
+  }
+
+  //Helper functions
+  handleChange = (e) => {
+    e.preventDefault();
+
+    const { name, value } = e.target;
+    this.setState({
+      [name]: value
+    })
+  }
+
+  handleLogin = (e) => {
+    e.preventDefault();
+    console.log("Login - handleLogin this.props:", this.props);
+    console.log("Login Successful! User credentials:", this.state);
+    this.props.history.push(`/`); //change this to authenticated view when created
+  }
 
   render() {
     return (
-      <div className="editaccount">
-        Test edit account
+      <div>
+        <form onSubmit={this.handleSubmit}>
+
+          <label>First Name</label>
+          <input onChange={this.handleChange} type='text' name="firstName" placeholder="edit account's first name..." />
+          <br /><br />
+
+          <label>Last Name</label>
+          <input onChange={this.handleChange} type='text' name="lasteName" placeholder="edit account's last name" />
+          <br /><br />
+
+          <label>Email</label>
+          <input onChange={this.handleChange} type='text' name="email" placeholder="edit your email" />
+          <br /><br />
+
+        </form>
       </div>
-    );
+    )
   }
 }
 
-export default EditAccount;
+
+export default EditAccountComponent;

@@ -11,7 +11,6 @@ class EditAccount extends Component {
 
     //State is an object, React handles state to do updates
     this.state = {
-
     }
   }
 
