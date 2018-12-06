@@ -30,8 +30,8 @@ class LocationSearch extends Component {
                     : 'suggestion-item';
                     
                     const style = suggestion.active
-                    ? {background: '#861C58', cursor: 'pointer', padding: '5px', width: '100%'} 
-                    : {background: '#bf268f', cursor: 'pointer', padding: '5px', width: '100%'};
+                    ? {background: '#861C58', cursor: 'pointer', padding: '5px', width: '100%', color: '#fff'} 
+                    : {background: '#bf268f', cursor: 'pointer', padding: '5px', width: '100%', color: '#fff'};
                     return (
                         <div {...getSuggestionItemProps(suggestion, {className, style
                         })}><span>{suggestion.description}</span></div>

@@ -55,13 +55,17 @@ class Login extends Component {
         <div className="mapthreeform">
           <h1>Login</h1>
           <form className="loginform" onSubmit={this.handleChange}>
-            <div class="form-group">
+
+
+            <div className="form-group">
               <input type="text" id="email" name="email" onChange={this.handleChange}  className="form-control" required></input>
-              <label class="form-control-placeholder" for="email">Email</label>
+              <label className="form-control-placeholder" for="email">Email</label>
             </div>
-            <div class="form-group">
+
+
+            <div className="form-group">
               <input type="password" id="password" name="password" onChange={this.handleChange}  className="form-control" required></input>
-              <label class="form-control-placeholder" for="password">Password</label>
+              <label className="form-control-placeholder" for="password">Password</label>
             </div>
             <button type="submit">Login</button>
             
