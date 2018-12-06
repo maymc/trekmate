@@ -7,7 +7,7 @@ class Account extends Component {
     return (
       <div className="account">
         <div className="accountbanner">
-
+          
         </div>
         <div className="accountfeed">
         </div>

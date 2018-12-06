@@ -45,14 +45,14 @@ class Register extends Component {
   render() {
     return (
       <div className="register-container">
-        <div className="rmaponegrad">
+        {/* <div className="rmaponegrad">
         </div>
         <div className="rmapone">
         </div>
         <div className="rmaptwograd">
         </div>
         <div className="rmaptwo">
-        </div>
+        </div> */}
         <div className="rmapthreeform">
           <h1>Register</h1>
           <form className="registerform" onSubmit={this.handleRegister}>
@@ -84,8 +84,8 @@ class Register extends Component {
             <a type="button">Cancel</a>
           </Link>
         </div>
-        <div className="rmapthree">
-        </div>
+        {/* <div className="rmapthree">
+        </div> */}
       </div>
     )
   }
