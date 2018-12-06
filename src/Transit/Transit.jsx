@@ -2,35 +2,28 @@ import React, { Component } from 'react';
 
 //------Redux------//
 import { connect } from 'react-redux';
-import { getAllTransits } from '../actions/actions';
+import { getTransit } from '../actions/actions';
 
 class Transit extends Component {
-  constructor(props) {
-    super(props)
 
-    //State is an object, React handles state to do updates
-    this.state = {
-
-    }
-  }
-
-  //Lifecycle Methods
   componentDidMount() {
-    this.props.dispatch(getAllTransits());
+
+    //get transit by transit_id
+    let id = this.props.match.params.id;
+    this.props.dispatch(getTransit(id));
 
   }
 
 
-  //App Component - render html elements
   render() {
-    const transits = this.props.transits;
-    return transits.map(item => {
-      return (
-        <div key={item.id}>
-          <p>{item.type}</p>
-        </div>
-      )
-    })
+    const { transit } = this.props;
+
+    return (
+      <div key={transit.id}>
+        <p>{transit.type}</p>
+      </div>
+    )
+
 
   }
 }
@@ -38,7 +31,7 @@ class Transit extends Component {
 
 const mapStateToProps = state => {
   return {
-    transits: state,
+    transit: state,
   }
 }
 

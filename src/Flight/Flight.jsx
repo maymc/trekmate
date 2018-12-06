@@ -2,44 +2,39 @@ import React, { Component } from 'react';
 
 
 import { connect } from 'react-redux';
-import { getAllFlights } from '../actions/actions';
+import { getFlight } from '../actions/actions';
 
 
 class Flight extends Component {
-  constructor(props) {
-    super(props)
 
-    //State is an object, React handles state to do updates
-    this.state = {
 
-    }
-  }
-
-  //Lifecycle Methods
   componentDidMount() {
-    this.props.dispatch(getAllFlights());
+
+    //get flight by flight_id
+    let id = this.props.match.params.id;
+    this.props.dispatch(getFlight(id));
 
   }
 
   //App Component - render html elements
   render() {
-    const flights = this.props.flights;
-    return flights.map(item => {
-      return (
-        <div key={item.id}>
-          <p>
-            {item.airlines}
-          </p>
-        </div>
-      )
-    })
+    const { flight } = this.props;
+
+    return (
+      <div key={flight.id}>
+        <p>
+          {flight.airlines}
+        </p>
+      </div>
+    )
+
 
   }
 }
 
 const mapStateToProps = state => {
   return {
-    flights: state,
+    flight: state,
   }
 }
 export default connect(mapStateToProps)(Flight);

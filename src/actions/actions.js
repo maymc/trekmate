@@ -6,15 +6,36 @@ export const GET_USER_BY_ID = 'GET_USER_BY_ID';
 export const ADD_USER = 'ADD_USER';
 
 export const GET_ALL_ACCOMMODATIONS = 'GET_ALL_ACCOMMODATIONS';
-export const GET_ALL_TRIPS = 'GET_ALL_TRIPS';
-export const GET_ALL_ACTIVITIES = 'GET_ALL_ACTIVITIES';
-export const GET_ALL_TRANSITS = 'GET_ALL_TRANSITS';
-export const GET_ALL_FLIGHTS = 'GET_ALL_FLIGHTS';
-export const ADD_TRIP = 'ADD_TRIP';
 export const ADD_ACCOMMODATION = 'ADD_ACCOMMODATION';
-export const ADD_FLIGHT = 'ADD_FLIGHT';
+export const GET_ACCOMMODATION_BY_ID = 'GET_ACCOMMODATION_BY_ID';
+// export const GET_ACCOMMODATION_BY_USER_ID = 'GET_ACCOMMODATION_BY_USER_ID';
+// export const GET_ACCOMMODATION_BY_TRIP_ID ='GET_ACCOMMODATION_BY_TRIP_ID';
+
+
+export const GET_ALL_TRIPS = 'GET_ALL_TRIPS';
+export const ADD_TRIP = 'ADD_TRIP';
+export const GET_TRIP_BY_ID = 'GET_TRIP_BY_ID';
+// export const GET_TRIP_BY_USER_ID = 'GET_TRIP_BY_USER_ID';
+
+export const GET_ALL_ACTIVITIES = 'GET_ALL_ACTIVITIES';
 export const ADD_ACTIVITY = 'ADD_ACTIVITY';
+export const GET_ACTIVITY_BY_ID = 'GET_ACTIVITY_BY_ID';
+// export const GET_ACTIVITY_BY_USER_ID = 'GET_ACTIVITY_BY_USER_ID';
+// export const GET_ACTIVITY_BY_TRIP_ID ='GET_ACTIVITY_BY_TRIP_ID';
+
+
+export const GET_ALL_TRANSITS = 'GET_ALL_TRANSITS';
 export const ADD_TRANSIT = 'ADD_TRANSIT';
+export const GET_TRANSIT_BY_ID = 'GET_TRANSIT_BY_ID';
+// export const GET_TRANSIT_BY_USER_ID = 'GET_TRANSIT_BY_USER_ID';
+// export const GET_ACTIVITY_BY_TRIP_ID ='GET_ACTIVITY_BY_TRIP_ID';
+
+
+export const GET_ALL_FLIGHTS = 'GET_ALL_FLIGHTS';
+export const ADD_FLIGHT = 'ADD_FLIGHT';
+export const GET_FLIGHT_BY_ID = 'GET_FLIGHT_BY_ID';
+// export const GET_FLIGHT_BY_USER_ID = 'GET_FLIGHT_BY_USER_ID';
+// export const GET_ACTIVITY_BY_TRIP_ID ='GET_ACTIVITY_BY_TRIP_ID';
 
 
 //---------User Action----------//
@@ -82,6 +103,18 @@ export const getAllAccommodations = () => {
 
 }
 
+export const getAccommodation = (id) => {
+  return dispatch => {
+    axios.get(`/accommodations/${id}`)
+      .then(response => {
+        dispatch({ type: GET_ACCOMMODATION_BY_ID, payload: response.data[0] })
+      })
+      .catch(err => {
+        console.log('error in getting individual accommodation', err)
+      })
+  }
+}
+
 export const addAccommodation = (accommodation) => {
   console.log("\nACTION: addAccommodation:", accommodation)
   return dispatch => {
@@ -121,6 +154,17 @@ export const getAllTrips = () => {
 
 }
 
+export const getTrip = (id) => {
+  return dispatch => {
+    axios.get(`/trips/${id}`)
+      .then(response => {
+        dispatch({ type: GET_TRIP_BY_ID, payload: response.data[0] })
+      })
+      .catch(err => {
+        console.log('error in getting individual trip')
+      })
+  }
+}
 
 export const addTrip = (trip) => {
   console.log("\nACTION: addTrip:", trip)
@@ -161,6 +205,19 @@ export const getAllFlights = () => {
   }
 
 }
+
+export const getFlight = (id) => {
+  return dispatch => {
+    axios.get(`/flights/${id}`)
+      .then(response => {
+        dispatch({ type: GET_FLIGHT_BY_ID, payload: response.data[0] })
+      })
+      .catch(err => {
+        console.log('error in getting individual flight')
+      })
+  }
+}
+
 export const addFlight = (flight) => {
   console.log("\nACTION: addFlight:", flight)
   return dispatch => {
@@ -215,7 +272,17 @@ export const addActivity = (activity) => {
       })
   }
 }
-
+export const getActivity = (id) => {
+  return dispatch => {
+    axios.get(`/activities/${id}`)
+      .then(response => {
+        dispatch({ type: GET_ACTIVITY_BY_ID, payload: response.data[0] })
+      })
+      .catch(err => {
+        console.log('error in getting individual activity')
+      })
+  }
+}
 //---------Transit Action----------//
 export const getAllTransits = () => {
 
@@ -237,6 +304,19 @@ export const getAllTransits = () => {
   }
 
 }
+
+export const getTransit = (id) => {
+  return dispatch => {
+    axios.get(`/transits/${id}`)
+      .then(response => {
+        dispatch({ type: GET_TRANSIT_BY_ID, payload: response.data[0] })
+      })
+      .catch(err => {
+        console.log('error in getting individual transit')
+      })
+  }
+}
+
 export const addTransit = (transit) => {
   console.log("\nACTION: addTransit:", transit)
   return dispatch => {

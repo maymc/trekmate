@@ -2,24 +2,26 @@ import React, { Component } from 'react';
 import './styles.css';
 
 import { connect } from 'react-redux';    //part of Abby's template
-import { getAllTrips } from '../../actions/actions'; //part of Abby's template
+import { getAllTrips, getTrip } from '../../actions/actions'; //part of Abby's template
 
 // import { Collaborators } from '../Trip/collaboratorcomponent'
 
 class Trip extends Component {
 
   componentDidMount() {
-    this.props.dispatch(getAllTrips());   //part of Abby's template
-    let tripId = this.props.match.params.dreams_id;
-    // this.props.dispatch()
-    console.log("props", this.props)
+    // this.props.dispatch(getAllTrips());   //part of Abby's template
+    let tripId = this.props.match.params.id;
+    this.props.dispatch(getTrip(tripId))
   }
 
   render() {
-    const trips = this.props.trips; //part of Abby's template
+    const trip = this.props.trip; //get trip by trip_id 
     return (
       <div className="trip">
         <div className="tripbanner">
+
+          {/* render trip by trip_id */}
+          {trip.city}
 
         </div>
         <div className="tripfeed">
@@ -47,7 +49,7 @@ class Trip extends Component {
 
 const mapStateToProps = state => {
   return {
-    trips: state,
+    trip: state
   }
 }
 

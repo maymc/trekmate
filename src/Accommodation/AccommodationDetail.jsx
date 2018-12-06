@@ -1,33 +1,30 @@
 import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
-import { getAccommodationByUser } from '../actions/actions';
+import { getAccommodation } from '../actions/actions';
 
 
 class AccommodationDetail extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {}
-    }
+
     componentDidMount() {
-
-        let userId = this.props.match.params.id;
-
-        this.props.dispatch(getAccommodationByUser(userId))
+        let id = this.props.match.params.id;
+        this.props.dispatch(getAccommodation(id))
     }
 
     render() {
-        const accommodation = this.props.accommodation; console.log(accommodation);
-        return accommodation.map(item => {
-            return (
-                <div key={item.id}>
-                    <p>{item.lodging_name}</p>
-                </div>
-            )
-        })
-        // return (
-        //     <div></div>
-        // )
+        const { accommodation } = this.props;
+
+        return (
+            <div key={accommodation.id}>
+                <p>{accommodation.lodging_name}</p>
+                <p>{accommodation.address}</p>
+                <p>${accommodation.price}</p>
+                <p>{accommodation.reservation_code}</p>
+            </div>
+
+        )
+
+
 
     }
 }
