@@ -45,11 +45,12 @@ class AccommodationEdit extends Component {
   }
 
   render() {
-    console.log("AccommodationEdit - this.props:", this.props);
-    console.log("AccommodationEdit - id:", this.props.accommodations[this.props.accommodation_id]);
+    // console.log("AccommodationEdit - this.props:", this.props);
+    // console.log("AccommodationEdit - id:", this.props.accommodations[this.props.accommodation_id]);
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
+        <h1>Test</h1>
+        {/* <form onSubmit={this.handleSubmit}>
 
           <label>Lodging</label><br />
           <input onChange={this.handleChange} type='text' name="lodging_name" placeholder={this.props.accommodations[this.props.accommodation_id].lodging_name} />
@@ -86,7 +87,7 @@ class AccommodationEdit extends Component {
 
           <button type="submit">Update Accommodation</button>
 
-        </form>
+        </form> */}
       </div>
     )
   }

@@ -18,7 +18,7 @@ class Accommodation extends Component {
   //Lifecycle Methods
   componentDidMount() {
     console.log('\nAccommodation Component Mounted Successfully!');
-    this.props.dispatch(getAllAccommodations());
+    // this.props.dispatch(getAllAccommodations());
 
   }
 
@@ -39,11 +39,11 @@ class Accommodation extends Component {
 
           <Router>
             <div>
-              <Link to={`/accommodations/edit/${item.id}`}>
+              <Link to="/accommodations/edit/1">
                 <button type='button'>Edit Accommodation</button>
               </Link>
 
-              <Route path={`/accommodations/edit/${item.id}`} component={() => <AccommodationEdit accommodations={this.props.accommodations} accommodation_id={item.id} />} />
+              {/* <Route path={`/accommodations/edit/${item.id}`} component={() => <AccommodationEdit accommodations={this.props.accommodations} accommodation_id={item.id} />} /> */}
             </div>
           </Router>
         </div>
