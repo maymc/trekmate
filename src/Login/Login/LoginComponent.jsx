@@ -60,7 +60,7 @@ class Login extends Component {
               <label class="form-control-placeholder" for="email">Email</label>
             </div>
             <div class="form-group">
-              <input type="text" id="password" name="password" onChange={this.handleChange}  className="form-control" required></input>
+              <input type="password" id="password" name="password" onChange={this.handleChange}  className="form-control" required></input>
               <label class="form-control-placeholder" for="password">Password</label>
             </div>
             <button type="submit">Login</button>
