@@ -4,7 +4,7 @@ import './styles.css';
 
 /// External imports
 import axios from 'axios';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 /// Internal imports
