@@ -4,7 +4,7 @@
     background: #BBE6FD;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: 10% 80% 10%;
+    grid-template-rows: 15% 70% 15%;
     padding: 0 auto;
 
 }
@@ -13,48 +13,100 @@
     grid-row: 2/2;
     z-index: 10;
     height: 100%;
-    transform: skew(0deg, 7.5deg);
+    transform: skew(0deg, 7deg);
     background: rgb(255,255,255);
-    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(0,0,0,0.68) 80%, rgba(0,0,0,0.7) 100%);
+    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(0,0,0,0.48) 80%, rgba(0,0,0,0.5) 100%);
 }
 .mapone {
     grid-column: 2 / 4;
     grid-row: 2/2;
     z-index: 2;
-
-    background-image: url('https://snazzy-maps-cdn.azureedge.net/assets/43848-linnu-kaart.png?v=20170626025958');
+    background-image: url('https://snazzy-maps-cdn.azureedge.net/assets/7-icy-blue.png?v=20170626063457');
     height: 100%;
     transform: skew(0deg, 7deg);
-    /* box-shadow: -5px 0px 10px -5px black; */
+    box-shadow: 0px 0px 40px 10px rgba(0,0,0,0.15);
 }
 
 .maptwograd {
-    grid-column: 4 / 7;
+    grid-column: 4 / 6;
     grid-row: 2/2;
     z-index: 10;
     height: 100%;
-    transform: skew(0deg, -5deg);
+    transform: skew(0deg, -7deg);
     background: rgb(0,0,0);
-    background: linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.65) 20%, rgba(255,255,255,0) 100%);
+    background: linear-gradient(90deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.48) 20%, rgba(255,255,255,0) 100%);
 }
  
 .maptwo {
-    grid-column: 4 / 7;
+    grid-column: 4 / 6;
     grid-row: 2/2;
     z-index: 2;
-    background-image: url('https://snazzy-maps-cdn.azureedge.net/assets/43848-linnu-kaart.png?v=20170626025958');
+    background: #57A4F5;
     height: 100%;
-    transform: skew(0deg, -5deg);
-    /* box-shadow: 6px 0px 10px 0px black; */
+    transform: skew(0deg, -7deg);
+    box-shadow: 8px 0px 40px 10px rgba(0,0,0,0.1);
+}
+
+.mapthree {
+    grid-column: 6 / 12;
+    grid-row: 2/2;
+    z-index: 2;
+    height: 100%;
+    background: white;
+    transform: skew(0deg, 2.5deg);
+    border: 1px solid #f5f5f5;
+    box-shadow: 10px 5px 40px 5px rgba(0,0,0,0.1);
+}
+
+.mapthreeform {
+    grid-column: 6 / 12;
+    grid-row: 2/2;
+    z-index: 10;
+    height: 100%;
+    min-height: 670px;
+    padding: 50px;
+}
+.mapthreeform h1 {
+    color: #57A4F5;
+    width: 100%;
+    text-align: center;
+}
+.mapthreeform button {
+    width: 100%;
+    margin: 0;
+    margin-bottom: 20px;
+}
+.loginform button {
+    margin-top: 10px;
 }
 
 
-.mapthree {
-    grid-column: 7 / 12;
-    grid-row: 2/2;
-    z-index: 3;
-    margin-top: -9px;
-    height: 100%;
-    background: white;
-    /* box-shadow: 0 0 20px rgba(0,0,0,0.55); */
+@media only screen and (max-width: 400px) {
+    .maponegrad, .mapone, .maptwograd, .maptwo {
+        display: none;
+    }
+    .mapthree, .mapthreeform {
+        grid-column: 2 /12;
+    }
+    .mapthree {
+        transform: skew(0deg, 0deg);
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .maponegrad, .mapone {
+        grid-column: 4/6;
+        transform: skew(0deg, 3.5deg);
+    }
+    .maptwograd, .maptwo {
+        grid-column: 6/7;
+
+    }
+    .mapthree, .mapthreeform {
+        grid-column: 7/10;
+
+    }
+    .mapthree {
+        transform: skew(0deg, 2deg);
+    }
 }

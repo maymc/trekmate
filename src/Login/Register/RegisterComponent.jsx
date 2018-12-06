@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import './styles.css';
 
 //Redux Setup
 import { connect } from 'react-redux';
@@ -43,35 +44,48 @@ class Register extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Test</h1>
-        <form onSubmit={this.handleRegister}>
-          <label>First Name</label>
-          <input onChange={this.handleChange} type='text' name="first_name" placeholder="enter first name" />
-          <br /><br />
+      <div className="register-container">
+        <div className="rmaponegrad">
+        </div>
+        <div className="rmapone">
+        </div>
+        <div className="rmaptwograd">
+        </div>
+        <div className="rmaptwo">
+        </div>
+        <div className="rmapthreeform">
+          <h1>Register</h1>
+          <form className="registerform" onSubmit={this.handleRegister}>
+            <div class="form-group">
+              <input type="text" id="firstname" name="first_name" onChange={this.handleChange}  className="form-control" required></input>
+              <label class="form-control-placeholder" for="firstname">First Name</label>
+            </div>
+            <div class="form-group">
+              <input type="text" id="lastname" name="last_name" onChange={this.handleChange}  className="form-control" required></input>
+              <label class="form-control-placeholder" for="lastname">Last Name</label>
+            </div>
+            <div class="form-group">
+              <input type="text" id="email" name="email" onChange={this.handleChange}  className="form-control" required></input>
+              <label class="form-control-placeholder" for="email">Email</label>
+            </div>
+            <div class="form-group">
+              <input type="password" id="password" name="password" onChange={this.handleChange}  className="form-control" required></input>
+              <label class="form-control-placeholder" for="password">Password</label>
+            </div>
+            <div class="form-group">
+              <input type="password" id="confirmpassword" name="confirmpassword" onChange={this.handleChange}  className="form-control" required></input>
+              <label class="form-control-placeholder" for="confirmpassword">Confirm Password</label>
+            </div>
 
-          <label>Last Name</label>
-          <input onChange={this.handleChange} type='text' name="last_name" placeholder="enter last name" />
-          <br /><br />
-
-          <label>Email</label>
-          <input onChange={this.handleChange} type='text' name="email" placeholder="enter email" />
-          <br /><br />
-
-          <label>Password</label>
-          <input onChange={this.handleChange} type='password' name="password" placeholder="enter password" />
-          <br /><br />
-
-          {/* <label>Confirm Password</label>
-          <input onChange={this.handleChange} type='password' name="confirmPassword" placeholder="confirm password" />
-          <br /><br /> */}
-
-          <button type="submit">Register</button>
-
-        </form>
-        <Link to="/login">
-          <button type="button">Cancel</button>
-        </Link>
+            <button type="submit">Register</button>
+            
+          </form>
+          <Link to="/login">
+            <a type="button">Cancel</a>
+          </Link>
+        </div>
+        <div className="rmapthree">
+        </div>
       </div>
     )
   }
