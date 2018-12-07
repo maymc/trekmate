@@ -14,17 +14,6 @@ exports.up = function (knex, Promise) {
     table.string('image', 1000).notNullable();
     table.timestamp('created_at').defaultTo(knex.fn.now());
     table.timestamp('updated_at').defaultTo(knex.fn.now());
-    // table.integer('user_id')
-    //   .references('id')
-    //   .inTable('users')
-    //   .onDelete('CASCADE')
-    //   .onUpdate('CASCADE');
-
-    // table.integer('trip_id')
-    //   .references('id')
-    //   .inTable('trips')
-    //   .onDelete('CASCADE')
-    //   .onUpdate('CASCADE');
 
     //Create the column then add foreign key
     table.integer('user_id').unsigned().notNullable();
