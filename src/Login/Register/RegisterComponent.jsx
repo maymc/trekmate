@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './styles.css';
 
 //Redux Setup
@@ -57,31 +57,31 @@ class Register extends Component {
           <h1>Register</h1>
           <form className="registerform" onSubmit={this.handleRegister}>
             <div class="form-group">
-              <input type="text" id="firstname" name="first_name" onChange={this.handleChange}  className="form-control" required></input>
+              <input type="text" id="firstname" name="first_name" onChange={this.handleChange} className="form-control" required></input>
               <label class="form-control-placeholder" for="firstname">First Name</label>
             </div>
             <div class="form-group">
-              <input type="text" id="lastname" name="last_name" onChange={this.handleChange}  className="form-control" required></input>
+              <input type="text" id="lastname" name="last_name" onChange={this.handleChange} className="form-control" required></input>
               <label class="form-control-placeholder" for="lastname">Last Name</label>
             </div>
             <div class="form-group">
-              <input type="text" id="email" name="email" onChange={this.handleChange}  className="form-control" required></input>
+              <input type="text" id="email" name="email" onChange={this.handleChange} className="form-control" required></input>
               <label class="form-control-placeholder" for="email">Email</label>
             </div>
             <div class="form-group">
-              <input type="password" id="password" name="password" onChange={this.handleChange}  className="form-control" required></input>
+              <input type="password" id="password" name="password" onChange={this.handleChange} className="form-control" required></input>
               <label class="form-control-placeholder" for="password">Password</label>
             </div>
             <div class="form-group">
-              <input type="password" id="confirmpassword" name="confirmpassword" onChange={this.handleChange}  className="form-control" required></input>
+              <input type="password" id="confirmpassword" name="confirmpassword" onChange={this.handleChange} className="form-control" required></input>
               <label class="form-control-placeholder" for="confirmpassword">Confirm Password</label>
             </div>
 
             <button type="submit">Register</button>
-            
+
           </form>
           <Link to="/login">
-            <a type="button">Cancel</a>
+            <button type="button">Cancel</button>
           </Link>
         </div>
         <div className="rmapthree">

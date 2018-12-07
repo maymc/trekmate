@@ -16,7 +16,21 @@ flightRouter.get('/', (req, res) => {
             res.json("GET - getting flight list error", err);
         })
 })
+//GET flights by id
+flightRouter.get('/:id', (req, res) => {
+    const { id } = req.params;
 
+    Flights
+        .where({ id })
+        .fetchAll()
+        .then((flight) => {
+            res.json(flight.serialize())
+        })
+        .catch(err => {
+            console.log("\nGET - getting flight by id error", err);
+            res.json("GET - getting flight by id error", err);
+        })
+})
 //GET flights by user_id
 flightRouter.get('/user/:user_id', (req, res) => {
     const { user_id } = req.params;
