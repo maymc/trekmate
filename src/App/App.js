@@ -91,7 +91,7 @@ class App extends Component {
             {/* Accommodation Routes */}
             {/* <Route path={`/accommodations/edit/1`} component={() => <AccommodationEdit accommodations={this.props.accommodations} />} /> */}
 
-            <Route path='/accommodations/edit/1' component={AccommodationEdit} />
+            <Route path='/accommodations/edit/:id' component={AccommodationEdit} />
             <Route path='/accommodations/add' component={AccommodationAdd} />
             <Route path='/accommodations' component={Accommodation} />
 

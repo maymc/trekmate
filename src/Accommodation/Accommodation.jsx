@@ -37,15 +37,13 @@ class Accommodation extends Component {
           <p>{item.notes}</p>
           <p>{item.reservation_code}</p>
 
-          <Router>
-            <div>
-              <Link to="/accommodations/edit/1">
-                <button type='button'>Edit Accommodation</button>
-              </Link>
+          <div>
+            <Link to={`/accommodations/edit/${item.id}`}>
+              <button type='button'>Edit Accommodation</button>
+            </Link>
 
-              {/* <Route path={`/accommodations/edit/${item.id}`} component={() => <AccommodationEdit accommodations={this.props.accommodations} accommodation_id={item.id} />} /> */}
-            </div>
-          </Router>
+            {/* <Route path={`/accommodations/edit/${item.id}`} component={() => <AccommodationEdit accommodations={this.props.accommodations} accommodation_id={item.id} />} /> */}
+          </div>
         </div>
       )
     })

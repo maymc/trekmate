@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 //Import actions
+import { getAllAccommodations } from '../actions/actions';
 import { editAccommodation } from '../actions/actions';
 
 class AccommodationEdit extends Component {
@@ -11,7 +12,7 @@ class AccommodationEdit extends Component {
     super(props)
 
     this.state = {
-      id: props.id,
+      // id: props.id,
       lodging_name: props.lodging_name,
       address: props.address,
       check_in_date: props.check_in_date,
@@ -30,7 +31,7 @@ class AccommodationEdit extends Component {
     e.preventDefault();
     const { name, value } = e.target;
     this.setState({
-      id: this.props.accommodations.id,
+      // id: this.props.accommodations.id,
       [name]: value
     })
   }
@@ -38,26 +39,28 @@ class AccommodationEdit extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     console.log("\nhandleSubmit - AccommodationEdit - this.props:", this.props);
-    console.log("Updated id:", this.props.accommodations.id);
+    // console.log("Updated id:", this.props.accommodations.id);
     console.log("Updated this.state:", this.state);
-    console.log("\nAccommodation has been updated.", this.state, this.props.accommodations.id);
-    this.props.dispatch(editAccommodation(this.state, this.props.accommodations.id));
+    // console.log("\nAccommodation has been updated.", this.state, this.props.accommodations.id);
+
+    // this.props.dispatch(getAllAccommodations());
+    this.props.dispatch(editAccommodation(this.state));
   }
 
   render() {
-    // console.log("AccommodationEdit - this.props:", this.props);
+    console.log("AccommodationEdit - this.props:", this.props);
     // console.log("AccommodationEdit - id:", this.props.accommodations[this.props.accommodation_id]);
     return (
       <div>
-        <h1>Test</h1>
-        {/* <form onSubmit={this.handleSubmit}>
+        {/* <h1>Test</h1> */}
+        <form onSubmit={this.handleSubmit}>
 
           <label>Lodging</label><br />
-          <input onChange={this.handleChange} type='text' name="lodging_name" placeholder={this.props.accommodations[this.props.accommodation_id].lodging_name} />
+          <input onChange={this.handleChange} type='text' name="lodging_name" />
           <br /><br />
 
           <label>Address</label><br />
-          <input onChange={this.handleChange} type='text' name="address" placeholder={this.props.accommodations[this.props.accommodation_id].address} />
+          <input onChange={this.handleChange} type='text' name="address" />
           <br /><br />
 
           <label>Check In</label><br />
@@ -69,7 +72,7 @@ class AccommodationEdit extends Component {
           <br /><br />
 
           <label>Price</label><br />
-          <input onChange={this.handleChange} type='number' name="price" placeholder={this.props.accommodations[this.props.accommodation_id].price} />
+          <input onChange={this.handleChange} type='number' name="price" />
           <br /><br />
 
           <label>Pay Status</label><br />
@@ -78,16 +81,16 @@ class AccommodationEdit extends Component {
           <br /><br />
 
           <label>Reservation Code</label><br />
-          <input onChange={this.handleChange} type='text' name="reservation_code" placeholder={this.props.accommodations[this.props.accommodation_id].reservation_code} />
+          <input onChange={this.handleChange} type='text' name="reservation_code" />
           <br /><br />
 
           <label>Notes</label><br />
-          <input onChange={this.handleChange} type='text' name="notes" placeholder={this.props.accommodations[this.props.accommodation_id].notes} />
+          <input onChange={this.handleChange} type='text' name="notes" />
           <br /><br />
 
           <button type="submit">Update Accommodation</button>
 
-        </form> */}
+        </form>
       </div>
     )
   }
