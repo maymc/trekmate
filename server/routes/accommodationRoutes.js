@@ -7,6 +7,8 @@ const Accommodations = require('../db/models/Accommodations.js');
 //GET all accommodations in database
 accommodationRouter.get('/', (req, res) => {
     Accommodations
+        .forge()
+        .orderBy('id', 'ASC')
         .fetchAll()
         .then(accommodationsList => {
             res.json(accommodationsList.serialize())

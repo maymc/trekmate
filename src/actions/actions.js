@@ -1,29 +1,35 @@
 import axios from 'axios';
 
 //Storing constant data
+
+//~~~~~Users~~~~//
 export const GET_ALL_USERS = 'GET_ALL_USERS';
 export const GET_USER_BY_ID = 'GET_USER_BY_ID';
 export const ADD_USER = 'ADD_USER';
 
+//~~~~~Accommodations~~~~//
 export const GET_ALL_ACCOMMODATIONS = 'GET_ALL_ACCOMMODATIONS';
-export const ADD_ACCOMMODATION = 'ADD_ACCOMMODATION';
 export const GET_ACCOMMODATION_BY_ID = 'GET_ACCOMMODATION_BY_ID';
-// export const GET_ACCOMMODATION_BY_USER_ID = 'GET_ACCOMMODATION_BY_USER_ID';
 export const GET_ACCOMMODATION_BY_TRIP_ID = 'GET_ACCOMMODATION_BY_TRIP_ID';
+// export const GET_ACCOMMODATION_BY_USER_ID = 'GET_ACCOMMODATION_BY_USER_ID';
+export const ADD_ACCOMMODATION = 'ADD_ACCOMMODATION';
 export const EDIT_ACCOMMODATION = 'EDIT_ACCOMMODATION';
 
+
+//~~~~~Trips~~~~//
 export const GET_ALL_TRIPS = 'GET_ALL_TRIPS';
 export const ADD_TRIP = 'ADD_TRIP';
 export const GET_TRIP_BY_ID = 'GET_TRIP_BY_ID';
 // export const GET_TRIP_BY_USER_ID = 'GET_TRIP_BY_USER_ID';
 
+//~~~~~Activities~~~~//
 export const GET_ALL_ACTIVITIES = 'GET_ALL_ACTIVITIES';
 export const ADD_ACTIVITY = 'ADD_ACTIVITY';
 export const GET_ACTIVITY_BY_ID = 'GET_ACTIVITY_BY_ID';
 // export const GET_ACTIVITY_BY_USER_ID = 'GET_ACTIVITY_BY_USER_ID';
 export const GET_ACTIVITY_BY_TRIP_ID = 'GET_ACTIVITY_BY_TRIP_ID';
 
-
+//~~~~~Transit~~~~//
 export const GET_ALL_TRANSITS = 'GET_ALL_TRANSITS';
 export const ADD_TRANSIT = 'ADD_TRANSIT';
 export const GET_TRANSIT_BY_ID = 'GET_TRANSIT_BY_ID';
@@ -102,7 +108,6 @@ export const getAllAccommodations = () => {
         })
       })
   }
-
 }
 
 export const getAccommodation = (id) => {

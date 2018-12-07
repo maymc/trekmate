@@ -27,8 +27,10 @@ class AccommodationEdit extends Component {
 
   //Lifecycle Methods
   componentDidMount() {
+
+    //This id comes from the url
     const accommodationId = this.props.match.params.id;
-    console.log("accommodationId:", accommodationId);
+    console.log("Updating accommodationId:", accommodationId);
 
     this.props.dispatch(getAccommodation(accommodationId));
   }
@@ -48,12 +50,15 @@ class AccommodationEdit extends Component {
     e.preventDefault();
     console.log("\nhandleSubmit - AccommodationEdit - this.props:", this.props);
     console.log("Updated to this.state:", this.state);
+
     this.props.dispatch(editAccommodation(this.state, 1));
+
+    //Redirect to accommodations page
+    this.props.history.push(`/accommodations`);
   }
 
   render() {
-    console.log("AccommodationEdit - this.props:", this.props);
-    console.log("this.state.lodgingname", this.state.lodging_name);
+    console.log("AccommodationEdit - render - this.props:", this.props);
 
     return (
       <div>

@@ -44,8 +44,6 @@ import Trip from '../Trip/Trip/TripComponent';
 import CreateTrip from '../Trip/CreateTrip/CreateTripComponent';
 import EditTrip from '../Trip/EditTrip/EditTrip';
 
-//Import actions
-
 class App extends Component {
   constructor(props) {
     super(props)
@@ -76,14 +74,14 @@ class App extends Component {
 
             {/* Trip Routes */}
             {/* <Route exact path='/trips' component={Trip} /> */}
-            <Route path='/trips/add' component={CreateTrip} />
             <Route path='/trip/edit/:id' component={EditTrip} />
             <Route path='/trip/:id' component={Trip} />
+            <Route path='/trips/add' component={CreateTrip} />
 
             {/* Accommodation Routes */}
             <Route path='/accommodations/edit/:id' component={AccommodationEdit} />
-            <Route path='/accommodations/add' component={AccommodationAdd} />
             <Route path='/accommodation/:id' component={AccommodationDetail} />
+            <Route path='/accommodations/add' component={AccommodationAdd} />
             <Route path='/accommodations' component={Accommodation} />
 
 
@@ -93,8 +91,8 @@ class App extends Component {
 
             {/* Activity Routes */}
             {/* <Route exact path='/activities' component={Activity} /> */}
-            <Route path='/activities/add' component={ActivityAdd} />
             <Route exact path='/activity/:id' component={Activity} />
+            <Route path='/activities/add' component={ActivityAdd} />
 
             {/* Transit Routes */}
             <Route path='/transit/:id' component={Transit} />
