@@ -14,7 +14,7 @@ exports.seed = function (knex, Promise) {
           address: "581 Jay Avenue",
           user_id: 2,
           trip_id: 3,
-          is_paid: true,
+          is_paid: "Yes",
           notes: "Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis."
         }, {
           lodging_name: "Langham Hotel",
@@ -25,7 +25,7 @@ exports.seed = function (knex, Promise) {
           address: "24854 Saint Paul Terrace",
           user_id: 1,
           trip_id: 4,
-          is_paid: false,
+          is_paid: "No",
           notes: "Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius."
         }, {
           lodging_name: "Four Seasons Gresham Palace",
@@ -36,7 +36,7 @@ exports.seed = function (knex, Promise) {
           address: "92552 Forest Point",
           user_id: 1,
           trip_id: 3,
-          is_paid: false,
+          is_paid: "No",
           notes: "Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.\n\nPellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.\n\nCum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
         }, {
           lodging_name: "Hotel de Crillon",
@@ -47,7 +47,7 @@ exports.seed = function (knex, Promise) {
           address: "672 Crescent Oaks Circle",
           user_id: 1,
           trip_id: 3,
-          is_paid: false,
+          is_paid: "No",
           notes: "Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum."
         }, {
           lodging_name: "Hotel Amigo",
@@ -58,7 +58,7 @@ exports.seed = function (knex, Promise) {
           address: "182 2nd Parkway",
           user_id: 1,
           trip_id: 2,
-          is_paid: false,
+          is_paid: "No",
           notes: "Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.\n\nPhasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum."
         }, {
           lodging_name: "Hotel Amigo",
@@ -69,7 +69,7 @@ exports.seed = function (knex, Promise) {
           address: "56568 Summer Ridge Street",
           user_id: 1,
           trip_id: 2,
-          is_paid: true,
+          is_paid: "Yes",
           notes: "Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.\n\nMaecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.\n\nNullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris."
         }, {
           lodging_name: "Hotel de Crillon",
@@ -80,7 +80,7 @@ exports.seed = function (knex, Promise) {
           address: "85539 Saint Paul Alley",
           user_id: 4,
           trip_id: 2,
-          is_paid: false,
+          is_paid: "No",
           notes: "In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.\n\nAliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis."
         }, {
           lodging_name: "Soho House Berlin",
@@ -91,7 +91,7 @@ exports.seed = function (knex, Promise) {
           address: "9058 Dapin Junction",
           user_id: 2,
           trip_id: 2,
-          is_paid: true,
+          is_paid: "Yes",
           notes: "Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis."
         }, {
           lodging_name: "Langham Hotel",
@@ -102,7 +102,7 @@ exports.seed = function (knex, Promise) {
           address: "775 Kennedy Plaza",
           user_id: 3,
           trip_id: 3,
-          is_paid: false,
+          is_paid: "No",
           notes: "Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis."
         }, {
           lodging_name: "Four Seasons Gresham Palace",
@@ -113,7 +113,7 @@ exports.seed = function (knex, Promise) {
           address: "5 Milwaukee Drive",
           user_id: 1,
           trip_id: 4,
-          is_paid: true,
+          is_paid: "Yes",
           notes: "Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis."
         }, {
           lodging_name: "Mandarin Oriental",
@@ -124,7 +124,7 @@ exports.seed = function (knex, Promise) {
           address: "00011 Haas Way",
           user_id: 1,
           trip_id: 2,
-          is_paid: false,
+          is_paid: "No",
           notes: "Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.\n\nCurabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam."
         }, {
           lodging_name: "Hotel Amigo",
@@ -135,7 +135,7 @@ exports.seed = function (knex, Promise) {
           address: "4 Loeprich Lane",
           user_id: 1,
           trip_id: 2,
-          is_paid: false,
+          is_paid: "No",
           notes: "In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.\n\nAliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis."
         }, {
           lodging_name: "Langham Hotel",
@@ -146,7 +146,7 @@ exports.seed = function (knex, Promise) {
           address: "97 Dunning Center",
           user_id: 3,
           trip_id: 4,
-          is_paid: true,
+          is_paid: "Yes",
           notes: "Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem."
         }, {
           lodging_name: "Le Sirenuse",
@@ -157,7 +157,7 @@ exports.seed = function (knex, Promise) {
           address: "3256 Victoria Center",
           user_id: 2,
           trip_id: 3,
-          is_paid: false,
+          is_paid: "No",
           notes: "Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem."
         }, {
           lodging_name: "Le Sirenuse",
@@ -168,7 +168,7 @@ exports.seed = function (knex, Promise) {
           address: "5 Waxwing Park",
           user_id: 3,
           trip_id: 3,
-          is_paid: false,
+          is_paid: "No",
           notes: "Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est.\n\nPhasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.\n\nProin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem."
         }, {
           lodging_name: "Four Seasons Gresham Palace",
@@ -179,7 +179,7 @@ exports.seed = function (knex, Promise) {
           address: "5201 Mallory Park",
           user_id: 3,
           trip_id: 3,
-          is_paid: true,
+          is_paid: "Yes",
           notes: "Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi."
         }, {
           lodging_name: "Four Seasons Gresham Palace",
@@ -190,7 +190,7 @@ exports.seed = function (knex, Promise) {
           address: "10 Grasskamp Trail",
           user_id: 3,
           trip_id: 1,
-          is_paid: true,
+          is_paid: "Yes",
           notes: "Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.\n\nIn hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo."
         }, {
           lodging_name: "Soho House Berlin",
@@ -201,7 +201,7 @@ exports.seed = function (knex, Promise) {
           address: "8 Continental Avenue",
           user_id: 2,
           trip_id: 3,
-          is_paid: false,
+          is_paid: "No",
           notes: "Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.\n\nInteger ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.\n\nNam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus."
         }, {
           lodging_name: "Trump International Hotel & Tower",
@@ -212,7 +212,7 @@ exports.seed = function (knex, Promise) {
           address: "532 Pepper Wood Lane",
           user_id: 3,
           trip_id: 2,
-          is_paid: false,
+          is_paid: "No",
           notes: "Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.\n\nNullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris."
         }, {
           lodging_name: "Mandarin Oriental",
@@ -223,7 +223,7 @@ exports.seed = function (knex, Promise) {
           address: "29598 Express Point",
           user_id: 4,
           trip_id: 1,
-          is_paid: false,
+          is_paid: "No",
           notes: "Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.\n\nIn quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.\n\nMaecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui."
         }
       ]);

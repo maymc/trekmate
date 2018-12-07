@@ -48,36 +48,37 @@ class AccommodationAdd extends Component {
       <div>
         <form onSubmit={this.handleSubmit}>
 
-          <label>Lodging</label>
-          <input onChange={this.handleChange} type='text' name="lodging_name" placeholder="enter name of lodging" />
+          <label>Lodging</label><br />
+          <input onChange={this.handleChange} type='text' name="lodging_name" placeholder="enter lodging name..." />
           <br /><br />
 
-          <label>Address</label>
-          <input onChange={this.handleChange} type='text' name="address" placeholder="enter address of lodging" />
+          <label>Address</label><br />
+          <input onChange={this.handleChange} type='text' name="address" placeholder="enter lodging address..." />
           <br /><br />
 
-          <label>Check In</label>
-          <input onChange={this.handleChange} type='text' name="check_in_date" placeholder="enter check in date" />
+          <label>Check In</label><br />
+          <input onChange={this.handleChange} type='date' name="check_in_date" />
           <br /><br />
 
-          <label>Check Out</label>
-          <input onChange={this.handleChange} type='text' name="check_out_date" placeholder="enter check out date" />
+          <label>Check Out</label><br />
+          <input onChange={this.handleChange} type='date' name="check_out_date" />
           <br /><br />
 
-          <label>Price</label>
-          <input onChange={this.handleChange} type='number' name="price" placeholder="enter price of lodging" />
+          <label>Price</label><br />
+          <input onChange={this.handleChange} type='number' name="price" placeholder="$" />
           <br /><br />
 
-          <label>Pay Status</label>
-          <input onChange={this.handleChange} type='text' name="is_paid" placeholder="have you paid for this lodging?" />
+          <label>Pay Status</label><br />
+          <input onChange={this.handleChange} type="radio" name="is_paid" value="Yes" />Paid<br />
+          <input onChange={this.handleChange} type="radio" name="is_paid" value="No" />Not Paid
           <br /><br />
 
-          <label>Reservation Code</label>
-          <input onChange={this.handleChange} type='text' name="reservation_code" placeholder="enter reservation code" />
+          <label>Reservation Code</label><br />
+          <input onChange={this.handleChange} type='text' name="reservation_code" placeholder="enter your reservation code..." />
           <br /><br />
 
-          <label>Notes</label>
-          <input onChange={this.handleChange} type='text' name="notes" placeholder="enter any notes" />
+          <label>Notes</label><br />
+          <input onChange={this.handleChange} type='text' name="notes" />
           <br /><br />
 
           <button type="submit">Add Accommodation</button>
