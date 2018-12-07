@@ -231,8 +231,6 @@ export const getAllFlights = () => {
   }
 }
 
-<<<<<<< HEAD
-=======
 export const getFlight = (id) => {
   return dispatch => {
     axios.get(`/flights/${id}`)
@@ -257,7 +255,6 @@ export const getFlightByTrip = (id) => {
       })
   }
 }
->>>>>>> development
 export const addFlight = (flight) => {
   console.log("\nACTION: addFlight:", flight)
   return dispatch => {
