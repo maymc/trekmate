@@ -1,41 +1,35 @@
 import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
-import { getAllActivities } from '../actions/actions';
+import { getActivity } from '../actions/actions';
 
 
 class Activity extends Component {
-  constructor(props) {
-    super(props)
 
-    //State is an object, React handles state to do updates
-    this.state = {
-
-    }
-  }
-
-  //Lifecycle Methods
   componentDidMount() {
-    this.props.dispatch(getAllActivities());
+
+    //get activity by activity_id
+    let id = this.props.match.params.id;
+    this.props.dispatch(getActivity(id));
   }
 
   //App Component - render html elements
   render() {
-    const activities = this.props.activities;
-    return activities.map(item => {
-      return (
-        <div key={item.id}>
-          <p>{item.activity_name}</p>
-        </div>
-      )
-    })
+    const { activity } = this.props;
+
+    return (
+      <div key={activity.id}>
+        <p>{activity.activity_name}</p>
+      </div>
+    )
+
 
   }
 }
 
 const mapStateToProps = state => {
   return {
-    activities: state,
+    activity: state,
   }
 }
 

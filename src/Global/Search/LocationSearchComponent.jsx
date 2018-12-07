@@ -21,7 +21,7 @@ class LocationSearch extends Component {
                         placeholder: 'Where should we go?',
                         className: 'locationsearch',
                     })}></input>
-                    <a href="" className="search-btn"><i class="fa fa-search"></i></a>
+                    <a href="" className="search-btn"><i className="fa fa-search"></i></a>
 
                     <div className='autocomplete-dropdown-container'>{loading && <div>Loading...</div>}
                         {suggestions.map(suggestion => {

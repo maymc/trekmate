@@ -26,6 +26,7 @@ import EditPassword from '../Account/EditPassword/EditPasswordComponent';
 import AccommodationAdd from '../Accommodation/AccommodationAdd';
 import Accommodation from '../Accommodation/Accommodation';
 import AccommodationEdit from '../Accommodation/AccommodationEdit';
+import AccommodationDetail from '../Accommodation/AccommodationDetail';
 
 //~~~ Flights JSX files ~~~~//
 import Flight from '../Flight/Flight';
@@ -59,7 +60,7 @@ class App extends Component {
   //Lifecycle Methods
   componentDidMount() {
     console.log("\nApp Mounting...:", this.props);
-    this.props.dispatch(getAllAccommodations());
+    // this.props.dispatch(getAllAccommodations());
   }
 
   //App Component - render html elements
@@ -75,7 +76,7 @@ class App extends Component {
             <Route exact path='/' component={Home} />
             <Route path='/login/forgotPassword' component={ForgotPassword} />
             <Route path='/login/register' component={Register} />
-            <Route path='/login' component={Login} />
+            <Route exact path='/login' component={Login} />
 
             {/* User account Routes */}
             <Route path='/account/edit_password/:id' component={EditPassword} />
@@ -83,29 +84,36 @@ class App extends Component {
             <Route path='/account/:id' component={Account} />
 
             {/* Trip Routes */}
-            <Route path='/trips' component={Trip} />
+            {/* <Route exact path='/trips' component={Trip} /> */}
             <Route path='/trips/add' component={CreateTrip} />
             <Route path='/trip/edit/:id' component={EditTrip} />
             <Route path='/trip/:id' component={Trip} />
 
             {/* Accommodation Routes */}
+<<<<<<< HEAD
             {/* <Route path={`/accommodations/edit/1`} component={() => <AccommodationEdit accommodations={this.props.accommodations} />} /> */}
 
             <Route path='/accommodations/edit/:id' component={AccommodationEdit} />
             <Route path='/accommodations/add' component={AccommodationAdd} />
             <Route path='/accommodations' component={Accommodation} />
+=======
+            <Route exact path='/accommodations' component={Accommodation} />
+            <Route path='/accommodations/add' component={AccommodationAdd} />
+            <Route path='/accommodation/:id' component={AccommodationDetail} />
+>>>>>>> development
 
 
             {/* Flight Routes */}
-            <Route path='/flights' component={Flight} />
+            <Route exact path='/flight/:id' component={Flight} />
             <Route path='/flights/add' component={FlightAdd} />
 
             {/* Activity Routes */}
-            <Route path='/activities' component={Activity} />
+            {/* <Route exact path='/activities' component={Activity} /> */}
             <Route path='/activities/add' component={ActivityAdd} />
+            <Route exact path='/activity/:id' component={Activity} />
 
             {/* Transit Routes */}
-            <Route path='/transits' component={Transit} />
+            <Route path='/transit/:id' component={Transit} />
             <Route path='/transit/add' component={TransitAdd} />
 
           </Switch>
