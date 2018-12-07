@@ -11,6 +11,10 @@ import {
   GET_ACTIVITY_BY_ID,
   GET_TRANSIT_BY_ID,
   GET_FLIGHT_BY_ID,
+  GET_ACCOMMODATION_BY_TRIP_ID,
+  GET_ACTIVITY_BY_TRIP_ID,
+  GET_TRANSIT_BY_TRIP_ID,
+  GET_FLIGHT_BY_TRIP_ID,
   ADD_USER,
   ADD_TRIP,
   ADD_ACCOMMODATION,
@@ -44,6 +48,8 @@ const reducer = (state = [], action) => {
       return { ...state, form: action.payload }
     case GET_ACCOMMODATION_BY_ID:
       return action.payload
+    case GET_ACCOMMODATION_BY_TRIP_ID:
+      return { ...state, accommodation: action.payload }
 
     //-------Trip------------//
     case GET_ALL_TRIPS:
@@ -51,7 +57,7 @@ const reducer = (state = [], action) => {
     case ADD_TRIP:
       return { ...state, form: action.payload }
     case GET_TRIP_BY_ID:
-      return action.payload
+      return { ...state, trip: action.payload }
 
     //-------Activity---------//
     case GET_ALL_ACTIVITIES:
@@ -60,6 +66,8 @@ const reducer = (state = [], action) => {
       return { ...state, form: action.payload }
     case GET_ACTIVITY_BY_ID:
       return action.payload
+    case GET_ACTIVITY_BY_TRIP_ID:
+      return { ...state, activity: action.payload }
 
     //-------Flight---------//
     case GET_ALL_FLIGHTS:
@@ -68,6 +76,8 @@ const reducer = (state = [], action) => {
       return { ...state, form: action.payload }
     case GET_FLIGHT_BY_ID:
       return action.payload
+    case GET_FLIGHT_BY_TRIP_ID:
+      return { ...state, flight: action.payload }
 
     //-------Transit --------//
     case GET_ALL_TRANSITS:
@@ -76,6 +86,8 @@ const reducer = (state = [], action) => {
       return { ...state, form: action.payload }
     case GET_TRANSIT_BY_ID:
       return action.payload
+    case GET_TRANSIT_BY_TRIP_ID:
+      return { ...state, transit: action.payload }
 
     default:
       //default is to return original state to do nothing 
