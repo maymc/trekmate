@@ -16,7 +16,21 @@ activityRouter.get('/', (req, res) => {
             res.json("GET - getting activity list error", err);
         })
 })
+//GET an activity by id
+activityRouter.get('/:id', (req, res) => {
+    const { id } = req.params;
 
+    Activities
+        .where({ id })
+        .fetchAll()
+        .then((activity) => {
+            res.json(activity.serialize())
+        })
+        .catch(err => {
+            console.log("\nGET - getting activity by id error", err);
+            res.json("GET - getting activity by id error", err);
+        })
+})
 //GET an activity by user_id
 activityRouter.get('/user/:user_id', (req, res) => {
     const { user_id } = req.params;
