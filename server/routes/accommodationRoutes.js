@@ -96,10 +96,9 @@ accommodationRouter.post('/add', (req, res) => {
 
 //PUT - edit accommodation by accommodation id
 accommodationRouter.put('/edit/:id', (req, res) => {
-    console.log("\nEDIT - accommodation req.params:", req.params);
-    console.log("\nEDIT - accommodation req.body:", req.body);
-
+    console.log("IM HEREEEE:");
     const { id } = req.params;
+    console.log("id here??:", id);
 
     const updatedAccommodation = {
         lodging_name: req.body.lodging_name,
@@ -113,6 +112,7 @@ accommodationRouter.put('/edit/:id', (req, res) => {
         user_id: req.body.user_id,
         trip_id: req.body.trip_id
     }
+    console.log("updatedAccommodation??", updatedAccommodation);
 
     Accommodations
         .where({ id })

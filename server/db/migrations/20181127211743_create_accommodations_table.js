@@ -6,7 +6,7 @@ exports.up = function (knex, Promise) {
     table.string('address', 100).notNullable();
     table.string('check_in_date', 30).notNullable();
     table.string('check_out_date', 30).notNullable();
-    table.decimal('price', 100).notNullable().defaultTo(0.00);
+    table.string('price', 100).notNullable();
     table.string('is_paid').notNullable();
     table.string('reservation_code', 50).notNullable();
     table.string('notes', 1000).notNullable();

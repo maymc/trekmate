@@ -146,10 +146,12 @@ export const addAccommodation = (accommodation) => {
   }
 }
 
-export const editAccommodation = (accommodation) => {
-  console.log("\nACTION: editAccommodation:", accommodation)
+export const editAccommodation = (accommodations) => {
+  const { id } = accommodations;
+  console.log("\nACTION: editAccommodation:", accommodations)
+  console.log("what is id????", id);
   return dispatch => {
-    axios.put("accommodations/edit/:id", accommodation)
+    axios.put(`/accommodations/edit/${id}`, accommodations)
       .then(responseFromDB => {
         console.log("\nCheck - responseFromDB:", responseFromDB.data)
         dispatch({ type: EDIT_ACCOMMODATION, payload: responseFromDB.data });
