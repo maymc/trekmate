@@ -25,6 +25,26 @@ class AccommodationEdit extends Component {
     }
   }
 
+  // //This will set state from props everytime props changes
+  // static getDerivedStateFromProps(nextProps, prevState) {
+  //   if (nextProps.detailedDraftPost !== prevState.detailedDraftPost) {
+  //     return {
+  //       original: {
+  //         id: nextProps.accommodationById.id,
+  //         lodging_name: nextProps.accommodationById.lodging_name,
+  //         address: nextProps.accommodationById.address,
+  //         check_in_date: nextProps.accommodationById.check_in_date,
+  //         check_out_date: nextProps.accommodationById.check_out_date,
+  //         price: nextProps.accommodationById.price,
+  //         is_paid: nextProps.accommodationById.is_paid,
+  //         reservation_code: nextProps.accommodationById.reservation_code,
+  //         notes: nextProps.accommodationById.notes,
+  //       }
+  //     };
+  //   }
+  //   else return null;
+  // }
+
   //Lifecycle Methods
   componentDidMount() {
 
