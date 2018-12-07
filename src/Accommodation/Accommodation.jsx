@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
-import AccommodationEdit from '../Accommodation/AccommodationEdit';
-
 //------Redux------//
 import { connect } from 'react-redux';
 import { getAllAccommodations } from '../actions/actions';
@@ -18,31 +16,27 @@ class Accommodation extends Component {
   //Lifecycle Methods
   componentDidMount() {
     console.log('\nAccommodation Component Mounted Successfully!');
-    // this.props.dispatch(getAllAccommodations());
-
+    this.props.dispatch(getAllAccommodations());
   }
 
   //App Component - render html elements
   render() {
-    const accommodations = this.props.accommodations;
-    console.log('\nAccommodations prop:', accommodations)
-    return accommodations.map(item => {
+    console.log('\nAccommodations.jsx - props:', this.props.accommodations)
+    return this.props.accommodations.map(singleAccommodation => {
       return (
-        <div key={item.id}>
-          <p>{item.lodging_name}</p>
-          <p>{item.address}</p>
-          <p>{item.check_in_date}</p>
-          <p>{item.check_out_date}</p>
-          <p>{item.price}</p>
-          <p>{item.notes}</p>
-          <p>{item.reservation_code}</p>
+        <div key={singleAccommodation.id}>
+          <p>{singleAccommodation.lodging_name}</p>
+          <p>{singleAccommodation.address}</p>
+          <p>{singleAccommodation.check_in_date}</p>
+          <p>{singleAccommodation.check_out_date}</p>
+          <p>{singleAccommodation.price}</p>
+          <p>{singleAccommodation.notes}</p>
+          <p>{singleAccommodation.reservation_code}</p>
 
           <div>
-            <Link to={`/accommodations/edit/${item.id}`}>
+            <Link to={`/accommodations/edit/${singleAccommodation.id}`}>
               <button type='button'>Edit Accommodation</button>
             </Link>
-
-            {/* <Route path={`/accommodations/edit/${item.id}`} component={() => <AccommodationEdit accommodations={this.props.accommodations} accommodation_id={item.id} />} /> */}
           </div>
         </div>
       )
@@ -53,7 +47,7 @@ class Accommodation extends Component {
 
 const mapStateToProps = state => {
   return {
-    accommodations: state,
+    accommodations: state.accommodations,
   }
 }
 

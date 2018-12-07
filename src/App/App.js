@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 //Setup for redux
 import { connect } from 'react-redux';
-import { getAllAccommodations } from '../actions/actions';
 
 //Import JSX component files
 import Header from '../Global/Header/HeaderComponent';
@@ -50,23 +49,15 @@ import EditTrip from '../Trip/EditTrip/EditTrip';
 class App extends Component {
   constructor(props) {
     super(props)
-
-    // //State is an object, React handles state to do updates
-    // this.state = {
-    //   accommodations: []
-    // }
   }
 
   //Lifecycle Methods
   componentDidMount() {
     console.log("\nApp Mounting...:", this.props);
-    // this.props.dispatch(getAllAccommodations());
   }
 
   //App Component - render html elements
   render() {
-    console.log('\nApp - Accommodations prop:', this.props.accommodation);
-
     return (
       <div className="app">
         <Header />
@@ -90,8 +81,6 @@ class App extends Component {
             <Route path='/trip/:id' component={Trip} />
 
             {/* Accommodation Routes */}
-            {/* <Route path={`/accommodations/edit/1`} component={() => <AccommodationEdit accommodations={this.props.accommodations} />} /> */}
-
             <Route path='/accommodations/edit/:id' component={AccommodationEdit} />
             <Route path='/accommodations/add' component={AccommodationAdd} />
             <Route path='/accommodation/:id' component={AccommodationDetail} />

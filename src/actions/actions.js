@@ -89,7 +89,7 @@ export const getAllAccommodations = () => {
   return dispatch => {
     axios.get('/accommodations')
       .then(response => {
-        console.log('accommodation response......:', response.data)
+        console.log('ACTION - getAllAccommodations data:', response.data)
         dispatch({
           type: GET_ALL_ACCOMMODATIONS,
           payload: response.data

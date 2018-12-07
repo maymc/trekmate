@@ -25,7 +25,10 @@ import {
   from '../actions/actions.js';
 
 //Takes in action and current state, if there is no state then it will be an empty array
-const reducer = (state = [], action) => {
+const reducer = (state = {
+  accommodations: [],
+  accommodationById: {}
+}, action) => {
 
   console.log("\nREDUCER ACTION: ", action);
 
@@ -40,11 +43,13 @@ const reducer = (state = [], action) => {
 
     //-------Accommodation --------//
     case GET_ALL_ACCOMMODATIONS:
-      return action.payload
+      console.log("what:", action.payload)
+      return { ...state, accommodations: action.payload }
     case ADD_ACCOMMODATION:
       return { ...state, form: action.payload }
     case GET_ACCOMMODATION_BY_ID:
-      return action.payload
+      console.log("here")
+      return { ...state, accommodationById: action.payload }
     case GET_ACCOMMODATION_BY_TRIP_ID:
       return { ...state, accommodation: action.payload }
 
