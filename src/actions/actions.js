@@ -14,6 +14,7 @@ export const GET_ACCOMMODATION_BY_TRIP_ID = 'GET_ACCOMMODATION_BY_TRIP_ID';
 // export const GET_ACCOMMODATION_BY_USER_ID = 'GET_ACCOMMODATION_BY_USER_ID';
 export const ADD_ACCOMMODATION = 'ADD_ACCOMMODATION';
 export const EDIT_ACCOMMODATION = 'EDIT_ACCOMMODATION';
+export const FILL_IN_EDIT_ACCOMMODATION = 'FILL_IN_EDIT_ACCOMMODATION';
 
 
 //~~~~~Trips~~~~//
@@ -164,6 +165,25 @@ export const editAccommodation = (accommodations) => {
       .catch(err => {
         console.log("ERROR - actions editAccommodation:", err);
       })
+  }
+}
+
+export const fillInEditAccommodation = (id, body) => {
+  return dispatch => {
+    axios
+      .put(`/accommodations/edit/${id}`, body)
+      .then(response => {
+        dispatch({
+          type: GET_ACCOMMODATION_BY_ID,
+          payload: response.data
+        })
+      })
+      .catch(err => {
+        dispatch({
+          type: "DISPLAY_ERROR_NOTIFICATION",
+          err
+        });
+      });
   }
 }
 //-----------Trip Action-------------//
