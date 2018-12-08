@@ -10,11 +10,10 @@ export const ADD_USER = 'ADD_USER';
 //~~~~~Accommodations~~~~//
 export const GET_ALL_ACCOMMODATIONS = 'GET_ALL_ACCOMMODATIONS';
 export const GET_ACCOMMODATION_BY_ID = 'GET_ACCOMMODATION_BY_ID';
-export const GET_ACCOMMODATION_BY_TRIP_ID = 'GET_ACCOMMODATION_BY_TRIP_ID';
+export const GET_ACCOMMODATIONS_BY_TRIP_ID = 'GET_ACCOMMODATIONS_BY_TRIP_ID';
 // export const GET_ACCOMMODATION_BY_USER_ID = 'GET_ACCOMMODATION_BY_USER_ID';
 export const ADD_ACCOMMODATION = 'ADD_ACCOMMODATION';
 export const EDIT_ACCOMMODATION = 'EDIT_ACCOMMODATION';
-export const FILL_IN_EDIT_ACCOMMODATION = 'FILL_IN_EDIT_ACCOMMODATION';
 
 //~~~~~Trips~~~~//
 export const GET_ALL_TRIPS = 'GET_ALL_TRIPS';
@@ -24,10 +23,10 @@ export const GET_TRIP_BY_ID = 'GET_TRIP_BY_ID';
 
 //~~~~~Activities~~~~//
 export const GET_ALL_ACTIVITIES = 'GET_ALL_ACTIVITIES';
-export const ADD_ACTIVITY = 'ADD_ACTIVITY';
 export const GET_ACTIVITY_BY_ID = 'GET_ACTIVITY_BY_ID';
+export const GET_ACTIVITIES_BY_TRIP_ID = 'GET_ACTIVITY_BY_TRIP_ID';
+export const ADD_ACTIVITY = 'ADD_ACTIVITY';
 // export const GET_ACTIVITY_BY_USER_ID = 'GET_ACTIVITY_BY_USER_ID';
-export const GET_ACTIVITY_BY_TRIP_ID = 'GET_ACTIVITY_BY_TRIP_ID';
 
 //~~~~~Transit~~~~//
 export const GET_ALL_TRANSITS = 'GET_ALL_TRANSITS';
@@ -110,13 +109,13 @@ export const getAllAccommodations = () => {
   }
 }
 
-export const getAccommodationByTrip = (id) => {
-  console.log("ACTION - getAccommodationByTrip");
+export const getAccommodationsByTrip = (id) => {
+  console.log("ACTION - getAccommodationsByTrip");
 
   return dispatch => {
     axios.get(`/accommodations/trip/${id}`)
       .then(response => {
-        dispatch({ type: GET_ACCOMMODATION_BY_TRIP_ID, payload: response.data })
+        dispatch({ type: GET_ACCOMMODATIONS_BY_TRIP_ID, payload: response.data })
       })
       .catch(err => {
         console.log('error in getting individual accommodation by trip_id', err)
@@ -135,8 +134,6 @@ export const getAccommodationById = (id) => {
       })
   }
 }
-
-
 
 export const addAccommodation = (accommodation) => {
   console.log("\nACTION: addAccommodation:", accommodation)
@@ -171,24 +168,6 @@ export const editAccommodation = (accommodations) => {
   }
 }
 
-export const fillInEditAccommodation = (id, body) => {
-  return dispatch => {
-    axios
-      .put(`/accommodations/edit/${id}`, body)
-      .then(response => {
-        dispatch({
-          type: GET_ACCOMMODATION_BY_ID,
-          payload: response.data
-        })
-      })
-      .catch(err => {
-        dispatch({
-          type: "DISPLAY_ERROR_NOTIFICATION",
-          err
-        });
-      });
-  }
-}
 //-----------Trip Action-------------//
 export const getAllTrips = () => {
 
@@ -208,7 +187,6 @@ export const getAllTrips = () => {
         })
       })
   }
-
 }
 
 export const getTrip = (id) => {
@@ -321,14 +299,15 @@ export const getAllActivities = () => {
         })
       })
   }
-
 }
 
-export const getActivityByTrip = (id) => {
+export const getActivitiesByTrip = (id) => {
+  console.log("ACTION - getActivitiesByTrip");
+
   return dispatch => {
     axios.get(`/activities/trip/${id}`)
       .then(response => {
-        dispatch({ type: GET_ACTIVITY_BY_TRIP_ID, payload: response.data })
+        dispatch({ type: GET_ACTIVITIES_BY_TRIP_ID, payload: response.data })
       })
       .catch(err => {
         console.log('error in getting individual activity by trip_id', err)
@@ -351,7 +330,7 @@ export const addActivity = (activity) => {
       })
   }
 }
-export const getActivity = (id) => {
+export const getActivityById = (id) => {
   return dispatch => {
     axios.get(`/activities/${id}`)
       .then(response => {

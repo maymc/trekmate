@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 //------Redux------//
 import { connect } from 'react-redux';
-import { getAllAccommodations, getAccommodationByTrip } from '../actions/actions';
+import { getAllAccommodations, getAccommodationsByTrip } from '../actions/actions';
 
 
 class Accommodation extends Component {
@@ -18,7 +18,7 @@ class Accommodation extends Component {
     console.log("Setting tripId:", tripId);
     console.log('\nAccommodation Component Mounted Successfully!');
     // this.props.dispatch(getAllAccommodations());
-    this.props.dispatch(getAccommodationByTrip(tripId));
+    this.props.dispatch(getAccommodationsByTrip(tripId));
   }
 
   //App Component - render html elements
@@ -28,7 +28,7 @@ class Accommodation extends Component {
     return this.props.accommodationsByTripId.map(accommodationElem => {
       return (
         <div key={accommodationElem.id}>
-          <p>Lodging Name: {accommodationElem.lodging_name}</p>
+          <p>Lodging: {accommodationElem.lodging_name}</p>
           <p>Address: {accommodationElem.address}</p>
           <p>Check-In Date:{accommodationElem.check_in_date}</p>
           <p>Check-Out Date:{accommodationElem.check_out_date}</p>

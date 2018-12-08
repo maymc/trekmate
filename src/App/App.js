@@ -32,8 +32,10 @@ import Flight from '../Flight/Flight';
 import FlightAdd from '../Flight/FlightAdd';
 
 //~~~ Activities JSX files ~~~~//
-import Activity from '../Activity/Activity';
 import ActivityAdd from '../Activity/ActivityAdd';
+import Activity from '../Activity/Activity';
+import ActivityEdit from '../Activity/ActivityEdit';
+import ActivityDetail from '../Activity/ActivityDetail';
 
 //~~~ Activities JSX files ~~~~//
 import Transit from '../Transit/Transit';
@@ -80,20 +82,21 @@ class App extends Component {
 
             {/* Accommodation Routes */}
             <Route path='/accommodations/trip/:id' component={Accommodation} />
-            <Route path='/accommodations/edit/:id' component={AccommodationEdit} />
+            <Route path='/accommodation/edit/:id' component={AccommodationEdit} />
             <Route path='/accommodation/:id' component={AccommodationDetail} />
             <Route path='/accommodations/add' component={AccommodationAdd} />
             {/* <Route path='/accommodations' component={Accommodation} /> */}
-
 
             {/* Flight Routes */}
             <Route exact path='/flight/:id' component={Flight} />
             <Route path='/flights/add' component={FlightAdd} />
 
             {/* Activity Routes */}
-            {/* <Route exact path='/activities' component={Activity} /> */}
-            <Route exact path='/activity/:id' component={Activity} />
+            <Route path='/activities/trip/:id' component={Activity} />
+            <Route path='/activity/edit/:id' component={ActivityEdit} />
+            <Route exact path='/activity/:id' component={ActivityDetail} />
             <Route path='/activities/add' component={ActivityAdd} />
+            {/* <Route exact path='/activities' component={Activity} /> */}
 
             {/* Transit Routes */}
             <Route path='/transit/:id' component={Transit} />

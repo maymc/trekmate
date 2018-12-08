@@ -39,7 +39,7 @@ class AccommodationDetail extends Component {
                 <p>Reservation: <br />{this.props.accommodationById.reservation_code}</p>
                 <br />
                 <p>Notes: <br />{this.props.accommodationById.notes}</p>
-                <Link to={`/accommodations/edit/${this.props.accommodationById.id}`}>
+                <Link to={`/accommodation/edit/${this.props.accommodationById.id}`}>
                     <button type='button'>Edit Accommodation</button>
                 </Link>
                 <Link to={`/accommodations/trip/${this.props.accommodationById.trip_id}`}>

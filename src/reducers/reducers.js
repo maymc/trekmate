@@ -1,5 +1,5 @@
 import {
-  GET_ACCOMMODATION_BY_TRIP_ID,
+  GET_ACCOMMODATIONS_BY_TRIP_ID,
   GET_ACCOMMODATION_BY_ID,
   GET_ALL_ACCOMMODATIONS,
   ADD_ACCOMMODATION,
@@ -19,7 +19,7 @@ import {
 
   GET_ALL_ACTIVITIES,
   GET_ACTIVITY_BY_ID,
-  GET_ACTIVITY_BY_TRIP_ID,
+  GET_ACTIVITIES_BY_TRIP_ID,
   ADD_ACTIVITY,
 
   GET_ALL_TRANSITS,
@@ -36,6 +36,8 @@ const reducer = (state = {
   accommodationsByTripId: [],
   accommodationById: {},
   activities: [],
+  activitiesByTripId: [],
+  activityById: {},
   flights: [],
   transit: [],
   form: {}
@@ -53,7 +55,7 @@ const reducer = (state = {
       return action.payload
 
     //-------Accommodation --------//
-    case GET_ACCOMMODATION_BY_TRIP_ID:
+    case GET_ACCOMMODATIONS_BY_TRIP_ID:
       console.log("REDUCER - what is at GET_ACCOMMODATION_BY_TRIP_ID?:", action.payload)
       return { ...state, accommodationsByTripId: action.payload }
 
@@ -82,9 +84,9 @@ const reducer = (state = {
     case ADD_ACTIVITY:
       return { ...state, form: action.payload }
     case GET_ACTIVITY_BY_ID:
-      return action.payload
-    case GET_ACTIVITY_BY_TRIP_ID:
-      return { ...state, activity: action.payload }
+      return { ...state, activityById: action.payload }
+    case GET_ACTIVITIES_BY_TRIP_ID:
+      return { ...state, activitiesByTripId: action.payload }
 
     //-------Flight---------//
     case GET_ALL_FLIGHTS:
