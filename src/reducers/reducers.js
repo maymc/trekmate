@@ -3,7 +3,6 @@ import {
   GET_ACCOMMODATION_BY_ID,
   GET_ALL_ACCOMMODATIONS,
   ADD_ACCOMMODATION,
-  // FILL_IN_EDIT_ACCOMMODATION,
 
   GET_ALL_USERS,
   GET_USER_BY_ID,
@@ -65,8 +64,7 @@ const reducer = (state = {
       return { ...state, accommodations: action.payload }
     case ADD_ACCOMMODATION:
       return { ...state, form: action.payload }
-    // case FILL_IN_EDIT_ACCOMMODATION:
-    //   return { ...state, editedAccommodation: action.payload }
+
     //-------Trip------------//
     case GET_ALL_TRIPS:
       return action.payload
