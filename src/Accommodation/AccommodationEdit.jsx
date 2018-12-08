@@ -55,7 +55,7 @@ class AccommodationEdit extends Component {
     this.props.dispatch(editAccommodation(this.state, this.props.accommodationById.id));
 
     //Redirect to accommodations page
-    this.props.history.push(`/accommodations`);
+    this.props.history.push(`/accommodation/${this.props.accommodationById.id}`);
   }
 
   render() {

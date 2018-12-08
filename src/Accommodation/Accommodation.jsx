@@ -9,9 +9,6 @@ import { getAllAccommodations, getAccommodationByTrip } from '../actions/actions
 class Accommodation extends Component {
   constructor(props) {
     super(props)
-
-    //State is an object, React handles state to do updates
-    this.state = {}
   }
 
   //Lifecycle Methods
@@ -40,8 +37,11 @@ class Accommodation extends Component {
           <p>Reservation: {accommodationElem.reservation_code}</p>
           <p>Notes: {accommodationElem.notes}</p>
           <div>
-            <Link to={`/accommodations/edit/${accommodationElem.id}`}>
+            {/* <Link to={`/accommodations/edit/${accommodationElem.id}`}>
               <button type='button'>Edit Accommodation</button>
+            </Link> */}
+            <Link to={`/accommodation/${accommodationElem.id}`}>
+              <button type='button'>View</button>
             </Link>
           </div>
         </div>

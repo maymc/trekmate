@@ -56,12 +56,15 @@ const reducer = (state = {
     case GET_ACCOMMODATION_BY_TRIP_ID:
       console.log("REDUCER - what is at GET_ACCOMMODATION_BY_TRIP_ID?:", action.payload)
       return { ...state, accommodationsByTripId: action.payload }
+
     case GET_ACCOMMODATION_BY_ID:
-      console.log("REDUCER - GET ACCOMMODATIONS_BY_ID");
+      console.log("REDUCER - GET ACCOMMODATION_BY_ID");
       return { ...state, accommodationById: action.payload }
+
     case GET_ALL_ACCOMMODATIONS:
       console.log("REDUCER - what is at GET_ALL_ACCOMMODATIONS?:", action.payload)
       return { ...state, accommodations: action.payload }
+
     case ADD_ACCOMMODATION:
       return { ...state, form: action.payload }
 
