@@ -56,32 +56,32 @@ class Register extends Component {
         <div className="rmapthreeform">
           <h1>Register</h1>
           <form className="registerform" onSubmit={this.handleRegister}>
-            <div class="form-group">
+            <div className="form-group">
               <input type="text" id="firstname" name="first_name" onChange={this.handleChange} className="form-control" required></input>
-              <label class="form-control-placeholder" for="firstname">First Name</label>
+              <label className="form-control-placeholder" htmlFor="firstname">First Name</label>
             </div>
-            <div class="form-group">
+            <div className="form-group">
               <input type="text" id="lastname" name="last_name" onChange={this.handleChange} className="form-control" required></input>
-              <label class="form-control-placeholder" for="lastname">Last Name</label>
+              <label className="form-control-placeholder" htmlFor="lastname">Last Name</label>
             </div>
-            <div class="form-group">
-              <input type="text" id="email" name="email" onChange={this.handleChange} className="form-control" required></input>
-              <label class="form-control-placeholder" for="email">Email</label>
+            <div className="form-group">
+              <input autoComplete="username" type="text" id="email" name="email" onChange={this.handleChange} className="form-control" required></input>
+              <label className="form-control-placeholder" htmlFor="email">Email</label>
             </div>
-            <div class="form-group">
-              <input type="password" id="password" name="password" onChange={this.handleChange} className="form-control" required></input>
-              <label class="form-control-placeholder" for="password">Password</label>
+            <div className="form-group">
+              <input autoComplete="new-password" type="password" id="password" name="password" onChange={this.handleChange} className="form-control" required></input>
+              <label className="form-control-placeholder" htmlFor="password">Password</label>
             </div>
-            <div class="form-group">
+            <div className="form-group">
               <input type="password" id="confirmpassword" name="confirmpassword" onChange={this.handleChange} className="form-control" required></input>
-              <label class="form-control-placeholder" for="confirmpassword">Confirm Password</label>
+              <label className="form-control-placeholder" htmlFor="confirmpassword">Confirm Password</label>
             </div>
 
             <button type="submit">Register</button>
 
           </form>
           <Link to="/login">
-            <button type="button">Cancel</button>
+            Cancel
           </Link>
         </div>
         {/* <div className="rmapthree">

@@ -17,13 +17,15 @@ class Account extends Component {
     return (
       <div className="account">
         <div className="accountbanner">
-
+          <h1>{users.first_name}</h1><h3>,{users.last_name}</h3>
         </div>
         <div className="accountfeed">
         </div>
         <div className="accountbar">
           {/* <h3>Create a new trip:</h3> */}
-          <button><i class="fas fa-suitcase"></i> Create new trip</button>
+          <form method="get" action="/trips/add">
+            <button type="submit"><i className="fas fa-suitcase"></i> Create new trip</button>
+          </form>
         </div>
       </div>
     );

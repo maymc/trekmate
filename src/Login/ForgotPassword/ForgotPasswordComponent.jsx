@@ -41,14 +41,14 @@ class ForgotPassword extends Component {
             <p>Enter the email associated with your account and we'll send you an email to help you reset your password.</p>
             <div className="form-group">
               <input type="text" id="email" name="email" onChange={this.handleChange}  className="form-control" required></input>
-              <label className="form-control-placeholder" for="email">Email</label>
+              <label className="form-control-placeholder" htmlFor="email">Email</label>
             </div>
             <button type="submit">Send email</button>
 
           </form>
 
           <Link to="/login">
-            <a type="button">Cancel</a>
+            Cancel
           </Link>
         </div>
       </div>
