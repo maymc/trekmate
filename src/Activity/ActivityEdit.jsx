@@ -32,8 +32,8 @@ class ActivityEdit extends Component {
 
   handleLogin = (e) => {
     e.preventDefault();
-    console.log("Login - handleLogin this.props:", this.props);
-    console.log("Login Successful! User credentials:", this.state);
+    console.log("ActivityEdit props:", this.props);
+    console.log("ActivityEdit state:", this.state);
     this.props.history.push(`/`); //change this to authenticated view when created
   }
 

@@ -4,30 +4,33 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 //Import actions
-import { editAccommodation, getAccommodation } from '../actions/actions';
+import { editAccommodation, getAccommodation, fillInEditAccommodation } from '../actions/actions';
 
 class AccommodationEdit extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      id: "",
-      lodging_name: "",
-      address: "",
-      check_in_date: "",
-      check_out_date: "",
-      price: "",
-      is_paid: "",
-      reservation_code: "",
-      notes: "",
-      user_id: 1,
-      trip_id: 1
+      id: this.props.accommodationById.id,
+      lodging_name: this.props.accommodationById.lodging_name,
+      address: this.props.accommodationById.address,
+      check_in_date: this.props.accommodationById.check_in_date,
+      check_out_date: this.props.accommodationById.check_out_date,
+      price: this.props.accommodationById.price,
+      is_paid: this.props.accommodationById.is_paid,
+      reservation_code: this.props.accommodationById.reservation_code,
+      notes: this.props.accommodationById.notes,
+      user_id: this.props.accommodationById.user_id,
+      trip_id: this.props.accommodationById.trip_id
     }
   }
 
   // //This will set state from props everytime props changes
   // static getDerivedStateFromProps(nextProps, prevState) {
-  //   if (nextProps.detailedDraftPost !== prevState.detailedDraftPost) {
+  //   console.log("What is next props?:", nextProps);
+  //   console.log("What is prev state", prevState);
+
+  //   if (nextProps.accommodationById !== prevState.accommodationById) {
   //     return {
   //       original: {
   //         id: nextProps.accommodationById.id,
@@ -69,13 +72,37 @@ class AccommodationEdit extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     console.log("\nhandleSubmit - AccommodationEdit - this.props:", this.props);
+    console.log("\nhandleSubmit - AccommodationEdit - this.props.accommodationById.id:", this.props.accommodationById.id);
     console.log("Updated to this.state:", this.state);
 
-    this.props.dispatch(editAccommodation(this.state, 1));
+    this.props.dispatch(editAccommodation(this.state, this.props.accommodationById.id));
 
     //Redirect to accommodations page
     this.props.history.push(`/accommodations`);
   }
+
+  // //Submit an object called form and iterate over this.state with for...in to check for which data to use (org data vs newly changed data)
+  // submittingForm = () => {
+  //   let form = {};
+
+  //   for (const key in this.state) {
+  //     if (this.state[key] === "") {
+  //       form[key] = this.state.original[key]
+  //     } else {
+  //       form[key] = this.state[key]
+  //     }
+  //   }
+  //   //Because form was created from an iteration of this.state, form now also includes original. Delete original to dispatch a clean form to axios
+  //   delete form.original;
+
+  //   return form;
+  // }
+
+  // fillInEditAccommodation = () => {
+  //   this.props.dispatch(
+  //     fillInEditAccommodation(this.props.accommodationById.id, this.submittingForm())
+  //   );
+  // }
 
   render() {
     console.log("AccommodationEdit - render - this.props:", this.props);
@@ -104,9 +131,8 @@ class AccommodationEdit extends Component {
           <input onChange={this.handleChange} type='text' name="price" defaultValue={this.props.accommodationById.price} />
           <br /><br />
 
-          <label>Pay Status</label><br />
-          <input onChange={this.handleChange} type="radio" name="is_paid" value="Yes" />Paid<br />
-          <input onChange={this.handleChange} type="radio" name="is_paid" value="No" />Not Paid
+          <label>Pay Status (Yes/No)</label><br />
+          <input onChange={this.handleChange} type='text' name="is_paid" defaultValue={this.props.accommodationById.is_paid} />
           <br /><br />
 
           <label>Reservation Code</label><br />
@@ -116,6 +142,8 @@ class AccommodationEdit extends Component {
           <label>Notes</label><br />
           <input onChange={this.handleChange} type='text' name="notes" defaultValue={this.props.accommodationById.notes} />
           <br /><br />
+
+          {/* <button type="submit" value="Save draft for later" onClick={this.fillInEditAccommodation}>Update Accommodation</button> */}
 
           <button type="submit">Update Accommodation</button>
 
