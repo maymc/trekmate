@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import './styles.css';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import EditAccountComponent from '../EditAccount/EditAccountComponent.jsx';
+import ActivityEdit from '../../Activity/ActivityEdit.jsx';
+import TransitEdit from '../../Transit/TransitEdit.jsx';
 
 import { connect } from 'react-redux';
 import { getUser } from '../../actions/actions';
@@ -16,8 +20,17 @@ class Account extends Component {
     console.log('accommodation prop:', users)
     return (
       <div className="account">
-        <p>{users.first_name}</p>
-        <p>{users.last_name}</p>
+        <div className="accountbanner">
+          <h1>{users.first_name}</h1><h3>,{users.last_name}</h3>
+        </div>
+        <div className="accountfeed">
+        </div>
+        <div className="accountbar">
+          {/* <h3>Create a new trip:</h3> */}
+          <form method="get" action="/trips/add">
+            <button type="submit"><i className="fas fa-suitcase"></i> Create new trip</button>
+          </form>
+        </div>
       </div>
     );
   }
