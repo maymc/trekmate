@@ -9,17 +9,6 @@ exports.up = function (knex, Promise) {
     table.decimal('price', 1000).notNullable().defaultTo(0.00);
     table.timestamp('created_at').defaultTo(knex.fn.now());
     table.timestamp('updated_at').defaultTo(knex.fn.now());
-    // table.integer('user_id')
-    //   .references('id')
-    //   .inTable('users')
-    //   .onDelete('CASCADE')
-    //   .onUpdate('CASCADE');
-
-    // table.integer('trip_id')
-    //   .references('id')
-    //   .inTable('trips')
-    //   .onDelete('CASCADE')
-    //   .onUpdate('CASCADE');
 
     //Create the column then add foreign key
     table.integer('user_id').unsigned().notNullable();

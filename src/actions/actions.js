@@ -1,29 +1,35 @@
 import axios from 'axios';
 
 //Storing constant data
+
+//~~~~~Users~~~~//
 export const GET_ALL_USERS = 'GET_ALL_USERS';
 export const GET_USER_BY_ID = 'GET_USER_BY_ID';
 export const ADD_USER = 'ADD_USER';
 
+//~~~~~Accommodations~~~~//
 export const GET_ALL_ACCOMMODATIONS = 'GET_ALL_ACCOMMODATIONS';
-export const ADD_ACCOMMODATION = 'ADD_ACCOMMODATION';
 export const GET_ACCOMMODATION_BY_ID = 'GET_ACCOMMODATION_BY_ID';
-// export const GET_ACCOMMODATION_BY_USER_ID = 'GET_ACCOMMODATION_BY_USER_ID';
 export const GET_ACCOMMODATION_BY_TRIP_ID = 'GET_ACCOMMODATION_BY_TRIP_ID';
+// export const GET_ACCOMMODATION_BY_USER_ID = 'GET_ACCOMMODATION_BY_USER_ID';
+export const ADD_ACCOMMODATION = 'ADD_ACCOMMODATION';
+export const EDIT_ACCOMMODATION = 'EDIT_ACCOMMODATION';
 
 
+//~~~~~Trips~~~~//
 export const GET_ALL_TRIPS = 'GET_ALL_TRIPS';
 export const ADD_TRIP = 'ADD_TRIP';
 export const GET_TRIP_BY_ID = 'GET_TRIP_BY_ID';
 // export const GET_TRIP_BY_USER_ID = 'GET_TRIP_BY_USER_ID';
 
+//~~~~~Activities~~~~//
 export const GET_ALL_ACTIVITIES = 'GET_ALL_ACTIVITIES';
 export const ADD_ACTIVITY = 'ADD_ACTIVITY';
 export const GET_ACTIVITY_BY_ID = 'GET_ACTIVITY_BY_ID';
 // export const GET_ACTIVITY_BY_USER_ID = 'GET_ACTIVITY_BY_USER_ID';
 export const GET_ACTIVITY_BY_TRIP_ID = 'GET_ACTIVITY_BY_TRIP_ID';
 
-
+//~~~~~Transit~~~~//
 export const GET_ALL_TRANSITS = 'GET_ALL_TRANSITS';
 export const ADD_TRANSIT = 'ADD_TRANSIT';
 export const GET_TRANSIT_BY_ID = 'GET_TRANSIT_BY_ID';
@@ -37,6 +43,8 @@ export const GET_FLIGHT_BY_ID = 'GET_FLIGHT_BY_ID';
 // export const GET_FLIGHT_BY_USER_ID = 'GET_FLIGHT_BY_USER_ID';
 export const GET_FLIGHT_BY_TRIP_ID = 'GET_FLIGHT_BY_TRIP_ID';
 
+//Action = has type and payload
+//Action creater- function that returns an action which is an object with type and payload
 
 //---------User Action----------//
 export const getAllUsers = () => {
@@ -87,7 +95,7 @@ export const getAllAccommodations = () => {
   return dispatch => {
     axios.get('/accommodations')
       .then(response => {
-        console.log('accommodation response......:', response.data)
+        console.log('ACTION - getAllAccommodations data:', response.data)
         dispatch({
           type: GET_ALL_ACCOMMODATIONS,
           payload: response.data
@@ -100,7 +108,6 @@ export const getAllAccommodations = () => {
         })
       })
   }
-
 }
 
 export const getAccommodation = (id) => {
@@ -144,6 +151,21 @@ export const addAccommodation = (accommodation) => {
   }
 }
 
+export const editAccommodation = (accommodations) => {
+  const { id } = accommodations;
+  console.log("\nACTION: editAccommodation:", accommodations)
+  console.log("what is id????", id);
+  return dispatch => {
+    axios.put(`/accommodations/edit/${id}`, accommodations)
+      .then(responseFromDB => {
+        console.log("\nCheck - responseFromDB:", responseFromDB.data)
+        dispatch({ type: EDIT_ACCOMMODATION, payload: responseFromDB.data });
+      })
+      .catch(err => {
+        console.log("ERROR - actions editAccommodation:", err);
+      })
+  }
+}
 //-----------Trip Action-------------//
 export const getAllTrips = () => {
 
@@ -195,7 +217,6 @@ export const addTrip = (trip) => {
   }
 }
 
-
 //-----------FLight Action-------------//
 export const getAllFlights = () => {
 
@@ -215,7 +236,6 @@ export const getAllFlights = () => {
         })
       })
   }
-
 }
 
 export const getFlight = (id) => {

@@ -7,6 +7,8 @@ const Accommodations = require('../db/models/Accommodations.js');
 //GET all accommodations in database
 accommodationRouter.get('/', (req, res) => {
     Accommodations
+        .forge()
+        .orderBy('id', 'ASC')
         .fetchAll()
         .then(accommodationsList => {
             res.json(accommodationsList.serialize())
@@ -96,7 +98,9 @@ accommodationRouter.post('/add', (req, res) => {
 
 //PUT - edit accommodation by accommodation id
 accommodationRouter.put('/edit/:id', (req, res) => {
+    console.log("IM HEREEEE:");
     const { id } = req.params;
+    console.log("id here??:", id);
 
     const updatedAccommodation = {
         lodging_name: req.body.lodging_name,
@@ -110,6 +114,7 @@ accommodationRouter.put('/edit/:id', (req, res) => {
         user_id: req.body.user_id,
         trip_id: req.body.trip_id
     }
+    console.log("updatedAccommodation??", updatedAccommodation);
 
     Accommodations
         .where({ id })

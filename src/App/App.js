@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
+//Setup for redux
+import { connect } from 'react-redux';
+
 //Import JSX component files
 import Header from '../Global/Header/HeaderComponent';
 import Footer from '../Global/Footer/FooterComponent';
@@ -18,8 +21,10 @@ import EditAccount from '../Account/EditAccount/EditAccountComponent';
 import EditPassword from '../Account/EditPassword/EditPasswordComponent';
 
 //~~~ Accommodations JSX files ~~~~//
+
 import AccommodationAdd from '../Accommodation/AccommodationAdd';
 import Accommodation from '../Accommodation/Accommodation';
+import AccommodationEdit from '../Accommodation/AccommodationEdit';
 import AccommodationDetail from '../Accommodation/AccommodationDetail';
 
 //~~~ Flights JSX files ~~~~//
@@ -39,13 +44,14 @@ import Trip from '../Trip/Trip/TripComponent';
 import CreateTrip from '../Trip/CreateTrip/CreateTripComponent';
 import EditTrip from '../Trip/EditTrip/EditTrip';
 
-
-
 class App extends Component {
-
+  constructor(props) {
+    super(props)
+  }
 
   //Lifecycle Methods
   componentDidMount() {
+    console.log("\nApp Mounting...:", this.props);
   }
 
   //App Component - render html elements
@@ -68,14 +74,15 @@ class App extends Component {
 
             {/* Trip Routes */}
             {/* <Route exact path='/trips' component={Trip} /> */}
-            <Route path='/trips/add' component={CreateTrip} />
             <Route path='/trip/edit/:id' component={EditTrip} />
             <Route path='/trip/:id' component={Trip} />
+            <Route path='/trips/add' component={CreateTrip} />
 
             {/* Accommodation Routes */}
-            <Route exact path='/accommodations' component={Accommodation} />
-            <Route path='/accommodations/add' component={AccommodationAdd} />
+            <Route path='/accommodations/edit/:id' component={AccommodationEdit} />
             <Route path='/accommodation/:id' component={AccommodationDetail} />
+            <Route path='/accommodations/add' component={AccommodationAdd} />
+            <Route path='/accommodations' component={Accommodation} />
 
 
             {/* Flight Routes */}
@@ -84,8 +91,8 @@ class App extends Component {
 
             {/* Activity Routes */}
             {/* <Route exact path='/activities' component={Activity} /> */}
-            <Route path='/activities/add' component={ActivityAdd} />
             <Route exact path='/activity/:id' component={Activity} />
+            <Route path='/activities/add' component={ActivityAdd} />
 
             {/* Transit Routes */}
             <Route path='/transit/:id' component={Transit} />
@@ -99,7 +106,7 @@ class App extends Component {
   }
 }
 
-//Redux----------------
+// //Redux----------------
 // const mapStateToProps = (state) => {   // listening to reducers
 //   return {
 //     users: state,
@@ -110,8 +117,8 @@ class App extends Component {
 
 // const ConnectedApp = connect( //connect app to access the 'store'
 //   mapStateToProps,
-//   { getAllUsers, getAllAccommodations }
+//   { getAllAccommodations }
 // )(App);
 
 //Export App component so other components can use it
-export default App;
+export default connect()(App);
