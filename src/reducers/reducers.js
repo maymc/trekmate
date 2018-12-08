@@ -1,26 +1,31 @@
 import {
-  GET_ALL_ACCOMMODATIONS,
-  GET_ALL_USERS,
-  GET_ALL_TRIPS,
-  GET_ALL_FLIGHTS,
-  GET_ALL_ACTIVITIES,
-  GET_ALL_TRANSITS,
-  GET_USER_BY_ID,
-  GET_ACCOMMODATION_BY_ID,
-  GET_TRIP_BY_ID,
-  GET_ACTIVITY_BY_ID,
-  GET_TRANSIT_BY_ID,
-  GET_FLIGHT_BY_ID,
   GET_ACCOMMODATION_BY_TRIP_ID,
-  FILL_IN_EDIT_ACCOMMODATION,
-  GET_ACTIVITY_BY_TRIP_ID,
-  GET_TRANSIT_BY_TRIP_ID,
-  GET_FLIGHT_BY_TRIP_ID,
-  ADD_USER,
-  ADD_TRIP,
+  GET_ACCOMMODATION_BY_ID,
+  GET_ALL_ACCOMMODATIONS,
   ADD_ACCOMMODATION,
+  // FILL_IN_EDIT_ACCOMMODATION,
+
+  GET_ALL_USERS,
+  GET_USER_BY_ID,
+  ADD_USER,
+
+  GET_ALL_TRIPS,
+  GET_TRIP_BY_ID,
+  ADD_TRIP,
+
+  GET_ALL_FLIGHTS,
+  GET_FLIGHT_BY_TRIP_ID,
+  GET_FLIGHT_BY_ID,
   ADD_FLIGHT,
+
+  GET_ALL_ACTIVITIES,
+  GET_ACTIVITY_BY_ID,
+  GET_ACTIVITY_BY_TRIP_ID,
   ADD_ACTIVITY,
+
+  GET_ALL_TRANSITS,
+  GET_TRANSIT_BY_TRIP_ID,
+  GET_TRANSIT_BY_ID,
   ADD_TRANSIT
 }
   from '../actions/actions.js';
@@ -29,6 +34,7 @@ import {
 const reducer = (state = {
   users: [],
   accommodations: [],
+  accommodationsByTripId: [],
   accommodationById: {},
   activities: [],
   flights: [],
@@ -48,18 +54,19 @@ const reducer = (state = {
       return action.payload
 
     //-------Accommodation --------//
-    case GET_ALL_ACCOMMODATIONS:
-      console.log("REDUCER - what is at GET_ALL_ACCOMMODATINS?:", action.payload)
-      return { ...state, accommodations: action.payload }
-    case ADD_ACCOMMODATION:
-      return { ...state, form: action.payload }
+    case GET_ACCOMMODATION_BY_TRIP_ID:
+      console.log("REDUCER - what is at GET_ACCOMMODATION_BY_TRIP_ID?:", action.payload)
+      return { ...state, accommodationsByTripId: action.payload }
     case GET_ACCOMMODATION_BY_ID:
       console.log("REDUCER - GET ACCOMMODATIONS_BY_ID");
       return { ...state, accommodationById: action.payload }
-    case GET_ACCOMMODATION_BY_TRIP_ID:
-      return { ...state, accommodation: action.payload }
-    case FILL_IN_EDIT_ACCOMMODATION:
-      return { ...state, editedAccommodation: action.payload }
+    case GET_ALL_ACCOMMODATIONS:
+      console.log("REDUCER - what is at GET_ALL_ACCOMMODATIONS?:", action.payload)
+      return { ...state, accommodations: action.payload }
+    case ADD_ACCOMMODATION:
+      return { ...state, form: action.payload }
+    // case FILL_IN_EDIT_ACCOMMODATION:
+    //   return { ...state, editedAccommodation: action.payload }
     //-------Trip------------//
     case GET_ALL_TRIPS:
       return action.payload

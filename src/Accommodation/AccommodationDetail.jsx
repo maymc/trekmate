@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
-import { getAccommodation } from '../actions/actions';
+import { getAccommodationById } from '../actions/actions';
 
 
 class AccommodationDetail extends Component {
 
     componentDidMount() {
         let id = this.props.match.params.id;
-        this.props.dispatch(getAccommodation(id))
+        this.props.dispatch(getAccommodationById(id))
     }
 
     render() {
@@ -21,18 +21,15 @@ class AccommodationDetail extends Component {
                 <p>${accommodation.price}</p>
                 <p>{accommodation.reservation_code}</p>
             </div>
-
         )
-
-
-
     }
 }
 
 
 const mapStateToProps = state => {
     return {
-        accommodation: state
+        accommodations: state.accommodations,
+        accommodationById: state.accommodationById
     }
 }
 export default connect(mapStateToProps)(AccommodationDetail);

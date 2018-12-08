@@ -16,7 +16,6 @@ export const ADD_ACCOMMODATION = 'ADD_ACCOMMODATION';
 export const EDIT_ACCOMMODATION = 'EDIT_ACCOMMODATION';
 export const FILL_IN_EDIT_ACCOMMODATION = 'FILL_IN_EDIT_ACCOMMODATION';
 
-
 //~~~~~Trips~~~~//
 export const GET_ALL_TRIPS = 'GET_ALL_TRIPS';
 export const ADD_TRIP = 'ADD_TRIP';
@@ -111,7 +110,21 @@ export const getAllAccommodations = () => {
   }
 }
 
-export const getAccommodation = (id) => {
+export const getAccommodationByTrip = (id) => {
+  console.log("ACTION - getAccommodationByTrip");
+
+  return dispatch => {
+    axios.get(`/accommodations/trip/${id}`)
+      .then(response => {
+        dispatch({ type: GET_ACCOMMODATION_BY_TRIP_ID, payload: response.data })
+      })
+      .catch(err => {
+        console.log('error in getting individual accommodation by trip_id', err)
+      })
+  }
+}
+
+export const getAccommodationById = (id) => {
   return dispatch => {
     axios.get(`/accommodations/${id}`)
       .then(response => {
@@ -123,17 +136,7 @@ export const getAccommodation = (id) => {
   }
 }
 
-export const getAccommodationByTrip = (id) => {
-  return dispatch => {
-    axios.get(`/accommodations/trip/${id}`)
-      .then(response => {
-        dispatch({ type: GET_ACCOMMODATION_BY_TRIP_ID, payload: response.data })
-      })
-      .catch(err => {
-        console.log('error in getting individual accommodation by trip_id', err)
-      })
-  }
-}
+
 
 export const addAccommodation = (accommodation) => {
   console.log("\nACTION: addAccommodation:", accommodation)

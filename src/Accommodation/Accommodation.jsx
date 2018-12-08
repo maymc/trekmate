@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 //------Redux------//
 import { connect } from 'react-redux';
-import { getAllAccommodations } from '../actions/actions';
+import { getAllAccommodations, getAccommodationByTrip } from '../actions/actions';
 
 
 class Accommodation extends Component {
@@ -16,15 +16,19 @@ class Accommodation extends Component {
 
   //Lifecycle Methods
   componentDidMount() {
+    //This id comes from the url
+    const tripId = this.props.match.params.id;
+    console.log("Setting tripId:", tripId);
     console.log('\nAccommodation Component Mounted Successfully!');
-    this.props.dispatch(getAllAccommodations());
+    // this.props.dispatch(getAllAccommodations());
+    this.props.dispatch(getAccommodationByTrip(tripId));
   }
 
   //App Component - render html elements
   render() {
-    console.log('\nAccommodations.jsx - props:', this.props.accommodations)
+    console.log('\nAccommodations.jsx - this.props.accommodationsByTripId:', this.props.accommodationsByTripId)
 
-    return this.props.accommodations.map(accommodationElem => {
+    return this.props.accommodationsByTripId.map(accommodationElem => {
       return (
         <div key={accommodationElem.id}>
           <p>Lodging Name: {accommodationElem.lodging_name}</p>
@@ -49,6 +53,7 @@ class Accommodation extends Component {
 const mapStateToProps = state => {
   return {
     accommodations: state.accommodations,
+    accommodationsByTripId: state.accommodationsByTripId
   }
 }
 

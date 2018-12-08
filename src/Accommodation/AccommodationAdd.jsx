@@ -41,6 +41,9 @@ class AccommodationAdd extends Component {
     console.log("AccommodationAdd - handleSubmit this.props:", this.props)
     console.log("Accommodation Added!", this.state);
     this.props.dispatch(addAccommodation(this.state));
+
+    //Redirect to accommodations page
+    this.props.history.push(`/accommodations`);
   }
 
   render() {

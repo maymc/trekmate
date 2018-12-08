@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 //Import actions
-import { editAccommodation, getAccommodation, fillInEditAccommodation } from '../actions/actions';
+import { editAccommodation, getAccommodationById, fillInEditAccommodation } from '../actions/actions';
 
 class AccommodationEdit extends Component {
   constructor(props) {
@@ -53,9 +53,9 @@ class AccommodationEdit extends Component {
 
     //This id comes from the url
     const accommodationId = this.props.match.params.id;
-    console.log("Updating accommodationId:", accommodationId);
+    console.log("Setting accommodationId:", accommodationId);
 
-    this.props.dispatch(getAccommodation(accommodationId));
+    this.props.dispatch(getAccommodationById(accommodationId));
   }
 
   //Helper Functions
