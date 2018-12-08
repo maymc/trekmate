@@ -71,7 +71,7 @@ button {
   font-size: 1em;
   text-transform: uppercase;
   padding: 0px 15px 0px 15px;
-  margin: 15px;
+
   border: 2px solid #B3007B;
   color: #fff;
   background: #B3007B;
@@ -158,4 +158,3 @@ button.drk {
     color: #9E0066;
  
   }
-  

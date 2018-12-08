@@ -3,6 +3,7 @@ import './styles.css';
 
 import { connect } from 'react-redux';
 import { getUser } from '../../actions/actions';
+import { Link } from 'react-router-dom';
 
 class Account extends Component {
 
@@ -17,7 +18,15 @@ class Account extends Component {
     return (
       <div className="account">
         <div className="accountbanner">
-          <h1>{users.first_name}</h1><h3>,{users.last_name}</h3>
+          <div className="userimage">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5av85FUBFtE6pEih8IFJHXT5Z4VT6xKS0EIdifBdqlhcIfkLfQQ" alt="User image"></img>
+          </div>
+          <div className="userdata">
+            <h1>{users.first_name}<span>, {users.last_name}</span></h1>
+            <p>{users.email}</p>
+            <Link to="/account/edit/:id" >Edit</Link>
+            <Link to="/account/edit_password/:id" >Update Password</Link>
+          </div>
         </div>
         <div className="accountfeed">
         </div>
