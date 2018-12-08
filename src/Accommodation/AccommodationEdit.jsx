@@ -25,9 +25,9 @@ class AccommodationEdit extends Component {
     }
   }
 
-  // //This will set state from props everytime props changes
+  //This will set state from props everytime props changes
   // static getDerivedStateFromProps(nextProps, prevState) {
-  //   if (nextProps.detailedDraftPost !== prevState.detailedDraftPost) {
+  //   if (nextProps.accommodationById !== prevState.accommodationById) {
   //     return {
   //       original: {
   //         id: nextProps.accommodationById.id,
@@ -76,6 +76,24 @@ class AccommodationEdit extends Component {
     //Redirect to accommodations page
     this.props.history.push(`/accommodations`);
   }
+
+  //Submit an object called form and iterate over this.state with for...in to check for which data to use (org data vs newly changed data)
+  // submittingForm = () => {
+  //   let form = {};
+
+  //   for (const key in this.state) {
+  //     if (this.state[key] === "") {
+  //       form[key] = this.state.original[key]
+  //     } else {
+  //       form[key] = this.state[key]
+  //     }
+  //   }
+  //   //Because form was created from an iteration of this.state, form now also includes original. Delete original to dispatch a clean form to axios
+  //   delete form.original;
+
+  //   return form;
+  // }
+
 
   render() {
     console.log("AccommodationEdit - render - this.props:", this.props);
