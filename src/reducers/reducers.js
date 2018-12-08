@@ -12,6 +12,7 @@ import {
   GET_TRANSIT_BY_ID,
   GET_FLIGHT_BY_ID,
   GET_ACCOMMODATION_BY_TRIP_ID,
+  FILL_IN_EDIT_ACCOMMODATION,
   GET_ACTIVITY_BY_TRIP_ID,
   GET_TRANSIT_BY_TRIP_ID,
   GET_FLIGHT_BY_TRIP_ID,
@@ -57,7 +58,8 @@ const reducer = (state = {
       return { ...state, accommodationById: action.payload }
     case GET_ACCOMMODATION_BY_TRIP_ID:
       return { ...state, accommodation: action.payload }
-
+    case FILL_IN_EDIT_ACCOMMODATION:
+      return { ...state, editedAccommodation: action.payload }
     //-------Trip------------//
     case GET_ALL_TRIPS:
       return action.payload
