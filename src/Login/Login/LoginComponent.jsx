@@ -52,13 +52,15 @@ class Login extends Component {
         <div className="mapthreeform">
           <h1>Login</h1>
           <form className="loginform" onSubmit={this.handleChange}>
-            <div class="form-group">
-              <input type="text" id="email" name="email" onChange={this.handleChange} className="form-control" required></input>
-              <label class="form-control-placeholder" for="email">Email</label>
+
+            <div className="form-group">
+              <input autoComplete="username" type="text" id="email" name="email" onChange={this.handleChange} className="form-control" required></input>
+              <label className="form-control-placeholder" htmlFor="email">Email</label>
             </div>
-            <div class="form-group">
-              <input type="password" id="password" name="password" onChange={this.handleChange} className="form-control" required></input>
-              <label class="form-control-placeholder" for="password">Password</label>
+
+            <div className="form-group">
+              <input autoComplete="current-password" type="password" id="password" name="password" onChange={this.handleChange} className="form-control" required></input>
+              <label className="form-control-placeholder" htmlFor="password">Password</label>
             </div>
             <button type="submit">Login</button>
 
@@ -67,7 +69,7 @@ class Login extends Component {
             <button className="ghost" type="button">Register</button>
           </Link>
           <Link to="/login/forgotPassword">
-            <button type="button">Forgot Password?</button>
+            Forgot Password?
           </Link>
         </div>
         <div className="mapthree">

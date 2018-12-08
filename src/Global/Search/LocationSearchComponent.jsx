@@ -21,7 +21,7 @@ class LocationSearch extends Component {
                         placeholder: 'Where should we go?',
                         className: 'locationsearch',
                     })}></input>
-                    <a href="" className="search-btn"><i className="fa fa-search"></i></a>
+                    <a href="/" className="search-btn"><i className="fa fa-search"></i></a>
 
                     <div className='autocomplete-dropdown-container'>{loading && <div>Loading...</div>}
                         {suggestions.map(suggestion => {
@@ -30,8 +30,8 @@ class LocationSearch extends Component {
                                 : 'suggestion-item';
 
                             const style = suggestion.active
-                                ? { background: '#861C58', cursor: 'pointer', padding: '5px', width: '100%' }
-                                : { background: '#bf268f', cursor: 'pointer', padding: '5px', width: '100%' };
+                                ? { background: '#861C58', cursor: 'pointer', padding: '5px', width: '100%', color: '#fff' }
+                                : { background: '#bf268f', cursor: 'pointer', padding: '5px', width: '100%', color: '#fff' };
                             return (
                                 <div {...getSuggestionItemProps(suggestion, {
                                     className, style
