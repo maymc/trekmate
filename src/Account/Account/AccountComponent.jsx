@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import './styles.css';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import EditAccountComponent from '../EditAccount/EditAccountComponent.jsx';
+import ActivityEdit from '../../Activity/ActivityEdit.jsx';
+import TransitEdit from '../../Transit/TransitEdit.jsx';
 
 import { connect } from 'react-redux';
 import { getUser } from '../../actions/actions';

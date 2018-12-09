@@ -63,29 +63,6 @@ app.post('/login/register', (req, res) => {
 });
 
 
-// app.get('/account/:id', (req, res) => {
-//   console.log('\nGET /account/:id...');
-//})
-
-// app.get('/account/:id', (req, res) => {
-//   console.log('\nGET /account/:id...');
-
-// })
-
-//GET /login form
-// app.get('/login', (req, res) => {
-//   console.log('\nGET /login...');
-
-// })
-
-// //GET /forgot_password
-// app.get('/forgot_password', (req, res) => {
-//   console.log('\nGET /forgot_password...');
-
-// })
-
-
-
 app.listen(PORT, () => {
   console.log(`Listening on port: ${PORT}`)
 })

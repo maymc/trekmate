@@ -41,6 +41,9 @@ class AccommodationAdd extends Component {
     console.log("AccommodationAdd - handleSubmit this.props:", this.props)
     console.log("Accommodation Added!", this.state);
     this.props.dispatch(addAccommodation(this.state));
+
+    //Redirect to accommodations page
+    this.props.history.push(`/accommodations`);
   }
 
   render() {
@@ -57,20 +60,19 @@ class AccommodationAdd extends Component {
           <br /><br />
 
           <label>Check In</label><br />
-          <input onChange={this.handleChange} type='date' name="check_in_date" />
+          <input onChange={this.handleChange} type='test' name="check_in_date" placeholder="mm/dd/yyyy" />
           <br /><br />
 
           <label>Check Out</label><br />
-          <input onChange={this.handleChange} type='date' name="check_out_date" />
+          <input onChange={this.handleChange} type='test' name="check_out_date" placeholder="mm/dd/yyyy" />
           <br /><br />
 
           <label>Price</label><br />
-          <input onChange={this.handleChange} type='number' name="price" placeholder="$" />
+          <input onChange={this.handleChange} type='text' name="price" placeholder="$__.__" />
           <br /><br />
 
-          <label>Pay Status</label><br />
-          <input onChange={this.handleChange} type="radio" name="is_paid" value="Yes" />Paid<br />
-          <input onChange={this.handleChange} type="radio" name="is_paid" value="No" />Not Paid
+          <label>Pay Status (Yes/No)</label><br />
+          <input onChange={this.handleChange} type='text' name="is_paid" placeholder="enter Yes or No" />
           <br /><br />
 
           <label>Reservation Code</label><br />

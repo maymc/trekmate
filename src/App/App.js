@@ -20,29 +20,32 @@ import Account from '../Account/Account/AccountComponent';
 import EditAccount from '../Account/EditAccount/EditAccountComponent';
 import EditPassword from '../Account/EditPassword/EditPasswordComponent';
 
-//~~~ Accommodations JSX files ~~~~//
+//~~~ Trip JSX files ~~~~//
+import Trip from '../Trip/Trip/TripComponent';
+import CreateTrip from '../Trip/CreateTrip/CreateTripComponent';
+import EditTrip from '../Trip/EditTrip/EditTrip';
 
+//~~~ Accommodations JSX files ~~~~//
 import AccommodationAdd from '../Accommodation/AccommodationAdd';
 import Accommodation from '../Accommodation/Accommodation';
 import AccommodationEdit from '../Accommodation/AccommodationEdit';
 import AccommodationDetail from '../Accommodation/AccommodationDetail';
 
-//~~~ Flights JSX files ~~~~//
-import Flight from '../Flight/Flight';
-import FlightAdd from '../Flight/FlightAdd';
-
 //~~~ Activities JSX files ~~~~//
-import Activity from '../Activity/Activity';
 import ActivityAdd from '../Activity/ActivityAdd';
+import Activity from '../Activity/Activity';
+import ActivityEdit from '../Activity/ActivityEdit';
+import ActivityDetail from '../Activity/ActivityDetail';
+
+//~~~ Flights JSX files ~~~~//
+import FlightAdd from '../Flight/FlightAdd';
+import Flight from '../Flight/Flight';
+import FlightEdit from '../Flight/FlightEdit';
+import FlightDetail from '../Flight/FlightDetail';
 
 //~~~ Activities JSX files ~~~~//
 import Transit from '../Transit/Transit';
 import TransitAdd from '../Transit/TransitAdd';
-
-//~~~ Trip JSX files ~~~~//
-import Trip from '../Trip/Trip/TripComponent';
-import CreateTrip from '../Trip/CreateTrip/CreateTripComponent';
-import EditTrip from '../Trip/EditTrip/EditTrip';
 
 class App extends Component {
   constructor(props) {
@@ -79,20 +82,25 @@ class App extends Component {
             <Route path='/trips/add' component={CreateTrip} />
 
             {/* Accommodation Routes */}
-            <Route path='/accommodations/edit/:id' component={AccommodationEdit} />
+            <Route path='/accommodations/trip/:id' component={Accommodation} />
+            <Route path='/accommodation/edit/:id' component={AccommodationEdit} />
             <Route path='/accommodation/:id' component={AccommodationDetail} />
             <Route path='/accommodations/add' component={AccommodationAdd} />
-            <Route path='/accommodations' component={Accommodation} />
-
+            {/* <Route path='/accommodations' component={Accommodation} /> */}
 
             {/* Flight Routes */}
-            <Route exact path='/flight/:id' component={Flight} />
+            <Route path='/flights/trip/:id' component={Flight} />
+            <Route path='/flight/edit/:id' component={FlightEdit} />
+            <Route path='/flight/:id' component={FlightDetail} />
             <Route path='/flights/add' component={FlightAdd} />
+            {/* <Route path='/flights' component={Flight} /> */}
 
             {/* Activity Routes */}
-            {/* <Route exact path='/activities' component={Activity} /> */}
-            <Route exact path='/activity/:id' component={Activity} />
+            <Route path='/activities/trip/:id' component={Activity} />
+            <Route path='/activity/edit/:id' component={ActivityEdit} />
+            <Route path='/activity/:id' component={ActivityDetail} />
             <Route path='/activities/add' component={ActivityAdd} />
+            {/* <Route exact path='/activities' component={Activity} /> */}
 
             {/* Transit Routes */}
             <Route path='/transit/:id' component={Transit} />

@@ -3,31 +3,32 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 //------Redux------//
 import { connect } from 'react-redux';
-import { getAllAccommodations } from '../actions/actions';
+import { getAllAccommodations, getAccommodationsByTrip } from '../actions/actions';
 
 
 class Accommodation extends Component {
   constructor(props) {
     super(props)
-
-    //State is an object, React handles state to do updates
-    this.state = {}
   }
 
   //Lifecycle Methods
   componentDidMount() {
+    //This id comes from the url
+    const tripId = this.props.match.params.id;
+    console.log("Setting tripId:", tripId);
     console.log('\nAccommodation Component Mounted Successfully!');
-    this.props.dispatch(getAllAccommodations());
+    // this.props.dispatch(getAllAccommodations());
+    this.props.dispatch(getAccommodationsByTrip(tripId));
   }
 
   //App Component - render html elements
   render() {
-    console.log('\nAccommodations.jsx - props:', this.props.accommodations)
+    console.log('\nAccommodations.jsx - this.props.accommodationsByTripId:', this.props.accommodationsByTripId)
 
-    return this.props.accommodations.map(accommodationElem => {
+    return this.props.accommodationsByTripId.map(accommodationElem => {
       return (
         <div key={accommodationElem.id}>
-          <p>Lodging Name: {accommodationElem.lodging_name}</p>
+          <p>Lodging: {accommodationElem.lodging_name}</p>
           <p>Address: {accommodationElem.address}</p>
           <p>Check-In Date:{accommodationElem.check_in_date}</p>
           <p>Check-Out Date:{accommodationElem.check_out_date}</p>
@@ -36,8 +37,11 @@ class Accommodation extends Component {
           <p>Reservation: {accommodationElem.reservation_code}</p>
           <p>Notes: {accommodationElem.notes}</p>
           <div>
-            <Link to={`/accommodations/edit/${accommodationElem.id}`}>
+            {/* <Link to={`/accommodations/edit/${accommodationElem.id}`}>
               <button type='button'>Edit Accommodation</button>
+            </Link> */}
+            <Link to={`/accommodation/${accommodationElem.id}`}>
+              <button type='button'>View</button>
             </Link>
           </div>
         </div>
@@ -49,6 +53,7 @@ class Accommodation extends Component {
 const mapStateToProps = state => {
   return {
     accommodations: state.accommodations,
+    accommodationsByTripId: state.accommodationsByTripId
   }
 }
 

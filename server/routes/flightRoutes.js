@@ -7,6 +7,8 @@ const Flights = require('../db/models/Flights.js');
 //GET all flights in database
 flightRouter.get('/', (req, res) => {
     Flights
+        .forge()
+        .orderBy('id', 'ASC')
         .fetchAll()
         .then(flightsList => {
             res.json(flightsList.serialize())
@@ -36,7 +38,9 @@ flightRouter.get('/user/:user_id', (req, res) => {
     const { user_id } = req.params;
 
     Flights
+        .forge()
         .where({ user_id })
+        .orderBy('id', 'ASC')
         .fetchAll()
         .then((flight) => {
             res.json(flight.serialize())
@@ -52,7 +56,9 @@ flightRouter.get('/trip/:trip_id', (req, res) => {
     const { trip_id } = req.params;
 
     Flights
+        .forge()
         .where({ trip_id })
+        .orderBy('id', 'ASC')
         .fetchAll()
         .then((filteredFlights => {
             res.json(filteredFlights.serialize())

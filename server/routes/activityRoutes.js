@@ -7,6 +7,8 @@ const Activities = require('../db/models/Activities.js');
 //GET all activities in database
 activityRouter.get('/', (req, res) => {
     Activities
+        .forge()
+        .orderBy('id', 'ASC')
         .fetchAll()
         .then(activitiesList => {
             res.json(activitiesList.serialize())
@@ -36,7 +38,9 @@ activityRouter.get('/user/:user_id', (req, res) => {
     const { user_id } = req.params;
 
     Activities
+        .forge()
         .where({ user_id })
+        .orderBy('id', 'ASC')
         .fetchAll()
         .then((activity) => {
             res.json(activity.serialize())
@@ -52,7 +56,9 @@ activityRouter.get('/trip/:trip_id', (req, res) => {
     const { trip_id } = req.params;
 
     Activities
+        .forge()
         .where({ trip_id })
+        .orderBy('id', 'ASC')
         .fetchAll()
         .then((filteredActivities => {
             res.json(filteredActivities.serialize())
@@ -102,7 +108,9 @@ activityRouter.post('/add', (req, res) => {
 
 //PUT - edit activity by activity id
 activityRouter.put('/edit/:id', (req, res) => {
+    console.log("IM HEREEEE:");
     const { id } = req.params;
+    console.log("activityRoute PUT - id:", id);
 
     const updatedActivity = {
         activity_name: req.body.activity_name,
@@ -118,6 +126,8 @@ activityRouter.put('/edit/:id', (req, res) => {
         user_id: req.body.user_id,
         trip_id: req.body.trip_id
     }
+
+    console.log("Updated Activity?:", updatedActivity);
 
     Activities
         .where({ id })

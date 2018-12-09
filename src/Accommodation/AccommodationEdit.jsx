@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 //Import actions
-import { editAccommodation, getAccommodation, fillInEditAccommodation } from '../actions/actions';
+import { editAccommodation, getAccommodationById } from '../actions/actions';
 
 class AccommodationEdit extends Component {
   constructor(props) {
@@ -25,37 +25,14 @@ class AccommodationEdit extends Component {
     }
   }
 
-  // //This will set state from props everytime props changes
-  // static getDerivedStateFromProps(nextProps, prevState) {
-  //   console.log("What is next props?:", nextProps);
-  //   console.log("What is prev state", prevState);
-
-  //   if (nextProps.accommodationById !== prevState.accommodationById) {
-  //     return {
-  //       original: {
-  //         id: nextProps.accommodationById.id,
-  //         lodging_name: nextProps.accommodationById.lodging_name,
-  //         address: nextProps.accommodationById.address,
-  //         check_in_date: nextProps.accommodationById.check_in_date,
-  //         check_out_date: nextProps.accommodationById.check_out_date,
-  //         price: nextProps.accommodationById.price,
-  //         is_paid: nextProps.accommodationById.is_paid,
-  //         reservation_code: nextProps.accommodationById.reservation_code,
-  //         notes: nextProps.accommodationById.notes,
-  //       }
-  //     };
-  //   }
-  //   else return null;
-  // }
-
   //Lifecycle Methods
   componentDidMount() {
 
     //This id comes from the url
     const accommodationId = this.props.match.params.id;
-    console.log("Updating accommodationId:", accommodationId);
+    console.log("Setting accommodationId:", accommodationId);
 
-    this.props.dispatch(getAccommodation(accommodationId));
+    this.props.dispatch(getAccommodationById(accommodationId));
   }
 
   //Helper Functions
@@ -78,31 +55,8 @@ class AccommodationEdit extends Component {
     this.props.dispatch(editAccommodation(this.state, this.props.accommodationById.id));
 
     //Redirect to accommodations page
-    this.props.history.push(`/accommodations`);
+    this.props.history.push(`/accommodation/${this.props.accommodationById.id}`);
   }
-
-  // //Submit an object called form and iterate over this.state with for...in to check for which data to use (org data vs newly changed data)
-  // submittingForm = () => {
-  //   let form = {};
-
-  //   for (const key in this.state) {
-  //     if (this.state[key] === "") {
-  //       form[key] = this.state.original[key]
-  //     } else {
-  //       form[key] = this.state[key]
-  //     }
-  //   }
-  //   //Because form was created from an iteration of this.state, form now also includes original. Delete original to dispatch a clean form to axios
-  //   delete form.original;
-
-  //   return form;
-  // }
-
-  // fillInEditAccommodation = () => {
-  //   this.props.dispatch(
-  //     fillInEditAccommodation(this.props.accommodationById.id, this.submittingForm())
-  //   );
-  // }
 
   render() {
     console.log("AccommodationEdit - render - this.props:", this.props);
