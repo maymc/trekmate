@@ -57,7 +57,7 @@ class Register extends Component {
           <h1>Register</h1>
           <form className="registerform" onSubmit={this.handleRegister}>
             <div className="form-group">
-              <input type="text" id="firstname" name="first_name" onChange={this.handleChange} className="form-control" required></input>
+              <input autoFocus type="text" id="firstname" name="first_name" onChange={this.handleChange} className="form-control" required></input>
               <label className="form-control-placeholder" htmlFor="firstname">First Name</label>
             </div>
             <div className="form-group">

@@ -14,7 +14,7 @@ class Account extends Component {
 
   render() {
     const { users } = this.props;
-    console.log('accommodation prop:', users)
+    console.log('user prop:', users)
     return (
       <div className="account">
         <div className="accountbanner">
@@ -24,8 +24,8 @@ class Account extends Component {
           <div className="userdata">
             <h1>{users.first_name}<span>, {users.last_name}</span></h1>
             <p>{users.email}</p>
-            <Link to="/account/edit/:id" >Edit</Link>
-            <Link to="/account/edit_password/:id" >Update Password</Link>
+            <Link to={`/account/edit/${users.id}`}>Edit</Link>
+            <Link to={`/account/edit_password/${users.id}`} >Update Password</Link>
           </div>
         </div>
         <div className="accountfeed">

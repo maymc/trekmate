@@ -3,7 +3,7 @@
     grid-row: 2/2;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: min-content;
+    grid-auto-rows: min-content;
     grid-column-gap: 10px;
     padding: 0 0;
     margin: 30px;
@@ -67,6 +67,7 @@
     grid-column: 1 / span 2;
     background: blue;
     margin-bottom: 30px;
+    min-height: 100px;
 }
 .accountbar {
     grid-column: 3 / span 1;

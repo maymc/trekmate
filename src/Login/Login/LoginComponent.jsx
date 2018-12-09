@@ -54,7 +54,7 @@ class Login extends Component {
           <form className="loginform" onSubmit={this.handleChange}>
 
             <div className="form-group">
-              <input autoComplete="username" type="text" id="email" name="email" onChange={this.handleChange} className="form-control" required></input>
+              <input autoFocus autoComplete="username" type="text" id="email" name="email" onChange={this.handleChange} className="form-control" required></input>
               <label className="form-control-placeholder" htmlFor="email">Email</label>
             </div>
 
