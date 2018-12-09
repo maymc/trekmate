@@ -1,23 +1,32 @@
 import React, { Component } from 'react';
 import './styles.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+
+//Import JSX components
 import EditAccountComponent from '../EditAccount/EditAccountComponent.jsx';
 import ActivityEdit from '../../Activity/ActivityEdit.jsx';
 import TransitEdit from '../../Transit/TransitEdit.jsx';
 
+//Redux
 import { connect } from 'react-redux';
-import { getUser } from '../../actions/actions';
+import { getUserById } from '../../actions/actions';
 
 class Account extends Component {
+  constructor(props) {
+    super(props)
+  }
 
   componentDidMount() {
-    let user = this.props.match.params.id;
-    this.props.dispatch(getUser(user))
+    let userId = this.props.match.params.id;
+    console.log("Setting userId:", userId);
+    console.log("\nAccountComponent Mounted Successfully");
+
+    this.props.dispatch(getUserById(userId));
   }
 
   render() {
-    const { users } = this.props;
-    console.log('user prop:', users)
+    console.log("\nAccountComponent - this.props.userById:", this.props.userById);
+
     return (
       <div className="container col3 account">
         <div className="accountbanner">
@@ -25,10 +34,10 @@ class Account extends Component {
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5av85FUBFtE6pEih8IFJHXT5Z4VT6xKS0EIdifBdqlhcIfkLfQQ" alt="User image"></img>
           </div>
           <div className="userdata">
-            <h1>{users.first_name}<span>, {users.last_name}</span></h1>
-            <p>{users.email}</p>
-            <Link to={`/account/edit/${users.id}`}>Edit</Link>
-            <Link to={`/account/edit_password/${users.id}`} >Update Password</Link>
+            <h1>{this.props.userById.first_name}<span>, {this.props.userById.last_name}</span></h1>
+            <p>{this.props.userById.email}</p>
+            <Link to={`/users/account/edit/${this.props.userById.id}`}>Edit</Link>
+            <Link to={`/users/account/edit_password/${this.props.userById.id}`} >Update Password</Link>
           </div>
         </div>
         <div className="accountfeed">
@@ -46,7 +55,7 @@ class Account extends Component {
 
 const mapStateToProps = state => {
   return {
-    users: state,
+    userById: state.userById,
   }
 }
 export default connect(mapStateToProps)(Account);

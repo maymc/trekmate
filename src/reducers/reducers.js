@@ -32,6 +32,9 @@ import {
 //Takes in action and current state, if there is no state then it will be an empty array
 const reducer = (state = {
   users: [],
+  userById: {},
+  trips: [],
+  tripById: {},
   accommodations: [],
   accommodationsByTripId: [],
   accommodationById: {},
@@ -49,18 +52,18 @@ const reducer = (state = {
     //-------User --------//
     case GET_ALL_USERS:
       return { ...state, users: action.payload }
+    case GET_USER_BY_ID:
+      return { ...state, userById: action.payload }
     case ADD_USER:
       return { ...state, form: action.payload }
-    case GET_USER_BY_ID:
-      return action.payload
 
     //-------Trip------------//
     case GET_ALL_TRIPS:
-      return action.payload
+      return { ...state, trips: action.payload }
+    case GET_TRIP_BY_ID:
+      return { ...state, tripById: action.payload }
     case ADD_TRIP:
       return { ...state, form: action.payload }
-    case GET_TRIP_BY_ID:
-      return { ...state, trip: action.payload }
 
     //-------Accommodation --------//
     case GET_ACCOMMODATIONS_BY_TRIP_ID:
