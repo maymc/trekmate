@@ -1,35 +1,54 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
+//-------Redux------//
 import { connect } from 'react-redux';
-import { getActivity } from '../actions/actions';
-
+import { getActivitiesByTrip } from '../actions/actions';
 
 class Activity extends Component {
+  constructor(props) {
+    super(props)
+  }
 
   componentDidMount() {
-
-    //get activity by activity_id
-    let id = this.props.match.params.id;
-    this.props.dispatch(getActivity(id));
+    //This id comes from the url
+    let activityId = this.props.match.params.id;
+    this.props.dispatch(getActivitiesByTrip(activityId));
   }
 
   //App Component - render html elements
   render() {
-    const { activity } = this.props;
+    console.log('\nActivity.jsx - this.props.activitiesByTripId:', this.props.activitiesByTripId)
 
-    return (
-      <div key={activity.id}>
-        <p>{activity.activity_name}</p>
-      </div>
+    return (this.props.activitiesByTripId.map(activityElem => {
+      return (
+        <div key={activityElem.id}>
+          <p>Activity: {activityElem.activity_name}</p>
+          <p>Location: {activityElem.location}</p>
+          <p>Date:{activityElem.date}</p>
+          <p>Time:{activityElem.time}</p>
+          <p>Price: {activityElem.price}</p>
+          <p>Type: {activityElem.type}</p>
+          <p>Votes: {activityElem.votes}</p>
+          <p>Reservation: {activityElem.reservation}</p>
+          <p>Notes: {activityElem.notes}</p>
+          <img src={activityElem.image}></img>
+
+          <div>
+            <Link to={`/activity/${activityElem.id}`}>
+              <button type='button'>View</button>
+            </Link>
+          </div>
+        </div>
+      )
+    })
     )
-
-
   }
 }
 
 const mapStateToProps = state => {
   return {
-    activity: state,
+    activitiesByTripId: state.activitiesByTripId
   }
 }
 

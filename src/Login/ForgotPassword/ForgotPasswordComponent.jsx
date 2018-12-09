@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import './styles.css';
+
 // import axios from 'axios';
 // import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -32,21 +34,23 @@ class ForgotPassword extends Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <p>Forgot your password?</p>
-          <label>Please enter your email address:</label>
-          <input onChange={this.handleChange} type='text' name="email" placeholder="email" />
-          <br /><br />
+      <div className="forgotpassword-container">
+        <div className="forgotpassword-form">
+          <form onSubmit={this.handleSubmit}>
+            <h2>Forgot your password?</h2>
+            <p>Enter the email associated with your account and we'll send you an email to help you reset your password.</p>
+            <div className="form-group">
+              <input autoFocus type="text" id="email" name="email" onChange={this.handleChange}  className="form-control" required></input>
+              <label className="form-control-placeholder" htmlFor="email">Email</label>
+            </div>
+            <button type="submit">Send email</button>
 
-          <button type="submit">Send email</button>
+          </form>
 
-        </form>
-
-        <Link to="/login">
-          <button type="button">Cancel</button>
-        </Link>
-
+          <Link to="/login">
+            Cancel
+          </Link>
+        </div>
       </div>
     )
   }

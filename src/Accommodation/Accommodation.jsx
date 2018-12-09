@@ -1,51 +1,60 @@
 import React, { Component } from 'react';
-// import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 //------Redux------//
 import { connect } from 'react-redux';
-import { getAllAccommodations } from '../actions/actions';
+import { getAllAccommodations, getAccommodationsByTrip } from '../actions/actions';
 
 
 class Accommodation extends Component {
   constructor(props) {
     super(props)
-
-    //State is an object, React handles state to do updates
-    this.state = {}
   }
+
   //Lifecycle Methods
   componentDidMount() {
-    console.log('COMPONENT MOUNTED :)');
-    this.props.dispatch(getAllAccommodations());
-
+    //This id comes from the url
+    const tripId = this.props.match.params.id;
+    console.log("Setting tripId:", tripId);
+    console.log('\nAccommodation Component Mounted Successfully!');
+    // this.props.dispatch(getAllAccommodations());
+    this.props.dispatch(getAccommodationsByTrip(tripId));
   }
 
   //App Component - render html elements
   render() {
-    const accommodations = this.props.accommodations;
-    console.log('accommodation prop:', accommodations)
-    return accommodations.map(item => {
+    console.log('\nAccommodations.jsx - this.props.accommodationsByTripId:', this.props.accommodationsByTripId)
+
+    return this.props.accommodationsByTripId.map(accommodationElem => {
       return (
-        <div key={item.id}>
-          <p>{item.lodging_name}</p>
-          <p>{item.address}</p>
-          <p>{item.check_in_date}</p>
-          <p>{item.check_out_date}</p>
-          <p>{item.price}</p>
-          <p>{item.notes}</p>
-          <p>{item.reservation_code}</p>
+        <div key={accommodationElem.id}>
+          <p>Lodging: {accommodationElem.lodging_name}</p>
+          <p>Address: {accommodationElem.address}</p>
+          <p>Check-In Date:{accommodationElem.check_in_date}</p>
+          <p>Check-Out Date:{accommodationElem.check_out_date}</p>
+          <p>Price: {accommodationElem.price}</p>
+          <p>Pay Status: {accommodationElem.is_paid}</p>
+          <p>Reservation: {accommodationElem.reservation_code}</p>
+          <p>Notes: {accommodationElem.notes}</p>
+          <div>
+            {/* <Link to={`/accommodations/edit/${accommodationElem.id}`}>
+              <button type='button'>Edit Accommodation</button>
+            </Link> */}
+            <Link to={`/accommodation/${accommodationElem.id}`}>
+              <button type='button'>View</button>
+            </Link>
+          </div>
         </div>
       )
     })
   }
 }
 
-
 const mapStateToProps = state => {
   return {
-    accommodations: state,
+    accommodations: state.accommodations,
+    accommodationsByTripId: state.accommodationsByTripId
   }
 }
-
 
 export default connect(mapStateToProps)(Accommodation);
