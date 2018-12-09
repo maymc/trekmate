@@ -7,7 +7,6 @@ import TransitEdit from '../../Transit/TransitEdit.jsx';
 
 import { connect } from 'react-redux';
 import { getUser } from '../../actions/actions';
-import { Link } from 'react-router-dom';
 
 class Account extends Component {
 
@@ -23,7 +22,7 @@ class Account extends Component {
       <div className="account">
         <div className="accountbanner">
           <div className="userimage">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5av85FUBFtE6pEih8IFJHXT5Z4VT6xKS0EIdifBdqlhcIfkLfQQ" alt="User image"></img>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5av85FUBFtE6pEih8IFJHXT5Z4VT6xKS0EIdifBdqlhcIfkLfQQ" alt="User image"></img>
           </div>
           <div className="userdata">
             <h1>{users.first_name}<span>, {users.last_name}</span></h1>
