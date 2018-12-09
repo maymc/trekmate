@@ -11,19 +11,22 @@ class LocationSearch extends Component {
         }
     }
     handleChange = address => { this.setState({ address }) }
-    handleSelect = address => { geocodeByAddress(address).then(results => console.log('Success', results[0], "address", address)).catch(error => console.error('Error', error)) };
+    handleSelect = address => { geocodeByAddress(address).then(results => 
+        this.setState({ address: results[0].formatted_address} ),
+        console.log('Success', this.state)).catch(error => console.error('Error', error)) };
 
     render() {
+        console.log("search", this)
         return (
             <PlacesAutocomplete value={this.state.address} onChange={this.handleChange} onSelect={this.handleSelect}>{({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
                 <div className="search-box">
                     <input {...getInputProps({
-                        placeholder: 'Where should we go?',
+                        placeholder: this.props.title,
                         className: 'locationsearch',
                     })}></input>
                     <a href="/" className="search-btn"><i className="fa fa-search"></i></a>
 
-                    <div className='autocomplete-dropdown-container'>{loading && <div>Loading...</div>}
+                    <div className='autocomplete-dropdown-container'> 
                         {suggestions.map(suggestion => {
                             const className = suggestion.active
                                 ? 'suggestion-item--action'

@@ -19,7 +19,7 @@ class Account extends Component {
     const { users } = this.props;
     console.log('user prop:', users)
     return (
-      <div className="account">
+      <div className="container col3 account">
         <div className="accountbanner">
           <div className="userimage">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5av85FUBFtE6pEih8IFJHXT5Z4VT6xKS0EIdifBdqlhcIfkLfQQ" alt="User image"></img>

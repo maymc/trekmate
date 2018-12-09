@@ -84,9 +84,10 @@ class App extends Component {
             {/* Accommodation Routes */}
             <Route path='/accommodations/trip/:id' component={Accommodation} />
             <Route path='/accommodation/edit/:id' component={AccommodationEdit} />
-            <Route path='/accommodation/:id' component={AccommodationDetail} />
+
             <Route path='/accommodations/add' component={AccommodationAdd} />
             {/* <Route path='/accommodations' component={Accommodation} /> */}
+            <Route path='/accommodation/:id' component={AccommodationDetail} />
 
             {/* Flight Routes */}
             <Route path='/flights/trip/:id' component={Flight} />

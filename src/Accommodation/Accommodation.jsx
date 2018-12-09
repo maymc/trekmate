@@ -27,23 +27,8 @@ class Accommodation extends Component {
 
     return this.props.accommodationsByTripId.map(accommodationElem => {
       return (
-        <div key={accommodationElem.id}>
-          <p>Lodging: {accommodationElem.lodging_name}</p>
-          <p>Address: {accommodationElem.address}</p>
-          <p>Check-In Date:{accommodationElem.check_in_date}</p>
-          <p>Check-Out Date:{accommodationElem.check_out_date}</p>
-          <p>Price: {accommodationElem.price}</p>
-          <p>Pay Status: {accommodationElem.is_paid}</p>
-          <p>Reservation: {accommodationElem.reservation_code}</p>
-          <p>Notes: {accommodationElem.notes}</p>
-          <div>
-            {/* <Link to={`/accommodations/edit/${accommodationElem.id}`}>
-              <button type='button'>Edit Accommodation</button>
-            </Link> */}
-            <Link to={`/accommodation/${accommodationElem.id}`}>
-              <button type='button'>View</button>
-            </Link>
-          </div>
+        <div className="event">
+
         </div>
       )
     })

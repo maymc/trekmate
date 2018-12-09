@@ -26,7 +26,7 @@ class Trip extends Component {
     console.log('Trip props', trip)
 
     return (
-      <div className="trip">
+      <div className="container trip">
         <div className="tripbanner">
           <div className="tripname">
 

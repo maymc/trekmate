@@ -3,6 +3,11 @@ import React, { Component } from 'react';
 //Redux Setup
 import { connect } from 'react-redux';
 
+//Date picker
+import 'react-dates/initialize';
+import 'react-dates/lib/css/_datepicker.css';
+import { DateRangePicker } from 'react-dates';
+
 //Import actions
 import { editAccommodation, getAccommodationById } from '../actions/actions';
 
@@ -60,9 +65,11 @@ class AccommodationEdit extends Component {
 
   render() {
     console.log("AccommodationEdit - render - this.props:", this.props);
+    let { accommodationById } = this.props
+    console.log('acc', accommodationById)
 
     return (
-      <div>
+      <div className="container">
         <form onSubmit={this.handleSubmit}>
 
           <label>Lodging</label><br />
@@ -74,7 +81,16 @@ class AccommodationEdit extends Component {
           <br /><br />
 
           <label>Check In</label><br />
-          <input onChange={this.handleChange} type='text' name="check_in_date" defaultValue={this.props.accommodationById.check_in_date} />
+          <input onChange={this.handleChange} type='date' name="check_in_date" defaultValue={this.props.accommodationById.check_in_date} />
+          <DateRangePicker
+            startDate={this.state.startDate} // momentPropTypes.momentObj or null,
+            startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
+            endDate={this.state.endDate} // momentPropTypes.momentObj or null,
+            endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
+            onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
+            focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
+            onFocusChange={focusedInput => this.setState({ focusedInput })} // PropTypes.func.isRequired,
+          />
           <br /><br />
 
           <label>Check Out</label><br />
