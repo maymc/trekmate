@@ -31,10 +31,10 @@ export const EDIT_ACTIVITY = 'EDIT_ACTIVITY';
 
 //~~~~~Flights~~~~//
 export const GET_ALL_FLIGHTS = 'GET_ALL_FLIGHTS';
-export const ADD_FLIGHT = 'ADD_FLIGHT';
 export const GET_FLIGHT_BY_ID = 'GET_FLIGHT_BY_ID';
+export const GET_FLIGHTS_BY_TRIP_ID = 'GET_FLIGHTS_BY_TRIP_ID';
+export const ADD_FLIGHT = 'ADD_FLIGHT';
 // export const GET_FLIGHT_BY_USER_ID = 'GET_FLIGHT_BY_USER_ID';
-export const GET_FLIGHT_BY_TRIP_ID = 'GET_FLIGHT_BY_TRIP_ID';
 
 //~~~~~Transit~~~~//
 export const GET_ALL_TRANSITS = 'GET_ALL_TRANSITS';
@@ -320,7 +320,7 @@ export const getAllFlights = () => {
   }
 }
 
-export const getFlight = (id) => {
+export const getFlightById = (id) => {
   return dispatch => {
     axios.get(`/flights/${id}`)
       .then(response => {
@@ -332,11 +332,11 @@ export const getFlight = (id) => {
   }
 }
 
-export const getFlightByTrip = (id) => {
+export const getFlightsByTrip = (id) => {
   return dispatch => {
     axios.get(`/flights/trip/${id}`)
       .then(response => {
-        dispatch({ type: GET_FLIGHT_BY_TRIP_ID, payload: response.data })
+        dispatch({ type: GET_FLIGHTS_BY_TRIP_ID, payload: response.data })
       })
       .catch(err => {
         console.log('error in getting individual FLIGHT by trip_id', err)

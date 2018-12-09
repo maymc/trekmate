@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './styles.css';
 
 import { connect } from 'react-redux';    //part of Abby's template
-import { getTrip, getAccommodationsByTrip, getActivitiesByTrip, getTransitByTrip, getFlightByTrip } from '../../actions/actions'; //part of Abby's template
+import { getTrip, getAccommodationsByTrip, getActivitiesByTrip, getTransitByTrip, getFlightsByTrip } from '../../actions/actions'; //part of Abby's template
 // import Accommodation from '../../Accommodation/Accommodation';
 
 // import { Collaborators } from '../Trip/collaboratorcomponent'
@@ -18,7 +18,7 @@ class Trip extends Component {
     this.props.dispatch(getAccommodationsByTrip(tripId))
     this.props.dispatch(getActivitiesByTrip(tripId))
     this.props.dispatch(getTransitByTrip(tripId))
-    this.props.dispatch(getFlightByTrip(tripId))
+    this.props.dispatch(getFlightsByTrip(tripId))
   }
 
   render() {

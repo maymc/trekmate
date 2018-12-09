@@ -1,40 +1,52 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
-
+//-------Redux------//
 import { connect } from 'react-redux';
-import { getFlight } from '../actions/actions';
+import { getFlightsByTrip } from '../actions/actions';
 
 
 class Flight extends Component {
-
+  constructor(props) {
+    super(props)
+  }
 
   componentDidMount() {
-
-    //get flight by flight_id
-    let id = this.props.match.params.id;
-    this.props.dispatch(getFlight(id));
-
+    //This id comes from the url
+    let flightId = this.props.match.params.id;
+    this.props.dispatch(getFlightsByTrip(flightId));
   }
 
   //App Component - render html elements
   render() {
-    const { flight } = this.props;
+    console.log('\nFlight.jsx - this.props.flightsByTripId:', this.props.flightsByTripId)
 
-    return (
-      <div key={flight.id}>
-        <p>
-          {flight.airlines}
-        </p>
-      </div>
+    return (this.props.flightsByTripId.map(flightElem => {
+      return (
+        <div key={flightElem.id}>
+          <p>Airlines: {flightElem.airlines}</p>
+          <p>Departure Time: {flightElem.departure_time}</p>
+          <p>Arrival Time:{flightElem.arrival_time}</p>
+          <p>Researvation Code:{flightElem.reservation_code}</p>
+          <p># of Checked-In Baggage: {flightElem.checked_in_baggage}</p>
+          <p>Price: {flightElem.price}</p>
+          <p>Notes: {flightElem.notes}</p>
+
+          <div>
+            <Link to={`/flight/${flightElem.id}`}>
+              <button type='button'>View</button>
+            </Link>
+          </div>
+        </div>
+      )
+    })
     )
-
-
   }
 }
 
 const mapStateToProps = state => {
   return {
-    flight: state,
+    flightsByTripId: state.flightsByTripId
   }
 }
 export default connect(mapStateToProps)(Flight);

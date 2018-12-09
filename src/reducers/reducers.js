@@ -18,7 +18,7 @@ import {
   ADD_ACTIVITY,
 
   GET_ALL_FLIGHTS,
-  GET_FLIGHT_BY_TRIP_ID,
+  GET_FLIGHTS_BY_TRIP_ID,
   GET_FLIGHT_BY_ID,
   ADD_FLIGHT,
 
@@ -91,7 +91,7 @@ const reducer = (state = {
     //-------Flight---------//
     case GET_ALL_FLIGHTS:
       return { ...state, flights: action.payload }
-    case GET_FLIGHT_BY_TRIP_ID:
+    case GET_FLIGHTS_BY_TRIP_ID:
       return { ...state, flightsByTripId: action.payload }
     case GET_FLIGHT_BY_ID:
       return { ...state, flightById: action.payload }
