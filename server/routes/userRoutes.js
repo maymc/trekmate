@@ -4,19 +4,6 @@ const userRouter = express.Router();
 //Bookshelf data models
 const Users = require('../db/models/Users.js');
 
-//GET all User in database
-userRouter.get('/', (req, res) => {
-  Users
-    .fetchAll()
-    .then(usersList => {
-      res.json(usersList.serialize())
-    })
-    .catch(err => {
-      console.log("\nGET - getting accommodation list error", err);
-      res.json("GET - getting accommodation list error", err);
-    })
-})
-
 //Get User by user_id
 userRouter.get('/:id', (req, res) => {
   const { id } = req.params
@@ -30,6 +17,19 @@ userRouter.get('/:id', (req, res) => {
     .catch(err => {
       console.log("\nGET - getting accommodation by user_id error", err);
       res.json("GET - getting accommodation by user_id error", err);
+    })
+})
+
+//GET all User in database
+userRouter.get('/', (req, res) => {
+  Users
+    .fetchAll()
+    .then(usersList => {
+      res.json(usersList.serialize())
+    })
+    .catch(err => {
+      console.log("\nGET - getting accommodation list error", err);
+      res.json("GET - getting accommodation list error", err);
     })
 })
 

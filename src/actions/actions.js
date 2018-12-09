@@ -60,11 +60,15 @@ export const getAllUsers = () => {
       })
   }
 }
-export const getUser = (id) => {
+export const getUserById = (id) => {
   return dispatch => {
     axios.get(`/users/${id}`)
       .then(response => {
-        dispatch({ type: GET_USER_BY_ID, payload: response.data })
+        console.log("ACTION - getUserById response:", response)
+        dispatch({
+          type: GET_USER_BY_ID,
+          payload: response.data
+        })
       })
       .catch(err => {
         console.log('error in getting individual user')
@@ -109,7 +113,7 @@ export const getAllTrips = () => {
   }
 }
 
-export const getTripsByUserId = () => {
+export const getTripsByUserId = (id) => {
   return dispatch => {
     axios.get(`/trips/user/${id}`)
       .then(response => {
