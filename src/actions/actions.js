@@ -36,7 +36,28 @@ export const ADD_FLIGHT = 'ADD_FLIGHT';
 export const GET_FLIGHT_BY_ID = 'GET_FLIGHT_BY_ID';
 // export const GET_FLIGHT_BY_USER_ID = 'GET_FLIGHT_BY_USER_ID';
 export const GET_FLIGHT_BY_TRIP_ID = 'GET_FLIGHT_BY_TRIP_ID';
+export const GET_ALL_BY_TRIP_ID = 'GET_ALL_BY_TRIP_ID';
 
+//------GET ALL-----------//
+export const getAllByTrip = (id) => {
+  return dispatch => {
+    return Promise.all([
+      axios.get(`/accommodations/trip/${id}`),
+      axios.get(`/activities/trip/${id}`),
+      axios.get(`/transits/trip/${id}`),
+      axios.get(`/flights/trip/${id}`),
+      axios.get(`/trips/${id}`)
+    ])
+
+      .then(response => {
+        console.log('response.data:', response)
+        dispatch({ type: GET_ALL_BY_TRIP_ID, payload: { accommodations: response[0].data, activities: response[1].data, transits: response[2].data, flights: response[3].data, trips: response[4].data } })
+      })
+      .catch(err => {
+        console.log('error in getting all by trip_id', err)
+      })
+  }
+}
 
 //---------User Action----------//
 export const getAllUsers = () => {

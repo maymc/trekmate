@@ -15,6 +15,7 @@ import {
   GET_ACTIVITY_BY_TRIP_ID,
   GET_TRANSIT_BY_TRIP_ID,
   GET_FLIGHT_BY_TRIP_ID,
+  GET_ALL_BY_TRIP_ID,
   ADD_USER,
   ADD_TRIP,
   ADD_ACCOMMODATION,
@@ -32,6 +33,9 @@ const reducer = (state = [], action) => {
 
   switch (action.type) {
 
+    //-------GET ALL BY TRIP_ID ----------//
+    case GET_ALL_BY_TRIP_ID:
+      return action.payload;
 
     //-------User --------//
     case GET_ALL_USERS:

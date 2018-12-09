@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './styles.css';
 
 import { connect } from 'react-redux';    //part of Abby's template
-import { getTrip, getAccommodationByTrip, getActivityByTrip, getTransitByTrip, getFlightByTrip } from '../../actions/actions'; //part of Abby's template
+import { getTrip, getAccommodationByTrip, getActivityByTrip, getTransitByTrip, getFlightByTrip, getAllByTrip } from '../../actions/actions'; //part of Abby's template
 // import Accommodation from '../../Accommodation/Accommodation';
 
 // import { Collaborators } from '../Trip/collaboratorcomponent'
@@ -14,16 +14,26 @@ class Trip extends Component {
     let tripId = this.props.match.params.id;
 
     //get trip, accommodations, activities, transits, flights by trip_id
-    this.props.dispatch(getTrip(tripId))
-    this.props.dispatch(getAccommodationByTrip(tripId))
-    this.props.dispatch(getActivityByTrip(tripId))
-    this.props.dispatch(getTransitByTrip(tripId))
-    this.props.dispatch(getFlightByTrip(tripId))
+    // this.props.dispatch(getTrip(tripId))
+    // this.props.dispatch(getAccommodationByTrip(tripId))
+    // this.props.dispatch(getActivityByTrip(tripId))
+    // this.props.dispatch(getTransitByTrip(tripId))
+    // this.props.dispatch(getFlightByTrip(tripId))
+    this.props.dispatch(getAllByTrip(tripId));
   }
 
   render() {
-    const trip = this.props.trip; //get trip by trip_id 
-    console.log('this.props', trip)
+    const trips = this.props.trips; //get trip by trip_id 
+    console.log('this.props', trips)
+    // return accommodations.map(item => {
+    //   return (
+    //     <div>{item.lodging_name}</div>
+    //   )
+    // })
+    // let first = trip[0];
+    // console.log('first object: ', trip.map(item => {
+    //   return (<div>hello</div>)
+    // }))
 
     return (
       <div className="trip">
@@ -47,14 +57,7 @@ class Trip extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log('this is state', state)
-  return {
-    trip: state.trip,
-    accommodation: state.accommodation,
-    activity: state.activity,
-    transit: state.transit,
-    flight: state.flight
-  }
+  return state;
 }
 
 
