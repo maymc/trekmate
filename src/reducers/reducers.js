@@ -54,6 +54,14 @@ const reducer = (state = {
     case GET_USER_BY_ID:
       return action.payload
 
+    //-------Trip------------//
+    case GET_ALL_TRIPS:
+      return action.payload
+    case ADD_TRIP:
+      return { ...state, form: action.payload }
+    case GET_TRIP_BY_ID:
+      return { ...state, trip: action.payload }
+
     //-------Accommodation --------//
     case GET_ACCOMMODATIONS_BY_TRIP_ID:
       console.log("REDUCER - what is at GET_ACCOMMODATION_BY_TRIP_ID?:", action.payload)
@@ -70,43 +78,36 @@ const reducer = (state = {
     case ADD_ACCOMMODATION:
       return { ...state, form: action.payload }
 
-    //-------Trip------------//
-    case GET_ALL_TRIPS:
-      return action.payload
-    case ADD_TRIP:
-      return { ...state, form: action.payload }
-    case GET_TRIP_BY_ID:
-      return { ...state, trip: action.payload }
-
     //-------Activity---------//
     case GET_ALL_ACTIVITIES:
       return { ...state, activities: action.payload }
-    case GET_ACTIVITY_BY_ID:
-      return { ...state, activityById: action.payload }
     case GET_ACTIVITIES_BY_TRIP_ID:
       return { ...state, activitiesByTripId: action.payload }
+    case GET_ACTIVITY_BY_ID:
+      return { ...state, activityById: action.payload }
     case ADD_ACTIVITY:
       return { ...state, form: action.payload }
 
     //-------Flight---------//
     case GET_ALL_FLIGHTS:
-      return action.payload
+      return { ...state, flights: action.payload }
+    case GET_FLIGHT_BY_TRIP_ID:
+      return { ...state, flightsByTripId: action.payload }
+    case GET_FLIGHT_BY_ID:
+      return { ...state, flightById: action.payload }
     case ADD_FLIGHT:
       return { ...state, form: action.payload }
-    case GET_FLIGHT_BY_ID:
-      return action.payload
-    case GET_FLIGHT_BY_TRIP_ID:
-      return { ...state, flight: action.payload }
 
     //-------Transit --------//
     case GET_ALL_TRANSITS:
-      return action.payload
+      return { ...state, transit: action.payload }
+    case GET_TRANSIT_BY_TRIP_ID:
+      return { ...state, transitByTripId: action.payload }
+    case GET_TRANSIT_BY_ID:
+      return { ...state, transitById: action.payload }
     case ADD_TRANSIT:
       return { ...state, form: action.payload }
-    case GET_TRANSIT_BY_ID:
-      return action.payload
-    case GET_TRANSIT_BY_TRIP_ID:
-      return { ...state, transit: action.payload }
+
 
     default:
       //default is to return original state to do nothing 
