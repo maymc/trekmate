@@ -23,12 +23,14 @@ class Trip extends Component {
 
   render() {
     const trip = this.props.trip; //get trip by trip_id 
-    console.log('this.props', trip)
+    console.log('Trip props', trip)
 
     return (
       <div className="trip">
         <div className="tripbanner">
+          <div className="tripname">
 
+          </div>
         </div>
         <div className="tripfeed">
 

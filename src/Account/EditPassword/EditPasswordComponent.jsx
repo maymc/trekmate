@@ -1,18 +1,25 @@
 import React, { Component } from 'react';
 // import axios from 'axios';
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
+import './styles.css';
+import { Link } from 'react-router-dom';
+import { getUser } from '../../actions/actions';
 
 class EditPassword extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      password: null
+      password: null,
+      id: null
     }
   }
 
   //Lifecycle Methods
-  componentDidMount() { }
+  componentDidMount() {
+    let user = this.props.match.params.id;
+    this.props.dispatch(getUser(user))
+   }
 
   handleChange = (e) => {
     e.preventDefault();
@@ -29,29 +36,38 @@ class EditPassword extends Component {
   }
 
   render() {
+    const { users } = this.props;
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-
-          <label>Previous Password</label>
-          <input onChange={this.handleChange} type='password' name="previousPassword" placeholder="enter previous password" />
-          <br /><br />
-
-          <label>Password</label>
-          <input onChange={this.handleChange} type='password' name="password" placeholder="enter new password" />
-          <br /><br />
-
-          <label>Confirm Password</label>
-          <input onChange={this.handleChange} type='password' name="confirmPassword" placeholder="confirm password" />
-          <br /><br />
-
-          <button type="submit">Submit</button>
-
-        </form>
+      <div className="updatepassword-container">
+        <div className="updatepassword-form">
+          <form onSubmit={this.handleSubmit}>
+            <h2>Update your password</h2>
+            <div className="form-group">
+              <input autoFocus autoComplete="current-password" type="password" id="currentpassword" name="password" onChange={this.handleChange} className="form-control" required></input>
+              <label className="form-control-placeholder" htmlFor="currentpassword">Current Password</label>
+            </div>
+            <div className="form-group">
+              <input autoComplete="new-password" type="password" id="newpassword" name="password" onChange={this.handleChange} className="form-control" required></input>
+              <label className="form-control-placeholder" htmlFor="newpassword">New Password</label>
+            </div>
+            <div className="form-group">
+              <input autoComplete="new-password" type="password" id="password" name="password" onChange={this.handleChange} className="form-control" required></input>
+              <label className="form-control-placeholder" htmlFor="password">Confirm New Password</label>
+            </div>
+            <button type="submit">Submit</button>
+          </form>
+          <Link to={`/account/${users.id}`}>
+            Cancel
+          </Link>
+        </div>
       </div>
     )
   }
 }
 
-
-export default EditPassword;
+const mapStateToProps = state => {
+  return {
+    users: state,
+  }
+}
+export default connect(mapStateToProps)(EditPassword);

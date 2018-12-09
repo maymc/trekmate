@@ -3,34 +3,81 @@
     grid-row: 2/2;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: min-content;
+    grid-auto-rows: min-content;
     grid-column-gap: 10px;
     padding: 0 0;
-    /* background: aqua; */
+    margin: 30px;
 }
 
 .accountbanner {
     grid-column: 1/ span 3;
-    height: 240px;
-    background: green;
+    border-bottom: 2px solid #919195;
     margin-bottom: 30px;
+    padding-bottom: 15px;
+    display: grid;
+    grid-template-columns: min-content auto;
+    grid-template-rows: auto;
+    grid-column-gap: 30px;
 }
+
+.userimage {
+    grid-column: 1/1;
+    grid-row: 1/1;
+    width: 100%;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: aqua;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.userimage img {
+    width: 100%;
+    height: 100%;
+}
+
+.userdata {
+    grid-column: 2/2;
+    grid-row: 1/1;
+    width: 100%;
+    height: min-content;
+}
+
+.userdata h1 {
+    color: #9d2069;
+}
+
+.userdata h1 span {
+    font-size: .5em;
+    color: #bf268f;
+}
+
+.userdata p {
+    margin-bottom: 30px;
+    color: #6C6A82;
+}
+
+.userdata a {
+    margin-right: 15px;
+}
+
 .accountfeed {
     grid-column: 1 / span 2;
     background: blue;
     margin-bottom: 30px;
+    min-height: 100px;
 }
 .accountbar {
     grid-column: 3 / span 1;
     /* background: red; */
     margin-bottom: 30px;
-    margin-right: 10px;
 }
 
 
 .accountbar button {
     width: 100%;
-    margin: 0px;
     margin-bottom: 5px;
     text-align: left;
     font-size: .75em;
@@ -41,6 +88,13 @@
 
 
 @media only screen and (max-width: 600px) {
+    .accountbanner {
+        padding: 15px;
+    }
+    .userimage {
+        width: 70px;
+        height: 70px;
+    }
     .accountfeed {
         grid-column: 1 / span 3;
         grid-row: 3/3;
@@ -48,6 +102,5 @@
     .accountbar {
         grid-column: 1 / span 3;
         grid-row: 2/2;  
-        margin-left: 10px;
     }
 }
