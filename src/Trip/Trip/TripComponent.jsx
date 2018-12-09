@@ -1,29 +1,41 @@
+//Shows Trip details
+
 import React, { Component } from 'react';
 import './styles.css';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
-import { connect } from 'react-redux';    //part of Abby's template
-import { getTrip, getAccommodationsByTrip, getActivitiesByTrip, getTransitByTrip, getFlightsByTrip } from '../../actions/actions'; //part of Abby's template
+//Redux
+import { connect } from 'react-redux';
+import { getTripById, getAccommodationsByTrip, getActivitiesByTrip, getFlightsByTrip, getTransitByTrip } from '../../actions/actions'; //part of Abby's template
 // import Accommodation from '../../Accommodation/Accommodation';
 
 // import { Collaborators } from '../Trip/collaboratorcomponent'
 
-class Trip extends Component {
+class TripComponent extends Component {
+  constructor(props) {
+    super(props)
+  }
 
   componentDidMount() {
-    // this.props.dispatch(getAllTrips());   //part of Abby's template
-    let tripId = this.props.match.params.id;
 
-    //get trip, accommodations, activities, transits, flights by trip_id
-    this.props.dispatch(getTrip(tripId))
+    //Trip id comes from url
+    let tripId = this.props.match.params.id;
+    console.log("Setting tripId:", tripId);
+    console.log("\nTripComponent Mounted Successfully");
+
+    //GET details for trip, accommodations, activities, flights, and transit by trip_id
+    this.props.dispatch(getTripById(tripId))
     this.props.dispatch(getAccommodationsByTrip(tripId))
     this.props.dispatch(getActivitiesByTrip(tripId))
-    this.props.dispatch(getTransitByTrip(tripId))
     this.props.dispatch(getFlightsByTrip(tripId))
+    this.props.dispatch(getTransitByTrip(tripId))
   }
 
   render() {
-    const trip = this.props.trip; //get trip by trip_id 
-    console.log('Trip props', trip)
+    // const trip = this.props.trip; //get trip by trip_id 
+    // console.log('Trip props', trip)
+
+    console.log("TripComponent - this.props:", this.props);
 
     return (
       <div className="trip">
@@ -51,13 +63,13 @@ class Trip extends Component {
 const mapStateToProps = state => {
   console.log('this is state', state)
   return {
-    trip: state.trip,
-    accommodation: state.accommodation,
-    activity: state.activity,
-    transit: state.transit,
-    flight: state.flight
+    tripById: state.tripsById,
+    accommodationsByTrip: state.accommodationsByTripId,
+    activitiesByTrip: state.activitiesByTripId,
+    flightsByTrip: state.flightsByTripId,
+    transitByTrip: state.transitByTrip
   }
 }
 
 
-export default connect(mapStateToProps)(Trip);
+export default connect(mapStateToProps)(TripComponent);

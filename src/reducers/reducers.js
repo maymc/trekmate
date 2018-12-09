@@ -34,17 +34,25 @@ import {
 const reducer = (state = {
   users: [],
   userById: {},
+
   trips: [],
   tripById: {},
   tripsByUserId: [],
+
   accommodations: [],
   accommodationsByTripId: [],
   accommodationById: {},
+
   activities: [],
   activitiesByTripId: [],
   activityById: {},
+
   flights: [],
+  flightsByTripId: [],
+
   transit: [],
+  transitByTripId: [],
+
   form: {}
 }, action) => {
 

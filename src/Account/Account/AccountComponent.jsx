@@ -52,6 +52,11 @@ class Account extends Component {
                 <p>{trip.country}</p>
                 <p>{trip.start_date}</p>
                 <p>{trip.end_date}</p>
+
+                <form method="get" action="/trips/:id">
+                  <button type="submit">View trip</button>
+                </form>
+
               </div>
             )
           })}

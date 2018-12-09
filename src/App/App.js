@@ -21,7 +21,7 @@ import EditAccount from '../Account/EditAccount/EditAccountComponent';
 import EditPassword from '../Account/EditPassword/EditPasswordComponent';
 
 //~~~ Trip JSX files ~~~~//
-import Trip from '../Trip/Trip/TripComponent';
+import TripComponent from '../Trip/Trip/TripComponent';
 import CreateTrip from '../Trip/CreateTrip/CreateTripComponent';
 import EditTrip from '../Trip/EditTrip/EditTrip';
 
@@ -78,7 +78,7 @@ class App extends Component {
             {/* Trip Routes */}
             {/* <Route exact path='/trips' component={Trip} /> */}
             <Route path='/trip/edit/:id' component={EditTrip} />
-            <Route path='/trip/:id' component={Trip} />
+            <Route path='/trip/:id' component={TripComponent} />
             <Route path='/trips/add' component={CreateTrip} />
 
             {/* Accommodation Routes */}

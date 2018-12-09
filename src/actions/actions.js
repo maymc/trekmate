@@ -162,7 +162,7 @@ export const getTripsByUserId = (id) => {
   }
 }
 
-export const getTrip = (id) => {
+export const getTripById = (id) => {
   return dispatch => {
     axios.get(`/trips/${id}`)
       .then(response => {
