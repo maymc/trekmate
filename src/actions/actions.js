@@ -6,6 +6,8 @@ import axios from 'axios';
 export const GET_ALL_USERS = 'GET_ALL_USERS';
 export const GET_USER_BY_ID = 'GET_USER_BY_ID';
 export const ADD_USER = 'ADD_USER';
+export const EDIT_USER = 'EDIT_USER';
+export const EDIT_PASSWORD = 'EDIT_PASSWORD';
 
 //~~~~~Trips~~~~//
 export const GET_ALL_TRIPS = 'GET_ALL_TRIPS';
@@ -89,6 +91,38 @@ export const addUser = (user) => {
       })
       .catch(err => {
         console.log("ERROR - actions axios addUser:", err);
+      })
+  }
+}
+
+export const editUser = (user) => {
+  const { id } = user;
+  console.log("\nACTION: editUser:", user)
+  console.log("Check id:", id);
+  return dispatch => {
+    axios.put(`/users/account/edit/${id}`, user)
+      .then(responseFromDB => {
+        console.log("\nCheck - responseFromDB:", responseFromDB.data)
+        dispatch({ type: EDIT_USER, payload: responseFromDB.data });
+      })
+      .catch(err => {
+        console.log("ERROR - actions editUser:", err);
+      })
+  }
+}
+
+export const editPassword = (password) => {
+  const { id } = password;
+  console.log("\nACTION: editPassword:", password)
+  console.log("Check id:", id);
+  return dispatch => {
+    axios.put(`/users/account/edit_password/${id}`, password)
+      .then(responseFromDB => {
+        console.log("\nCheck - responseFromDB:", responseFromDB.data)
+        dispatch({ type: EDIT_PASSWORD, payload: responseFromDB.data });
+      })
+      .catch(err => {
+        console.log("ERROR - actions editPassword:", err);
       })
   }
 }

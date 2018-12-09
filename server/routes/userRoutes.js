@@ -33,35 +33,6 @@ userRouter.get('/', (req, res) => {
     })
 })
 
-// //POST /login/register
-// userRouter.post('/login/register', (req, res) => {
-//   console.log('\nPOST /login/register...');
-//   console.log("\nreq.body:", req.body);
-
-//   const newUser = {
-//     first_name: req.body.first_name,
-//     last_name: req.body.last_name,
-//     email: req.body.email,
-//     password: req.body.password
-//   }
-
-//   console.log("\nNew User check:", newUser);
-
-//   Users
-//     .forge(newUser)
-//     .save()
-//     .then(() => {
-//       return Users.fetchAll()
-//     })
-//     .then(users => {
-//       res.json(users.serialize());
-//     })
-//     .catch(err => {
-//       console.log("\nPOST - adding new user error", err);
-//       res.json("POST - adding new user error");
-//     })
-// });
-
 //PUT - edit user by user id
 userRouter.put('/account/edit/:id', (req, res) => {
   const { id } = req.params;
@@ -70,7 +41,6 @@ userRouter.put('/account/edit/:id', (req, res) => {
     first_name: req.body.first_name,
     last_name: req.body.last_name,
     email: req.body.email,
-    // password: req.body.password
   }
 
   Users

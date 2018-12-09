@@ -36,8 +36,8 @@ class Account extends Component {
           <div className="userdata">
             <h1>{this.props.userById.first_name}<span>, {this.props.userById.last_name}</span></h1>
             <p>{this.props.userById.email}</p>
-            <Link to={`/account/edit/${this.props.userById.id}`}>Edit</Link>
-            <Link to={`/account/edit_password/${this.props.userById.id}`} >Update Password</Link>
+            <Link to={`/users/account/edit/${this.props.userById.id}`}>Edit</Link>
+            <Link to={`/users/account/edit_password/${this.props.userById.id}`} >Update Password</Link>
           </div>
         </div>
         <div className="accountfeed">
