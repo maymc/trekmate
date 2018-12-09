@@ -33,9 +33,11 @@ class ActivityDetail extends Component {
         <p>Reservation: {this.props.activityById.reservation}</p>
         <p>Notes: {this.props.activityById.notes}</p>
         <img src={this.props.activityById.image}></img>
+
         <Link to={`/activity/edit/${this.props.activityById.id}`}>
           <button type='button'>Edit Activity</button>
         </Link>
+
         <Link to={`/activities/trip/${this.props.activityById.trip_id}`}>
           <button type='button'>Back</button>
         </Link>

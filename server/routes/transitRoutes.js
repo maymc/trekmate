@@ -7,6 +7,8 @@ const Transit = require('../db/models/Transit.js');
 //GET all transit in database
 transitRouter.get('/', (req, res) => {
     Transit
+        .forge()
+        .orderBy('id', 'ASC')
         .fetchAll()
         .then(transitList => {
             res.json(transitList.serialize())
@@ -38,7 +40,9 @@ transitRouter.get('/user/:user_id', (req, res) => {
     const { user_id } = req.params;
 
     Transit
+        .forge()
         .where({ user_id })
+        .orderBy('id', 'ASC')
         .fetchAll()
         .then((transitItem) => {
             res.json(transitItem.serialize())
@@ -54,7 +58,9 @@ transitRouter.get('/trip/:trip_id', (req, res) => {
     const { trip_id } = req.params;
 
     Transit
+        .forge()
         .where({ trip_id })
+        .orderBy('id', 'ASC')
         .fetchAll()
         .then((filteredTransit => {
             res.json(filteredTransit.serialize())

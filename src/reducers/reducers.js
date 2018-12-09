@@ -80,13 +80,13 @@ const reducer = (state = {
 
     //-------Activity---------//
     case GET_ALL_ACTIVITIES:
-      return action.payload
-    case ADD_ACTIVITY:
-      return { ...state, form: action.payload }
+      return { ...state, activities: action.payload }
     case GET_ACTIVITY_BY_ID:
       return { ...state, activityById: action.payload }
     case GET_ACTIVITIES_BY_TRIP_ID:
       return { ...state, activitiesByTripId: action.payload }
+    case ADD_ACTIVITY:
+      return { ...state, form: action.payload }
 
     //-------Flight---------//
     case GET_ALL_FLIGHTS:

@@ -94,7 +94,7 @@ class App extends Component {
             {/* Activity Routes */}
             <Route path='/activities/trip/:id' component={Activity} />
             <Route path='/activity/edit/:id' component={ActivityEdit} />
-            <Route exact path='/activity/:id' component={ActivityDetail} />
+            <Route path='/activity/:id' component={ActivityDetail} />
             <Route path='/activities/add' component={ActivityAdd} />
             {/* <Route exact path='/activities' component={Activity} /> */}
 

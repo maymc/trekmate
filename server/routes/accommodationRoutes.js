@@ -39,7 +39,9 @@ accommodationRouter.get('/user/:user_id', (req, res) => {
     const { user_id } = req.params;
 
     Accommodations
+        .forge()
         .where({ user_id })
+        .orderBy('id', 'ASC')
         .fetchAll()
         .then((accommodation) => {
             res.json(accommodation.serialize())
@@ -55,7 +57,9 @@ accommodationRouter.get('/trip/:trip_id', (req, res) => {
     const { trip_id } = req.params;
 
     Accommodations
+        .forge()
         .where({ trip_id })
+        .orderBy('id', 'ASC')
         .fetchAll()
         .then((filteredAccommodations => {
             res.json(filteredAccommodations.serialize())
@@ -98,7 +102,7 @@ accommodationRouter.post('/add', (req, res) => {
 
 //PUT - edit accommodation by accommodation id
 accommodationRouter.put('/edit/:id', (req, res) => {
-    console.log("IM HEREEEE:");
+
     const { id } = req.params;
     console.log("id here??:", id);
 
