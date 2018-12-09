@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 //-------Redux------//
 import { connect } from 'react-redux';
@@ -7,9 +7,6 @@ import { getFlightsByTrip } from '../actions/actions';
 
 
 class Flight extends Component {
-  constructor(props) {
-    super(props)
-  }
 
   componentDidMount() {
     //This id comes from the url

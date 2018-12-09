@@ -48,9 +48,9 @@ import Transit from '../Transit/Transit';
 import TransitAdd from '../Transit/TransitAdd';
 
 class App extends Component {
-  constructor(props) {
-    super(props)
-  }
+  // constructor(props) {
+  //   super(props)
+  // }
 
   //Lifecycle Methods
   componentDidMount() {

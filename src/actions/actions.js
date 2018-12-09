@@ -45,11 +45,7 @@ export const GET_TRANSIT_BY_ID = 'GET_TRANSIT_BY_ID';
 // export const GET_TRANSIT_BY_USER_ID = 'GET_TRANSIT_BY_USER_ID';
 export const GET_TRANSIT_BY_TRIP_ID = 'GET_TRANSIT_BY_TRIP_ID';
 
-<<<<<<< HEAD
 
-export const GET_ALL_FLIGHTS = 'GET_ALL_FLIGHTS';
-export const ADD_FLIGHT = 'ADD_FLIGHT';
-export const GET_FLIGHT_BY_ID = 'GET_FLIGHT_BY_ID';
 // export const GET_FLIGHT_BY_USER_ID = 'GET_FLIGHT_BY_USER_ID';
 export const GET_FLIGHT_BY_TRIP_ID = 'GET_FLIGHT_BY_TRIP_ID';
 export const GET_ALL_BY_TRIP_ID = 'GET_ALL_BY_TRIP_ID';
@@ -67,17 +63,13 @@ export const getAllByTrip = (id) => {
 
       .then(response => {
         console.log('response.data:', response)
-        dispatch({ type: GET_ALL_BY_TRIP_ID, payload: { accommodations: response[0].data, activities: response[1].data, transits: response[2].data, flights: response[3].data, trips: response[4].data } })
+        dispatch({ type: GET_ALL_BY_TRIP_ID, payload: { accommodations: response[0].data, activities: response[1].data, transit: response[2].data, flights: response[3].data, trips: response[4].data[0] } })
       })
       .catch(err => {
         console.log('error in getting all by trip_id', err)
       })
   }
 }
-=======
-//Action = has type and payload
-//Action creater- function that returns an action which is an object with type and payload
->>>>>>> 9ad634aaf64e1cbec1ef03b4cb0bacd280b6b73a
 
 //---------User Action----------//
 export const getAllUsers = () => {

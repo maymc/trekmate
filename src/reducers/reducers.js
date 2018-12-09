@@ -25,7 +25,9 @@ import {
   GET_ALL_TRANSITS,
   GET_TRANSIT_BY_TRIP_ID,
   GET_TRANSIT_BY_ID,
-  ADD_TRANSIT
+  ADD_TRANSIT,
+
+  GET_ALL_BY_TRIP_ID
 }
   from '../actions/actions.js';
 

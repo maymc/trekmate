@@ -1,65 +1,31 @@
 import React, { Component } from 'react';
 import './styles.css';
 
-import { connect } from 'react-redux';    //part of Abby's template
-<<<<<<< HEAD
-import { getTrip, getAccommodationByTrip, getActivityByTrip, getTransitByTrip, getFlightByTrip, getAllByTrip } from '../../actions/actions'; //part of Abby's template
-=======
-import { getTrip, getAccommodationsByTrip, getActivitiesByTrip, getTransitByTrip, getFlightsByTrip } from '../../actions/actions'; //part of Abby's template
->>>>>>> 9ad634aaf64e1cbec1ef03b4cb0bacd280b6b73a
+import { connect } from 'react-redux';
+import { getAllByTrip } from '../../actions/actions';
 // import Accommodation from '../../Accommodation/Accommodation';
-
 // import { Collaborators } from '../Trip/collaboratorcomponent'
 
 class Trip extends Component {
 
   componentDidMount() {
-    // this.props.dispatch(getAllTrips());   //part of Abby's template
     let tripId = this.props.match.params.id;
-
-    //get trip, accommodations, activities, transits, flights by trip_id
-<<<<<<< HEAD
-    // this.props.dispatch(getTrip(tripId))
-    // this.props.dispatch(getAccommodationByTrip(tripId))
-    // this.props.dispatch(getActivityByTrip(tripId))
-    // this.props.dispatch(getTransitByTrip(tripId))
-    // this.props.dispatch(getFlightByTrip(tripId))
     this.props.dispatch(getAllByTrip(tripId));
   }
 
   render() {
-    const trips = this.props.trips; //get trip by trip_id 
-    console.log('this.props', trips)
-    // return accommodations.map(item => {
-    //   return (
-    //     <div>{item.lodging_name}</div>
-    //   )
-    // })
-    // let first = trip[0];
-    // console.log('first object: ', trip.map(item => {
-    //   return (<div>hello</div>)
-    // }))
-=======
-    this.props.dispatch(getTrip(tripId))
-    this.props.dispatch(getAccommodationsByTrip(tripId))
-    this.props.dispatch(getActivitiesByTrip(tripId))
-    this.props.dispatch(getTransitByTrip(tripId))
-    this.props.dispatch(getFlightsByTrip(tripId))
-  }
-
-  render() {
-    const trip = this.props.trip; //get trip by trip_id 
-    console.log('Trip props', trip)
->>>>>>> 9ad634aaf64e1cbec1ef03b4cb0bacd280b6b73a
-
+    const trips = this.props.trips;
     return (
       <div className="trip">
         <div className="tripbanner">
           <div className="tripname">
 
+            {/* example to render trip by trip_id  */}
+            Your Trip: {trips.city}
           </div>
         </div>
         <div className="tripfeed">
+
 
         </div>
         <div className="tripbar">
@@ -68,11 +34,54 @@ class Trip extends Component {
           <button><i className="fas fa-plane"></i> Flight</button>
           <button><i className="fas fa-car-side"></i> Transit</button>
           <button><i className="fas fa-hotel"></i> Accommodation</button>
+
+          {/* example to render accommodations by trip_id */}
+          Accommodation By Trip: <AccommodationByTrip accommodations={this.props.accommodations} />
+          <br />
+          {/* example to render activities by trip_id */}
+          Activity By Trip: <ActivityByTrip activities={this.props.activities} />
+          <br />
+          {/* example to render transits by trip_id */}
+          Transit By Trip: <TransitByTrip transit={this.props.transit} />
+          <br />
+          {/* example to render flights by trip_id */}
+          Flight By Trip: <FlightByTrip flights={this.props.flights} />
+
         </div>
       </div>
     );
 
   }
+}
+
+const AccommodationByTrip = (props) => {
+  return props.accommodations.map(item => {
+    return (
+      <div key={item.id}>{item.lodging_name}</div>
+    )
+  })
+}
+const ActivityByTrip = (props) => {
+  return props.activities.map(item => {
+    return (
+      <div key={item.id}>{item.activity_name}</div>
+    )
+  })
+}
+const TransitByTrip = (props) => {
+  return props.transit.map(item => {
+    return (
+      <div key={item.id}>{item.type}</div>
+    )
+  })
+}
+
+const FlightByTrip = (props) => {
+  return props.flights.map(item => {
+    return (
+      <div key={item.id}>{item.airlines}</div>
+    )
+  })
 }
 
 const mapStateToProps = state => {
