@@ -52,6 +52,8 @@ class TripComponent extends Component {
             <p>Country: {this.props.tripById.country}</p>
             <p>Start Date: {this.props.tripById.start_date}</p>
             <p>End Date: {this.props.tripById.end_date}</p>
+
+            <Link to={`/trips/edit/${this.props.tripById.id}`}>Edit</Link>
           </div>
         </div>
 

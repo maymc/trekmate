@@ -14,6 +14,7 @@ export const GET_ALL_TRIPS = 'GET_ALL_TRIPS';
 export const GET_TRIP_BY_ID = 'GET_TRIP_BY_ID';
 export const GET_TRIPS_BY_USER_ID = 'GET_TRIPS_BY_USER_ID';
 export const ADD_TRIP = 'ADD_TRIP';
+export const EDIT_TRIP = 'EDIT_TRIP';
 
 //~~~~~Accommodations~~~~//
 export const GET_ALL_ACCOMMODATIONS = 'GET_ALL_ACCOMMODATIONS';
@@ -164,8 +165,10 @@ export const getTripsByUserId = (id) => {
 
 export const getTripById = (id) => {
   return dispatch => {
+    // console.log("here???", id)
     axios.get(`/trips/${id}`)
       .then(response => {
+        // console.log("working response?", response);
         dispatch({
           type: GET_TRIP_BY_ID,
           payload: response.data[0]
@@ -190,6 +193,22 @@ export const addTrip = (trip) => {
       })
       .catch(err => {
         console.log("ERROR - actions axios addTrip:", err);
+      })
+  }
+}
+
+export const editTrip = (trip) => {
+  const { id } = trip;
+  console.log("\nACTION: editTrip:", trip)
+  // console.log("Check id:", id);
+  return dispatch => {
+    axios.put(`/trips/edit/${id}`, trip)
+      .then(responseFromDB => {
+        console.log("\nCheck - responseFromDB:", responseFromDB.data)
+        dispatch({ type: EDIT_TRIP, payload: responseFromDB.data });
+      })
+      .catch(err => {
+        console.log("ERROR - actions editTrip:", err);
       })
   }
 }

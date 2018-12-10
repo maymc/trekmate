@@ -97,8 +97,6 @@ class AccommodationEdit extends Component {
           <input onChange={this.handleChange} type='text' name="notes" defaultValue={this.props.accommodationById.notes} />
           <br /><br />
 
-          {/* <button type="submit" value="Save draft for later" onClick={this.fillInEditAccommodation}>Update Accommodation</button> */}
-
           <button type="submit">Update Accommodation</button>
 
         </form>
