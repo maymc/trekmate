@@ -12,8 +12,8 @@ export const EDIT_PASSWORD = 'EDIT_PASSWORD';
 //~~~~~Trips~~~~//
 export const GET_ALL_TRIPS = 'GET_ALL_TRIPS';
 export const GET_TRIP_BY_ID = 'GET_TRIP_BY_ID';
-export const ADD_TRIP = 'ADD_TRIP';
 export const GET_TRIPS_BY_USER_ID = 'GET_TRIPS_BY_USER_ID';
+export const ADD_TRIP = 'ADD_TRIP';
 
 //~~~~~Accommodations~~~~//
 export const GET_ALL_ACCOMMODATIONS = 'GET_ALL_ACCOMMODATIONS';
@@ -162,7 +162,7 @@ export const getTripsByUserId = (id) => {
   }
 }
 
-export const getTrip = (id) => {
+export const getTripById = (id) => {
   return dispatch => {
     axios.get(`/trips/${id}`)
       .then(response => {
