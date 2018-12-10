@@ -71,6 +71,7 @@ class App extends Component {
             <Route exact path='/login' component={Login} />
 
             {/* User account Routes */}
+            <Route path='/users/account/:user_id/trips/:trip_id' component={TripComponent} />
             <Route path='/users/account/edit_password/:id' component={EditPassword} />
             <Route path='/users/account/edit/:id' component={EditAccount} />
             <Route path='/users/account/:id' component={Account} />

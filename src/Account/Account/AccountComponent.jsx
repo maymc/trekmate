@@ -53,7 +53,7 @@ class Account extends Component {
                 <p>{trip.start_date}</p>
                 <p>{trip.end_date}</p>
 
-                <form method="get" action="/trips/:id">
+                <form method="get" action={`/users/account/${trip.user_id}/trips/${trip.id}`}>
                   <button type="submit">View trip</button>
                 </form>
 
