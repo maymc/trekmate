@@ -26,7 +26,9 @@ import {
   GET_ALL_TRANSITS,
   GET_TRANSIT_BY_TRIP_ID,
   GET_TRANSIT_BY_ID,
-  ADD_TRANSIT
+  ADD_TRANSIT,
+
+  GET_ALL_BY_TRIP_ID
 }
   from '../actions/actions.js';
 
@@ -59,6 +61,11 @@ const reducer = (state = {
   console.log("\nREDUCER ACTION: ", action);
 
   switch (action.type) {
+
+    //-------GET ALL BY TRIP_ID ----------//
+    case GET_ALL_BY_TRIP_ID:
+      return action.payload;
+
     //-------User --------//
     case GET_ALL_USERS:
       return { ...state, users: action.payload }

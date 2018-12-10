@@ -46,8 +46,31 @@ export const GET_TRANSIT_BY_ID = 'GET_TRANSIT_BY_ID';
 // export const GET_TRANSIT_BY_USER_ID = 'GET_TRANSIT_BY_USER_ID';
 export const GET_TRANSIT_BY_TRIP_ID = 'GET_TRANSIT_BY_TRIP_ID';
 
-//Action = has type and payload
-//Action creater- function that returns an action which is an object with type and payload
+
+// export const GET_FLIGHT_BY_USER_ID = 'GET_FLIGHT_BY_USER_ID';
+export const GET_FLIGHT_BY_TRIP_ID = 'GET_FLIGHT_BY_TRIP_ID';
+export const GET_ALL_BY_TRIP_ID = 'GET_ALL_BY_TRIP_ID';
+
+//------GET ALL-----------//
+export const getAllByTrip = (id) => {
+  return dispatch => {
+    return Promise.all([
+      axios.get(`/accommodations/trip/${id}`),
+      axios.get(`/activities/trip/${id}`),
+      axios.get(`/transits/trip/${id}`),
+      axios.get(`/flights/trip/${id}`),
+      axios.get(`/trips/${id}`)
+    ])
+
+      .then(response => {
+        console.log('response.data:', response)
+        dispatch({ type: GET_ALL_BY_TRIP_ID, payload: { accommodations: response[0].data, activities: response[1].data, transit: response[2].data, flights: response[3].data, trips: response[4].data[0] } })
+      })
+      .catch(err => {
+        console.log('error in getting all by trip_id', err)
+      })
+  }
+}
 
 //---------User Action----------//
 export const getAllUsers = () => {

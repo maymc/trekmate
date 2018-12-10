@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 //------Redux------//
 import { connect } from 'react-redux';
-import { getAllAccommodations, getAccommodationsByTrip } from '../actions/actions';
+import { getAccommodationsByTrip } from '../actions/actions';
 
 
 class Accommodation extends Component {
-  constructor(props) {
-    super(props)
-  }
 
   //Lifecycle Methods
   componentDidMount() {

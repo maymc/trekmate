@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './styles.css';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 //Import JSX components
 // import EditAccountComponent from '../EditAccount/EditAccountComponent.jsx';
@@ -12,9 +12,9 @@ import { connect } from 'react-redux';
 import { getUserById, getTripsByUserId } from '../../actions/actions';
 
 class Account extends Component {
-  constructor(props) {
-    super(props)
-  }
+  // constructor(props) {
+  //   super(props)
+  // }
 
   componentDidMount() {
     let userId = this.props.match.params.id;
@@ -32,7 +32,7 @@ class Account extends Component {
       <div className="account">
         <div className="accountbanner">
           <div className="userimage">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5av85FUBFtE6pEih8IFJHXT5Z4VT6xKS0EIdifBdqlhcIfkLfQQ" alt="User image"></img>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5av85FUBFtE6pEih8IFJHXT5Z4VT6xKS0EIdifBdqlhcIfkLfQQ" alt="User_image"></img>
           </div>
           <div className="userdata">
             <h1>{this.props.userById.first_name}<span>, {this.props.userById.last_name}</span></h1>
