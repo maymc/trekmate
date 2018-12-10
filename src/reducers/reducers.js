@@ -5,6 +5,7 @@ import {
 
   GET_ALL_TRIPS,
   GET_TRIP_BY_ID,
+  GET_TRIPS_BY_USER_ID,
   ADD_TRIP,
 
   GET_ACCOMMODATIONS_BY_TRIP_ID,
@@ -35,16 +36,25 @@ import {
 const reducer = (state = {
   users: [],
   userById: {},
+
   trips: [],
   tripById: {},
+  tripsByUserId: [],
+
   accommodations: [],
   accommodationsByTripId: [],
   accommodationById: {},
+
   activities: [],
   activitiesByTripId: [],
   activityById: {},
+
   flights: [],
+  flightsByTripId: [],
+
   transit: [],
+  transitByTripId: [],
+
   form: {}
 }, action) => {
 
@@ -69,6 +79,8 @@ const reducer = (state = {
       return { ...state, trips: action.payload }
     case GET_TRIP_BY_ID:
       return { ...state, tripById: action.payload }
+    case GET_TRIPS_BY_USER_ID:
+      return { ...state, tripsByUserId: action.payload }
     case ADD_TRIP:
       return { ...state, form: action.payload }
 
