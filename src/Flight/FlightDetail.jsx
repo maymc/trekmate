@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 //------Redux------//
 import { connect } from 'react-redux';
 import { getFlightById } from '../actions/actions';
 
 class FlightDetail extends Component {
-  constructor(props) {
-    super(props)
-  }
 
   componentDidMount() {
     const flightId = this.props.match.params.id;
