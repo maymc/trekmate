@@ -11,12 +11,19 @@ class LocationSearch extends Component {
         }
     }
     handleChange = address => { this.setState({ address }) }
-    handleSelect = address => { geocodeByAddress(address).then(results => 
-        this.setState({ address: results[0].formatted_address} ),
-        console.log('Success', this.state)).catch(error => console.error('Error', error)) };
-
+    handleSelect = address => { 
+        
+        this.setState({ address })
+        geocodeByAddress(address)
+        .then(results => {
+            console.log('Address', this.state)
+            let lodging_name = this.state.address
+            let address = results[0].formatted_address
+            this.props.updateAddress(address, lodging_name )
+        }).catch(error => console.error('Error', error)) };
+    
     render() {
-        console.log("search", this)
+        console.log("search", this.props)
         return (
             <PlacesAutocomplete value={this.state.address} onChange={this.handleChange} onSelect={this.handleSelect}>{({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
                 <div className="search-box">

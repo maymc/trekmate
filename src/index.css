@@ -124,6 +124,21 @@ button.drk {
     color: #C7009A;
   }
 
+  textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 10px;
+    border: 1px solid #919195; 
+  }
+
+  textarea:hover {
+    border: 1px solid #C7009A; 
+  }
+
+  textarea:focus {
+    border: 1px solid #9E0066; 
+  }
+
   .form-group {
     position: relative;
     margin-bottom: 1.5rem;
@@ -157,4 +172,8 @@ button.drk {
     opacity: 1;
     color: #9E0066;
  
+  }
+
+  .checkbox input {
+    margin-right: 10px;
   }
