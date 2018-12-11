@@ -90,6 +90,13 @@ class App extends Component {
             {/* <Route path='/accommodations' component={Accommodation} /> */}
             <Route path='/accommodation/:id' component={AccommodationDetail} />
 
+            {/* Activity Routes */}
+            <Route path='/activities/trip/:id' component={Activity} />
+            <Route path='/activity/edit/:id' component={ActivityEdit} />
+            <Route path='/activity/:id' component={ActivityDetail} />
+            <Route path='/activities/add' component={ActivityAdd} />
+            {/* <Route exact path='/activities' component={Activity} /> */}
+
             {/* Flight Routes */}
             <Route path='/flights/trip/:id' component={Flight} />
             <Route path='/flight/edit/:id' component={FlightEdit} />
@@ -97,12 +104,6 @@ class App extends Component {
             <Route path='/flights/add' component={FlightAdd} />
             {/* <Route path='/flights' component={Flight} /> */}
 
-            {/* Activity Routes */}
-            <Route path='/activities/trip/:id' component={Activity} />
-            <Route path='/activity/edit/:id' component={ActivityEdit} />
-            <Route path='/activity/:id' component={ActivityDetail} />
-            <Route path='/activities/add' component={ActivityAdd} />
-            {/* <Route exact path='/activities' component={Activity} /> */}
 
             {/* Transit Routes */}
             <Route path='/transit/:id' component={Transit} />

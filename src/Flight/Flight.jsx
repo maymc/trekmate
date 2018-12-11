@@ -5,12 +5,13 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getFlightsByTrip } from '../actions/actions';
 
-
 class Flight extends Component {
 
   componentDidMount() {
     //This id comes from the url
     let flightId = this.props.match.params.id;
+    console.log("Setting flightId:", flightId);
+    console.log('\nFlight Component Mounted Successfully!');
     this.props.dispatch(getFlightsByTrip(flightId));
   }
 

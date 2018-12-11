@@ -51,9 +51,11 @@ const reducer = (state = {
 
   flights: [],
   flightsByTripId: [],
+  flightById: {},
 
   transit: [],
   transitByTripId: [],
+  transitById: {},
 
   form: {}
 }, action) => {
