@@ -66,13 +66,13 @@ class AccommodationAdd extends Component {
     console.log('Props', this.state)
     return (
       <div className="container col12">
-        <div className="addaccom-form">
+        <div className="wrap-form">
           <form className="col12" onSubmit={this.handleSubmit}>
             <div className="formtop">
               <LocationSearch title="Where are you staying" updateAddress={this.updateAddress} />
             </div>
             <div className="formbottom">
-            <h2>Accommodation</h2>
+            <h2 className="blue">Accommodation</h2>
               <div className="form-group">
                   <input type="text" id="name" name="lodging_name" onChange={this.handleChange} className="form-control" value={this.state.lodging_name} required></input>
                   <label className="form-control-placeholder" htmlFor="name">Lodging name</label>
@@ -82,7 +82,7 @@ class AccommodationAdd extends Component {
                   <label className="form-control-placeholder" htmlFor="address">Address</label>
               </div>
               <div>
-                <label>Dates</label> <br />
+                <label className="blue dates">Details</label>
                 <DateRangePicker
                   startDate={this.state.startDate} // momentPropTypes.momentObj or null,
                   startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
@@ -94,6 +94,10 @@ class AccommodationAdd extends Component {
                 />
               </div>
               <div className="form-group">
+                <input type="text" id="rescode" name="eservation_code" onChange={this.handleChange}  className="form-control" required></input>
+                <label className="form-control-placeholder" htmlFor="rescode">Reservation code</label>
+              </div>
+              <div className="form-group">
                 <input type="number" id="price" name="price" onChange={this.handleChange}  className="form-control" required></input>
                 <label className="form-control-placeholder" htmlFor="price">Price</label>
               </div>
@@ -101,12 +105,9 @@ class AccommodationAdd extends Component {
                 <input onChange={this.handleChange} type="checkbox" id="paystatus" name="is_paid"></input>
                 <label for="paystatus">Paid</label>
               </div>
-              <div className="form-group">
-                <input type="text" id="rescode" name="eservation_code" onChange={this.handleChange}  className="form-control" required></input>
-                <label className="form-control-placeholder" htmlFor="rescode">Reservation code</label>
-              </div>
+        
               <div>
-                <label>Notes</label><br />
+                <label className="blue dates">Notes</label>
                 <textarea onChange={this.handleChange} name="notes"></textarea>
               </div>
               <button type="submit">Add Accommodation</button>

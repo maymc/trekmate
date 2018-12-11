@@ -16,33 +16,33 @@ textarea, select, input, button {
   outline: none; 
 }
 
-/* H1 Styles */
-h1 {
-  font-family: 'Share', cursive;
-  font-size: 3em;
-}
+/* H Styles */
+  h1 {
+    font-family: 'Share', cursive;
+    font-size: 3em;
+  }
 
-h2 {
-  font-family: 'Share', cursive;
-  font-size: 2em
-}
+  h2 {
+    font-family: 'Share', cursive;
+    font-size: 2em
+  }
 
-h3 {
-  text-transform: uppercase;
-  font-size: 1.2em;
-}
+  h3 {
+    text-transform: uppercase;
+    font-size: 1.2em;
+  }
 
-i {
-  margin: 0px 5px 0px 0px
-}
+  i {
+    margin: 0px 5px 0px 0px
+  }
 
 
 
 /* Link styles */
-a:link, a:visited {
-  text-decoration: none;
-  color: #305BED;
-}
+  a:link, a:visited {
+    text-decoration: none;
+    color: #305BED;
+  }
 
   a:hover {
     color: #B3007B;
@@ -52,10 +52,10 @@ a:link, a:visited {
     color: #9E0066
   }
 
-/* Link styles for dark backgrounds */
-a.drk:link, a.drk:visited {
-  color: #fff;
-}
+  /* Link styles for dark backgrounds */
+  a.drk:link, a.drk:visited {
+    color: #fff;
+  }
 
   a.drk:hover {
     color: #BBE6FD;
@@ -66,18 +66,18 @@ a.drk:link, a.drk:visited {
   }
 
 /* Button styles */
-button {
-  height: 36px;
-  font-size: 1em;
-  text-transform: uppercase;
-  padding: 0px 15px 0px 15px;
-  width: 100%;
-  border: 2px solid #B3007B;
-  color: #fff;
-  background: #B3007B;
-  cursor: pointer;
-  transition: all 0.3s;
-}
+  button {
+    height: 36px;
+    font-size: 1em;
+    text-transform: uppercase;
+    padding: 0px 15px 0px 15px;
+    width: 100%;
+    border: 2px solid #B3007B;
+    color: #fff;
+    background: #B3007B;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
 
   button:hover {
     border: 2px solid #C7009A;
@@ -90,29 +90,29 @@ button {
   }
 
 
-/* Button styles for ghost buttons */
-button.ghost {
-  background: #fff;
-  color: #B3007B;
-}
+  /* Button styles for ghost buttons */
+  button.ghost {
+    background: #fff;
+    color: #B3007B;
+  }
 
-button.ghost:hover {
-  background: #C7009A;
-  color: #fff;
-}
+  button.ghost:hover {
+    background: #C7009A;
+    color: #fff;
+  }
 
-button.ghost:active {
-  background: #9E0066;
-  color: #ffffff;
-}
+  button.ghost:active {
+    background: #9E0066;
+    color: #ffffff;
+  }
 
 
-/* Button Styles for dark background */
-button.drk {
-  border: 2px solid #ffffff;
-  color: #ffffff;
-  background: #870056;
-}
+  /* Button Styles for dark background */
+  button.drk {
+    border: 2px solid #ffffff;
+    color: #ffffff;
+    background: #870056;
+  }
 
   button.drk:hover {
     background: #ffffff;
@@ -124,11 +124,13 @@ button.drk {
     color: #C7009A;
   }
 
+/* Input styles */
+
   textarea {
     width: 100%;
     min-height: 100px;
     padding: 10px;
-    border: 1px solid #919195; 
+    border: 1px solid #d7d7d7; 
   }
 
   textarea:hover {
@@ -138,11 +140,18 @@ button.drk {
   textarea:focus {
     border: 1px solid #9E0066; 
   }
+  
+  .checkbox input {
+    margin-right: 10px;
+    margin-bottom: 30px;
+  }
+
+  /* Float label */
 
   .form-group {
     position: relative;
     margin-bottom: 1.5rem;
-    margin-top: 50px;
+    margin-top: 40px;
   }
   .form-control {
     display: block;
@@ -159,10 +168,11 @@ button.drk {
   }
   .form-control-placeholder {
     position: absolute;
+    /* color: #57A4F5; */
     top: 0;
     padding: 7px 0 0 13px;
     transition: all 200ms;
-    opacity: 0.5;
+    opacity: 0.7;
   }
   
   .form-control:focus + .form-control-placeholder,
@@ -174,6 +184,68 @@ button.drk {
  
   }
 
-  .checkbox input {
-    margin-right: 10px;
+
+  /* Styles for event forms */
+
+  .wrap-form {
+    grid-column: 1/13;
+  }
+  .formtop {
+      grid-column: 1/13;
+      padding: 60px;
+      background: #57A4F5;
+      min-height: 200px;  
+
+  }
+
+  .formtop input {
+      background: #57A4F5;
+      color: #ffffff;
+  }
+
+  .formtop .search-box {
+      border-bottom: 2px solid #305BED;
+  }
+
+  .formtop .search-box:hover {
+      border-bottom: 2px solid #ffffff;
+  }
+
+  .formtop .search-box:hover {
+      border-bottom: 2px solid #ffffff;
+  }
+
+  .formtop ::placeholder {
+      color: #305BED;
+  }
+
+  .formtop:hover ::placeholder {
+      color: #ffffff;
+  }
+
+  .formtop .search-btn {
+      color: #BBE6FD;
+  }
+
+  .formtop .search-btn:hover {
+      color: #ffffff;
+  }
+
+  .formbottom {
+      grid-column: 2/12;
+      background: white;
+      padding: 30px 30px 30px 30px;
+  }
+  .blue {
+    color: #57A4F5;
+  }
+
+  .formbottom button {
+    margin-top: 30px;
+  }
+
+  .dates {
+    display: block;
+    margin-bottom: 10px;
+    margin-top: 30px;
   }
