@@ -37,6 +37,7 @@ export const GET_ALL_FLIGHTS = 'GET_ALL_FLIGHTS';
 export const GET_FLIGHT_BY_ID = 'GET_FLIGHT_BY_ID';
 export const GET_FLIGHTS_BY_TRIP_ID = 'GET_FLIGHTS_BY_TRIP_ID';
 export const ADD_FLIGHT = 'ADD_FLIGHT';
+export const EDIT_FLIGHT = 'EDIT_FLIGHT';
 // export const GET_FLIGHT_BY_USER_ID = 'GET_FLIGHT_BY_USER_ID';
 
 //~~~~~Transit~~~~//
@@ -454,6 +455,22 @@ export const addFlight = (flight) => {
       })
       .catch(err => {
         console.log("ERROR - actions axios addFlight:", err);
+      })
+  }
+}
+
+export const editFlight = (flight) => {
+  const { id } = flight;
+  console.log("\nACTION: editFlight:", flight)
+  console.log("Check id:", id);
+  return dispatch => {
+    axios.put(`/flights/edit/${id}`, flight)
+      .then(responseFromDB => {
+        console.log("\nCheck - responseFromDB:", responseFromDB.data)
+        dispatch({ type: EDIT_FLIGHT, payload: responseFromDB.data });
+      })
+      .catch(err => {
+        console.log("ERROR - actions editFlight:", err);
       })
   }
 }

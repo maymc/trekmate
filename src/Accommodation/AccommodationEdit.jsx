@@ -37,7 +37,7 @@ class AccommodationEdit extends Component {
 
   //Helper Functions
   handleChange = (e) => {
-    console.log("AccommodationEdit - handleChange")
+    console.log("AccommodationEdit - handleChange");
     e.preventDefault();
     const { name, value } = e.target;
     this.setState({
