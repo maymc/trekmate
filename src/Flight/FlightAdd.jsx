@@ -40,6 +40,8 @@ class FlightAdd extends Component {
     console.log("Flight Added!", this.state);
 
     this.props.dispatch(addFlight(this.state));
+    // //Redirect to accommodations page
+    // this.props.history.push(`/users/account/${this.props.user_id}/trips/${this.props.accommodationById.id}`);
   }
 
   render() {
@@ -52,11 +54,11 @@ class FlightAdd extends Component {
           <br /><br />
 
           <label>Departure Time</label>
-          <input onChange={this.handleChange} type='time' name="departure_time" placeholder="00:00 AM/PM" />
+          <input onChange={this.handleChange} type='text' name="departure_time" placeholder="00:00 AM/PM" />
           <br /><br />
 
           <label>Arrival Time</label>
-          <input onChange={this.handleChange} type='time' name="arrival_time" placeholder="00:00 AM/PM" />
+          <input onChange={this.handleChange} type='text' name="arrival_time" placeholder="00:00 AM/PM" />
           <br /><br />
 
           <label>Reservation Code</label>
@@ -64,11 +66,11 @@ class FlightAdd extends Component {
           <br /><br />
 
           <label>Baggage</label>
-          <input onChange={this.handleChange} type='number' name="checked_in_baggage" placeholder="enter # of checked in baggage" />
+          <input onChange={this.handleChange} type='text' name="checked_in_baggage" placeholder="enter # of checked in baggage" />
           <br /><br />
 
           <label>Price</label>
-          <input onChange={this.handleChange} type='number' name="price" placeholder="enter price of flight" />
+          <input onChange={this.handleChange} type='text' name="price" placeholder="enter price of flight" />
           <br /><br />
 
           <label>Notes</label>
