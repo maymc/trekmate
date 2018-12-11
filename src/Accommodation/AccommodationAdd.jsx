@@ -101,6 +101,12 @@ class AccommodationAdd extends Component {
                 <input type="number" id="price" name="price" onChange={this.handleChange}  className="form-control" required></input>
                 <label className="form-control-placeholder" htmlFor="price">Price</label>
               </div>
+
+              {/* <div className="form-group">
+                <input type="text" id="paystat" name="is_paid" onChange={this.handleChange}  className="form-control" required></input>
+                <label className="form-control-placeholder" htmlFor="paystat">Is this paid for?</label>
+              </div> */}
+
               <div className="formright checkbox">
                 <input onChange={this.handleChange} type="checkbox" id="paystatus" name="is_paid"></input>
                 <label for="paystatus">Paid</label>
