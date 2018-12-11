@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 //-------Redux------//
 import { connect } from 'react-redux';
 import { getActivitiesByTrip } from '../actions/actions';
 
 class Activity extends Component {
-  constructor(props) {
-    super(props)
-  }
 
   componentDidMount() {
     //This id comes from the url
@@ -32,7 +29,7 @@ class Activity extends Component {
           <p>Votes: {activityElem.votes}</p>
           <p>Reservation: {activityElem.reservation}</p>
           <p>Notes: {activityElem.notes}</p>
-          <img src={activityElem.image}></img>
+          <img src={activityElem.image} alt=''></img>
 
           <div>
             <Link to={`/activity/${activityElem.id}`}>

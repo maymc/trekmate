@@ -12,8 +12,9 @@ export const EDIT_PASSWORD = 'EDIT_PASSWORD';
 //~~~~~Trips~~~~//
 export const GET_ALL_TRIPS = 'GET_ALL_TRIPS';
 export const GET_TRIP_BY_ID = 'GET_TRIP_BY_ID';
-export const ADD_TRIP = 'ADD_TRIP';
 export const GET_TRIPS_BY_USER_ID = 'GET_TRIPS_BY_USER_ID';
+export const ADD_TRIP = 'ADD_TRIP';
+export const EDIT_TRIP = 'EDIT_TRIP';
 
 //~~~~~Accommodations~~~~//
 export const GET_ALL_ACCOMMODATIONS = 'GET_ALL_ACCOMMODATIONS';
@@ -45,8 +46,31 @@ export const GET_TRANSIT_BY_ID = 'GET_TRANSIT_BY_ID';
 // export const GET_TRANSIT_BY_USER_ID = 'GET_TRANSIT_BY_USER_ID';
 export const GET_TRANSIT_BY_TRIP_ID = 'GET_TRANSIT_BY_TRIP_ID';
 
-//Action = has type and payload
-//Action creater- function that returns an action which is an object with type and payload
+
+// export const GET_FLIGHT_BY_USER_ID = 'GET_FLIGHT_BY_USER_ID';
+export const GET_FLIGHT_BY_TRIP_ID = 'GET_FLIGHT_BY_TRIP_ID';
+export const GET_ALL_BY_TRIP_ID = 'GET_ALL_BY_TRIP_ID';
+
+//------GET ALL-----------//
+export const getAllByTrip = (id) => {
+  return dispatch => {
+    return Promise.all([
+      axios.get(`/accommodations/trip/${id}`),
+      axios.get(`/activities/trip/${id}`),
+      axios.get(`/transits/trip/${id}`),
+      axios.get(`/flights/trip/${id}`),
+      axios.get(`/trips/${id}`)
+    ])
+
+      .then(response => {
+        console.log('response.data:', response)
+        dispatch({ type: GET_ALL_BY_TRIP_ID, payload: { accommodations: response[0].data, activities: response[1].data, transit: response[2].data, flights: response[3].data, trips: response[4].data[0] } })
+      })
+      .catch(err => {
+        console.log('error in getting all by trip_id', err)
+      })
+  }
+}
 
 //---------User Action----------//
 export const getAllUsers = () => {
@@ -162,10 +186,12 @@ export const getTripsByUserId = (id) => {
   }
 }
 
-export const getTrip = (id) => {
+export const getTripById = (id) => {
   return dispatch => {
+    // console.log("here???", id)
     axios.get(`/trips/${id}`)
       .then(response => {
+        // console.log("working response?", response);
         dispatch({
           type: GET_TRIP_BY_ID,
           payload: response.data[0]
@@ -190,6 +216,22 @@ export const addTrip = (trip) => {
       })
       .catch(err => {
         console.log("ERROR - actions axios addTrip:", err);
+      })
+  }
+}
+
+export const editTrip = (trip) => {
+  const { id } = trip;
+  console.log("\nACTION: editTrip:", trip)
+  // console.log("Check id:", id);
+  return dispatch => {
+    axios.put(`/trips/edit/${id}`, trip)
+      .then(responseFromDB => {
+        console.log("\nCheck - responseFromDB:", responseFromDB.data)
+        dispatch({ type: EDIT_TRIP, payload: responseFromDB.data });
+      })
+      .catch(err => {
+        console.log("ERROR - actions editTrip:", err);
       })
   }
 }

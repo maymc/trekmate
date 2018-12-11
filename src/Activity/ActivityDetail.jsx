@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 //------Redux------//
 import { connect } from 'react-redux';
 import { getActivityById } from '../actions/actions';
 
 class ActivityDetail extends Component {
-  constructor(props) {
-    super(props)
-  }
 
   componentDidMount() {
     const activityId = this.props.match.params.id;
@@ -32,7 +29,7 @@ class ActivityDetail extends Component {
         <p>Votes: {this.props.activityById.votes}</p>
         <p>Reservation: {this.props.activityById.reservation}</p>
         <p>Notes: {this.props.activityById.notes}</p>
-        <img src={this.props.activityById.image}></img>
+        <img src={this.props.activityById.image} alt=''></img>
 
         <Link to={`/activity/edit/${this.props.activityById.id}`}>
           <button type='button'>Edit Activity</button>

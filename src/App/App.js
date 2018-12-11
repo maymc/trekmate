@@ -21,7 +21,7 @@ import EditAccount from '../Account/EditAccount/EditAccountComponent';
 import EditPassword from '../Account/EditPassword/EditPasswordComponent';
 
 //~~~ Trip JSX files ~~~~//
-import Trip from '../Trip/Trip/TripComponent';
+import TripComponent from '../Trip/Trip/TripComponent';
 import CreateTrip from '../Trip/CreateTrip/CreateTripComponent';
 import EditTrip from '../Trip/EditTrip/EditTrip';
 
@@ -48,9 +48,9 @@ import Transit from '../Transit/Transit';
 import TransitAdd from '../Transit/TransitAdd';
 
 class App extends Component {
-  constructor(props) {
-    super(props)
-  }
+  // constructor(props) {
+  //   super(props)
+  // }
 
   //Lifecycle Methods
   componentDidMount() {
@@ -71,14 +71,15 @@ class App extends Component {
             <Route exact path='/login' component={Login} />
 
             {/* User account Routes */}
+            <Route path='/users/account/:user_id/trips/:trip_id' component={TripComponent} />
             <Route path='/users/account/edit_password/:id' component={EditPassword} />
             <Route path='/users/account/edit/:id' component={EditAccount} />
             <Route path='/users/account/:id' component={Account} />
 
             {/* Trip Routes */}
             {/* <Route exact path='/trips' component={Trip} /> */}
-            <Route path='/trip/edit/:id' component={EditTrip} />
-            <Route path='/trip/:id' component={Trip} />
+            <Route path='/trips/edit/:id' component={EditTrip} />
+            <Route path='/trips/:id' component={TripComponent} />
             <Route path='/trips/add' component={CreateTrip} />
 
             {/* Accommodation Routes */}

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 
 class FlightAdd extends Component {
   constructor(props) {
@@ -33,40 +32,40 @@ class FlightAdd extends Component {
   render() {
     return (
       <div>
-      <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit}>
 
-        <label>Airlines</label>
-        <input onChange={this.handleChange} type='text' name="airlines" placeholder="edit name of airline" />
-        <br /><br />
+          <label>Airlines</label>
+          <input onChange={this.handleChange} type='text' name="airlines" placeholder="edit name of airline" />
+          <br /><br />
 
-        <label>Departure Time</label>
-        <input onChange={this.handleChange} type='time' name="departureTime" placeholder="edit departure time" />
-        <br /><br />
+          <label>Departure Time</label>
+          <input onChange={this.handleChange} type='time' name="departureTime" placeholder="edit departure time" />
+          <br /><br />
 
-        <label>Arrival Time</label>
-        <input onChange={this.handleChange} type='time' name="arrivalTime" placeholder="edit arrival time" />
-        <br /><br />
+          <label>Arrival Time</label>
+          <input onChange={this.handleChange} type='time' name="arrivalTime" placeholder="edit arrival time" />
+          <br /><br />
 
-        <label>Reservation Code</label>
-        <input onChange={this.handleChange} type='text' name="reservationCode" placeholder="edit reservation code" />
-        <br /><br />
+          <label>Reservation Code</label>
+          <input onChange={this.handleChange} type='text' name="reservationCode" placeholder="edit reservation code" />
+          <br /><br />
 
-        <label>Baggage</label>
-        <input onChange={this.handleChange} type='number' name="baggage" placeholder="edit amount of check in baggage" />
-        <br /><br />
+          <label>Baggage</label>
+          <input onChange={this.handleChange} type='number' name="baggage" placeholder="edit amount of check in baggage" />
+          <br /><br />
 
-        <label>Price</label>
-        <input onChange={this.handleChange} type='number' name="price" placeholder="edit price of flight" />
-        <br /><br />
+          <label>Price</label>
+          <input onChange={this.handleChange} type='number' name="price" placeholder="edit price of flight" />
+          <br /><br />
 
-        <label>Notes</label>
-        <input onChange={this.handleChange} type='text' name="notes" placeholder="edit any notes" />
-        <br /><br />
+          <label>Notes</label>
+          <input onChange={this.handleChange} type='text' name="notes" placeholder="edit any notes" />
+          <br /><br />
 
-        
-        <button type="submit">Submit</button>
 
-      </form>
+          <button type="submit">Submit</button>
+
+        </form>
       </div>
     )
   }

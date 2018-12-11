@@ -5,6 +5,7 @@ import {
 
   GET_ALL_TRIPS,
   GET_TRIP_BY_ID,
+  GET_TRIPS_BY_USER_ID,
   ADD_TRIP,
 
   GET_ACCOMMODATIONS_BY_TRIP_ID,
@@ -25,7 +26,9 @@ import {
   GET_ALL_TRANSITS,
   GET_TRANSIT_BY_TRIP_ID,
   GET_TRANSIT_BY_ID,
-  ADD_TRANSIT
+  ADD_TRANSIT,
+
+  GET_ALL_BY_TRIP_ID
 }
   from '../actions/actions.js';
 
@@ -33,22 +36,36 @@ import {
 const reducer = (state = {
   users: [],
   userById: {},
+
   trips: [],
   tripById: {},
+  tripsByUserId: [],
+
   accommodations: [],
   accommodationsByTripId: [],
   accommodationById: {},
+
   activities: [],
   activitiesByTripId: [],
   activityById: {},
+
   flights: [],
+  flightsByTripId: [],
+
   transit: [],
+  transitByTripId: [],
+
   form: {}
 }, action) => {
 
   console.log("\nREDUCER ACTION: ", action);
 
   switch (action.type) {
+
+    //-------GET ALL BY TRIP_ID ----------//
+    case GET_ALL_BY_TRIP_ID:
+      return action.payload;
+
     //-------User --------//
     case GET_ALL_USERS:
       return { ...state, users: action.payload }
@@ -62,6 +79,8 @@ const reducer = (state = {
       return { ...state, trips: action.payload }
     case GET_TRIP_BY_ID:
       return { ...state, tripById: action.payload }
+    case GET_TRIPS_BY_USER_ID:
+      return { ...state, tripsByUserId: action.payload }
     case ADD_TRIP:
       return { ...state, form: action.payload }
 
