@@ -24,7 +24,7 @@ const tripRoutes = require('./routes/tripRoutes.js');
 app.use('/activities', activityRoutes);
 app.use('/accommodations', accommodationRoutes);
 app.use('/flights', flightRoutes);
-app.use('/transits', transitRoutes);
+app.use('/transit', transitRoutes);
 app.use('/trips', tripRoutes);
 app.use('/users', userRoutes);
 

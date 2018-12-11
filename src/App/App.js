@@ -44,8 +44,10 @@ import FlightEdit from '../Flight/FlightEdit';
 import FlightDetail from '../Flight/FlightDetail';
 
 //~~~ Activities JSX files ~~~~//
-import Transit from '../Transit/Transit';
 import TransitAdd from '../Transit/TransitAdd';
+import Transit from '../Transit/Transit';
+import TransitEdit from '../Transit/TransitEdit';
+import TransitDetail from '../Transit/TransitDetail';
 
 class App extends Component {
   // constructor(props) {
@@ -105,7 +107,9 @@ class App extends Component {
 
 
             {/* Transit Routes */}
-            <Route path='/transit/:id' component={Transit} />
+            <Route path='/transit/trip/:id' component={Transit} />
+            <Route path='/transit/edit/:id' component={TransitEdit} />
+            <Route path='/transit/:id' component={TransitDetail} />
             <Route path='/transit/add' component={TransitAdd} />
 
           </Switch>
