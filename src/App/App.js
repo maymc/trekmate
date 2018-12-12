@@ -44,8 +44,10 @@ import FlightEdit from '../Flight/FlightEdit';
 import FlightDetail from '../Flight/FlightDetail';
 
 //~~~ Activities JSX files ~~~~//
-import Transit from '../Transit/Transit';
 import TransitAdd from '../Transit/TransitAdd';
+import Transit from '../Transit/Transit';
+import TransitEdit from '../Transit/TransitEdit';
+import TransitDetail from '../Transit/TransitDetail';
 
 class App extends Component {
   // constructor(props) {
@@ -90,13 +92,6 @@ class App extends Component {
             {/* <Route path='/accommodations' component={Accommodation} /> */}
             <Route path='/accommodation/:id' component={AccommodationDetail} />
 
-            {/* Flight Routes */}
-            <Route path='/flights/trip/:id' component={Flight} />
-            <Route path='/flight/edit/:id' component={FlightEdit} />
-            <Route path='/flight/:id' component={FlightDetail} />
-            <Route path='/flights/add' component={FlightAdd} />
-            {/* <Route path='/flights' component={Flight} /> */}
-
             {/* Activity Routes */}
             <Route path='/activities/trip/:id' component={Activity} />
             <Route path='/activity/edit/:id' component={ActivityEdit} />
@@ -104,8 +99,18 @@ class App extends Component {
             <Route path='/activities/add' component={ActivityAdd} />
             {/* <Route exact path='/activities' component={Activity} /> */}
 
+            {/* Flight Routes */}
+            <Route path='/flights/trip/:id' component={Flight} />
+            <Route path='/flight/edit/:id' component={FlightEdit} />
+            <Route path='/flight/:id' component={FlightDetail} />
+            <Route path='/flights/add' component={FlightAdd} />
+            {/* <Route path='/flights' component={Flight} /> */}
+
+
             {/* Transit Routes */}
-            <Route path='/transit/:id' component={Transit} />
+            <Route path='/transit/trip/:id' component={Transit} />
+            <Route path='/transit/edit/:id' component={TransitEdit} />
+            <Route path='/transit/:id' component={TransitDetail} />
             <Route path='/transit/add' component={TransitAdd} />
 
           </Switch>

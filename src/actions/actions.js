@@ -37,15 +37,15 @@ export const GET_ALL_FLIGHTS = 'GET_ALL_FLIGHTS';
 export const GET_FLIGHT_BY_ID = 'GET_FLIGHT_BY_ID';
 export const GET_FLIGHTS_BY_TRIP_ID = 'GET_FLIGHTS_BY_TRIP_ID';
 export const ADD_FLIGHT = 'ADD_FLIGHT';
+export const EDIT_FLIGHT = 'EDIT_FLIGHT';
 // export const GET_FLIGHT_BY_USER_ID = 'GET_FLIGHT_BY_USER_ID';
 
 //~~~~~Transit~~~~//
-export const GET_ALL_TRANSITS = 'GET_ALL_TRANSITS';
-export const ADD_TRANSIT = 'ADD_TRANSIT';
+export const GET_ALL_TRANSIT = 'GET_ALL_TRANSIT';
 export const GET_TRANSIT_BY_ID = 'GET_TRANSIT_BY_ID';
-// export const GET_TRANSIT_BY_USER_ID = 'GET_TRANSIT_BY_USER_ID';
 export const GET_TRANSIT_BY_TRIP_ID = 'GET_TRANSIT_BY_TRIP_ID';
-
+export const ADD_TRANSIT = 'ADD_TRANSIT';
+export const EDIT_TRANSIT = 'EDIT_TRANSIT';
 
 // export const GET_FLIGHT_BY_USER_ID = 'GET_FLIGHT_BY_USER_ID';
 export const GET_FLIGHT_BY_TRIP_ID = 'GET_FLIGHT_BY_TRIP_ID';
@@ -57,7 +57,7 @@ export const getAllByTrip = (id) => {
     return Promise.all([
       axios.get(`/accommodations/trip/${id}`),
       axios.get(`/activities/trip/${id}`),
-      axios.get(`/transits/trip/${id}`),
+      axios.get(`/transit/trip/${id}`),
       axios.get(`/flights/trip/${id}`),
       axios.get(`/trips/${id}`)
     ])
@@ -460,31 +460,47 @@ export const addFlight = (flight) => {
   }
 }
 
+export const editFlight = (flight) => {
+  const { id } = flight;
+  console.log("\nACTION: editFlight:", flight)
+  console.log("Check id:", id);
+  return dispatch => {
+    axios.put(`/flights/edit/${id}`, flight)
+      .then(responseFromDB => {
+        console.log("\nCheck - responseFromDB:", responseFromDB.data)
+        dispatch({ type: EDIT_FLIGHT, payload: responseFromDB.data });
+      })
+      .catch(err => {
+        console.log("ERROR - actions editFlight:", err);
+      })
+  }
+}
+
 
 //---------Transit Action----------//
-export const getAllTransits = () => {
+export const getAll = () => {
 
   return dispatch => {
-    axios.get('/transits')
+    axios.get('/transit')
       .then(response => {
-        console.log('transits response......:', response.data)
+        console.log('transit response......:', response.data)
         dispatch({
-          type: GET_ALL_TRANSITS,
+          type: GET_ALL_TRANSIT,
           payload: response.data
         })
       })
       .catch(err => {
         dispatch({
-          type: GET_ALL_TRANSITS,
+          type: GET_ALL_TRANSIT,
           payload: 'err'
         })
       })
   }
 }
 
-export const getTransit = (id) => {
+export const getTransitById = (id) => {
   return dispatch => {
-    axios.get(`/transits/${id}`)
+    axios.get(`/transit/${id}`)
       .then(response => {
         dispatch({ type: GET_TRANSIT_BY_ID, payload: response.data[0] })
       })
@@ -497,7 +513,7 @@ export const getTransit = (id) => {
 
 export const getTransitByTrip = (id) => {
   return dispatch => {
-    axios.get(`/transits/trip/${id}`)
+    axios.get(`/transit/trip/${id}`)
       .then(response => {
         dispatch({ type: GET_TRANSIT_BY_TRIP_ID, payload: response.data })
       })
@@ -523,3 +539,18 @@ export const addTransit = (transit) => {
   }
 }
 
+export const editTransit = (transit) => {
+  const { id } = transit;
+  console.log("\nACTION: edittransit:", transit)
+  console.log("Check id:", id);
+  return dispatch => {
+    axios.put(`/transit/edit/${id}`, transit)
+      .then(responseFromDB => {
+        console.log("\nCheck - responseFromDB:", responseFromDB.data)
+        dispatch({ type: EDIT_TRANSIT, payload: responseFromDB.data });
+      })
+      .catch(err => {
+        console.log("ERROR - actions editTransit:", err);
+      })
+  }
+}

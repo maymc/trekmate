@@ -23,7 +23,7 @@ import {
   GET_FLIGHT_BY_ID,
   ADD_FLIGHT,
 
-  GET_ALL_TRANSITS,
+  GET_ALL_TRANSIT,
   GET_TRANSIT_BY_TRIP_ID,
   GET_TRANSIT_BY_ID,
   ADD_TRANSIT,
@@ -51,9 +51,11 @@ const reducer = (state = {
 
   flights: [],
   flightsByTripId: [],
+  flightById: {},
 
   transit: [],
   transitByTripId: [],
+  transitById: {},
 
   form: {}
 }, action) => {
@@ -121,7 +123,7 @@ const reducer = (state = {
       return { ...state, form: action.payload }
 
     //-------Transit --------//
-    case GET_ALL_TRANSITS:
+    case GET_ALL_TRANSIT:
       return { ...state, transit: action.payload }
     case GET_TRANSIT_BY_TRIP_ID:
       return { ...state, transitByTripId: action.payload }
