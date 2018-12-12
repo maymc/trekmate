@@ -17,7 +17,7 @@ import { addAccommodation } from '../actions/actions.js';
 class AccommodationAdd extends Component {
   constructor(props) {
     super(props)
-    
+
     this.state = {
       lodging_name: null,
       address: null,
@@ -55,11 +55,12 @@ class AccommodationAdd extends Component {
     //Redirect to accommodations page
     this.props.history.push(`/accommodations`);
   }
-  
+
   updateAddress = (address, lodging_name) => {
     this.setState({
-        lodging_name: lodging_name,
-        address: address})
+      lodging_name: lodging_name,
+      address: address
+    })
     console.log("Parent method, update address", this.state)
   }
 
@@ -73,14 +74,14 @@ class AccommodationAdd extends Component {
               <LocationSearch title="Where are you staying" updateAddress={this.updateAddress} />
             </div>
             <div className="formbottom">
-            <h2 className="blue">Accommodation</h2>
+              <h2 className="blue">Accommodation</h2>
               <div className="form-group">
-                  <input type="text" id="name" name="lodging_name" onChange={this.handleChange} className="form-control" value={this.state.lodging_name} required></input>
-                  <label className="form-control-placeholder" htmlFor="name">Lodging name</label>
+                <input type="text" id="name" name="lodging_name" onChange={this.handleChange} className="form-control" value={this.state.lodging_name} required></input>
+                <label className="form-control-placeholder" htmlFor="name">Lodging name</label>
               </div>
               <div className="form-group">
-                  <input type="text" id="address" name="address" onChange={this.handleChange} className="form-control" value={this.state.address} required></input>
-                  <label className="form-control-placeholder" htmlFor="address">Address</label>
+                <input type="text" id="address" name="address" onChange={this.handleChange} className="form-control" value={this.state.address} required></input>
+                <label className="form-control-placeholder" htmlFor="address">Address</label>
               </div>
               <div>
                 <label className="blue dates">Details</label>
@@ -95,11 +96,11 @@ class AccommodationAdd extends Component {
                 />
               </div>
               <div className="form-group">
-                <input type="text" id="rescode" name="eservation_code" onChange={this.handleChange}  className="form-control" required></input>
+                <input type="text" id="rescode" name="reservation_code" onChange={this.handleChange} className="form-control" required></input>
                 <label className="form-control-placeholder" htmlFor="rescode">Reservation code</label>
               </div>
               <div className="form-group">
-                <input type="number" id="price" name="price" onChange={this.handleChange}  className="form-control" required></input>
+                <input type="number" id="price" name="price" onChange={this.handleChange} className="form-control" required></input>
                 <label className="form-control-placeholder" htmlFor="price">Price</label>
               </div>
 
@@ -112,7 +113,7 @@ class AccommodationAdd extends Component {
                 <input onChange={this.handleChange} type="checkbox" id="paystatus" name="is_paid"></input>
                 <label htmlFor="paystatus">Paid</label>
               </div>
-        
+
               <div>
                 <label className="blue dates">Notes</label>
                 <textarea onChange={this.handleChange} name="notes"></textarea>
