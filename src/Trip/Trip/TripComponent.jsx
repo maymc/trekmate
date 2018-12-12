@@ -44,7 +44,7 @@ class TripComponent extends Component {
   }
 
   render() {
-    console.log("TripComponent - this.props:", this.props);
+    console.log("TripComponent - this.props:", this.props.match.params.id);
 
     return (
       <div className="container trip">
@@ -156,13 +156,12 @@ class TripComponent extends Component {
 
         <div className="tripbar">
           <h3>Add event:</h3>
-          <Link to={{pathname: "/accommodations/add", search: this.props.tripId}}>
+          <Link to={`/accommodations/add?${this.props.match.params.id}`}>
             <button><i className="fas fa-hotel"></i> Accommodation</button>
           </Link>
           <button tripId={this.props.tripId}><i className="fas fa-hiking"></i> Activity</button>
           <button><i className="fas fa-plane"></i> Flight</button>
           <button><i className="fas fa-car-side"></i> Transit</button>
-          <button><i className="fas fa-hotel"></i> Accommodation</button>
         </div>
       </div>
     );

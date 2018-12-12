@@ -29,12 +29,18 @@ class AccommodationAdd extends Component {
       reservation_code: null,
       notes: null,
       user_id: 1,
-      trip_id: 1
+      trip_id: null
     }
   }
 
   //Lifecycle Methods
-  componentDidMount() { }
+  componentDidMount() { 
+    let temp = this.props.location.search
+    let id = Number(temp.substr(1))
+    this.setState({
+      trip_id: id
+    })
+  }
 
   handleChange = (e) => {
     e.preventDefault();
@@ -65,7 +71,7 @@ class AccommodationAdd extends Component {
   }
 
   render() {
-    console.log('Props', this.props)
+    console.log('State', this.state)
     return (
       <div className="container col12">
         <div className="wrap-form">
