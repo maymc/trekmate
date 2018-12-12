@@ -59,7 +59,7 @@ class AccommodationAdd extends Component {
     this.props.dispatch(addAccommodation(this.state));
 
     //Redirect to accommodations page
-    this.props.history.push(`/accommodations`);
+    this.props.history.push(`/trips/${this.state.trip_id}`);
   }
 
   updateAddress = (address, lodging_name) => {
@@ -90,7 +90,7 @@ class AccommodationAdd extends Component {
                 <label className="form-control-placeholder" htmlFor="address">Address</label>
               </div>
               <div>
-                <label className="blue dates">Details</label>
+                <label className="blue formsection">Details</label>
                 <DateRangePicker
                   startDate={this.state.startDate} // momentPropTypes.momentObj or null,
                   startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
@@ -105,23 +105,17 @@ class AccommodationAdd extends Component {
                 <input type="text" id="rescode" name="reservation_code" onChange={this.handleChange} className="form-control" required></input>
                 <label className="form-control-placeholder" htmlFor="rescode">Reservation code</label>
               </div>
-              <div className="form-group">
-                <input type="number" id="price" name="price" onChange={this.handleChange} className="form-control" required></input>
-                <label className="form-control-placeholder" htmlFor="price">Price</label>
-              </div>
-
-              {/* <div className="form-group">
-                <input type="text" id="paystat" name="is_paid" onChange={this.handleChange}  className="form-control" required></input>
-                <label className="form-control-placeholder" htmlFor="paystat">Is this paid for?</label>
-              </div> */}
-
-              <div className="formright checkbox">
+              <div className="inline">
+                <label>Price</label>
+                <input type="number" min="0.00" max="10000.00" step="0.01" name="price" onChange={this.handleChange} className="reginput"></input>
+                <div className="checkbox">
                 <input onChange={this.handleChange} type="checkbox" id="paystatus" name="is_paid"></input>
                 <label htmlFor="paystatus">Paid</label>
               </div>
+              </div>
 
               <div>
-                <label className="blue dates">Notes</label>
+                <label className="blue formsection">Notes</label>
                 <textarea onChange={this.handleChange} name="notes"></textarea>
               </div>
               <button type="submit">Add Accommodation</button>

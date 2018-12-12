@@ -367,6 +367,7 @@ export const getActivityById = (id) => {
 
 export const addActivity = (activity) => {
   console.log("\nACTION: addActivity:", activity)
+  activity.date = activity.date._d
   return dispatch => {
     axios.post('/activities/add', activity)
       .then(responseFromDB => {

@@ -2,30 +2,19 @@
 
 import React, { Component } from 'react';
 import './styles.css';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Link } from 'react-router-dom';
 
 //Redux
 import { connect } from 'react-redux';
 import { getTripById, getAccommodationsByTrip, getActivitiesByTrip, getFlightsByTrip, getTransitByTrip, getUserById } from '../../actions/actions';
-{/* Abby's code */ }
-// import { getAllByTrip } from '../../actions/actions';
 
 
 class TripComponent extends Component {
-  constructor(props) {
-    super(props)
-  }
+  // constructor(props) {
+  //   super(props)
+  // }
 
   componentDidMount() {
-
-    {/* Abby's code */ }
-    //   let tripId = this.props.match.params.id;
-    //   this.props.dispatch(getAllByTrip(tripId));
-    // }
-
-    // render() {
-    //   const trips = this.props.trips;
-    //   console.log("this.props.match", this.props.match);
 
     //User id and trip id come from url
     const trip_id = this.props.match.params.trip_id;
@@ -50,11 +39,6 @@ class TripComponent extends Component {
       <div className="container trip">
         <div className="tripbanner">
           <div className="tripname">
-            {/* User Info */}
-            <p>{this.props.userById.first_name}</p>
-            <p>{this.props.userById.last_name}</p>
-
-            <br />
 
             {/* example to render trip by trip_id  */}
             {/* Your Trip: {trips.city} */}
@@ -159,9 +143,15 @@ class TripComponent extends Component {
           <Link to={`/accommodations/add?${this.props.match.params.id}`}>
             <button><i className="fas fa-hotel"></i> Accommodation</button>
           </Link>
-          <button tripId={this.props.tripId}><i className="fas fa-hiking"></i> Activity</button>
-          <button><i className="fas fa-plane"></i> Flight</button>
-          <button><i className="fas fa-car-side"></i> Transit</button>
+          <Link to={`/activities/add?${this.props.match.params.id}`}>
+            <button ><i className="fas fa-hiking"></i> Activity</button>
+          </Link>
+          <Link to={`/flights/add?${this.props.match.params.id}`}>
+            <button><i className="fas fa-plane"></i> Flight</button>
+          </Link>
+          <Link to={`/flights/add?${this.props.match.params.id}`}>
+            <button><i className="fas fa-car-side"></i> Transit</button>
+          </Link>
         </div>
       </div>
     );
@@ -169,35 +159,35 @@ class TripComponent extends Component {
   }
 }
 
-const AccommodationByTrip = (props) => {
-  return props.accommodations.map(item => {
-    return (
-      <div key={item.id}>{item.lodging_name}</div>
-    )
-  })
-}
-const ActivityByTrip = (props) => {
-  return props.activities.map(item => {
-    return (
-      <div key={item.id}>{item.activity_name}</div>
-    )
-  })
-}
-const TransitByTrip = (props) => {
-  return props.transit.map(item => {
-    return (
-      <div key={item.id}>{item.type}</div>
-    )
-  })
-}
+// const AccommodationByTrip = (props) => {
+//   return props.accommodations.map(item => {
+//     return (
+//       <div key={item.id}>{item.lodging_name}</div>
+//     )
+//   })
+// }
+// const ActivityByTrip = (props) => {
+//   return props.activities.map(item => {
+//     return (
+//       <div key={item.id}>{item.activity_name}</div>
+//     )
+//   })
+// }
+// const TransitByTrip = (props) => {
+//   return props.transit.map(item => {
+//     return (
+//       <div key={item.id}>{item.type}</div>
+//     )
+//   })
+// }
 
-const FlightByTrip = (props) => {
-  return props.flights.map(item => {
-    return (
-      <div key={item.id}>{item.airlines}</div>
-    )
-  })
-}
+// const FlightByTrip = (props) => {
+//   return props.flights.map(item => {
+//     return (
+//       <div key={item.id}>{item.airlines}</div>
+//     )
+//   })
+// }
 
 const mapStateToProps = state => {
   // return state;

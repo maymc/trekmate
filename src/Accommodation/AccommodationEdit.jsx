@@ -67,7 +67,7 @@ class AccommodationEdit extends Component {
   render() {
     console.log("AccommodationEdit - render - this.props:", this.props);
     console.log('state', this.state)
-    let { accommodationById } = this.props
+    // let { accommodationById } = this.props
 
     return (
       <div className="container col12">
