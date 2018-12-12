@@ -23,7 +23,7 @@ class LocationSearch extends Component {
         }).catch(error => console.error('Error', error)) };
     
     render() {
-        console.log("search", this.props)
+        // console.log("search", this.props)
         return (
             <PlacesAutocomplete value={this.state.address} onChange={this.handleChange} onSelect={this.handleSelect}>{({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
                 <div className="search-box">

@@ -74,7 +74,7 @@ class TripComponent extends Component {
         {/* Display all data for specific trip for the user */}
         <div className="tripfeed">
           {/* Display flights for the trip */}
-          {this.props.flightsByTrip.map(flight => {
+          {/* {this.props.flightsByTrip.map(flight => {
             return (
               <div>
                 <h2>Flight</h2>
@@ -87,9 +87,9 @@ class TripComponent extends Component {
                 <p>Notes: {flight.notes}</p>
               </div>
             )
-          })}
+          })} */}
           {/* Display Accommodations for the trip */}
-          {this.props.accommodationsByTrip.map(accommodation => {
+          {/* {this.props.accommodationsByTrip.map(accommodation => {
             return (
               <div>
                 <h2>Accommodation</h2>
@@ -103,10 +103,10 @@ class TripComponent extends Component {
                 <p>Notes: {accommodation.notes}</p>
               </div>
             )
-          })}
+          })} */}
 
           {/* Display activities for the trip */}
-          {this.props.activitiesByTrip.map(activity => {
+          {/* {this.props.activitiesByTrip.map(activity => {
             return (
               <div>
                 <h2>Activity</h2>
@@ -122,10 +122,10 @@ class TripComponent extends Component {
                 <img src={activity.image} />
               </div>
             )
-          })}
+          })} */}
 
           {/* Display transit for the trip */}
-          {this.props.transitByTrip.map(transit => {
+          {/* {this.props.transitByTrip.map(transit => {
             return (
               <div>
                 <h2>Transit</h2>
@@ -136,7 +136,7 @@ class TripComponent extends Component {
                 <p>Price: {transit.price}</p>
               </div>
             )
-          })}
+          })} */}
 
           {/* Abby's code */}
           {/* example to render accommodations by trip_id */}
@@ -156,7 +156,10 @@ class TripComponent extends Component {
 
         <div className="tripbar">
           <h3>Add event:</h3>
-          <button><i className="fas fa-hiking"></i> Activity</button>
+          <Link to={{pathname: "/accommodations/add", search: this.props.tripId}}>
+            <button><i className="fas fa-hotel"></i> Accommodation</button>
+          </Link>
+          <button tripId={this.props.tripId}><i className="fas fa-hiking"></i> Activity</button>
           <button><i className="fas fa-plane"></i> Flight</button>
           <button><i className="fas fa-car-side"></i> Transit</button>
           <button><i className="fas fa-hotel"></i> Accommodation</button>

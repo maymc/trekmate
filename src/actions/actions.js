@@ -284,11 +284,13 @@ export const getAccommodationById = (id) => {
 }
 
 export const addAccommodation = (accommodation) => {
-  console.log("\nACTION: addAccommodation:", accommodation)
+  accommodation.check_in_date = accommodation.startDate._d
+  accommodation.check_out_date = accommodation.endDate._d
+
   return dispatch => {
     axios.post('/accommodations/add', accommodation)
       .then(responseFromDB => {
-        console.log("\naddAccommodation - responseFromDB.data:", responseFromDB.data);
+        // console.log("\naddAccommodation - responseFromDB.data:", responseFromDB.data);
         dispatch({
           type: ADD_ACCOMMODATION,
           payload: responseFromDB.data

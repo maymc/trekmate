@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import LocationSearch from '../Global/Search/LocationSearchComponent';
 import './styles.css';
 
+
 //Redux Setup
 import { connect } from 'react-redux';
 
@@ -46,8 +47,8 @@ class AccommodationAdd extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log("AccommodationAdd - handleSubmit this.props:", this.props)
-    console.log("Accommodation Added!", this.state);
+    console.log("Acc Add Props", this.props)
+    console.log("Acc Add State", this.state);
 
     this.props.dispatch(addAccommodation(this.state));
 
@@ -63,7 +64,7 @@ class AccommodationAdd extends Component {
   }
 
   render() {
-    console.log('Props', this.state)
+    console.log('Props', this.props)
     return (
       <div className="container col12">
         <div className="wrap-form">
@@ -109,7 +110,7 @@ class AccommodationAdd extends Component {
 
               <div className="formright checkbox">
                 <input onChange={this.handleChange} type="checkbox" id="paystatus" name="is_paid"></input>
-                <label for="paystatus">Paid</label>
+                <label htmlFor="paystatus">Paid</label>
               </div>
         
               <div>
