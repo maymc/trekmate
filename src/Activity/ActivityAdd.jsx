@@ -126,13 +126,9 @@ class ActivityAdd extends Component {
                 />
                 <TimePicker showSecond={false}  defaultValue={now} className="reginput" onChange={this.updateTime} format={format} use12Hours inputReadOnly />
               </div>
-              {/* <div className="form-group">
-                <label>Start time</label>
-                <TimePicker showSecond={false}  defaultValue={now} className="reginput" onChange={this.updateTime} format={format} use12Hours inputReadOnly />
-              </div> */}
               <div className="form-group">
                 <label>Price</label>
-                <input type="number" min="0.00" max="10000.00" step="0.01" name="price" onChange={this.handleChange} className="reginput inputstyle"></input>
+                <input type="number" min="0.00" max="10000.00" step="0.01" name="price" onChange={this.handleChange} className="reginput inputstyle" placeholder="$00.00"></input>
               </div>
               <div className="form-group">
                 <input type="text" id="image" name="image" onChange={this.handleChange} className="form-control" required></input>

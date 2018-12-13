@@ -26,10 +26,10 @@ class FlightAdd extends Component {
       airlines: null,
       departure_time: null,
       arrival_time: null,
-      reservation_code: null,
-      checked_in_baggage: null,
-      price: null,
-      notes: null,
+      reservation_code: 0,
+      checked_in_baggage: 0,
+      price: 0,
+      notes: "",
       user_id: 1,
       trip_id: 1
     }
@@ -90,7 +90,7 @@ class FlightAdd extends Component {
             </div>
             <div className="form-group">
                 <label>Price</label>
-                <input type="number" min="0.00" max="10000.00" step="0.01" name="price" onChange={this.handleChange} className="reginput inputstyle"></input>
+                <input type="number" min="0.00" max="10000.00" step="0.01" name="price" onChange={this.handleChange} className="reginput inputstyle" placeholder="$00.00"></input>
               </div>
             <div>
                 <label className="blue formsection">Notes</label>
