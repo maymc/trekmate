@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import './styles.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { DateComponent } from '../../Global/DateComponent'
 
 //Redux
 import { connect } from 'react-redux';
@@ -14,44 +15,44 @@ class TripComponent extends Component {
     super(props)
   }
 
-
   componentDidMount() {
-
     let tripId = this.props.match.params.trip_id;
     this.props.dispatch(getAllByTrip(tripId));
 
   }
-  dateFormatter(data) {
-    console.log('dateFormatter', data)
-    // let dates = data.split("t")
+  dateFormatter(date) {
+    if (date === undefined) {
+      return
+    }
+    else {
+      let d = new Date(date)
+      return {
+        month: d.getMonth(),
+        day: d.getDay(),
+        year: d.getFullYear()
+      }
+    }
   }
 
   render() {
     console.log("TripComponent - this.props:", this.props);
-
-    let startDate = this.dateFormatter(this.props.tripById.start_date)
     const trips = this.props.trips;
+    let startDate = this.dateFormatter(this.props.trips.start_date)
+    let endDate = this.dateFormatter(this.props.trips.end_date)
+    console.log('Start date', startDate, endDate)
     return (
       <div className="container col12 trip" key={trips.id}>
         <div className="tripbanner">
           <div className="tripname">
-            {/* User Info */}
-            <p>{trips.first_name}</p>
-            <p>{trips.last_name}</p>
-            <br />
-
-            {/* example to render trip by trip_id  */}
-            <div>Your Trip: {trips.city} </div>
-
-            {/* Trip Info */}
-            <h2>Trip Details</h2>
-            <p>City: {trips.city}</p>
-            <p>State: {trips.state}</p>
-            <p>Country: {trips.country}</p>
+            <h1>{trips.city}<span>, {trips.country}</span></h1>
             <p>Start Date: {trips.start_date}</p>
             <p>End Date: {trips.end_date}</p>
 
             <Link to={`/trips/edit/${trips.id}`}>Edit</Link>
+          </div>
+          <div className="tripdates">
+            <DateComponent date={startDate} />
+            <DateComponent date={endDate} />
           </div>
         </div>
 
@@ -126,7 +127,7 @@ class TripComponent extends Component {
 
         <div className="tripbar">
           <h3>Add event:</h3>
-          <Link to={`/accommodations/add?${this.props.userById.id}?${this.props.tripById.id}`}>
+          <Link to={`/accommodations/add?${trips.user_id}?${trips.id}`}>
             <button><i className="fas fa-hotel"></i> Accommodation</button>
           </Link>
           <Link to={`/activities/add?${this.props.trips.id}`}>
