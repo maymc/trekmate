@@ -43,7 +43,7 @@ class TripComponent extends Component {
             <p>Start Date: {trips.start_date}</p>
             <p>End Date: {trips.end_date}</p>
 
-            <Link to={`/trips/edit/${trips.trip_id}`}>Edit</Link>
+            <Link to={`/trips/edit/${trips.id}`}>Edit</Link>
           </div>
         </div>
 
@@ -118,10 +118,18 @@ class TripComponent extends Component {
 
         <div className="tripbar">
           <h3>Add event:</h3>
-          <button><i className="fas fa-hiking"></i> Activity</button>
-          <button><i className="fas fa-plane"></i> Flight</button>
-          <button><i className="fas fa-car-side"></i> Transit</button>
-          <button><i className="fas fa-hotel"></i> Accommodation</button>
+          <Link to={`/accommodations/add?${this.props.trips.id}`}>
+            <button><i className="fas fa-hotel"></i> Accommodation</button>
+          </Link>
+          <Link to={`/activities/add?${this.props.trips.id}`}>
+            <button ><i className="fas fa-hiking"></i> Activity</button>
+          </Link>
+          <Link to={`/flights/add?${this.props.trips.id}`}>
+            <button><i className="fas fa-plane"></i> Flight</button>
+          </Link>
+          <Link to={`/transit/add?${this.props.trips.id}`}>
+            <button><i className="fas fa-car-side"></i> Transit</button>
+          </Link>
         </div>
       </div>
     );
