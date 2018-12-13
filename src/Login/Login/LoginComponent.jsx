@@ -28,7 +28,7 @@ class Login extends Component {
     console.log('submitted!', this.state)
     this.loginUser(this.state)
 
-}
+  }
 
   handleChange = (e) => {
     e.preventDefault();
@@ -43,16 +43,16 @@ class Login extends Component {
   loginUser = (userData) => {
     console.log('new user', userData);
     axios
-    .post('auth/login', userData)
-    .then(userData => {
-      const email = JSON.parse(userData.config.data).email
-      console.log('email for auth login user', email)
-      console.log('user data coming back', JSON.parse(userData.config.data).email);
-      localStorage.setItem('email', email)
-    })
-    .catch(err => {
-      console.log("Error login user", err);
-    })
+      .post('auth/login', userData)
+      .then(userData => {
+        const email = JSON.parse(userData.config.data).email
+        console.log('email for auth login user', email)
+        console.log('user data coming back', JSON.parse(userData.config.data).email);
+        localStorage.setItem('email', email)
+      })
+      .catch(err => {
+        console.log("Error login user", err);
+      })
   }
 
   render() {
@@ -82,7 +82,7 @@ class Login extends Component {
             <button type="submit">Login</button>
 
           </form>
-          <Link to="/login/register">
+          <Link to="/auth/login/register">
             <button className="ghost" type="button">Register</button>
           </Link>
           <Link to="/login/forgotPassword">

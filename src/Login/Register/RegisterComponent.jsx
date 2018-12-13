@@ -80,7 +80,7 @@ class Register extends Component {
             <button type="submit">Register</button>
 
           </form>
-          <Link to="/login">
+          <Link to="/auth/login">
             Cancel
           </Link>
         </div>
