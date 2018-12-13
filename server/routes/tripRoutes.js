@@ -3,6 +3,21 @@ const tripRouter = express.Router();
 
 //Bookshelf data models
 const Trips = require('../db/models/Trips.js');
+// const Accommodations = require('../db/models/Accommodations')
+
+// tripRouter.get('/everything/:id', (req, res) => {
+//     const { id } = req.params;
+
+//     Accommodations
+//         .where({ id: 1 })
+//         .fetch({ withRelated: ['trip_id'] })
+//         .then(results => {
+//             res.json(results.serialize());
+//         })
+//         .catch(err => {
+//             res.json("GET - getting all by err")
+//         })
+// })
 
 //GET all trips in database
 tripRouter.get('/', (req, res) => {

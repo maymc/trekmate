@@ -29,7 +29,7 @@ const tripRoutes = require('./routes/tripRoutes.js');
 app.use('/activities', activityRoutes);
 app.use('/accommodations', accommodationRoutes);
 app.use('/flights', flightRoutes);
-app.use('/transits', transitRoutes);
+app.use('/transit', transitRoutes);
 app.use('/trips', tripRoutes);
 app.use('/users', userRoutes);
 
@@ -66,29 +66,6 @@ app.post('/login/register', (req, res) => {
       res.json("POST - adding new user error");
     })
 });
-
-
-// app.get('/account/:id', (req, res) => {
-//   console.log('\nGET /account/:id...');
-//})
-
-// app.get('/account/:id', (req, res) => {
-//   console.log('\nGET /account/:id...');
-
-// })
-
-//GET /login form
-// app.get('/login', (req, res) => {
-//   console.log('\nGET /login...');
-
-// })
-
-// //GET /forgot_password
-// app.get('/forgot_password', (req, res) => {
-//   console.log('\nGET /forgot_password...');
-
-// })
-
 
 
 app.listen(PORT, () => {

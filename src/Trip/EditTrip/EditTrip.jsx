@@ -1,72 +1,82 @@
 import React, { Component } from 'react';
 import './styles.css';
 
+//Redux Setup
+import { connect } from 'react-redux';
+
+//Import actions
+import { editTrip, getTripById } from '../../actions/actions';
+
 class EditTrip extends Component {
   constructor(props) {
     super(props)
-
-    this.state = {
-      id: null,
-      city: null,
-      state: null,
-      country: null,
-      startDate: null,
-      endDate: null,
-      collaborators: null
-    }
   }
 
-  //Helper functions
-  handleChange = (e) => {
-    e.preventDefault();
+  //Lifecycle Methods
+  componentDidMount() {
+    //This id comes from the url
+    const tripId = this.props.match.params.id;
+    console.log("Setting tripId:", tripId);
 
+    this.props.dispatch(getTripById(tripId));
+  }
+
+  //Helper Functions
+  handleChange = (e) => {
+    console.log("EditTrip - handleChange")
+    e.preventDefault();
     const { name, value } = e.target;
     this.setState({
+      id: this.props.tripById.id,
       [name]: value
     })
   }
 
-  handleLogin = (e) => {
+  handleSubmit = (e) => {
     e.preventDefault();
-    console.log("EditTrip props:", this.props);
-    console.log("Edit Trip state:", this.state);
-    this.props.history.push(`/`); //change this to authenticated view when created
+    console.log("\nhandleSubmit - EditTrip - this.props:", this.props);
+    console.log("\nhandleSubmit - EditTrip - this.props.tripById.id:", this.props.tripById.id);
+    console.log("Updated to this.state:", this.state);
+
+    this.props.dispatch(editTrip(this.state, this.props.tripById.id));
+
+    //Redirect to trip page
+    this.props.history.push(`/users/account/${this.props.tripById.user_id}/trips/${this.props.tripById.id}`);
   }
 
   render() {
+    console.log("sadasdathis.props:", this.props);
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit}>
+        <label>City</label><br />
+        <input onChange={this.handleChange} type='text' name="city" defaultValue={this.props.tripById.city} />
+        <br /><br />
+        <label>State</label><br />
+        <input onChange={this.handleChange} type='text' name="state" defaultValue={this.props.tripById.state} />
+        <br /><br />
 
-          <label>City</label>
-          <input onChange={this.handleChange} type='text' name="city" placeholder="edit type of transit" />
-          <br /><br />
+        <label>Country</label><br />
+        <input onChange={this.handleChange} type='text' name="country" defaultValue={this.props.tripById.country} />
+        <br /><br />
 
-          <label>State</label>
-          <input onChange={this.handleChange} type='text' name="state" placeholder="edit transit date" />
-          <br /><br />
+        <label>Start Date</label><br />
+        <input onChange={this.handleChange} type='text' name="start_date" defaultValue={this.props.tripById.start_date} />
+        <br /><br />
 
-          <label>Country</label>
-          <input onChange={this.handleChange} type='text' name="country" placeholder="edit transit time" />
-          <br /><br />
+        <label>End Date</label><br />
+        <input onChange={this.handleChange} type='text' name="end_date" defaultValue={this.props.tripById.end_date} />
+        <br /><br />
 
-          <label>Start Date</label>
-          <input onChange={this.handleChange} type='text' name="startDate" placeholder="edit transit reservation" />
-          <br /><br />
-
-          <label>End Date</label>
-          <input onChange={this.handleChange} type='text' name="endDate" placeholder="edit price of transit" />
-          <br /><br />
-
-           <label>Collaborators</label>
-          <input onChange={this.handleChange} type='text' name="collaborators" placeholder="edit price of transit" />
-          <br /><br />
-
-        </form>
-      </div>
-    )
+        <button type="submit">Update Trip Info</button>
+      </form>
+    );
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    tripById: state.tripById
+  }
+}
 
-export default EditTrip;
+export default connect(mapStateToProps)(EditTrip);

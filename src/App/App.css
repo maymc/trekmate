@@ -19,3 +19,24 @@
   grid-row: 1/1;
 
 }
+
+.container {
+  grid-column: 1/7;
+  grid-row: 2/2;
+  padding: 0 auto;
+}
+
+.col12 {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.col6 {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.col3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}

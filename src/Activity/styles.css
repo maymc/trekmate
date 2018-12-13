@@ -1,0 +1,8 @@
+.rc-time-picker-panel-select {
+    overflow-x: hidden;
+}
+
+.rc-time-picker-input {
+    height: 48px;
+    border-radius: 1px;
+}

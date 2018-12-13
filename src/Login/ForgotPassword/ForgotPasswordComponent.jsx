@@ -34,13 +34,13 @@ class ForgotPassword extends Component {
 
   render() {
     return (
-      <div className="forgotpassword-container">
+      <div className="container col12 forgotpassword">
         <div className="forgotpassword-form">
           <form onSubmit={this.handleSubmit}>
             <h2>Forgot your password?</h2>
             <p>Enter the email associated with your account and we'll send you an email to help you reset your password.</p>
             <div className="form-group">
-              <input type="text" id="email" name="email" onChange={this.handleChange}  className="form-control" required></input>
+              <input autoFocus type="text" id="email" name="email" onChange={this.handleChange}  className="form-control" required></input>
               <label className="form-control-placeholder" htmlFor="email">Email</label>
             </div>
             <button type="submit">Send email</button>

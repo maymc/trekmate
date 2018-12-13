@@ -57,7 +57,7 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="login-container">
+      <div className="container col12 login">
         <div className="maponegrad">
         </div>
         <div className="mapone">
@@ -71,7 +71,7 @@ class Login extends Component {
           <form className="loginform" onSubmit={this.handleSubmit}>
 
             <div className="form-group">
-              <input autoComplete="username" type="text" id="email" name="email" onChange={this.handleChange} className="form-control" required></input>
+              <input autoFocus autoComplete="username" type="text" id="email" name="email" onChange={this.handleChange} className="form-control" required></input>
               <label className="form-control-placeholder" htmlFor="email">Email</label>
             </div>
 

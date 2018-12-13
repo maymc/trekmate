@@ -44,20 +44,12 @@ class Register extends Component {
 
   render() {
     return (
-      <div className="register-container">
-        {/* <div className="rmaponegrad">
-        </div>
-        <div className="rmapone">
-        </div>
-        <div className="rmaptwograd">
-        </div>
-        <div className="rmaptwo">
-        </div> */}
+      <div className="container col12 register">
         <div className="rmapthreeform">
           <h1>Register</h1>
           <form className="registerform" onSubmit={this.handleRegister}>
             <div className="form-group">
-              <input type="text" id="firstname" name="first_name" onChange={this.handleChange} className="form-control" required></input>
+              <input autoFocus type="text" id="firstname" name="first_name" onChange={this.handleChange} className="form-control" required></input>
               <label className="form-control-placeholder" htmlFor="firstname">First Name</label>
             </div>
             <div className="form-group">

@@ -1,39 +1,46 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 //------Redux------//
 import { connect } from 'react-redux';
-import { getTransit } from '../actions/actions';
+import { getTransitByTrip } from '../actions/actions';
 
 class Transit extends Component {
 
   componentDidMount() {
-
-    //get transit by transit_id
-    let id = this.props.match.params.id;
-    this.props.dispatch(getTransit(id));
-
+    //This id comes from the url
+    const transitId = this.props.match.params.id;
+    console.log("Setting transitId:", transitId);
+    console.log('\nTransit Component Mounted Successfully!');
+    this.props.dispatch(getTransitByTrip(transitId));
   }
-
 
   render() {
-    const { transit } = this.props;
+    console.log('\nTransit.jsx - this.props.transitByTripId:', this.props.transitByTripId)
 
-    return (
-      <div key={transit.id}>
-        <p>{transit.type}</p>
-      </div>
-    )
-
-
+    return this.props.transitByTripId.map(transitElem => {
+      return (
+        <div key={transitElem.id}>
+          <p>Type: {transitElem.type}</p>
+          <p>Date: {transitElem.date}</p>
+          <p>Time:{transitElem.time}</p>
+          <p>Reservation: {transitElem.reservation}</p>
+          <p>Price: {transitElem.price}</p>
+          <div>
+            <Link to={`/transit/${transitElem.id}`}>
+              <button type='button'>View</button>
+            </Link>
+          </div>
+        </div>
+      )
+    })
   }
 }
-
 
 const mapStateToProps = state => {
   return {
-    transit: state,
+    transitByTripId: state.transitByTripId
   }
 }
-
 
 export default connect(mapStateToProps)(Transit);
