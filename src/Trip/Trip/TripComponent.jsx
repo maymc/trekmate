@@ -24,7 +24,7 @@ class TripComponent extends Component {
   render() {
     const trips = this.props.trips;
     return (
-      <div className="trip" key={trips.id}>
+      <div className="container col12 trip" key={trips.id}>
         <div className="tripbanner">
           <div className="tripname">
             {/* User Info */}

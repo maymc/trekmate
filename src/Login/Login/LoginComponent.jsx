@@ -40,7 +40,7 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="login-container">
+      <div className="container col12 login">
         <div className="maponegrad">
         </div>
         <div className="mapone">

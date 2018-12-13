@@ -3,6 +3,11 @@ import React, { Component } from 'react';
 //Redux Setup
 import { connect } from 'react-redux';
 
+//Date picker
+import 'react-dates/initialize';
+import 'react-dates/lib/css/_datepicker.css';
+import { DateRangePicker } from 'react-dates';
+
 //Import actions
 import { editAccommodation, getAccommodationById } from '../actions/actions';
 
@@ -27,6 +32,7 @@ class AccommodationEdit extends Component {
 
   //Lifecycle Methods
   componentDidMount() {
+
 
     //This id comes from the url
     const accommodationId = this.props.match.params.id;
@@ -60,46 +66,58 @@ class AccommodationEdit extends Component {
 
   render() {
     console.log("AccommodationEdit - render - this.props:", this.props);
+    console.log('state', this.state)
+    // let { accommodationById } = this.props
 
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
+      <div className="container col12">
+        <div className="wrap-form">
+          <form className="col12" onSubmit={this.handleSubmit}>
 
-          <label>Lodging</label><br />
-          <input onChange={this.handleChange} type='text' name="lodging_name" defaultValue={this.props.accommodationById.lodging_name} />
-          <br /><br />
+            <div className="formbottom">
+            <h2 className="blue">Accommodation</h2>
+              <div className="form-group">
+                  <input type="text" id="name" name="lodging_name" onChange={this.handleChange} className="form-control" defaultValue={this.props.accommodationById.lodging_name} required></input>
+                  <label className="form-control-placeholder" htmlFor="name">Lodging name</label>
+              </div>
+              <div className="form-group">
+                  <input type="text" id="address" name="address" onChange={this.handleChange} className="form-control" defaultValue={this.props.accommodationById.address}  required></input>
+                  <label className="form-control-placeholder" htmlFor="address">Address</label>
+              </div>
+              <div>
+                <label className="blue dates">Details</label>
+                <DateRangePicker
+                  startDate={this.state.startDate} // momentPropTypes.momentObj or null,
+                  startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
+                  endDate={this.state.endDate} // momentPropTypes.momentObj or null,
+                  endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
+                  onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
+                  focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
+                  onFocusChange={focusedInput => this.setState({ focusedInput })}   // PropTypes.func.isRequired,
+                />
+              </div>
+              <div className="form-group">
+                <input type="text" id="rescode" name="eservation_code" onChange={this.handleChange}  className="form-control" defaultValue={this.props.accommodationById.reservation_code} required></input>
+                <label className="form-control-placeholder" htmlFor="rescode">Reservation code</label>
+              </div>
+              <div className="form-group">
+                <input type="number" id="price" name="price" onChange={this.handleChange}  className="form-control" defaultValue={this.props.accommodationById.price} required></input>
+                <label className="form-control-placeholder" htmlFor="price">Price</label>
+              </div>
+              <div className="formright checkbox">
+                <input onChange={this.handleChange} type="checkbox" id="paystatus" name="is_paid" defaultValue={this.props.accommodationById.notes} ></input>
+                <label htmlFor="paystatus">Paid</label>
+              </div>
+        
+              <div>
+                <label className="blue dates">Notes</label>
+                <textarea onChange={this.handleChange} name="notes"></textarea>
+              </div>
+              <button type="submit">Update Accommodation</button>
+            </div>
 
-          <label>Address</label><br />
-          <input onChange={this.handleChange} type='text' name="address" defaultValue={this.props.accommodationById.address} />
-          <br /><br />
-
-          <label>Check In</label><br />
-          <input onChange={this.handleChange} type='text' name="check_in_date" defaultValue={this.props.accommodationById.check_in_date} />
-          <br /><br />
-
-          <label>Check Out</label><br />
-          <input onChange={this.handleChange} type='text' name="check_out_date" defaultValue={this.props.accommodationById.check_out_date} />
-          <br /><br />
-
-          <label>Price</label><br />
-          <input onChange={this.handleChange} type='text' name="price" defaultValue={this.props.accommodationById.price} />
-          <br /><br />
-
-          <label>Pay Status (Yes/No)</label><br />
-          <input onChange={this.handleChange} type='text' name="is_paid" defaultValue={this.props.accommodationById.is_paid} />
-          <br /><br />
-
-          <label>Reservation Code</label><br />
-          <input onChange={this.handleChange} type='text' name="reservation_code" defaultValue={this.props.accommodationById.reservation_code} />
-          <br /><br />
-
-          <label>Notes</label><br />
-          <input onChange={this.handleChange} type='text' name="notes" defaultValue={this.props.accommodationById.notes} />
-          <br /><br />
-
-          <button type="submit">Update Accommodation</button>
-
-        </form>
+          </form>
+        </div>
       </div>
     )
   }

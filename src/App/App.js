@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
+
 //Setup for redux
 import { connect } from 'react-redux';
 
@@ -87,9 +88,9 @@ class App extends Component {
             {/* Accommodation Routes */}
             <Route path='/accommodations/trip/:id' component={Accommodation} />
             <Route path='/accommodation/edit/:id' component={AccommodationEdit} />
-            <Route path='/accommodation/:id' component={AccommodationDetail} />
+
             <Route path='/accommodations/add' component={AccommodationAdd} />
-            {/* <Route path='/accommodations' component={Accommodation} /> */}
+            <Route path='/accommodation/:id' component={AccommodationDetail} />
 
             {/* Activity Routes */}
             <Route path='/activities/trip/:id' component={Activity} />

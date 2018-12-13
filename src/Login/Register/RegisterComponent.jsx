@@ -44,15 +44,7 @@ class Register extends Component {
 
   render() {
     return (
-      <div className="register-container">
-        {/* <div className="rmaponegrad">
-        </div>
-        <div className="rmapone">
-        </div>
-        <div className="rmaptwograd">
-        </div>
-        <div className="rmaptwo">
-        </div> */}
+      <div className="container col12 register">
         <div className="rmapthreeform">
           <h1>Register</h1>
           <form className="registerform" onSubmit={this.handleRegister}>

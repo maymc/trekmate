@@ -34,7 +34,7 @@ class ForgotPassword extends Component {
 
   render() {
     return (
-      <div className="forgotpassword-container">
+      <div className="container col12 forgotpassword">
         <div className="forgotpassword-form">
           <form onSubmit={this.handleSubmit}>
             <h2>Forgot your password?</h2>
