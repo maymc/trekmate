@@ -37,7 +37,7 @@ class AccommodationEdit extends Component {
 
   //Helper Functions
   handleChange = (e) => {
-    console.log("AccommodationEdit - handleChange")
+    console.log("AccommodationEdit - handleChange");
     e.preventDefault();
     const { name, value } = e.target;
     this.setState({
@@ -96,8 +96,6 @@ class AccommodationEdit extends Component {
           <label>Notes</label><br />
           <input onChange={this.handleChange} type='text' name="notes" defaultValue={this.props.accommodationById.notes} />
           <br /><br />
-
-          {/* <button type="submit" value="Save draft for later" onClick={this.fillInEditAccommodation}>Update Accommodation</button> */}
 
           <button type="submit">Update Accommodation</button>
 
