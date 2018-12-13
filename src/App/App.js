@@ -110,8 +110,8 @@ class App extends Component {
             {/* Transit Routes */}
             <Route path='/transit/trip/:id' component={Transit} />
             <Route path='/transit/edit/:id' component={TransitEdit} />
-            <Route path='/transit/:id' component={TransitDetail} />
             <Route path='/transit/add' component={TransitAdd} />
+            <Route path='/transit/:id' component={TransitDetail} />
 
           </Switch>
         </Router>

@@ -121,7 +121,7 @@ class AccommodationAdd extends Component {
               </div>
               <div className="inline">
                 <label>Price</label>
-                <input type="number" min="0.00" max="10000.00" step="0.01" name="price" onChange={this.handleChange} className="reginput inputstyle"></input>
+                <input type="number" min="0.00" max="10000.00" step="0.01" name="price" onChange={this.handleChange} className="reginput inputstyle" placeholder="$00.00"></input>
                 <div className="checkbox">
                 <input onChange={this.is_Paid} type="checkbox" id="paystatus" name="is_paid"></input>
                 <label htmlFor="paystatus">Paid</label>
