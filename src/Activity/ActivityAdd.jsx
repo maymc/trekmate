@@ -7,6 +7,8 @@ import { connect } from 'react-redux';
 //Import actions
 import { addActivity } from '../actions/actions';
 
+
+
 //Date picker
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
@@ -14,8 +16,6 @@ import { SingleDatePicker } from 'react-dates';
 
 //Time picker
 import 'rc-time-picker/assets/index.css';
-// import React from 'react';
-// import ReactDom from 'react-dom';
 import moment from 'moment';
 import TimePicker from 'rc-time-picker';
 const format = 'h:mm a';
@@ -34,7 +34,7 @@ class ActivityAdd extends Component {
       time: null,
       price: null,
       type: null,
-      votes: null,
+      votes: 1,
       reservation: null,
       notes: null,
       image: null,
@@ -67,7 +67,7 @@ class ActivityAdd extends Component {
     console.log("Activity Added!", this.state);
 
     this.props.dispatch(addActivity(this.state));
-    this.props.history.push(`/trips/${this.state.trip_id}`);
+    // this.props.history.push(`/trips/${this.state.trip_id}`);
   }
 
   updateActivity = (address, lodging_name) => {
@@ -75,7 +75,7 @@ class ActivityAdd extends Component {
       activity_name: lodging_name,
       location: address
     })
-    console.log("Parent method, update address", this.state)
+    // console.log("Parent method, update address", this.state)
   }
 
   updateTime = (value) => {
@@ -116,6 +116,7 @@ class ActivityAdd extends Component {
             </select>
               <div>
                 <label className="blue formsection">Details</label>
+
                 <SingleDatePicker
                   date={this.state.date} // momentPropTypes.momentObj or null
                   onDateChange={date =>this.setState({ date })} // PropTypes.func.isRequired
@@ -123,11 +124,12 @@ class ActivityAdd extends Component {
                   onFocusChange={({ focused }) => this.setState({ focused })} // PropTypes.func.isRequired
                   id="your_unique_id" // PropTypes.string.isRequired,
                 />
-              </div>
-              <div className="form-group">
-                <label>Start time</label>
                 <TimePicker showSecond={false}  defaultValue={now} className="reginput" onChange={this.updateTime} format={format} use12Hours inputReadOnly />
               </div>
+              {/* <div className="form-group">
+                <label>Start time</label>
+                <TimePicker showSecond={false}  defaultValue={now} className="reginput" onChange={this.updateTime} format={format} use12Hours inputReadOnly />
+              </div> */}
               <div className="form-group">
                 <label>Price</label>
                 <input type="number" min="0.00" max="10000.00" step="0.01" name="price" onChange={this.handleChange} className="reginput inputstyle"></input>
@@ -149,7 +151,7 @@ class ActivityAdd extends Component {
                 <label className="blue formsection">Notes</label>
                 <textarea onChange={this.handleChange} name="notes"></textarea>
               </div>
-              <button type="submit">Add Accommodation</button>
+              <button type="submit">Add activity</button>
             </div>
           </form>
         </div>

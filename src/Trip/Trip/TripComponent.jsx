@@ -12,6 +12,9 @@ import { getTripById, getAccommodationsByTrip, getActivitiesByTrip, getFlightsBy
 class TripComponent extends Component {
   // constructor(props) {
   //   super(props)
+  //   this.state = {
+  //     trip_id: 
+  //   }
   // }
 
   componentDidMount() {
@@ -19,9 +22,9 @@ class TripComponent extends Component {
     //User id and trip id come from url
     const trip_id = this.props.match.params.trip_id;
     const user_id = this.props.match.params.user_id;
-    console.log("Setting user_id:", user_id)
-    console.log("Setting trip_id:", trip_id);
-    console.log("\nTripComponent Mounted Successfully");
+    // console.log("Setting user_id:", user_id)
+    // console.log("Setting trip_id:", trip_id);
+    // console.log("\nTripComponent Mounted Successfully");
 
     //GET details for trip, accommodations, activities, flights, and transit by trip_id
     this.props.dispatch(getUserById(user_id));
@@ -33,7 +36,7 @@ class TripComponent extends Component {
   }
 
   render() {
-    console.log("TripComponent - this.props:", this.props.match.params.id);
+    console.log("TripComponent - this.props:", this.props);
 
     return (
       <div className="container trip">
@@ -58,7 +61,7 @@ class TripComponent extends Component {
         {/* Display all data for specific trip for the user */}
         <div className="tripfeed">
           {/* Display flights for the trip */}
-          {/* {this.props.flightsByTrip.map(flight => {
+          {this.props.flightsByTrip.map(flight => {
             return (
               <div>
                 <h2>Flight</h2>
@@ -71,7 +74,7 @@ class TripComponent extends Component {
                 <p>Notes: {flight.notes}</p>
               </div>
             )
-          })} */}
+          })}
           {/* Display Accommodations for the trip */}
           {/* {this.props.accommodationsByTrip.map(accommodation => {
             return (
@@ -140,16 +143,16 @@ class TripComponent extends Component {
 
         <div className="tripbar">
           <h3>Add event:</h3>
-          <Link to={`/accommodations/add?${this.props.match.params.id}`}>
+          <Link to={`/accommodations/add?${this.props.tripById.id}`}>
             <button><i className="fas fa-hotel"></i> Accommodation</button>
           </Link>
-          <Link to={`/activities/add?${this.props.match.params.id}`}>
+          <Link to={`/activities/add?${this.props.tripById.id}`}>
             <button ><i className="fas fa-hiking"></i> Activity</button>
           </Link>
-          <Link to={`/flights/add?${this.props.match.params.id}`}>
+          <Link to={`/flights/add?${this.props.tripById.id}`}>
             <button><i className="fas fa-plane"></i> Flight</button>
           </Link>
-          <Link to={`/flights/add?${this.props.match.params.id}`}>
+          <Link to={`/transit/add?${this.props.tripById.id}`}>
             <button><i className="fas fa-car-side"></i> Transit</button>
           </Link>
         </div>

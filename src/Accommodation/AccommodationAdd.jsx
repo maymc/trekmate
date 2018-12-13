@@ -25,7 +25,7 @@ class AccommodationAdd extends Component {
       check_in_date: null,
       check_out_date: null,
       price: null,
-      is_paid: null,
+      is_paid: false,
       reservation_code: null,
       notes: null,
       user_id: 1,
@@ -38,7 +38,8 @@ class AccommodationAdd extends Component {
     let temp = this.props.location.search
     let id = Number(temp.substr(1))
     this.setState({
-      trip_id: id
+      trip_id: id,
+      user_id: 1
     })
   }
 
@@ -59,7 +60,7 @@ class AccommodationAdd extends Component {
     this.props.dispatch(addAccommodation(this.state));
 
     //Redirect to accommodations page
-    this.props.history.push(`/trips/${this.state.trip_id}`);
+    this.props.history.push(`users/account/${this.state.user_id}/trips/${this.state.trip_id}`);
   }
 
   updateAddress = (address, lodging_name) => {
@@ -68,6 +69,19 @@ class AccommodationAdd extends Component {
       address: address
     })
     console.log("Parent method, update address", this.state)
+  }
+
+  is_Paid = () => {
+    if (this.state.is_paid === false) {
+      this.setState({
+        is_paid: true
+      })
+    }
+    else {
+      this.setState({
+        is_paid: false
+      })
+    }
   }
 
   render() {
@@ -107,11 +121,11 @@ class AccommodationAdd extends Component {
               </div>
               <div className="inline">
                 <label>Price</label>
-                <input type="number" min="0.00" max="10000.00" step="0.01" name="price" onChange={this.handleChange} className="reginput"></input>
+                <input type="number" min="0.00" max="10000.00" step="0.01" name="price" onChange={this.handleChange} className="reginput inputstyle"></input>
                 <div className="checkbox">
-                <input onChange={this.handleChange} type="checkbox" id="paystatus" name="is_paid"></input>
+                <input onChange={this.is_Paid} type="checkbox" id="paystatus" name="is_paid"></input>
                 <label htmlFor="paystatus">Paid</label>
-              </div>
+                </div>
               </div>
 
               <div>

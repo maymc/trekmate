@@ -286,7 +286,7 @@ export const getAccommodationById = (id) => {
 export const addAccommodation = (accommodation) => {
   accommodation.check_in_date = accommodation.startDate._d
   accommodation.check_out_date = accommodation.endDate._d
-
+  console.log("\nACTION: addAccommodation", accommodation)
   return dispatch => {
     axios.post('/accommodations/add', accommodation)
       .then(responseFromDB => {
@@ -366,8 +366,8 @@ export const getActivityById = (id) => {
 }
 
 export const addActivity = (activity) => {
-  console.log("\nACTION: addActivity:", activity)
   activity.date = activity.date._d
+  console.log("\nACTION: addActivity:", activity)
   return dispatch => {
     axios.post('/activities/add', activity)
       .then(responseFromDB => {
