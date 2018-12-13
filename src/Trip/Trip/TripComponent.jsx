@@ -16,34 +16,13 @@ class TripComponent extends Component {
 
   componentDidMount() {
 
-    {/* Abby's code */ }
     let tripId = this.props.match.params.trip_id;
     this.props.dispatch(getAllByTrip(tripId));
-    // }
 
-    // render() {
-
-
-    //User id and trip id come from url
-    // const trip_id = this.props.match.params.trip_id;
-    // const user_id = this.props.match.params.user_id;
-    // console.log("Setting user_id:", user_id)
-    // console.log("Setting trip_id:", trip_id);
-    // console.log("\nTripComponent Mounted Successfully");
-
-    //GET details for trip, accommodations, activities, flights, and transit by trip_id
-    // this.props.dispatch(getUserById(user_id));
-    // this.props.dispatch(getTripById(trip_id));
-    // this.props.dispatch(getAccommodationsByTrip(trip_id));
-    // this.props.dispatch(getActivitiesByTrip(trip_id));
-    // this.props.dispatch(getFlightsByTrip(trip_id));
-    // this.props.dispatch(getTransitByTrip(trip_id));
   }
 
   render() {
-    console.log("TripComponent - this.props:", this.props);
     const trips = this.props.trips;
-
     return (
       <div className="trip" key={trips.id}>
         <div className="tripbanner">
@@ -116,7 +95,7 @@ class TripComponent extends Component {
                 <p>Votes: {activity.votes}</p>
                 <p>Reservation: {activity.reservation}</p>
                 <p>Notes: {activity.notes}</p>
-                <img src={activity.image} />
+                <img src={activity.image} alt='' />
               </div>
             )
           })}
@@ -135,20 +114,6 @@ class TripComponent extends Component {
             )
           })}
 
-          {/* Abby's code */}
-          {/* example to render accommodations by trip_id */}
-          {/* Accommodation By Trip: <AccommodationByTrip accommodations={this.props.accommodations} /> */}
-          <br />
-          {/* example to render activities by trip_id */}
-          {/* Activity By Trip: <ActivityByTrip activities={this.props.activities} /> */}
-          <br />
-          {/* example to render transits by trip_id */}
-          {/* Transit By Trip: <TransitByTrip transit={this.props.transit} /> */}
-          <br />
-          {/* example to render flights by trip_id */}
-          {/* Flight By Trip: <FlightByTrip flights={this.props.flights} /> */}
-
-
         </div>
 
         <div className="tripbar">
@@ -164,35 +129,6 @@ class TripComponent extends Component {
   }
 }
 
-// const AccommodationByTrip = (props) => {
-//   return props.accommodations.map(item => {
-//     return (
-//       <div key={item.id}>{item.lodging_name}</div>
-//     )
-//   })
-// }
-// const ActivityByTrip = (props) => {
-//   return props.activities.map(item => {
-//     return (
-//       <div key={item.id}>{item.activity_name}</div>
-//     )
-//   })
-// }
-// const TransitByTrip = (props) => {
-//   return props.transit.map(item => {
-//     return (
-//       <div key={item.id}>{item.type}</div>
-//     )
-//   })
-// }
-
-// const FlightByTrip = (props) => {
-//   return props.flights.map(item => {
-//     return (
-//       <div key={item.id}>{item.airlines}</div>
-//     )
-//   })
-// }
 
 const mapStateToProps = state => {
   // return state;

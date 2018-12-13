@@ -39,7 +39,6 @@ const reducer = (state = {
 
   trips: [],
   tripById: {},
-  flightById: {},
   tripsByUserId: [],
 
   accommodations: [],
