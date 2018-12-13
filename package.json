@@ -13,6 +13,10 @@
     "express": "^4.16.4",
     "express-session": "^1.15.6",
     "knex": "^0.15.2",
+<<<<<<< HEAD
+=======
+    "mailgun-js": "^0.22.0",
+>>>>>>> development
     "moment": "^2.22.2",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
