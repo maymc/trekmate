@@ -8,25 +8,25 @@ exports.seed = function (knex, Promise) {
         {
           first_name: 'Abby',
           last_name: 'Zhang',
-          email: 'Abby Zhang',
+          email: 'AbbyZhang@gmail.com',
           password: "admin",
         },
         {
           first_name: 'Jamie',
           last_name: 'Frady',
-          email: 'Jamie Frady',
+          email: 'JamieFrady@gmail.com',
           password: "admin",
         },
         {
           first_name: 'Jason',
           last_name: 'Hoe',
-          email: 'Jason Hoe',
+          email: 'JasonHoe@gmail.com',
           password: "admin",
         },
         {
           first_name: 'May',
           last_name: 'Chen',
-          email: 'May Chen',
+          email: 'MayChen@gmail.com',
           password: "admin",
         },
 
