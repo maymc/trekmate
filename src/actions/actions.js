@@ -105,7 +105,7 @@ export const getUserById = (id) => {
 export const addUser = (user) => {
   console.log("\nACTION: addUser:", user)
   return dispatch => {
-    axios.post('/login/register', user)
+    axios.post('/auth/login/register', user)
       .then(responseFromDB => {
         console.log("\naddUser - responseFromDB.data:", responseFromDB.data);
         dispatch({

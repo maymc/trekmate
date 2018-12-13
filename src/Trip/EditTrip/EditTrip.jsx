@@ -8,9 +8,9 @@ import { connect } from 'react-redux';
 import { editTrip, getTripById } from '../../actions/actions';
 
 class EditTrip extends Component {
-  // constructor(props) {
-  //   super(props)
-  // }
+  constructor(props) {
+    super(props)
+  }
 
   //Lifecycle Methods
   componentDidMount() {
@@ -45,6 +45,7 @@ class EditTrip extends Component {
   }
 
   render() {
+    console.log("sadasdathis.props:", this.props);
     return (
       <form onSubmit={this.handleSubmit}>
         <label>City</label><br />

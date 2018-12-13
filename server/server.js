@@ -3,12 +3,17 @@ const app = express();
 const PORT = process.env.EXPRESS_CONTAINER_PORT;
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const AuthRoutes = require('./routes/authRoutes.js')
+const passport = require('passport');
 
 app.use(cors());
 
 //Returns already parsed info/object as "req.body"
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use('/auth', AuthRoutes)
 
 //Bookshelf data models
 const Users = require('../server/db/models/Users.js');

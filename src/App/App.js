@@ -70,8 +70,8 @@ class App extends Component {
             {/* Login Routes */}
             <Route exact path='/' component={Home} />
             <Route path='/login/forgotPassword' component={ForgotPassword} />
-            <Route path='/login/register' component={Register} />
-            <Route exact path='/login' component={Login} />
+            <Route path='/auth/login/register' component={Register} />
+            <Route exact path='/auth/login' component={Login} />
 
             {/* User account Routes */}
             <Route path='/users/account/:user_id/trips/:trip_id' component={TripComponent} />
@@ -82,7 +82,7 @@ class App extends Component {
             {/* Trip Routes */}
             {/* <Route exact path='/trips' component={Trip} /> */}
             <Route path='/trips/edit/:id' component={EditTrip} />
-            <Route path='/trips/:id' component={TripComponent} />
+            {/* <Route path='/trips/:id' component={TripComponent} /> */}
             <Route path='/trips/add' component={CreateTrip} />
 
             {/* Accommodation Routes */}
