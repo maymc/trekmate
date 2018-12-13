@@ -2,68 +2,57 @@
 
 import React, { Component } from 'react';
 import './styles.css';
-import { BrowserRouter as Router, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 //Redux
 import { connect } from 'react-redux';
-import { getTripById, getAccommodationsByTrip, getActivitiesByTrip, getFlightsByTrip, getTransitByTrip, getUserById } from '../../actions/actions';
+import { getAllByTrip } from '../../actions/actions';
 
 
 class TripComponent extends Component {
-  // constructor(props) {
-  //   super(props)
-  //   this.state = {
-  //     trip_id: 
-  //   }
-  // }
+  constructor(props) {
+    super(props)
+  }
 
   componentDidMount() {
 
-    //User id and trip id come from url
-    const trip_id = this.props.match.params.trip_id;
-    const user_id = this.props.match.params.user_id;
-    // console.log("Setting user_id:", user_id)
-    // console.log("Setting trip_id:", trip_id);
-    // console.log("\nTripComponent Mounted Successfully");
+    let tripId = this.props.match.params.trip_id;
+    this.props.dispatch(getAllByTrip(tripId));
 
-    //GET details for trip, accommodations, activities, flights, and transit by trip_id
-    this.props.dispatch(getUserById(user_id));
-    this.props.dispatch(getTripById(trip_id));
-    this.props.dispatch(getAccommodationsByTrip(trip_id));
-    this.props.dispatch(getActivitiesByTrip(trip_id));
-    this.props.dispatch(getFlightsByTrip(trip_id));
-    this.props.dispatch(getTransitByTrip(trip_id));
   }
 
   render() {
-    console.log("TripComponent - this.props:", this.props);
-
+    const trips = this.props.trips;
     return (
-      <div className="container trip">
+      <div className="container col12 trip" key={trips.id}>
         <div className="tripbanner">
           <div className="tripname">
+            {/* User Info */}
+            <p>{trips.first_name}</p>
+            <p>{trips.last_name}</p>
+            <br />
 
             {/* example to render trip by trip_id  */}
-            {/* Your Trip: {trips.city} */}
+            <div>Your Trip: {trips.city} </div>
 
             {/* Trip Info */}
             <h2>Trip Details</h2>
-            <p>City: {this.props.tripById.city}</p>
-            <p>State: {this.props.tripById.state}</p>
-            <p>Country: {this.props.tripById.country}</p>
-            <p>Start Date: {this.props.tripById.start_date}</p>
-            <p>End Date: {this.props.tripById.end_date}</p>
+            <p>City: {trips.city}</p>
+            <p>State: {trips.state}</p>
+            <p>Country: {trips.country}</p>
+            <p>Start Date: {trips.start_date}</p>
+            <p>End Date: {trips.end_date}</p>
 
-            <Link to={`/trips/edit/${this.props.tripById.id}`}>Edit</Link>
+            <Link to={`/trips/edit/${trips.trip_id}`}>Edit</Link>
           </div>
         </div>
 
         {/* Display all data for specific trip for the user */}
         <div className="tripfeed">
           {/* Display flights for the trip */}
-          {this.props.flightsByTrip.map(flight => {
+          {this.props.flights.map(flight => {
             return (
-              <div>
+              <div key={flight.id}>
                 <h2>Flight</h2>
                 <p>Airlines: {flight.airlines}</p>
                 <p>Departure Time: {flight.departure_time}</p>
@@ -76,9 +65,9 @@ class TripComponent extends Component {
             )
           })}
           {/* Display Accommodations for the trip */}
-          {/* {this.props.accommodationsByTrip.map(accommodation => {
+          {this.props.accommodations.map(accommodation => {
             return (
-              <div>
+              <div key={accommodation.id}>
                 <h2>Accommodation</h2>
                 <p>Lodging: {accommodation.lodging_name}</p>
                 <p>Address: {accommodation.address}</p>
@@ -90,12 +79,12 @@ class TripComponent extends Component {
                 <p>Notes: {accommodation.notes}</p>
               </div>
             )
-          })} */}
+          })}
 
           {/* Display activities for the trip */}
-          {/* {this.props.activitiesByTrip.map(activity => {
+          {this.props.activities.map(activity => {
             return (
-              <div>
+              <div key={activity.id}>
                 <h2>Activity</h2>
                 <p>Activity: {activity.activity_name}</p>
                 <p>Location: {activity.location}</p>
@@ -106,15 +95,15 @@ class TripComponent extends Component {
                 <p>Votes: {activity.votes}</p>
                 <p>Reservation: {activity.reservation}</p>
                 <p>Notes: {activity.notes}</p>
-                <img src={activity.image} />
+                <img src={activity.image} alt='' />
               </div>
             )
-          })} */}
+          })}
 
           {/* Display transit for the trip */}
-          {/* {this.props.transitByTrip.map(transit => {
+          {this.props.transit.map(transit => {
             return (
-              <div>
+              <div key={transit.id}>
                 <h2>Transit</h2>
                 <p>Type: {transit.type}</p>
                 <p>Date: {transit.date}</p>
@@ -123,38 +112,16 @@ class TripComponent extends Component {
                 <p>Price: {transit.price}</p>
               </div>
             )
-          })} */}
-
-          {/* Abby's code */}
-          {/* example to render accommodations by trip_id */}
-          {/* Accommodation By Trip: <AccommodationByTrip accommodations={this.props.accommodations} /> */}
-          <br />
-          {/* example to render activities by trip_id */}
-          {/* Activity By Trip: <ActivityByTrip activities={this.props.activities} /> */}
-          <br />
-          {/* example to render transits by trip_id */}
-          {/* Transit By Trip: <TransitByTrip transit={this.props.transit} /> */}
-          <br />
-          {/* example to render flights by trip_id */}
-          {/* Flight By Trip: <FlightByTrip flights={this.props.flights} /> */}
-
+          })}
 
         </div>
 
         <div className="tripbar">
           <h3>Add event:</h3>
-          <Link to={`/accommodations/add?${this.props.tripById.id}`}>
-            <button><i className="fas fa-hotel"></i> Accommodation</button>
-          </Link>
-          <Link to={`/activities/add?${this.props.tripById.id}`}>
-            <button ><i className="fas fa-hiking"></i> Activity</button>
-          </Link>
-          <Link to={`/flights/add?${this.props.tripById.id}`}>
-            <button><i className="fas fa-plane"></i> Flight</button>
-          </Link>
-          <Link to={`/transit/add?${this.props.tripById.id}`}>
-            <button><i className="fas fa-car-side"></i> Transit</button>
-          </Link>
+          <button><i className="fas fa-hiking"></i> Activity</button>
+          <button><i className="fas fa-plane"></i> Flight</button>
+          <button><i className="fas fa-car-side"></i> Transit</button>
+          <button><i className="fas fa-hotel"></i> Accommodation</button>
         </div>
       </div>
     );
@@ -162,47 +129,11 @@ class TripComponent extends Component {
   }
 }
 
-// const AccommodationByTrip = (props) => {
-//   return props.accommodations.map(item => {
-//     return (
-//       <div key={item.id}>{item.lodging_name}</div>
-//     )
-//   })
-// }
-// const ActivityByTrip = (props) => {
-//   return props.activities.map(item => {
-//     return (
-//       <div key={item.id}>{item.activity_name}</div>
-//     )
-//   })
-// }
-// const TransitByTrip = (props) => {
-//   return props.transit.map(item => {
-//     return (
-//       <div key={item.id}>{item.type}</div>
-//     )
-//   })
-// }
-
-// const FlightByTrip = (props) => {
-//   return props.flights.map(item => {
-//     return (
-//       <div key={item.id}>{item.airlines}</div>
-//     )
-//   })
-// }
 
 const mapStateToProps = state => {
   // return state;
   console.log('TripComponent - This is state:', state)
-  return {
-    userById: state.userById,
-    tripById: state.tripById,
-    accommodationsByTrip: state.accommodationsByTripId,
-    activitiesByTrip: state.activitiesByTripId,
-    flightsByTrip: state.flightsByTripId,
-    transitByTrip: state.transitByTripId
-  }
+  return state;
 }
 
 
