@@ -20,17 +20,6 @@ class Account extends Component {
     console.log('accommodation prop:', users)
     return (
       <div className="account">
-<<<<<<< HEAD
-        Test account
-        {/* <Link to='/account/editAccount'>Edit Account</Link> */}
-        {/* <Route path='' component={EditAccountComponent} /> */}
-        {/* <Link to='/activities/activityEdit'>Activity Edit</Link> */}
-        {/* <Route path='' component={ActivityEdit} /> */}
-        <Route path='' component={TransitEdit} />
-
-
-
-=======
         <div className="accountbanner">
           <h1>{users.first_name}</h1><h3>,{users.last_name}</h3>
         </div>
@@ -42,7 +31,6 @@ class Account extends Component {
             <button type="submit"><i className="fas fa-suitcase"></i> Create new trip</button>
           </form>
         </div>
->>>>>>> 8319e78ad4d30393a7765153c22dc466d45f47cb
       </div>
     );
   }

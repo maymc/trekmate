@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './styles.css';
+import axios from "axios";
 
 // import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -21,9 +22,16 @@ class Login extends Component {
   componentDidMount() { }
 
   //Helper functions
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('submitted!', this.state)
+    this.loginUser(this.state)
+
+}
+
   handleChange = (e) => {
     e.preventDefault();
-
     const { name, value } = e.target;
     this.setState({
       [name]: value
@@ -31,11 +39,20 @@ class Login extends Component {
     })
   }
 
-  handleLogin = (e) => {
-    e.preventDefault();
-    console.log("Login - handleLogin this.props:", this.props);
-    console.log("Login Successful! User credentials:", this.state);
-    this.props.history.push(`/`); //change this to authenticated view when created
+  //Login function
+  loginUser = (userData) => {
+    console.log('new user', userData);
+    axios
+    .post('auth/login', userData)
+    .then(userData => {
+      const email = JSON.parse(userData.config.data).email
+      console.log('email for auth login user', email)
+      console.log('user data coming back', JSON.parse(userData.config.data).email);
+      localStorage.setItem('email', email)
+    })
+    .catch(err => {
+      console.log("Error login user", err);
+    })
   }
 
   render() {
@@ -51,7 +68,7 @@ class Login extends Component {
         </div>
         <div className="mapthreeform">
           <h1>Login</h1>
-          <form className="loginform" onSubmit={this.handleChange}>
+          <form className="loginform" onSubmit={this.handleSubmit}>
 
             <div className="form-group">
               <input autoComplete="username" type="text" id="email" name="email" onChange={this.handleChange} className="form-control" required></input>
