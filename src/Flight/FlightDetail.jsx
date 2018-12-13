@@ -36,6 +36,7 @@ class FlightDetail extends Component {
           <button type='button'>Back</button>
         </Link>
       </div>
+
     )
   }
 }
