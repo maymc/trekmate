@@ -10,23 +10,11 @@ import { getTripById, getAccommodationsByTrip, getActivitiesByTrip, getFlightsBy
 
 
 class TripComponent extends Component {
-  // constructor(props) {
-  //   super(props)
-  //   this.state = {
-  //     trip_id: 
-  //   }
-  // }
 
   componentDidMount() {
-
-    //User id and trip id come from url
     const trip_id = this.props.match.params.trip_id;
     const user_id = this.props.match.params.user_id;
-    // console.log("Setting user_id:", user_id)
-    // console.log("Setting trip_id:", trip_id);
-    // console.log("\nTripComponent Mounted Successfully");
-
-    //GET details for trip, accommodations, activities, flights, and transit by trip_id
+    
     this.props.dispatch(getUserById(user_id));
     this.props.dispatch(getTripById(trip_id));
     this.props.dispatch(getAccommodationsByTrip(trip_id));
@@ -34,27 +22,37 @@ class TripComponent extends Component {
     this.props.dispatch(getFlightsByTrip(trip_id));
     this.props.dispatch(getTransitByTrip(trip_id));
   }
+  dateFormatter(data) {
+    console.log('dateFormatter', data)
+    // let dates = data.split("t")
+  }
 
   render() {
     console.log("TripComponent - this.props:", this.props);
 
+    let startDate = this.dateFormatter(this.props.tripById.start_date)
     return (
       <div className="container trip">
         <div className="tripbanner">
           <div className="tripname">
 
-            {/* example to render trip by trip_id  */}
+            <h1>{this.props.tripById.city}<span>, {this.props.tripById.country}</span></h1>
+
+            {/* example to render trip by trip_id 
             {/* Your Trip: {trips.city} */}
 
             {/* Trip Info */}
-            <h2>Trip Details</h2>
+            {/* <h2>Trip Details</h2>
             <p>City: {this.props.tripById.city}</p>
             <p>State: {this.props.tripById.state}</p>
             <p>Country: {this.props.tripById.country}</p>
             <p>Start Date: {this.props.tripById.start_date}</p>
             <p>End Date: {this.props.tripById.end_date}</p>
 
-            <Link to={`/trips/edit/${this.props.tripById.id}`}>Edit</Link>
+            <Link to={`/trips/edit/${this.props.tripById.id}`}>Edit</Link> */}
+          </div> 
+          <div className="tripdates">
+
           </div>
         </div>
 
@@ -143,7 +141,7 @@ class TripComponent extends Component {
 
         <div className="tripbar">
           <h3>Add event:</h3>
-          <Link to={`/accommodations/add?${this.props.tripById.id}`}>
+          <Link to={`/accommodations/add?${this.props.userById.id}?${this.props.tripById.id}`}>
             <button><i className="fas fa-hotel"></i> Accommodation</button>
           </Link>
           <Link to={`/activities/add?${this.props.tripById.id}`}>

@@ -9,12 +9,33 @@
 .tripbanner {
     grid-column: 1/ span 3;
     height: 240px;
-    background: green;
+    background: #305BED;
     margin-bottom: 30px;
+    color: white;
+    display: grid;
+    display: grid;
+    grid-template-columns: auto 300px;
+    padding: 30px;
 }
+.tripname {
+    grid-column: 1/1;
+    width: 100%;
+    background: black;
+}
+.tripname h1 span {
+    font-size: .5em;
+}
+.tripdates {
+    grid-column: 2/2;
+    /* width: 100%; */
+    /* min-width: 50px; */
+    background: green;
+    min-height: 50px;
+}
+
+
 .tripfeed {
     grid-column: 1 / span 2;
-    background: blue;
     margin-bottom: 30px;
 }
 .tripbar {
@@ -23,6 +44,7 @@
     margin-bottom: 30px;
     margin-right: 10px;
 }
+
 
 
 .tripbar button {
