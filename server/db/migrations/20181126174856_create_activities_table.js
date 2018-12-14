@@ -2,10 +2,10 @@
 exports.up = function (knex, Promise) {
   return knex.schema.createTable('activities', (table) => {
     table.increments();
-    table.string('activity_name', 50).notNullable();
+    table.string('activity_name', 100).notNullable();
     table.string('location', 100).notNullable();
-    table.string('date', 50).notNullable();
-    table.string('time', 50).notNullable();
+    table.string('date', 100).notNullable();
+    table.string('time', 100).notNullable();
     table.decimal('price', 100).notNullable().defaultTo(0.00);
     table.string('type', 250).notNullable();
     table.integer('votes').notNullable();
