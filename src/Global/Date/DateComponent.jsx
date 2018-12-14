@@ -12,7 +12,7 @@ class DateComponent extends Component {
     }
   }
   componentDidMount() {
-    console.log('DateComp', this.props)
+    // console.log('DateComp', this.props)
     if (this.props.date === undefined) {
       return
     }else {
@@ -25,7 +25,7 @@ class DateComponent extends Component {
     }
   }
   render() {
-    console.log("DateCompState", this.state)
+    // console.log("DateCompState", this.state)
 
     return (
       <div className="datecont">
