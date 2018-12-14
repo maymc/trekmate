@@ -58,7 +58,7 @@ flightRouter.get('/trip/:trip_id', (req, res) => {
     Flights
         .forge()
         .where({ trip_id })
-        .orderBy('id', 'ASC')
+        .orderBy('departure_time', 'ASC')
         .fetchAll()
         .then((filteredFlights => {
             res.json(filteredFlights.serialize())

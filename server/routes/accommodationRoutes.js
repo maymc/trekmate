@@ -59,7 +59,7 @@ accommodationRouter.get('/trip/:trip_id', (req, res) => {
     Accommodations
         .forge()
         .where({ trip_id })
-        .orderBy('id', 'ASC')
+        .orderBy('check_in_date', 'ASC')
         .fetchAll()
         .then((filteredAccommodations => {
             res.json(filteredAccommodations.serialize())

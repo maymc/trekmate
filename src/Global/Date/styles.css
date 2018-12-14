@@ -1,0 +1,40 @@
+.datecont {
+    border: 2px solid white;
+    border-radius: 10px;
+    height: 180px;
+    padding: 20px;
+    text-align: center;
+    float: right;
+    margin-left: 15px;
+}
+
+.datecont h3 {
+    font-weight: 150;
+}
+.datecont h1 {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+@media only screen and (max-width: 690px) {
+    .datecont {
+        padding: 10px;
+        height: 50px;
+        display: block;
+        width: 100%;
+        margin: 15px 0px 5px 0px;
+    }
+    .datecont h3 {
+        font-size: 1em;
+        display: inline-block;
+    }
+    .datecont h1 {
+        display: inline-block;
+        font-size: 1em;
+        margin: 0px 15px 0px 15px;
+    }
+    .datecont p {
+        display: inline-block;
+    }
+
+}
