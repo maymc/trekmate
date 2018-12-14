@@ -2,8 +2,8 @@
 
 import React, { Component } from 'react';
 import './styles.css';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import { DateComponent } from '../../Global/DateComponent'
+import { Link } from 'react-router-dom';
+import DateComponent from '../../Global/Date/DateComponent'
 
 //Redux
 import { connect } from 'react-redux';
@@ -11,9 +11,6 @@ import { getAllByTrip } from '../../actions/actions';
 
 
 class TripComponent extends Component {
-  constructor(props) {
-    super(props)
-  }
 
   componentDidMount() {
     let tripId = this.props.match.params.trip_id;
@@ -26,10 +23,35 @@ class TripComponent extends Component {
     }
     else {
       let d = new Date(date)
+      let weekday = [];
+      weekday[0] =  "Sunday";
+      weekday[1] = "Monday";
+      weekday[2] = "Tuesday";
+      weekday[3] = "Wednesday";
+      weekday[4] = "Thursday";
+      weekday[5] = "Friday";
+      weekday[6] = "Saturday";
+      let month = [];
+      month[0] = "JAN";
+      month[1] = "FEB";
+      month[2] = "MAR";
+      month[3] = "APR";
+      month[4] = "MAY";
+      month[5] = "JUN";
+      month[6] = "JUL";
+      month[7] = "AUG";
+      month[8] = "SEPT";
+      month[9] = "OCT";
+      month[10] = "NOV";
+      month[11] = "DEC";
+
+      console.log('Date', d)
       return {
-        month: d.getMonth(),
-        day: d.getDay(),
+        day: weekday[d.getDay()],
+        date: d.getDate(),
+        month: month[d.getMonth()],
         year: d.getFullYear()
+  
       }
     }
   }
@@ -39,16 +61,15 @@ class TripComponent extends Component {
     const trips = this.props.trips;
     let startDate = this.dateFormatter(this.props.trips.start_date)
     let endDate = this.dateFormatter(this.props.trips.end_date)
-    console.log('Start date', startDate, endDate)
+    // console.log('Start date', startDate, endDate)
     return (
       <div className="container col12 trip" key={trips.id}>
         <div className="tripbanner">
           <div className="tripname">
             <h1>{trips.city}<span>, {trips.country}</span></h1>
-            <p>Start Date: {trips.start_date}</p>
-            <p>End Date: {trips.end_date}</p>
+  
 
-            <Link to={`/trips/edit/${trips.id}`}>Edit</Link>
+            <Link className="drk" to={`/trips/edit/${trips.id}?${trips.user_id}`}>Edit trip</Link>
           </div>
           <div className="tripdates">
             <DateComponent date={startDate} />

@@ -37,7 +37,7 @@ class Home extends Component {
         <div className="homecontent">
           <div className="homelocationsearch">
             <LocationSearch title="Where should we go?" updateAddress={this.updateAddress} />
-            <h1 value={this.state.city}></h1>
+            <h1>{this.state.city}</h1>
           </div>
         </div>
         <div>

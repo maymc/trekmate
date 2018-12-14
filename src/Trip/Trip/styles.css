@@ -20,32 +20,31 @@
 .tripname {
     grid-column: 1/1;
     width: 100%;
-    background: black;
+    /* background: black; */
+}
+.tripname h1 {
+    font-size: 5em;
 }
 .tripname h1 span {
     font-size: .5em;
 }
 .tripdates {
     grid-column: 2/2;
-    /* width: 100%; */
-    /* min-width: 50px; */
-    background: green;
-    min-height: 50px;
+    /* background: green; */
 }
 
 
 .tripfeed {
     grid-column: 1 / span 2;
-    margin-bottom: 30px;
+    margin: 0px 30px 30px 30px;
+    /* background: yellow; */
 }
 .tripbar {
     grid-column: 3 / span 1;
     /* background: red; */
     margin-bottom: 30px;
-    margin-right: 10px;
+    margin-right: 30px;
 }
-
-
 
 .tripbar button {
     width: 100%;
@@ -56,6 +55,23 @@
 }
 
 
+@media only screen and (max-width: 690px) {
+    .tripname {
+        grid-column: 1/ span 2;
+        grid-row: 1/1;
+    }
+    .tripname h1 {
+        font-size: 2em;
+        display: inline-block;
+    }
+    .tripname a {
+        float: right;
+    }
+    .tripdates {
+        grid-column: 1/ span 2;
+        grid-row: 2/2
+    }
+}
 
 @media only screen and (max-width: 600px) {
     .tripfeed {
