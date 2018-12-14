@@ -17,7 +17,7 @@ exports.seed = function (knex, Promise) {
         {
           city: 'San Francisco',
           state: 'California',
-          country: 'n/a',
+          country: 'USA',
           start_date: '02/15/18',
           end_date: "02/20/18",
           collaborators: 2,
@@ -26,20 +26,56 @@ exports.seed = function (knex, Promise) {
         {
           city: 'Sydney',
           state: 'n/a',
-          country: 'Austalia',
+          country: 'Australia',
           start_date: '04/23/18',
           end_date: "04/26/18",
+          collaborators: 2,
+          user_id: 3
+        },
+        {
+          city: 'Anchorage',
+          state: 'Alaska',
+          country: 'USA',
+          start_date: '10/12/18',
+          end_date: "10/20/18",
           collaborators: 2,
           user_id: 4
         },
         {
-          city: 'Alaska',
-          state: 'US State',
-          country: 'n/a',
-          start_date: '10/12/18',
-          end_date: "10/20/18",
+          city: 'Paris',
+          state: 'N/A',
+          country: 'France',
+          start_date: '03/12/18',
+          end_date: "03/24/18",
           collaborators: 2,
+          user_id: 1
+        },
+        {
+          city: 'Ontario',
+          state: 'N/A',
+          country: 'Canada',
+          start_date: '05/05/18',
+          end_date: "05/10/18",
+          collaborators: 2,
+          user_id: 2
+        },
+        {
+          city: 'Honolulu',
+          state: 'HI',
+          country: 'USA',
+          start_date: '08/02/18',
+          end_date: "08/04/18",
+          collaborators: 3,
           user_id: 3
+        },
+        {
+          city: 'St. Louis',
+          state: 'Missouri',
+          country: 'USA',
+          start_date: '07/23/18',
+          end_date: "07/28/18",
+          collaborators: 1,
+          user_id: 4
         },
       ]);
     });

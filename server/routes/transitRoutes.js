@@ -60,7 +60,7 @@ transitRouter.get('/trip/:trip_id', (req, res) => {
     Transit
         .forge()
         .where({ trip_id })
-        .orderBy('id', 'ASC')
+        .orderBy('date', 'ASC')
         .fetchAll()
         .then((filteredTransit => {
             res.json(filteredTransit.serialize())
