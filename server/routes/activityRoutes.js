@@ -58,7 +58,7 @@ activityRouter.get('/trip/:trip_id', (req, res) => {
     Activities
         .forge()
         .where({ trip_id })
-        .orderBy('id', 'ASC')
+        .orderBy('date', 'ASC')
         .fetchAll()
         .then((filteredActivities => {
             res.json(filteredActivities.serialize())
