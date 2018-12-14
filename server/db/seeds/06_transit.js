@@ -15,7 +15,7 @@ exports.seed = function (knex, Promise) {
           trip_id: 1
         }, {
           type: "uber",
-          date: "10/18/18",
+          date: "10/18/19",
           time: "10:21 AM",
           reservation: "No",
           price: "183.99",
@@ -23,7 +23,7 @@ exports.seed = function (knex, Promise) {
           trip_id: 4
         }, {
           type: "uber",
-          date: "04/24/18",
+          date: "04/24/19",
           time: "10:03 PM",
           reservation: "Yes",
           price: "223.60",
@@ -31,7 +31,7 @@ exports.seed = function (knex, Promise) {
           trip_id: 3
         }, {
           type: "taxi",
-          date: "02/18/18",
+          date: "02/18/19",
           time: "5:30 AM",
           reservation: "No",
           price: "155.71",
@@ -39,7 +39,7 @@ exports.seed = function (knex, Promise) {
           trip_id: 2
         }, {
           type: "car rental",
-          date: "01/10/18",
+          date: "01/10/19",
           time: "7:50 PM",
           reservation: "No",
           price: "84.09",
@@ -47,7 +47,7 @@ exports.seed = function (knex, Promise) {
           trip_id: 1
         }, {
           type: "uber",
-          date: "10/15/18",
+          date: "10/15/19",
           time: "12:01 PM",
           reservation: "No",
           price: "76.50",
@@ -55,7 +55,7 @@ exports.seed = function (knex, Promise) {
           trip_id: 4
         }, {
           type: "uber",
-          date: "04/25/18",
+          date: "04/25/19",
           time: "3:22 PM",
           reservation: "No",
           price: "309.01",
@@ -63,7 +63,7 @@ exports.seed = function (knex, Promise) {
           trip_id: 3
         }, {
           type: "shuttle",
-          date: "10/20/18",
+          date: "10/20/19",
           time: "2:10 AM",
           reservation: "Yes",
           price: "360.15",
@@ -71,7 +71,7 @@ exports.seed = function (knex, Promise) {
           trip_id: 4
         }, {
           type: "bus",
-          date: "01/04/18",
+          date: "01/04/19",
           time: "3:14 AM",
           reservation: "No",
           price: "365.67",
@@ -79,7 +79,7 @@ exports.seed = function (knex, Promise) {
           trip_id: 1
         }, {
           type: "shuttle",
-          date: "10/20/18",
+          date: "10/20/19",
           time: "7:22 PM",
           reservation: "Yes",
           price: "336.23",
@@ -87,7 +87,7 @@ exports.seed = function (knex, Promise) {
           trip_id: 4
         }, {
           type: "uber",
-          date: "01/08/18",
+          date: "01/08/19",
           time: "4:36 AM",
           reservation: "No",
           price: "325.79",
@@ -95,7 +95,7 @@ exports.seed = function (knex, Promise) {
           trip_id: 1
         }, {
           type: "uber",
-          date: "04/25/18",
+          date: "04/25/19",
           time: "8:34 PM",
           reservation: "Yes",
           price: "193.15",
@@ -103,7 +103,7 @@ exports.seed = function (knex, Promise) {
           trip_id: 3
         }, {
           type: "uber",
-          date: "02/16/18",
+          date: "02/16/19",
           time: "5:49 AM",
           reservation: "No",
           price: "126.27",
@@ -111,7 +111,7 @@ exports.seed = function (knex, Promise) {
           trip_id: 2
         }, {
           type: "shuttle",
-          date: "02/19/18",
+          date: "02/19/19",
           time: "2:59 AM",
           reservation: "No",
           price: "241.12",
@@ -119,7 +119,7 @@ exports.seed = function (knex, Promise) {
           trip_id: 2
         }, {
           type: "shuttle",
-          date: "01/03/18",
+          date: "01/03/19",
           time: "6:16 PM",
           reservation: "Yes",
           price: "432.00",
@@ -127,7 +127,7 @@ exports.seed = function (knex, Promise) {
           trip_id: 1
         }, {
           type: "taxi",
-          date: "10/14/18",
+          date: "10/14/19",
           time: "4:30 PM",
           reservation: "No",
           price: "161.09",
@@ -135,7 +135,7 @@ exports.seed = function (knex, Promise) {
           trip_id: 4
         }, {
           type: "car rental",
-          date: "04/23/18",
+          date: "04/23/19",
           time: "1:31 PM",
           reservation: "No",
           price: "295.76",
@@ -143,7 +143,7 @@ exports.seed = function (knex, Promise) {
           trip_id: 3
         }, {
           type: "taxi",
-          date: "02/17/18",
+          date: "02/17/19",
           time: "11:28 AM",
           reservation: "No",
           price: "466.56",
@@ -151,7 +151,7 @@ exports.seed = function (knex, Promise) {
           trip_id: 2
         }, {
           type: "taxi",
-          date: "04/26/18",
+          date: "04/26/19",
           time: "4:30 AM",
           reservation: "Yes",
           price: "483.59",
@@ -159,7 +159,7 @@ exports.seed = function (knex, Promise) {
           trip_id: 3
         }, {
           type: "shuttle",
-          date: "10/16/18",
+          date: "10/16/19",
           time: "5:02 AM",
           reservation: "No",
           price: "400.73",
@@ -167,7 +167,7 @@ exports.seed = function (knex, Promise) {
           trip_id: 4
         }, {
           type: "car rental",
-          date: "03/13/18",
+          date: "03/13/19",
           time: "1:31 PM",
           reservation: "No",
           price: "295.76",
@@ -175,7 +175,7 @@ exports.seed = function (knex, Promise) {
           trip_id: 5
         }, {
           type: "taxi",
-          date: "05/08/18",
+          date: "05/08/19",
           time: "11:28 AM",
           reservation: "No",
           price: "466.56",
@@ -183,7 +183,7 @@ exports.seed = function (knex, Promise) {
           trip_id: 6
         }, {
           type: "taxi",
-          date: "08/02/18",
+          date: "08/02/19",
           time: "4:30 AM",
           reservation: "Yes",
           price: "483.59",
@@ -191,7 +191,7 @@ exports.seed = function (knex, Promise) {
           trip_id: 7
         }, {
           type: "shuttle",
-          date: "07/24/18",
+          date: "07/24/19",
           time: "5:02 AM",
           reservation: "No",
           price: "400.73",
@@ -199,7 +199,7 @@ exports.seed = function (knex, Promise) {
           trip_id: 8
         }, {
           type: "car rental",
-          date: "07/26/18",
+          date: "07/26/19",
           time: "1:31 PM",
           reservation: "No",
           price: "295.76",
@@ -207,7 +207,7 @@ exports.seed = function (knex, Promise) {
           trip_id: 8
         }, {
           type: "taxi",
-          date: "05/07/18",
+          date: "05/07/19",
           time: "11:28 AM",
           reservation: "No",
           price: "466.56",
@@ -215,7 +215,7 @@ exports.seed = function (knex, Promise) {
           trip_id: 6
         }, {
           type: "taxi",
-          date: "08/04/18",
+          date: "08/04/19",
           time: "4:30 AM",
           reservation: "Yes",
           price: "483.59",
@@ -223,7 +223,7 @@ exports.seed = function (knex, Promise) {
           trip_id: 7
         }, {
           type: "shuttle",
-          date: "03/22/18",
+          date: "03/22/19",
           time: "5:02 AM",
           reservation: "No",
           price: "400.73",

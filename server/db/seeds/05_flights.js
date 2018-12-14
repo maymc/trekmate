@@ -7,8 +7,8 @@ exports.seed = function (knex, Promise) {
       return knex('flights').insert([
         {
           airlines: "JAL",
-          departure_time: "2018-01-10 12:38:17",
-          arrival_time: "2018-01-10 19:14:31",
+          departure_time: "19-01-10 12:38:17",
+          arrival_time: "19-01-10 19:14:31",
           reservation_code: "T23042",
           checked_in_baggage: "4",
           price: "424.12",
@@ -18,8 +18,8 @@ exports.seed = function (knex, Promise) {
         },
         {
           airlines: "Hawaiian Airlines",
-          departure_time: "2018-08-04 23:21:40",
-          arrival_time: "2018-08-04 08:53:16",
+          departure_time: "19-08-04 23:21:40",
+          arrival_time: "19-08-04 08:53:16",
           reservation_code: "T24622S",
           checked_in_baggage: "2",
           price: "478.98",
@@ -28,8 +28,8 @@ exports.seed = function (knex, Promise) {
           trip_id: 7
         }, {
           airlines: "United Airlines",
-          departure_time: "2018-02-15 00:00:00",
-          arrival_time: "2018-02-15 05:06:45",
+          departure_time: "19-02-15 00:00:00",
+          arrival_time: "19-02-15 05:06:45",
           reservation_code: "S72062E",
           checked_in_baggage: "1",
           price: "408.61",
@@ -38,8 +38,8 @@ exports.seed = function (knex, Promise) {
           trip_id: 2
         }, {
           airlines: "United Airlines",
-          departure_time: "2018-07-23 18:04:34",
-          arrival_time: "2018-07-23 23:14:52",
+          departure_time: "19-07-23 18:04:34",
+          arrival_time: "19-07-23 23:14:52",
           reservation_code: "J8482",
           checked_in_baggage: "1",
           price: "243.69",
@@ -48,8 +48,8 @@ exports.seed = function (knex, Promise) {
           trip_id: 8
         }, {
           airlines: "American Airlines",
-          departure_time: "2018-04-23 15:04:34",
-          arrival_time: "2018-04-23 24:14:52",
+          departure_time: "19-04-23 15:04:34",
+          arrival_time: "19-04-23 24:14:52",
           reservation_code: "S46902S",
           checked_in_baggage: "1",
           price: "79.16",
@@ -58,8 +58,8 @@ exports.seed = function (knex, Promise) {
           trip_id: 3
         }, {
           airlines: "United Airlines",
-          departure_time: "2018-04-26 06:16:55",
-          arrival_time: "2018-04-26 12:14:22",
+          departure_time: "19-04-26 06:16:55",
+          arrival_time: "19-04-26 12:14:22",
           reservation_code: "T470X4D",
           checked_in_baggage: "1",
           price: "474.01",
@@ -68,8 +68,8 @@ exports.seed = function (knex, Promise) {
           trip_id: 3
         }, {
           airlines: "Alaska Airlines",
-          departure_time: "2018-10-12 05:02:03",
-          arrival_time: "2018-10-12 10:22:53",
+          departure_time: "19-10-12 05:02:03",
+          arrival_time: "19-10-12 10:22:53",
           reservation_code: "B653",
           checked_in_baggage: "1",
           price: "241.20",
@@ -78,8 +78,8 @@ exports.seed = function (knex, Promise) {
           trip_id: 4
         }, {
           airlines: "Alaska Airlines",
-          departure_time: "2018-10-20 12:35:20",
-          arrival_time: "2018-10-20 23:44:13",
+          departure_time: "19-10-20 12:35:20",
+          arrival_time: "19-10-20 23:44:13",
           reservation_code: "N3020",
           checked_in_baggage: "1",
           price: "417.45",
@@ -88,8 +88,8 @@ exports.seed = function (knex, Promise) {
           trip_id: 4
         }, {
           airlines: "United Airlines",
-          departure_time: "2018-03-12 00:00:00",
-          arrival_time: "2018-03-12 05:06:45",
+          departure_time: "19-03-12 00:00:00",
+          arrival_time: "19-03-12 05:06:45",
           reservation_code: "S72062E",
           checked_in_baggage: "1",
           price: "408.61",
@@ -98,8 +98,8 @@ exports.seed = function (knex, Promise) {
           trip_id: 5
         }, {
           airlines: "United Airlines",
-          departure_time: "2018-03-24 18:04:34",
-          arrival_time: "2018-03-24 23:14:52",
+          departure_time: "19-03-24 18:04:34",
+          arrival_time: "19-03-24 23:14:52",
           reservation_code: "J8482",
           checked_in_baggage: "1",
           price: "243.69",
@@ -109,8 +109,8 @@ exports.seed = function (knex, Promise) {
         },
         {
           airlines: "Alaska Airlines",
-          departure_time: "2018-05-05 05:02:03",
-          arrival_time: "2018-05-05 10:22:53",
+          departure_time: "19-05-05 05:02:03",
+          arrival_time: "19-05-05 10:22:53",
           reservation_code: "B653",
           checked_in_baggage: "1",
           price: "241.20",
@@ -119,8 +119,8 @@ exports.seed = function (knex, Promise) {
           trip_id: 6
         }, {
           airlines: "Alaska Airlines",
-          departure_time: "2018-05-10 12:35:20",
-          arrival_time: "2018-05-10 23:44:13",
+          departure_time: "19-05-10 12:35:20",
+          arrival_time: "19-05-10 23:44:13",
           reservation_code: "N3020",
           checked_in_baggage: "1",
           price: "417.45",
@@ -130,8 +130,8 @@ exports.seed = function (knex, Promise) {
         },
         {
           airlines: "United Airlines",
-          departure_time: "2018-08-02 18:04:34",
-          arrival_time: "2018-08-02 23:14:52",
+          departure_time: "19-08-02 18:04:34",
+          arrival_time: "19-08-02 23:14:52",
           reservation_code: "J8482",
           checked_in_baggage: "1",
           price: "243.69",
@@ -140,8 +140,8 @@ exports.seed = function (knex, Promise) {
           trip_id: 7
         }, {
           airlines: "Hawaiian Airlines",
-          departure_time: "2018-01-01 23:21:40",
-          arrival_time: "2018-01-02 08:53:16",
+          departure_time: "19-01-01 23:21:40",
+          arrival_time: "19-01-02 08:53:16",
           reservation_code: "T24622S",
           checked_in_baggage: "2",
           price: "478.98",
@@ -150,8 +150,8 @@ exports.seed = function (knex, Promise) {
           trip_id: 1
         }, {
           airlines: "United Airlines",
-          departure_time: "2018-02-20 18:04:34",
-          arrival_time: "2018-02-20 23:14:52",
+          departure_time: "19-02-20 18:04:34",
+          arrival_time: "19-02-20 23:14:52",
           reservation_code: "J8482",
           checked_in_baggage: "1",
           price: "243.69",
@@ -161,8 +161,8 @@ exports.seed = function (knex, Promise) {
         },
         {
           airlines: "United Airlines",
-          departure_time: "2018-07-28 06:16:55",
-          arrival_time: "2018-07-28 12:14:22",
+          departure_time: "19-07-28 06:16:55",
+          arrival_time: "19-07-28 12:14:22",
           reservation_code: "T470X4D",
           checked_in_baggage: "1",
           price: "474.01",

@@ -7,8 +7,8 @@ exports.seed = function (knex, Promise) {
       return knex('accommodations').insert([
         {
           lodging_name: "Trump International Hotel & Tower",
-          check_in_date: "01/05/2018",
-          check_out_date: "01/10/2018",
+          check_in_date: "01/05/19",
+          check_out_date: "01/10/19",
           reservation_code: "T23059A",
           price: "85.44",
           address: "581 Jay Avenue",
@@ -18,8 +18,8 @@ exports.seed = function (knex, Promise) {
           notes: "Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis."
         }, {
           lodging_name: "Langham Hotel",
-          check_in_date: "02/15/2018",
-          check_out_date: "02/18/2018",
+          check_in_date: "02/15/19",
+          check_out_date: "02/18/19",
           reservation_code: "S63311S",
           price: "107.48",
           address: "24854 Saint Paul Terrace",
@@ -29,8 +29,8 @@ exports.seed = function (knex, Promise) {
           notes: "Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius."
         }, {
           lodging_name: "Four Seasons Gresham Palace",
-          check_in_date: "04/25/2018",
-          check_out_date: "04/26/2018",
+          check_in_date: "04/25/19",
+          check_out_date: "04/26/19",
           reservation_code: "H16149",
           price: "67.41",
           address: "92552 Forest Point",
@@ -40,8 +40,8 @@ exports.seed = function (knex, Promise) {
           notes: "Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.\n\nPellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.\n\nCum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
         }, {
           lodging_name: "Hotel de Marriot",
-          check_in_date: "10/12/2018",
-          check_out_date: "10/25/2018",
+          check_in_date: "10/12/19",
+          check_out_date: "10/25/19",
           reservation_code: "T2642XS",
           price: "268.58",
           address: "672 Crescent Oaks Circle",
@@ -52,8 +52,8 @@ exports.seed = function (knex, Promise) {
         },
         {
           lodging_name: "Sheraton",
-          check_in_date: "01/01/2018",
-          check_out_date: "01/05/2018",
+          check_in_date: "01/01/19",
+          check_out_date: "01/05/19",
           reservation_code: "T23059A",
           price: "85.44",
           address: "1244 Bay Avenue",
@@ -63,8 +63,8 @@ exports.seed = function (knex, Promise) {
           notes: "Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis."
         }, {
           lodging_name: "Beach Hotel",
-          check_in_date: "02/18/2018",
-          check_out_date: "02/20/2018",
+          check_in_date: "02/18/19",
+          check_out_date: "02/20/19",
           reservation_code: "S63311S",
           price: "107.48",
           address: "12312 Saint Paul Terrace",
@@ -74,8 +74,8 @@ exports.seed = function (knex, Promise) {
           notes: "Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius."
         }, {
           lodging_name: "Two Seasons Palace",
-          check_in_date: "04/23/2018",
-          check_out_date: "04/25/2018",
+          check_in_date: "04/23/19",
+          check_out_date: "04/25/19",
           reservation_code: "H16149",
           price: "67.41",
           address: "1412 Forest Point",
@@ -85,8 +85,8 @@ exports.seed = function (knex, Promise) {
           notes: "Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.\n\nPellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.\n\nCum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
         }, {
           lodging_name: "Hotel de Crillon",
-          check_in_date: "10/15/2018",
-          check_out_date: "10/20/2018",
+          check_in_date: "10/15/19",
+          check_out_date: "10/20/19",
           reservation_code: "T2642XS",
           price: "268.58",
           address: "672 Crescent Oaks Circle",
@@ -97,8 +97,8 @@ exports.seed = function (knex, Promise) {
         },
         {
           lodging_name: "Trump International Hotel & Tower",
-          check_in_date: "03/12/2018",
-          check_out_date: "03/15/2018",
+          check_in_date: "03/12/19",
+          check_out_date: "03/15/19",
           reservation_code: "T23059A",
           price: "85.44",
           address: "581 Jay Avenue",
@@ -108,8 +108,8 @@ exports.seed = function (knex, Promise) {
           notes: "Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis."
         }, {
           lodging_name: "Langham Hotel",
-          check_in_date: "05/05/2018",
-          check_out_date: "05/08/2018",
+          check_in_date: "05/05/19",
+          check_out_date: "05/08/19",
           reservation_code: "S63311S",
           price: "107.48",
           address: "24854 Saint Paul Terrace",
@@ -119,8 +119,8 @@ exports.seed = function (knex, Promise) {
           notes: "Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius."
         }, {
           lodging_name: "Four Seasons Gresham Palace",
-          check_in_date: "08/02/2018",
-          check_out_date: "08/03/2018",
+          check_in_date: "08/02/19",
+          check_out_date: "08/03/19",
           reservation_code: "H16149",
           price: "67.41",
           address: "92552 Forest Point",
@@ -130,8 +130,8 @@ exports.seed = function (knex, Promise) {
           notes: "Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.\n\nPellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.\n\nCum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
         }, {
           lodging_name: "Hotel de Marriot",
-          check_in_date: "08/23/2018",
-          check_out_date: "08/25/2018",
+          check_in_date: "08/23/19",
+          check_out_date: "08/25/19",
           reservation_code: "T2642XS",
           price: "268.58",
           address: "672 Crescent Oaks Circle",
@@ -142,8 +142,8 @@ exports.seed = function (knex, Promise) {
         },
         {
           lodging_name: "Sheraton",
-          check_in_date: "03/15/2018",
-          check_out_date: "03/24/2018",
+          check_in_date: "03/15/19",
+          check_out_date: "03/24/19",
           reservation_code: "T23059A",
           price: "85.44",
           address: "1244 Bay Avenue",
@@ -153,8 +153,8 @@ exports.seed = function (knex, Promise) {
           notes: "Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis."
         }, {
           lodging_name: "Beach Hotel",
-          check_in_date: "05/08/2018",
-          check_out_date: "05/10/2018",
+          check_in_date: "05/08/19",
+          check_out_date: "05/10/19",
           reservation_code: "S63311S",
           price: "107.48",
           address: "12312 Saint Paul Terrace",
@@ -164,8 +164,8 @@ exports.seed = function (knex, Promise) {
           notes: "Proin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius."
         }, {
           lodging_name: "Two Seasons Palace",
-          check_in_date: "08/03/2018",
-          check_out_date: "08/04/2018",
+          check_in_date: "08/03/19",
+          check_out_date: "08/04/19",
           reservation_code: "H16149",
           price: "67.41",
           address: "1412 Forest Point",
@@ -175,8 +175,8 @@ exports.seed = function (knex, Promise) {
           notes: "Sed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.\n\nPellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.\n\nCum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
         }, {
           lodging_name: "Hotel de Crillon",
-          check_in_date: "07/25/2018",
-          check_out_date: "07/28/2018",
+          check_in_date: "07/25/19",
+          check_out_date: "07/28/19",
           reservation_code: "T2642XS",
           price: "268.58",
           address: "672 Crescent Oaks Circle",
