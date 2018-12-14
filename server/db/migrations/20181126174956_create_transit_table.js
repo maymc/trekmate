@@ -3,7 +3,7 @@ exports.up = function (knex, Promise) {
   return knex.schema.createTable('transit', function (table) {
     table.increments();
     table.string('type', 15).notNullable();
-    table.string('date', 30).notNullable();
+    table.string('date', 50).notNullable();
     table.string('time', 10).notNullable();
     table.string('reservation', 50).notNullable();
     table.decimal('price', 1000).notNullable().defaultTo(0.00);
