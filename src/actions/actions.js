@@ -448,6 +448,7 @@ export const addFlight = (flight) => {
   console.log("\nACTION: addFlight:", flight)
   flight.departure_time = flight.startDate._d
   flight.arrival_time = flight.endDate._d
+  console.log("\nACTION After: addFlight:", flight)
 
   return dispatch => {
     axios.post('/flights/add', flight)
