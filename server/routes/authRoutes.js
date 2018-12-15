@@ -5,7 +5,6 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const bcrypt = require('bcrypt');
 
-
 passport.serializeUser((user, done) => {
   console.log('serializeUser', user)
   done(null, {
@@ -29,29 +28,29 @@ passport.deserializeUser((user, done) => {
 })
 
 passport.use(new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {
-  console.log('local is being called')
+  console.log('\nlocal is being called')
   Users
     .where({ email })
     .fetch()
     .then(user => {
-      console.log('user in local strategy', user)
+      console.log('\nuser in local strategy', user)
       user = user.toJSON();
       // if (user.password === password) {
       //   done(null, user )
       // } else {
       //   done(null, false)
       // }
-      console.log('authRoutes.js passport.use login user.ToJSON', user)
+      console.log('\nauthRoutes.js passport.use login user.ToJSON', user)
       bcrypt.compare(password, user.password)
         .then(res => {
-          console.log('authRoutes.js passport.use login after bcrypt!!!\n', res)
+          console.log('\nauthRoutes.js passport.use login after bcrypt!!!\n', res)
 
           if (res) {
-            console.log('authRoutes.js passport.use login after success!!!!\n')
-            done(null, user)
+            console.log('\nauthRoutes.js passport.use login after success!!!!\n')
+            return done(null, user)
           } else {
-            console.log('authRoutes.js passport.use login after failure!!!\n')
-            done(null, false)
+            console.log('\nauthRoutes.js passport.use login after failure!!!\n')
+            return done(null, false)
           }
         })
     })
@@ -64,7 +63,7 @@ passport.use(new LocalStrategy({ usernameField: 'email' }, (email, password, don
 const SALT_ROUND = 12
 
 authRouter.post('/login/register', (req, res) => {
-
+  console.log("req.body here:", req.body);
   const { email, password, first_name, last_name } = req.body;
 
   bcrypt.genSalt(12)
@@ -75,7 +74,12 @@ authRouter.post('/login/register', (req, res) => {
     .then(hash => {
       console.log('hash', hash)
       return Users
-        .forge({ email, password: hash, first_name, last_name })
+        .forge({
+          email: email,
+          password: hash,
+          first_name: first_name,
+          last_name: last_name
+        })
         .save()
     })
     .then(user => {
@@ -92,7 +96,7 @@ authRouter.post('/login/register', (req, res) => {
 })
 
 authRouter.post('/login', passport.authenticate('local', {
-  successRedirect: '/',
+  successRedirect: '/accommodations/add',
   failureRedirect: '/'
 }), (req, res) => {
   console.log('authRoutes.js POST/login!!!')

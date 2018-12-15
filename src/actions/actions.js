@@ -55,9 +55,10 @@ export const GET_FLIGHT_BY_TRIP_ID = 'GET_FLIGHT_BY_TRIP_ID';
 export const GET_ALL_BY_TRIP_ID = 'GET_ALL_BY_TRIP_ID';
 
 //---------Auth Action----------//
-export const loginUser = () => {
+export const loginUser = (user) => {
+  console.log("what is user??:", user)
   return dispatch => {
-    axios.post('/auth/login')
+    axios.post('/auth/login', user)
       .then(response => {
         console.log("ACTION - loginUser response:", response)
 
