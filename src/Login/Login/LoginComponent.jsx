@@ -2,8 +2,12 @@ import React, { Component } from 'react';
 import './styles.css';
 import axios from "axios";
 
-// import { connect } from 'react-redux';
+//Redux Setup
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+
+//Import actions
+import { loginUser } from '../../actions/actions';
 
 /// Internal imports
 // import ForgotPassword from '../ForgotPassword/ForgotPasswordComponent.jsx';
@@ -22,14 +26,6 @@ class Login extends Component {
   componentDidMount() { }
 
   //Helper functions
-
-  handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('submitted!', this.state)
-    this.loginUser(this.state)
-
-  }
-
   handleChange = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
@@ -39,16 +35,29 @@ class Login extends Component {
     })
   }
 
+  handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('Logging In...', this.state)
+    // this.loginUser(this.state)
+    this.props.dispatch(loginUser(this.state));
+  }
+
+
   //Login function
   loginUser = (userData) => {
     console.log('new user', userData);
     axios
-      .post('auth/login', userData)
+      .post('/auth/login', userData)
       .then(userData => {
+        console.log("userData:", userData);
         const email = JSON.parse(userData.config.data).email
         console.log('email for auth login user', email)
         console.log('user data coming back', JSON.parse(userData.config.data).email);
-        localStorage.setItem('email', email)
+        console.log('userData password:', JSON.parse(userData.config.data).password);
+
+        localStorage.setItem('email', email);
+
+        // this.props.history.push(`/users/account/1`);
       })
       .catch(err => {
         console.log("Error login user", err);
@@ -97,4 +106,4 @@ class Login extends Component {
 }
 
 
-export default Login;
+export default connect()(Login);

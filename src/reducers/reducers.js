@@ -1,4 +1,6 @@
 import {
+  LOGIN_USER,
+
   GET_ALL_USERS,
   GET_USER_BY_ID,
   ADD_USER,
@@ -63,6 +65,11 @@ const reducer = (state = {
   console.log("\nREDUCER ACTION: ", action);
 
   switch (action.type) {
+
+    //-------LOGIN_USER ----------//
+    case LOGIN_USER:
+      console.log("REDUCER LOGIN USER");
+      return action.payload;
 
     //-------GET ALL BY TRIP_ID ----------//
     case GET_ALL_BY_TRIP_ID:

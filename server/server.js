@@ -3,7 +3,6 @@ const app = express();
 const PORT = process.env.EXPRESS_CONTAINER_PORT;
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const AuthRoutes = require('./routes/authRoutes.js')
 const passport = require('passport');
 
 app.use(cors());
@@ -13,19 +12,20 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use('/auth', AuthRoutes)
 
 //Bookshelf data models
 const Users = require('../server/db/models/Users.js');
 
 //Routes
-const userRoutes = require('./routes/userRoutes.js');
+const authRoutes = require('./routes/authRoutes.js')
 const activityRoutes = require('./routes/activityRoutes.js');
 const accommodationRoutes = require('./routes/accommodationRoutes.js');
 const flightRoutes = require('./routes/flightRoutes.js');
 const transitRoutes = require('./routes/transitRoutes.js');
 const tripRoutes = require('./routes/tripRoutes.js');
+const userRoutes = require('./routes/userRoutes.js');
 
+app.use('/auth', authRoutes)
 app.use('/activities', activityRoutes);
 app.use('/accommodations', accommodationRoutes);
 app.use('/flights', flightRoutes);

@@ -40,6 +40,9 @@ class Register extends Component {
     console.log("New user has been registered!", this.state);
 
     this.props.dispatch(addUser(this.state));
+
+    //Redirect to login page after successful registration
+    this.props.history.push(`/auth/login`);
   }
 
   render() {

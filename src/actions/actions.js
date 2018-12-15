@@ -2,6 +2,9 @@ import axios from 'axios';
 
 //Storing constant data
 
+//~~~~~Auth~~~~//
+export const LOGIN_USER = 'LOGIN_USER';
+
 //~~~~~Users~~~~//
 export const GET_ALL_USERS = 'GET_ALL_USERS';
 export const GET_USER_BY_ID = 'GET_USER_BY_ID';
@@ -50,6 +53,24 @@ export const EDIT_TRANSIT = 'EDIT_TRANSIT';
 // export const GET_FLIGHT_BY_USER_ID = 'GET_FLIGHT_BY_USER_ID';
 export const GET_FLIGHT_BY_TRIP_ID = 'GET_FLIGHT_BY_TRIP_ID';
 export const GET_ALL_BY_TRIP_ID = 'GET_ALL_BY_TRIP_ID';
+
+//---------Auth Action----------//
+export const loginUser = () => {
+  return dispatch => {
+    axios.post('/auth/login')
+      .then(response => {
+        console.log("ACTION - loginUser response:", response)
+
+        dispatch({
+          type: LOGIN_USER,
+          payload: response.data
+        })
+      })
+      .catch(err => {
+        console.log('error in logging in user acton')
+      })
+  }
+}
 
 //------GET ALL-----------//
 export const getAllByTrip = (id) => {
