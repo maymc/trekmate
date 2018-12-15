@@ -93,7 +93,7 @@ class Login extends Component {
       )
 
     }
-    else if (this.props.loginData === 401) {
+    else if (this.props.loginData.isLoggedIn === 401) {
       return (
         <div className="container col12 login">
           <div className="maponegrad">
