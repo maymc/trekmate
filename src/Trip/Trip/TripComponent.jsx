@@ -45,7 +45,7 @@ class TripComponent extends Component {
       month[10] = "NOV";
       month[11] = "DEC";
 
-      console.log('Date', d)
+      // console.log('Date', d)
       return {
         day: weekday[d.getDay()],
         date: d.getDate(),
