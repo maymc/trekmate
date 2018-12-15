@@ -36,6 +36,8 @@ import {
 
 //Takes in action and current state, if there is no state then it will be an empty array
 const reducer = (state = {
+  loginData: {},
+
   users: [],
   userById: {},
 
@@ -69,7 +71,11 @@ const reducer = (state = {
     //-------LOGIN_USER ----------//
     case LOGIN_USER:
       console.log("REDUCER LOGIN USER");
-      return action.payload;
+      const newLoginData = {
+        isLoggedIn: action.payload,
+        userLoginId: action.stuff
+      }
+      return { ...state, loginData: newLoginData };
 
     //-------GET ALL BY TRIP_ID ----------//
     case GET_ALL_BY_TRIP_ID:
@@ -142,7 +148,7 @@ const reducer = (state = {
 
     default:
       //default is to return original state to do nothing 
-      return state;
+      return { ...state, loginData: false };
   }
 }
 

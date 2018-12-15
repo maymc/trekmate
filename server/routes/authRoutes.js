@@ -41,21 +41,27 @@ passport.use(new LocalStrategy({ usernameField: 'email' }, (email, password, don
       //   done(null, false)
       // }
       console.log('\nauthRoutes.js passport.use login user.ToJSON', user)
-      bcrypt.compare(password, user.password)
-        .then(res => {
-          console.log('\nauthRoutes.js passport.use login after bcrypt!!!\n', res)
 
-          if (res) {
+      bcrypt.compare(password, user.password)
+        .then(response => {
+          console.log('\nauthRoutes.js passport.use login after bcrypt!!!\n', response)
+
+          if (response) {
             console.log('\nauthRoutes.js passport.use login after success!!!!\n')
-            return done(null, user)
+            done(null, response);
           } else {
             console.log('\nauthRoutes.js passport.use login after failure!!!\n')
-            return done(null, false)
+            done(null, false);
           }
+        })
+        .catch(err => {
+          console.log("1st error:", err);
+          done(err);
         })
     })
     .catch(err => {
-      done(null, false)
+      console.log("2nd error:", err);
+      done(err);
     })
 }))
 
@@ -95,16 +101,24 @@ authRouter.post('/login/register', (req, res) => {
     })
 })
 
-authRouter.post('/login', passport.authenticate('local', {
-  successRedirect: '/accommodations/add',
-  failureRedirect: '/'
-}), (req, res) => {
-  console.log('authRoutes.js POST/login!!!')
-  // grab the user on record
-  // compare req.body.password to password on record
+// authRouter.post('/login', passport.authenticate('local'), (err, req, res) => {
+//   console.log('\nerr:', err);
+//   console.log('\nreq:', req);
+//   res.json("\ntesting");
+// })
 
-  res.send('YAY IM IN!!!!')
-})
+authRouter.post('/login', function (req, res, next) {
+  passport.authenticate('local', function (err, user, info) {
+    if (err) { return next(err); }
+    if (!user) { return res.json(401); }
+    req.logIn(user, function (err) {
+      if (err) { return next(err); }
+      return res.json(200);
+    });
+  })(req, res, next);
+});
+
+
 
 authRouter.get('/logout', (req, res) => {
   console.log('auth logout!!!')

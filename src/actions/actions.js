@@ -57,6 +57,7 @@ export const GET_ALL_BY_TRIP_ID = 'GET_ALL_BY_TRIP_ID';
 //---------Auth Action----------//
 export const loginUser = (user) => {
   console.log("what is user??:", user)
+  console.log("what is userID??:", user.userId)
   return dispatch => {
     axios.post('/auth/login', user)
       .then(response => {
@@ -64,11 +65,12 @@ export const loginUser = (user) => {
 
         dispatch({
           type: LOGIN_USER,
-          payload: response.data
+          payload: response.data,
+          stuff: user.userId
         })
       })
       .catch(err => {
-        console.log('error in logging in user acton')
+        console.log('error in logging in user action')
       })
   }
 }
