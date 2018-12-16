@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './styles.css';
+import { Link } from 'react-router-dom';
 
 //Redux Setup
 import { connect } from 'react-redux';
@@ -54,24 +55,32 @@ class EditAccount extends Component {
   }
 
   render() {
+    console.log('props', this.props)
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
+      <div className="container col12">
+        <div className="formplace">
+          <h1>Update account info</h1>
+          <form onSubmit={this.handleSubmit}>
 
-          <label>First Name</label>
-          <input onChange={this.handleChange} type='text' name="first_name" defaultValue={this.props.userById.first_name} />
-          <br /><br />
+            <div className="form-group">
+              <input autoFocus type="text" id="firstname" name="first_name" onChange={this.handleChange} className="form-control" defaultValue={this.props.userById.first_name}></input>
+              <label className="form-control-placeholder" htmlFor="firstname">First Name</label>
+            </div>
+            <div className="form-group">
+              <input type="text" id="lastname" name="last_name" onChange={this.handleChange} className="form-control" defaultValue={this.props.userById.last_name}></input>
+              <label className="form-control-placeholder" htmlFor="lastname">Last Name</label>
+            </div>
+            <div className="form-group">
+              <input autoComplete="username" type="text" id="email" name="email" onChange={this.handleChange} className="form-control" defaultValue={this.props.userById.email}></input>
+              <label className="form-control-placeholder" htmlFor="email">Email</label>
+            </div>
 
-          <label>Last Name</label>
-          <input onChange={this.handleChange} type='text' name="last_name" defaultValue={this.props.userById.last_name} />
-          <br /><br />
-
-          <label>Email</label>
-          <input onChange={this.handleChange} type='text' name="email" defaultValue={this.props.userById.email} />
-          <br /><br />
-
-          <button type="submit">Update Account Info</button>
-        </form>
+            <button className="formbutton" type="submit">Update</button>
+          </form>
+          <Link to={`/users/account/${this.props.userById.id}`}>
+            Cancel
+          </Link>
+        </div>
       </div>
     )
   }

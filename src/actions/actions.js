@@ -205,6 +205,8 @@ export const getTripById = (id) => {
 
 export const addTrip = (trip) => {
   console.log("\nACTION: addTrip:", trip)
+  trip.start_date = trip.startDate._d
+  trip.end_date = trip.endDate._d
   return dispatch => {
     axios.post('/trips/add', trip)
       .then(responseFromDB => {

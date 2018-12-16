@@ -50,8 +50,8 @@ class EventCard extends Component {
             <p>Details</p>
         </div>
         <div className="cardthree">
-            <p className="inlineblock"><i class="spaceright fas fa-calendar-alt"></i>{this.state.monthone || "Unknown" } {this.state.dateone}</p>
-            <p className="inlineblock spaceleft"><i class="far fa-clock"></i>{this.state.timeone || "Unknown" }</p>
+            <p className="inlineblock"><i className="spaceright fas fa-calendar-alt"></i>{this.state.monthone || "Unknown" } {this.state.dateone}</p>
+            <p className="inlineblock spaceleft"><i className="far fa-clock"></i>{this.state.timeone || "Unknown" }</p>
         </div>
         </div>
         </Link>

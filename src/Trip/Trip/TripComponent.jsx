@@ -86,7 +86,7 @@ class TripComponent extends Component {
         </div>
         <div className="tripfeed">
           <div className="eventsection">
-            <h3 className="grey"><i class="fas fa-plane"></i> Flights</h3>
+            <h3 className="grey"><i className="fas fa-plane"></i> Flights</h3>
             {this.props.flights.map(flight => {
               return (
                 <EventCard key={flight.id} type={'flight'} detail={flight} title={flight.airlines} date={flight.departure_time} />

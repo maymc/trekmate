@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 import './styles.css'
+import LocationSearch from '../../Global/Search/LocationSearchComponent';
+//Date picker
+import 'react-dates/initialize';
+import 'react-dates/lib/css/_datepicker.css';
+import { DateRangePicker } from 'react-dates';
 
 //Redux Setup
 import { connect } from 'react-redux';
@@ -20,13 +25,19 @@ class CreateTrip extends Component {
       start_date: null,
       end_date: null,
       collaborators: 1,
-      user_id: 1
+      user_id: null
     }
   }
 
   //Lifecycle Methods
   componentDidMount() {
-
+    console.log('Trip', this.props)
+    let id = (this.props.location.search).split("?")
+    
+    // console.log('Temp', id[1])
+    this.setState({
+      user_id: Number(id[1])
+    })
   }
 
   //Helper Functions
@@ -44,23 +55,40 @@ class CreateTrip extends Component {
     console.log("New trip has been created!", this.state);
 
     this.props.dispatch(addTrip(this.state));
+    this.props.history.push(`/users/account/${this.state.user_id}`);
   }
+
+  // updateAddress = (address, lodging_name) => {
+  //   // this.setState({
+  //   //   lodging_name: lodging_name,
+  //   //   address: address
+  //   // })
+  //   console.log("Parent method, update address", address, lodging_name)
+  // }
 
   //App Component - functions
   //Never mutate 'state' directly, use 'this.setState' (use ES6 to bind)
 
   //App Component - render html elements
   render() {
+    console.log('CT', this.state)
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <label>City</label>
-          <input onChange={this.handleChange} type='text' name="city" placeholder="enter city" />
-          <br /><br />
-
+      <div className="container col12">
+      <div className="wrap-form">
+        <form className="col12" onSubmit={this.handleSubmit}>
+        {/* <div className="formtop">
+              <LocationSearch title="Where should we go?" updateAddress={this.updateAddress} />
+        </div> */}
+        <div className="formbottom">
+        <h2 className="blue">Where should we go?</h2>
+          <div className="form-group">
+            <input type="text" id="city" name="city" onChange={this.handleChange} className="form-control" required></input>
+            <label className="form-control-placeholder" htmlFor="city">City</label>
+          </div>
           <label>State</label>
           <select name="state" onChange={this.handleChange}>
             <option value="select-state">Select State</option>
+            <option value="AK">Not Applicable</option>
             <option value="AK">AK</option>
             <option value="AL">AL</option>
             <option value="AZ">AZ</option>
@@ -112,22 +140,27 @@ class CreateTrip extends Component {
             <option value="WI">WI</option>
             <option value="WY">WY</option>
           </select>
-          <br /><br />
-
-          <label>Country</label>
-          <input onChange={this.handleChange} type='text' name="country" placeholder="enter country" />
-          <br /><br />
-
-          <label>Start Date</label>
-          <input onChange={this.handleChange} type='text' name="start_date" placeholder="MM/DD/YY" />
-          <br /><br />
-
-          <label>End Date</label>
-          <input onChange={this.handleChange} type='text' name="end_date" placeholder="MM/DD/YY" />
-          <br /><br />
+          <div className="form-group">
+            <input type="text" id="country" name="country" onChange={this.handleChange} className="form-control" required></input>
+            <label className="form-control-placeholder" htmlFor="country">Country</label>
+          </div>
+          <div>
+                <label className="blue formsection">Dates</label>
+                <DateRangePicker
+                  startDate={this.state.startDate} // momentPropTypes.momentObj or null,
+                  startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
+                  endDate={this.state.endDate} // momentPropTypes.momentObj or null,
+                  endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
+                  onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
+                  focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
+                  onFocusChange={focusedInput => this.setState({ focusedInput })}   // PropTypes.func.isRequired,
+                />
+          </div>
 
           <button type="submit">Create Trip</button>
+        </div>
         </form>
+      </div>
       </div>
     );
   }

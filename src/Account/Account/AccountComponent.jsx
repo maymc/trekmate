@@ -106,9 +106,9 @@ class Account extends Component {
 
         <div className="accountbar">
           {/* <h3>Create a new trip:</h3> */}
-          <form method="get" action="/trips/add">
+          <Link to={`/trips/add?${this.props.userById.id}`}>
             <button type="submit"><i className="fas fa-suitcase"></i> Create new trip</button>
-          </form>
+          </Link>
         </div>
       </div>
     );
