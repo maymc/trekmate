@@ -242,6 +242,9 @@ textarea, select, input, button {
   .blue {
     color: #57A4F5;
   }
+  .grey {
+    color: #565656;
+  }
 
   .formbottom button {
     margin-top: 30px;
@@ -260,6 +263,13 @@ textarea, select, input, button {
   .reginput {
     margin-left: 10px;
     border: none;
+  }
+  
+  .spaceright {
+    margin-right: 10px;
+  }
+  .spaceleft {
+    margin-left: 15px;
   }
 
   .inputstyle {
@@ -286,6 +296,9 @@ textarea, select, input, button {
   .inline {
     display: inline-block;
     width: 100%;
+  }
+  .inlineblock {
+    display: inline-block;
   }
 
   .inline .checkbox {

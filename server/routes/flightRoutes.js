@@ -71,9 +71,13 @@ flightRouter.get('/trip/:trip_id', (req, res) => {
 
 //POST new flight into 'Flights' table
 flightRouter.post('/add', (req, res) => {
+    console.log("Flight route", req.body)
     const newflight = {
         airlines: req.body.airlines,
         departure_time: req.body.departure_time,
+        departure_date: req.body.departure_time,
+        departure_date: req.body.departure_time,
+        arrival_date: req.body.arrival_date,
         arrival_time: req.body.arrival_time,
         reservation_code: req.body.reservation_code,
         checked_in_baggage: req.body.checked_in_baggage,
@@ -105,6 +109,8 @@ flightRouter.put('/edit/:id', (req, res) => {
     const updatedFlight = {
         airlines: req.body.airlines,
         departure_time: req.body.departure_time,
+        departure_date: req.body.departure_time,
+        arrival_date: req.body.arrival_date,
         arrival_time: req.body.arrival_time,
         reservation_code: req.body.reservation_code,
         checked_in_baggage: req.body.checked_in_baggage,
