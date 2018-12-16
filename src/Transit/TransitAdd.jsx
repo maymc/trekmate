@@ -51,6 +51,7 @@ class TransitAdd extends Component {
     console.log("Transit Added!", this.state);
 
     this.props.dispatch(addTransit(this.state));
+    this.props.history.push(`/users/account/${this.state.user_id}/trips/${this.state.trip_id}`);
   }
 
   updateTime = (value) => {

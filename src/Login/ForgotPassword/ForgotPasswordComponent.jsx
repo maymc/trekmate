@@ -55,7 +55,7 @@ class ForgotPassword extends Component {
     console.log("Email sent to user for forgotten password", this.state);
     return (
       <div className="container col12 forgotpassword">
-        <div className="forgotpassword-form">
+        <div className="formplace forgotpassword-form">
           <form onSubmit={this.handleSubmit}>
             <h2>Forgot your password?</h2>
             <p>Enter the email associated with your account and we'll send you an email to help you reset your password.</p>

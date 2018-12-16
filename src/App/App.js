@@ -108,7 +108,6 @@ class App extends Component {
             <Route path='/flights/add' component={FlightAdd} />
             {/* <Route path='/flights' component={Flight} /> */}
 
-
             {/* Transit Routes */}
             <Route path='/transit/trip/:id' component={Transit} />
             <Route path='/transit/edit/:id' component={TransitEdit} />
