@@ -280,6 +280,12 @@ textarea, select, input, button {
   .spaceleft {
     margin-left: 15px;
   }
+  .spacetop {
+    margin-top: 15px;
+  }
+  .spacebottom {
+    margin-bottom: 15px;
+  }
 
   .inputstyle {
     padding: 6px;
