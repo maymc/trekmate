@@ -1,26 +1,26 @@
 import React, { Component } from 'react';
 import './styles.css';
+import axios from "axios";
+
 
 // import axios from 'axios';
 // import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getAllUsers } from '../../actions/actions';
+// import { getAllUsers } from '../../actions/actions';
 
 class ForgotPassword extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      // users: [],
-      email: null
+      email: null,
     }
   }
 
   //Lifecycle Methods
   componentDidMount() {
-    console.log('mounting?', this.props);
-    this.props.dispatch(getAllUsers());
+    // this.props.dispatch(getAllUsers());
   }
 
   //Helper Functions
@@ -35,11 +35,24 @@ class ForgotPassword extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Email sent to user for forgotten password", this.state);
+    // if (this.state.isAuth == true) {
+    //   console.log('you are auth!!!')
+    // }
+    const email = this.state;
+    console.log('this email', email);
+    axios.post('/login/forgotPassword', email)
+      .then(email => {
+        console.log('this email', email)
+      })
+
+    // console.log('the email entered:', this.state.email)
   }
+
+
 
   render() {
     console.log('what is this props', this.props)
+    console.log("Email sent to user for forgotten password", this.state);
     return (
       <div className="container col12 forgotpassword">
         <div className="forgotpassword-form">
@@ -65,7 +78,7 @@ class ForgotPassword extends Component {
 
 const mapStateToProps = state => {
   return {
-    users: state.users
+    // users: state.users
   }
 }
 

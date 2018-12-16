@@ -36,7 +36,7 @@ import {
 const reducer = (state = {
   users: [],
   userById: {},
-
+  authUserEmail: [],
   trips: [],
   tripById: {},
   tripsByUserId: [],
