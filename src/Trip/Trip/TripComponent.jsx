@@ -89,7 +89,7 @@ class TripComponent extends Component {
             <h3 className="grey"><i class="fas fa-plane"></i> Flights</h3>
             {this.props.flights.map(flight => {
               return (
-                <EventCard key={flight.id} type={'flight'} detail={flight} title={flight.airlines} date={flight.departure_time} enddate={flight.arrival_time}/>
+                <EventCard key={flight.id} type={'flight'} detail={flight} title={flight.airlines} date={flight.departure_time} />
               )
             })}
           </div>
@@ -97,58 +97,34 @@ class TripComponent extends Component {
             <h3 className="grey"><i className="fas fa-hotel"></i> Accommodations</h3>
             {this.props.accommodations.map(accommodation => {
               return (
-                <EventCard key={accommodation.id} type={'accommodation'} detail={accommodation} title={accommodation.lodging_name} date={this.dateFormatter(accommodation.check_in_date)} enddate={this.dateFormatter(accommodation.check_out_date)}/>
-                // <div key={accommodation.id}>
-                //   <h2>Accommodation</h2>
-                //   <p>Lodging: {accommodation.lodging_name}</p>
-                //   <p>Address: {accommodation.address}</p>
-                //   <p>Check-In Date: {accommodation.check_in_date}</p>
-                //   <p>Checkout Date: {accommodation.check_out_date}</p>
-                //   <p>Price: {accommodation.price}</p>
-                //   <p>Pay Status: {accommodation.is_paid}</p>
-                //   <p>Reservation Code: {accommodation.reservation_code}</p>
-                //   <p>Notes: {accommodation.notes}</p>
-                // </div>
+                <EventCard key={accommodation.id} type={'accommodation'} detail={accommodation} title={accommodation.lodging_name} date={this.dateFormatter(accommodation.check_in_date)}/>
               )
             })}
           </div>
           <div className="eventsection">
-          <h3 className="grey"><i className="fas fa-hiking"></i> Activities</h3>
+            <h3 className="grey"><i className="fas fa-hiking"></i> Activities</h3>
+            {this.props.activities.map(activity => {
+              return (
+                <EventCard key={activity.id} type={'actvity'} detail={activity} title={activity.activity_name} date={this.dateFormatter(activity.date)} time={activity.time}/>
+              )
+            })}
           </div>
-
-          {/* Display activities for the trip */}
-          {this.props.activities.map(activity => {
-            return (
-              <div key={activity.id}>
-                <h2>Activity</h2>
-                <p>Activity: {activity.activity_name}</p>
-                <p>Location: {activity.location}</p>
-                <p>Date: {activity.date}</p>
-                <p>Time: {activity.time}</p>
-                <p>Price: {activity.price}</p>
-                <p>Type: {activity.type}</p>
-                <p>Votes: {activity.votes}</p>
-                <p>Reservation: {activity.reservation}</p>
-                <p>Notes: {activity.notes}</p>
-                <img src={activity.image} alt='' />
-              </div>
-            )
-          })}
-
-          {/* Display transit for the trip */}
-          {this.props.transit.map(transit => {
-            return (
-              <div key={transit.id}>
-                <h2>Transit</h2>
-                <p>Type: {transit.type}</p>
-                <p>Date: {transit.date}</p>
-                <p>Time: {transit.time}</p>
-                <p>Reservation: {transit.reservation}</p>
-                <p>Price: {transit.price}</p>
-              </div>
-            )
-          })}
-
+          <div className="eventsection">
+            <h3 className="grey"><i className="fas fa-car-side"></i> Transit</h3>
+            {this.props.transit.map(transit => {
+              return (
+                  <EventCard key={transit.id} type={'transit'} detail={transit} title={transit.type} date={this.dateFormatter(transit.date)} time={transit.time}/>
+                // <div key={transit.id}>
+                //   <h2>Transit</h2>
+                //   <p>Type: {transit.type}</p>
+                //   <p>Date: {transit.date}</p>
+                //   <p>Time: {transit.time}</p>
+                //   <p>Reservation: {transit.reservation}</p>
+                //   <p>Price: {transit.price}</p>
+                // </div>
+              )
+            })}
+          </div>
         </div>
 
         <div className="tripbar">
@@ -156,13 +132,13 @@ class TripComponent extends Component {
           <Link to={`/accommodations/add?${trips.user_id}?${trips.id}`}>
             <button className="ghost" ><i className="fas fa-hotel"></i> Accommodation</button>
           </Link>
-          <Link to={`/activities/add?${this.props.trips.id}`}>
+          <Link to={`/activities/add??${trips.user_id}?${trips.id}`}>
             <button className="ghost" ><i className="fas fa-hiking"></i> Activity</button>
           </Link>
-          <Link to={`/flights/add?${this.props.trips.id}`}>
+          <Link to={`/flights/add?${trips.user_id}?${trips.id}`}>
             <button className="ghost" ><i className="fas fa-plane"></i> Flight</button>
           </Link>
-          <Link to={`/transit/add?${this.props.trips.id}`}>
+          <Link to={`/transit/add?${trips.user_id}?${trips.id}`}>
             <button className="ghost"><i className="fas fa-car-side"></i> Transit</button>
           </Link>
         </div>

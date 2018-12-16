@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 //Import actions
 import { editUser, getUserById } from '../../actions/actions';
 
-class EditAccountComponent extends Component {
+class EditAccount extends Component {
   constructor(props) {
     super(props)
 
@@ -84,4 +84,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(EditAccountComponent);
+export default connect(mapStateToProps)(EditAccount);

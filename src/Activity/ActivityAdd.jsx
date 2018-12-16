@@ -67,6 +67,7 @@ class ActivityAdd extends Component {
     console.log("Activity Added!", this.state);
 
     this.props.dispatch(addActivity(this.state));
+    this.props.history.push(`/users/account/${this.state.user_id}/trips/${this.state.trip_id}`);
     // this.props.history.push(`/trips/${this.state.trip_id}`);
   }
 

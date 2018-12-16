@@ -11,9 +11,6 @@ class EventCard extends Component {
       dateone: null,
       monthone: null,
       timeone: null,
-      datetwo: null,
-      monthtwo: null,
-      timetwo: null,
       tripid: null,
       userid: null,
       id: null,
@@ -21,8 +18,8 @@ class EventCard extends Component {
     }
   }
   componentDidMount() {
-    console.log("Event card", this.props)
-    if (this.props.date === undefined || this.props.enddate === undefined) {
+    // console.log("Event card", this.props)
+    if (this.props.date === undefined) {
       return
     }
     else {
@@ -34,13 +31,12 @@ class EventCard extends Component {
         type: this.props.type,
         dateone: this.props.date.date,
         monthone: this.props.date.month,
-        datetwo: this.props.enddate.date,
-        monthtwo: this.props.enddate.month,
+        timeone: this.props.time,
       })
     }
   }
   render() {
-    console.log("CardState", this.state)
+    // console.log("CardState", this.state)
     // let  { dateone }= this.state
     // console.log(dateone.date)
 
@@ -54,8 +50,8 @@ class EventCard extends Component {
             <p>Details</p>
         </div>
         <div className="cardthree">
-            <p className="inlineblock"><i class="spaceright fas fa-plane-departure"></i>{this.state.monthone} {this.state.dateone}, 12:00 PM</p>
-            <p className="inlineblock spaceleft"><i class="spaceright fas fa-plane-arrival"></i>{this.state.monthtwo} {this.state.datetwo}, 12:00 PM</p>
+            <p className="inlineblock"><i class="spaceright fas fa-calendar-alt"></i>{this.state.monthone || "Unknown" } {this.state.dateone}</p>
+            <p className="inlineblock spaceleft"><i class="far fa-clock"></i>{this.state.timeone || "Unknown" }</p>
         </div>
         </div>
         </Link>

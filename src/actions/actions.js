@@ -446,8 +446,8 @@ export const getFlightsByTrip = (id) => {
 
 export const addFlight = (flight) => {
   console.log("\nACTION: addFlight:", flight)
-  flight.departure_time = flight.startDate._d
-  flight.arrival_time = flight.endDate._d
+  flight.arrival_date = flight.endDate._d
+  flight.departure_date = flight.startDate._d.toString()
   console.log("\nACTION After: addFlight:", flight)
 
   return dispatch => {
