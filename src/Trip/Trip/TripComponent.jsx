@@ -17,6 +17,7 @@ class TripComponent extends Component {
     let tripId = this.props.match.params.trip_id;
     this.props.dispatch(getAllByTrip(tripId));
 
+
   }
   dateFormatter(date) {
     if (date === undefined) {
@@ -25,7 +26,7 @@ class TripComponent extends Component {
     else {
       let d = new Date(date)
       let weekday = [];
-      weekday[0] =  "Sunday";
+      weekday[0] = "Sunday";
       weekday[1] = "Monday";
       weekday[2] = "Tuesday";
       weekday[3] = "Wednesday";
@@ -52,7 +53,7 @@ class TripComponent extends Component {
         date: d.getDate(),
         month: month[d.getMonth()],
         year: d.getFullYear()
-  
+
       }
     }
   }
@@ -75,7 +76,7 @@ class TripComponent extends Component {
         <div className="tripbanner">
           <div className="tripname">
             <h1>{trips.city}<span>, {trips.country}</span></h1>
-  
+
 
             <Link className="drk" to={`/trips/edit/${trips.id}?${trips.user_id}`}>Edit trip</Link>
           </div>
@@ -97,7 +98,7 @@ class TripComponent extends Component {
             <h3 className="grey"><i className="fas fa-hotel"></i> Accommodations</h3>
             {this.props.accommodations.map(accommodation => {
               return (
-                <EventCard key={accommodation.id} type={'accommodation'} detail={accommodation} title={accommodation.lodging_name} date={this.dateFormatter(accommodation.check_in_date)}/>
+                <EventCard key={accommodation.id} type={'accommodation'} detail={accommodation} title={accommodation.lodging_name} date={this.dateFormatter(accommodation.check_in_date)} />
               )
             })}
           </div>
@@ -105,7 +106,7 @@ class TripComponent extends Component {
             <h3 className="grey"><i className="fas fa-hiking"></i> Activities</h3>
             {this.props.activities.map(activity => {
               return (
-                <EventCard key={activity.id} type={'actvity'} detail={activity} title={activity.activity_name} date={this.dateFormatter(activity.date)} time={activity.time}/>
+                <EventCard key={activity.id} type={'actvity'} detail={activity} title={activity.activity_name} date={this.dateFormatter(activity.date)} time={activity.time} />
               )
             })}
           </div>
@@ -113,7 +114,7 @@ class TripComponent extends Component {
             <h3 className="grey"><i className="fas fa-car-side"></i> Transit</h3>
             {this.props.transit.map(transit => {
               return (
-                  <EventCard key={transit.id} type={'transit'} detail={transit} title={transit.type} date={this.dateFormatter(transit.date)} time={transit.time}/>
+                <EventCard key={transit.id} type={'transit'} detail={transit} title={transit.type} date={this.dateFormatter(transit.date)} time={transit.time} />
                 // <div key={transit.id}>
                 //   <h2>Transit</h2>
                 //   <p>Type: {transit.type}</p>
