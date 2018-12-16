@@ -6,7 +6,7 @@ import './styles.css';
 import { connect } from 'react-redux';
 
 //Import actions
-import { addUser } from '../../actions/actions.js';
+import { addUser, getAllUsers } from '../../actions/actions.js';
 
 
 class Register extends Component {
@@ -22,7 +22,11 @@ class Register extends Component {
   }
 
   //Lifecycle Methods
-  componentDidMount() { }
+
+  componentDidMount() {
+    console.log("\nRegister Component mounting...");
+    this.props.dispatch(getAllUsers(this.state));
+  }
 
   //Helper functions
   handleChange = (e) => {
@@ -89,7 +93,7 @@ class Register extends Component {
 //Gives access to state, returns an object. This is store state. You already have data in store, want it to be available as props so create a mapping. Redux provides API to do that
 const mapStateToProps = state => {
   return {
-    users: state
+    users: state.users
   }
 }
 

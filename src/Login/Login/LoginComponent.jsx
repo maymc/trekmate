@@ -41,18 +41,18 @@ class Login extends Component {
   }
 
   handleSubmit = (e) => {
+    e.preventDefault();
     this.props.users.filter(element => {
       if (element.email === this.state.email) {
         console.log("Logging in user's id:", element.id);
         this.state.userId = element.id;
+        console.log('Logging In...', this.state);
+        // console.log('User ID:', userId);
+        // this.loginUser(this.state)
+        this.props.dispatch(loginUser(this.state));
       }
     })
 
-    e.preventDefault();
-    console.log('Logging In...', this.state);
-    // console.log('User ID:', userId);
-    // this.loginUser(this.state)
-    this.props.dispatch(loginUser(this.state));
   }
 
   // findId = () => {

@@ -73,7 +73,7 @@ const reducer = (state = {
       console.log("REDUCER LOGIN USER");
       const newLoginData = {
         isLoggedIn: action.payload,
-        userLoginId: action.stuff
+        userLoginId: action.data
       }
       return { ...state, loginData: newLoginData };
 

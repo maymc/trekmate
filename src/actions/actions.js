@@ -66,7 +66,7 @@ export const loginUser = (user) => {
         dispatch({
           type: LOGIN_USER,
           payload: response.data,
-          stuff: user.userId
+          data: user.userId
         })
       })
       .catch(err => {
@@ -101,7 +101,7 @@ export const getAllUsers = () => {
   return dispatch => {
     axios.get('/users')
       .then(response => {
-        console.log('users response......:', response.data)
+        console.log('getAllUsers response.data:', response.data)
 
         dispatch({
           type: GET_ALL_USERS,
