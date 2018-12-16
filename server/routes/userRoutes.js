@@ -33,8 +33,8 @@ userRouter.get('/:id', (req, res) => {
       res.json(user.serialize())
     })
     .catch(err => {
-      console.log("\nGET - getting accommodation by user_id error", err);
-      res.json("GET - getting accommodation by user_id error", err);
+      console.log("\nGET - getting user by user_id error", err);
+      res.json("GET - getting user by user_id error", err);
     })
 })
 
@@ -46,8 +46,8 @@ userRouter.get('/', (req, res) => {
       res.json(usersList.serialize())
     })
     .catch(err => {
-      console.log("\nGET - getting accommodation list error", err);
-      res.json("GET - getting accommodation list error", err);
+      console.log("\nGET - getting user list error", err);
+      res.json("GET - getting user list error", err);
     })
 })
 
