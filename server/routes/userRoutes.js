@@ -4,7 +4,7 @@ const userRouter = express.Router();
 //Bookshelf data models
 const Users = require('../db/models/Users.js');
 
-// //GET trip by user_id and trip_id
+//GET trip by user_id and trip_id
 userRouter.get('/account/:user_id/trips/:trip_id', (req, res) => {
   console.log("req.params:", req.params);
 

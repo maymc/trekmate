@@ -16,6 +16,7 @@ class TripComponent extends Component {
     let tripId = this.props.match.params.trip_id;
     this.props.dispatch(getAllByTrip(tripId));
 
+
   }
   dateFormatter(date) {
     if (date === undefined) {
@@ -24,7 +25,7 @@ class TripComponent extends Component {
     else {
       let d = new Date(date)
       let weekday = [];
-      weekday[0] =  "Sunday";
+      weekday[0] = "Sunday";
       weekday[1] = "Monday";
       weekday[2] = "Tuesday";
       weekday[3] = "Wednesday";
@@ -51,7 +52,7 @@ class TripComponent extends Component {
         date: d.getDate(),
         month: month[d.getMonth()],
         year: d.getFullYear()
-  
+
       }
     }
   }
@@ -62,12 +63,13 @@ class TripComponent extends Component {
     let startDate = this.dateFormatter(this.props.trips.start_date)
     let endDate = this.dateFormatter(this.props.trips.end_date)
     // console.log('Start date', startDate, endDate)
+
     return (
       <div className="container col12 trip" key={trips.id}>
         <div className="tripbanner">
           <div className="tripname">
             <h1>{trips.city}<span>, {trips.country}</span></h1>
-  
+
 
             <Link className="drk" to={`/trips/edit/${trips.id}?${trips.user_id}`}>Edit trip</Link>
           </div>
