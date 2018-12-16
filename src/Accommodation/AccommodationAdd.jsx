@@ -40,8 +40,8 @@ class AccommodationAdd extends Component {
     
     // console.log('Temp', id[1])
     this.setState({
-      trip_id: id[2],
-      user_id: id[1]
+      trip_id: Number(id[2]),
+      user_id: Number(id[1])
     })
   }
 
@@ -62,7 +62,7 @@ class AccommodationAdd extends Component {
     this.props.dispatch(addAccommodation(this.state));
 
     //Redirect to accommodations page
-    this.props.history.push(`users/account/${this.state.user_id}/trips/${this.state.trip_id}`);
+    this.props.history.push(`/users/account/${this.state.user_id}/trips/${this.state.trip_id}`);
   }
 
   updateAddress = (address, lodging_name) => {
@@ -87,7 +87,7 @@ class AccommodationAdd extends Component {
   }
 
   render() {
-    console.log('Props', this.props)
+    console.log('Props', this.state)
     return (
       <div className="container col12">
         <div className="wrap-form">

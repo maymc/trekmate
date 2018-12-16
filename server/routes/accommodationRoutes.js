@@ -15,7 +15,7 @@ accommodationRouter.get('/', (req, res) => {
         })
         .catch(err => {
             console.log("\nGET - getting accommodation list error", err);
-            res.json("GET - getting accommodation list error", err);
+            res.json("GET - getting accommodation list error");
         })
 })
 //GET accommodation by id 
@@ -30,7 +30,7 @@ accommodationRouter.get('/:id', (req, res) => {
         })
         .catch(err => {
             console.log("\nGET - getting accommodation by id error", err);
-            res.json("GET - getting accommodation by id error", err);
+            res.json("GET - getting accommodation by id error");
         })
 })
 
@@ -48,7 +48,7 @@ accommodationRouter.get('/user/:user_id', (req, res) => {
         })
         .catch(err => {
             console.log("\nGET - getting accommodation by user_id error", err);
-            res.json("GET - getting accommodation by user_id error", err);
+            res.json("GET - getting accommodation by user_id error");
         })
 })
 
@@ -96,7 +96,7 @@ accommodationRouter.post('/add', (req, res) => {
         })
         .catch(err => {
             console.log("\nPOST - adding new accommodation error", err);
-            res.json("POST - adding new accommodation error", err);
+            res.json("POST - adding new accommodation error");
         })
 });
 
@@ -132,7 +132,7 @@ accommodationRouter.put('/edit/:id', (req, res) => {
         })
         .catch(err => {
             console.log("\nPUT - edit accommodation error", err);
-            res.json("PUT - edit accommodation error", err);
+            res.json("PUT - edit accommodation error");
         })
 })
 
@@ -144,11 +144,11 @@ accommodationRouter.delete('/delete/:id', (req, res) => {
         .where({ id })
         .destroy()
         .then(
-            res.send('Accommodation was deleted')
+            res.json('Accommodation was deleted')
         )
         .catch(err => {
             console.log("\nDELETE - delete accommodation error", err);
-            res.json("DELETE - delete accommodation error", err);
+            res.json("DELETE - delete accommodation error");
         })
 })
 

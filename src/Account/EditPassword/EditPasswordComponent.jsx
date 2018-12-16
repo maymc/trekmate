@@ -56,8 +56,8 @@ class EditPassword extends Component {
   render() {
     // const { users } = this.props;
     return (
-      <div className="updatepassword-container">
-        <div className="updatepassword-form">
+      <div className="container col12">
+        <div className="formplace updatepassword-form">
 
           <form onSubmit={this.handleSubmit}>
             <h2>Update your password</h2>
