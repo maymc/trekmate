@@ -7,8 +7,6 @@ import { connect } from 'react-redux';
 //Import actions
 import { addActivity } from '../actions/actions';
 
-
-
 //Date picker
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
@@ -20,8 +18,6 @@ import moment from 'moment';
 import TimePicker from 'rc-time-picker';
 const format = 'h:mm a';
 const now = moment().hour(0).minute(0);
-
-
 
 class ActivityAdd extends Component {
   constructor(props) {
@@ -38,17 +34,25 @@ class ActivityAdd extends Component {
       reservation: null,
       notes: null,
       image: null,
-      user_id: 1,
+      user_id: null,
       trip_id: null
     }
   }
 
   //Lifecycle Methods
-  componentDidMount() { 
-    let temp = this.props.location.search
-    let id = Number(temp.substr(1))
+  componentDidMount() {
+    // let temp = this.props.location.search
+    // let id = Number(temp.substr(1))
+    // this.setState({
+    //   trip_id: id
+    // })
+
+    let id = (this.props.location.search).split("?")
+
+    // console.log('Temp', id[1])
     this.setState({
-      trip_id: id
+      trip_id: Number(id[2]),
+      user_id: Number(id[1])
     })
   }
 
@@ -88,7 +92,7 @@ class ActivityAdd extends Component {
 
 
   render() {
-    console.log('State', this.state)
+    console.log('Activity this.state:', this.state)
 
     // console.log('Props', this.props)
     return (
@@ -109,23 +113,23 @@ class ActivityAdd extends Component {
                 <label className="form-control-placeholder" htmlFor="location">Location</label>
               </div>
               <select className="formselect" name="type" onChange={this.handleChange}>
-              <option value="select">What type of activity is this?</option>
-              <option value="sightseeing">Sightseeing</option>
-              <option value="outdoors">Outdoors</option>
-              <option value="indoors">Indoors</option>
-              <option value="food">Food</option>
-            </select>
+                <option value="select">What type of activity is this?</option>
+                <option value="sightseeing">Sightseeing</option>
+                <option value="outdoors">Outdoors</option>
+                <option value="indoors">Indoors</option>
+                <option value="food">Food</option>
+              </select>
               <div>
                 <label className="blue formsection">Details</label>
 
                 <SingleDatePicker
                   date={this.state.date} // momentPropTypes.momentObj or null
-                  onDateChange={date =>this.setState({ date })} // PropTypes.func.isRequired
+                  onDateChange={date => this.setState({ date })} // PropTypes.func.isRequired
                   focused={this.state.focused} // PropTypes.bool
                   onFocusChange={({ focused }) => this.setState({ focused })} // PropTypes.func.isRequired
                   id="your_unique_id" // PropTypes.string.isRequired,
                 />
-                <TimePicker showSecond={false}  defaultValue={now} className="reginput" onChange={this.updateTime} format={format} use12Hours inputReadOnly />
+                <TimePicker showSecond={false} defaultValue={now} className="reginput" onChange={this.updateTime} format={format} use12Hours inputReadOnly />
               </div>
               <div className="form-group">
                 <label>Price</label>
