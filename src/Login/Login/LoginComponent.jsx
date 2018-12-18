@@ -18,7 +18,7 @@ class Login extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      userId: null,
+      // userId: null,
       email: null,
       password: null
     }
@@ -45,11 +45,19 @@ class Login extends Component {
     this.props.users.filter(element => {
       if (element.email === this.state.email) {
         console.log("Logging in user's id:", element.id);
-        this.state.userId = element.id;
+
+        // this.setState({
+        //   userId: element.id
+        // })
+
+        // this.state.userId = element.id;
         console.log('Logging In...', this.state);
         // console.log('User ID:', userId);
         // this.loginUser(this.state)
-        this.props.dispatch(loginUser(this.state));
+        this.props.dispatch(loginUser({
+          ...this.state,
+          userId: element.id
+        }));
       }
     })
 
