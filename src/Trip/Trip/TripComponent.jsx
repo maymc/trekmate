@@ -111,13 +111,13 @@ class TripComponent extends Component {
                 <EventCard key={activity.id} type={'actvity'} detail={activity} title={activity.activity_name} date={this.dateFormatter(activity.date)} time={activity.time} />
               )
             })}
-                      <Link to={`/activities/add??${trips.user_id}?${trips.id}`}>+ Add an activity</Link>
+            <Link to={`/activities/add?${trips.user_id}?${trips.id}`}>+ Add an activity</Link>
           </div>
           <div className="eventsection">
             <h3 className="grey spacebottom"><i className="fas fa-car-side"></i> Transit</h3>
             {this.props.transit.map(transit => {
               return (
-                  <EventCard key={transit.id} type={'transit'} detail={transit} title={transit.type} date={this.dateFormatter(transit.date)} time={transit.time}/>
+                <EventCard key={transit.id} type={'transit'} detail={transit} title={transit.type} date={this.dateFormatter(transit.date)} time={transit.time} />
               )
             })}
             <Link className="spacetop" to={`/transit/add?${trips.user_id}?${trips.id}`}>+ Add a transit event</Link>
