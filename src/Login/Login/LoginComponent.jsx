@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './styles.css';
-import axios from "axios";
+// import axios from "axios";
 
 //Redux Setup
 import { connect } from 'react-redux';
@@ -8,7 +8,7 @@ import { Link, Redirect } from 'react-router-dom';
 
 //Import actions
 import { loginUser, getAllUsers } from '../../actions/actions';
-import TripComponent from '../../Trip/Trip/TripComponent';
+// import TripComponent from '../../Trip/Trip/TripComponent';
 
 /// Internal imports
 // import ForgotPassword from '../ForgotPassword/ForgotPasswordComponent.jsx';

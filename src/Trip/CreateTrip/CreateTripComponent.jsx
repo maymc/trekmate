@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './styles.css'
-import LocationSearch from '../../Global/Search/LocationSearchComponent';
+// import LocationSearch from '../../Global/Search/LocationSearchComponent';
 
 //Date picker
 import 'react-dates/initialize';
