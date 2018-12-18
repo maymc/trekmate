@@ -49,6 +49,7 @@ class FlightAdd extends Component {
    }
 
   handleChange = (e) => {
+    console.log('Flight', this.props)
     e.preventDefault();
     const { name, value } = e.target;
     this.setState({
