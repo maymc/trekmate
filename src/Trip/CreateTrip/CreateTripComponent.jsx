@@ -89,7 +89,7 @@ class CreateTrip extends Component {
           <label>State</label>
           <select name="state" onChange={this.handleChange}>
             <option value="select-state">Select State</option>
-            <option value="AK">Not Applicable</option>
+            <option value="Not Applicable">Not Applicable</option>
             <option value="AK">AK</option>
             <option value="AL">AL</option>
             <option value="AZ">AZ</option>

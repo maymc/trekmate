@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import './styles.css';
 import { Link } from 'react-router-dom';
 
+//Date picker
+import 'react-dates/initialize';
+import 'react-dates/lib/css/_datepicker.css';
+import { DateRangePicker } from 'react-dates';
+import moment from 'moment';
+
 //Redux Setup
 import { connect } from 'react-redux';
 
@@ -11,6 +17,11 @@ import { editTrip, getTripById } from '../../actions/actions';
 class EditTrip extends Component {
   constructor(props) {
     super(props)
+
+    this.state = {
+      startDate: null,
+      endDate: null,
+    }
   }
 
   //Lifecycle Methods
@@ -18,6 +29,7 @@ class EditTrip extends Component {
     // console.log("CDM Props", this.props)
     let tripId = this.props.match.params.id
     this.props.dispatch(getTripById(tripId))
+
   }
 
   //Helper Functions
@@ -33,28 +45,16 @@ class EditTrip extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log("\nhandleSubmit - EditTrip - this.props:", this.props);
-    console.log("\nhandleSubmit - EditTrip - this.props.tripById.id:", this.props.tripById.id);
-    console.log("Updated to this.state:", this.state);
-
     this.props.dispatch(editTrip(this.state, this.props.tripById.id));
 
     //Redirect to trip page
     this.props.history.push(`/users/account/${this.props.tripById.user_id}/trips/${this.props.tripById.id}`);
   }
-  dateFormatter(date) {
-    if (date === undefined) {
-      return
-    }
-    else {
-      let d = new Date(date)
-      var n = d.toDateString();
-      return n
-    }
-  }
 
   render() {
     console.log("sadasdathis.props:", this.props);
+    this.state.startDate = moment(this.props.tripById.start_date);
+    this.state.endDate = moment(this.props.tripById.end_date);
     return (
       <div className="container col12">
       <div className="wrap-form">
@@ -69,7 +69,7 @@ class EditTrip extends Component {
           <label>State</label>
           <select name="state" onChange={this.handleChange}>
             <option value={this.props.tripById.country} >{this.props.tripById.state} </option>
-            <option value="AK">Not Applicable</option>
+            <option value="Not Applicable">Not Applicable</option>
             <option value="AK">AK</option>
             <option value="AL">AL</option>
             <option value="AZ">AZ</option>
@@ -125,14 +125,26 @@ class EditTrip extends Component {
             <input type="text" id="country" name="country" onChange={this.handleChange} className="form-control" value={this.props.tripById.country}></input>
             <label className="form-control-placeholder" htmlFor="country">Country</label>
           </div>
-          <div className="form-group">
+          <div>
+            <label className="blue formsection">Details</label>
+            <DateRangePicker
+              startDate={this.state.startDate} // momentPropTypes.momentObj or null,
+              startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
+              endDate={this.state.endDate} // momentPropTypes.momentObj or null,
+              endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
+              onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
+              focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
+              onFocusChange={focusedInput => this.setState({ focusedInput })}   // PropTypes.func.isRequired,
+            />
+          </div> 
+          {/* <div className="form-group">
             <input type="text" id="dateone" name="start_date" onChange={this.handleChange} className="form-control" value={this.dateFormatter(this.props.tripById.start_date)}></input>
             <label className="form-control-placeholder" htmlFor="dateone">Start date</label>
           </div>
           <div className="form-group">
             <input type="text" id="datetwo" name="start_date" onChange={this.handleChange} className="form-control" value={this.dateFormatter(this.props.tripById.end_date)}></input>
             <label className="form-control-placeholder" htmlFor="datetwo">End date</label>
-          </div>
+          </div> */}
 
           <button type="submit">Update</button>
           
