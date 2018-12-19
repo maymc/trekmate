@@ -26,10 +26,10 @@ resetRouter.post('/', (req, res) => {
                     if (error) {
                         console.log(error);
                     } else {
-                        requestPassword = () => {
-                            return true;
-                        }
-                        // req.body.isAuth = true;
+                        // requestPassword = () => {
+                        //     return true;
+                        // }
+                        req.body.isAuth = true;
 
                         console.log('email send?', req.body);
 

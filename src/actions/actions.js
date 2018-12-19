@@ -11,7 +11,7 @@ export const GET_USER_BY_ID = 'GET_USER_BY_ID';
 export const ADD_USER = 'ADD_USER';
 export const EDIT_USER = 'EDIT_USER';
 export const EDIT_PASSWORD = 'EDIT_PASSWORD';
-export const REQUEST_PASSWORD = 'REQUEST_PASSWORD';
+// export const REQUEST_PASSWORD = 'REQUEST_PASSWORD';
 
 //~~~~~Trips~~~~//
 export const GET_ALL_TRIPS = 'GET_ALL_TRIPS';
@@ -176,18 +176,18 @@ export const editPassword = (password) => {
   }
 }
 
-export const requestPassword = () => {
-  return dispatch => {
-    axios.get('/login/forgotPassword')
-      .then(res => {
-        console.log('email send scuessful', res.data)
-        dispatch({ type: REQUEST_PASSWORD, payload: res.data })
-      })
-      .catch(err => {
-        console.log('error -action send email: ', err);
-      })
-  }
-}
+// export const requestPassword = () => {
+//   return dispatch => {
+//     axios.get('/login/forgotPassword')
+//       .then(res => {
+//         console.log('email send scuessful', res.data)
+//         dispatch({ type: REQUEST_PASSWORD, payload: res.data })
+//       })
+//       .catch(err => {
+//         console.log('error -action send email: ', err);
+//       })
+//   }
+// }
 
 
 //-----------Trip Action-------------//

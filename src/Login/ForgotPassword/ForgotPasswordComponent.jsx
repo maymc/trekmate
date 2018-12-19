@@ -7,7 +7,7 @@ import axios from "axios";
 // import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { requestPassword } from '../../actions/actions';
+// import { requestPassword } from '../../actions/actions';
 
 class ForgotPassword extends Component {
   constructor(props) {
@@ -50,8 +50,13 @@ class ForgotPassword extends Component {
         console.log('this email', email)
 
       })
-    this.props.dispatch(requestPassword());
-    console.log('RESET........', requestPassword())
+    axios.get('/login/forgotPassword', email)
+      .then(updated => {
+        console.log('this email', updated)
+
+      })
+    // this.props.dispatch(requestPassword());
+    // console.log('RESET........', requestPassword())
     // this.props.history.push(`/login/forgot_password/request`);
 
     // console.log('the email entered:', this.state.email)
