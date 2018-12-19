@@ -14,9 +14,12 @@ import { connect } from 'react-redux';
 import { getUserById, getTripsByUserId } from '../../actions/actions';
 
 class Account extends Component {
-  // constructor(props) {
-  //   super(props)
-  // }
+  constructor(props) {
+    super(props)
+    this.state = {
+      email: null
+    }
+  }
 
   componentDidMount() {
     let userId = this.props.match.params.id;
@@ -34,7 +37,7 @@ class Account extends Component {
     else {
       let d = new Date(date)
       let weekday = [];
-      weekday[0] =  "Sunday";
+      weekday[0] = "Sunday";
       weekday[1] = "Monday";
       weekday[2] = "Tuesday";
       weekday[3] = "Wednesday";
@@ -61,7 +64,7 @@ class Account extends Component {
         date: d.getDate(),
         month: month[d.getMonth()],
         year: d.getFullYear()
-  
+
       }
     }
   }
@@ -87,7 +90,7 @@ class Account extends Component {
           {this.props.tripsByUserId.map(trip => {
             return (
               //Might need an if statement if state or country doesn't exist based on trip location
-                <form className="triplist" method="get" action={`/users/account/${trip.user_id}/trips/${trip.id}`}>
+              <form className="triplist" method="get" action={`/users/account/${trip.user_id}/trips/${trip.id}`}>
                 <div className="triptitle">
                   <h1>{trip.city}<span>, {trip.country}</span></h1>
                 </div>
@@ -98,7 +101,7 @@ class Account extends Component {
                   <DateComponent date={this.dateFormatter(trip.start_date)} />
                   <DateComponent date={this.dateFormatter(trip.end_date)} />
                 </div>
-                </form>
+              </form>
             )
           })}
 

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 //Import actions
-import { editTrip, getTripById, deleteTrip } from '../../actions/actions';
+import { editTrip, getTripById, getTripsByUserId } from '../../actions/actions';
 
 class EditTrip extends Component {
   constructor(props) {
@@ -18,6 +18,7 @@ class EditTrip extends Component {
     // console.log("CDM Props", this.props)
     let tripId = this.props.match.params.id
     this.props.dispatch(getTripById(tripId))
+
   }
 
   //Helper Functions
@@ -42,10 +43,17 @@ class EditTrip extends Component {
     //Redirect to trip page
     this.props.history.push(`/users/account/${this.props.tripById.user_id}/trips/${this.props.tripById.id}`);
   }
+
   onClick = () => {
     let tripId = this.props.match.params.id;
-    // event.preventDefault();
-    this.props.dispatch(deleteTrip(tripId))
+    this.props.dispatch(getTripsByUserId(this.props.tripById.user_id));
+    let updateTrip = this.props.tripsByUserId.filter(trip => {
+      return trip.id != tripId;
+    })
+    this.setState({
+      tripsByUserId: updateTrip
+    })
+
   }
 
   dateFormatter(date) {
@@ -60,6 +68,9 @@ class EditTrip extends Component {
   }
 
   render() {
+    let userId = this.props.tripById.user_id;
+    console.log('state', this.state)
+
     console.log("sadasdathis.props:", this.props);
     return (
       <div className="container col12">
@@ -67,9 +78,10 @@ class EditTrip extends Component {
           <form className="col12" onSubmit={this.handleSubmit}>
             <div className="formbottom">
               <h2 className="blue inlineblock">Update your trip to
-              {this.props.tripById.city}
+              {/* {this.props.tripById.city} */}
               </h2>
-              <Link className='right' to={`/}`} onClick={this.onClick}>Delete trip</Link>
+              <Link className='right' to={`/users/account/${userId}`} onClick={this.onClick}>Delete trip</Link>
+              {/* <p onClick={this.onClick}>Delete trip</p> */}
               <div className="form-group">
                 <input type="text" id="city" name="city" onChange={this.handleChange} className="form-control" value={this.props.tripById.city} required></input>
                 <label className="form-control-placeholder" htmlFor="city">City</label>
@@ -156,7 +168,8 @@ class EditTrip extends Component {
 
 const mapStateToProps = state => {
   return {
-    tripById: state.tripById
+    tripById: state.tripById,
+    tripsByUserId: state.tripsByUserId
   }
 }
 

@@ -18,7 +18,7 @@ export const GET_TRIP_BY_ID = 'GET_TRIP_BY_ID';
 export const GET_TRIPS_BY_USER_ID = 'GET_TRIPS_BY_USER_ID';
 export const ADD_TRIP = 'ADD_TRIP';
 export const EDIT_TRIP = 'EDIT_TRIP';
-export const DELETE_TRIP = 'DELETE_TRIP';
+// export const DELETE_TRIP = 'DELETE_TRIP';
 
 //~~~~~Accommodations~~~~//
 export const GET_ALL_ACCOMMODATIONS = 'GET_ALL_ACCOMMODATIONS';
@@ -263,19 +263,19 @@ export const editTrip = (trip) => {
   }
 }
 
-export const deleteTrip = (id) => {
-  console.log('ACTION DELETE DELETE HIT');
-  return dispatch => {
-    axios.delete(`trips/delete/${id}`, { data: { id } })
-      .then(response => {
-        console.log("response: ", response.data);
-        dispatch({ type: DELETE_TRIP, payload: id })
-      })
-      .catch(err => {
-        console.log('ERROR IN DELETE ', err)
-      })
-  }
-}
+// export const deleteTrip = (id) => {
+//   console.log('ACTION DELETE DELETE HIT', id);
+//   return dispatch => {
+//     axios.get(`trips/user/${id}`)
+//       .then(response => {
+//         console.log("response.......>>>>>>>: ", response.data);
+//         dispatch({ type: DELETE_TRIP, payload: response.data })
+//       })
+//       .catch(err => {
+//         console.log('ERROR IN DELETE ', err)
+//       })
+//   }
+// }
 
 //---------Accommodation Action----------//
 export const getAllAccommodations = () => {
