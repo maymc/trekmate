@@ -123,21 +123,20 @@ tripRouter.put('/edit/:id', (req, res) => {
 })
 
 // Delete trip by 'id' from the 'trip' table
-// tripRouter.delete('/delete/:id', (req, res) => {
-//     const { id } = req.params;
+tripRouter.delete('/delete/:id', (req, res) => {
+    const { id } = req.params;
 
-//     Trips
-//         .where({ id })
-//         .destroy()
-//         .then(
-//             tripDetails => {
-//                 res.json(tripDetails.serialize())
-//             }
-//         )
-//         .catch(err => {
-//             console.log("\nDELETE - delete trip error", err);
-//             res.json("DELETE - delete trip error", err);
-//         })
-// })
+    Trips
+        .where({ id })
+        .destroy()
+        .then(
+            res.send('DELETED TRIP')
+
+        )
+        .catch(err => {
+            console.log("\nDELETE - delete trip error", err);
+            res.json("DELETE - delete trip error", err);
+        })
+})
 
 module.exports = tripRouter

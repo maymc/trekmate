@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 //Import actions
-import { editTrip, getTripById, getTripsByUserId } from '../../actions/actions';
+import { editTrip, getTripById, deleteTrip } from '../../actions/actions';
 
 class EditTrip extends Component {
   constructor(props) {
@@ -46,14 +46,10 @@ class EditTrip extends Component {
 
   onClick = () => {
     let tripId = this.props.match.params.id;
-    this.props.dispatch(getTripsByUserId(this.props.tripById.user_id));
-    let updateTrip = this.props.tripsByUserId.filter(trip => {
-      return trip.id != tripId;
-    })
-    this.setState({
-      tripsByUserId: updateTrip
-    })
+    this.props.dispatch(deleteTrip(tripId))
+    // this.props.dispatch(getTripsByUserId(this.props.tripById.user_id));
 
+    // this.props.history.push(`/users/account/${this.props.tripById.user_id}`);
   }
 
   dateFormatter(date) {
@@ -169,7 +165,6 @@ class EditTrip extends Component {
 const mapStateToProps = state => {
   return {
     tripById: state.tripById,
-    tripsByUserId: state.tripsByUserId
   }
 }
 

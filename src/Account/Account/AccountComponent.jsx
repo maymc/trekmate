@@ -17,7 +17,8 @@ class Account extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      email: null
+      email: null,
+      tripsByUserId: []
     }
   }
 
@@ -119,9 +120,10 @@ class Account extends Component {
 }
 
 const mapStateToProps = state => {
-  return {
-    userById: state.userById,
-    tripsByUserId: state.tripsByUserId
-  }
+  // return {
+  //   userById: state.userById,
+  //   tripsByUserId: state.tripsByUserId
+  // }
+  return state
 }
 export default connect(mapStateToProps)(Account);

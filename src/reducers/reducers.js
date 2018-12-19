@@ -9,7 +9,7 @@ import {
   GET_TRIP_BY_ID,
   GET_TRIPS_BY_USER_ID,
   ADD_TRIP,
-  // DELETE_TRIP,
+  DELETE_TRIP,
 
   GET_ACCOMMODATIONS_BY_TRIP_ID,
   GET_ACCOMMODATION_BY_ID,
@@ -45,6 +45,7 @@ const reducer = (state = {
   trips: [],
   tripById: [],
   tripsByUserId: [],
+  archivedTrip: [],
 
   accommodations: [],
   accommodationsByTripId: [],
@@ -99,13 +100,9 @@ const reducer = (state = {
       return { ...state, tripsByUserId: action.payload }
     case ADD_TRIP:
       return { ...state, form: action.payload }
-    // case DELETE_TRIP:
-    //   let updatedTrip = this.state.trips.filter(trip => {
-    //     console.log('is this working????>>>>>>:', this.state)
-    //     return trip.id !== action.payload.id;
-    //   })
-    // state.allprops = updatedState;
-    // return { ...state, trips: updatedTrip }
+    case DELETE_TRIP:
+      return { ...state, archivedTrip: action.payload }
+
     //-------Accommodation --------//
     case GET_ACCOMMODATIONS_BY_TRIP_ID:
       console.log("REDUCER - what is at GET_ACCOMMODATION_BY_TRIP_ID?:", action.payload)
