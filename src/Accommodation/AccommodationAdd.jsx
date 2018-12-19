@@ -28,16 +28,16 @@ class AccommodationAdd extends Component {
       is_paid: false,
       reservation_code: null,
       notes: null,
-      user_id: 1,
+      user_id: null,
       trip_id: null
     }
   }
 
   //Lifecycle Methods
-  componentDidMount() { 
-    
+  componentDidMount() {
+
     let id = (this.props.location.search).split("?")
-    
+
     // console.log('Temp', id[1])
     this.setState({
       trip_id: Number(id[2]),
@@ -125,8 +125,8 @@ class AccommodationAdd extends Component {
                 <label>Price</label>
                 <input type="number" min="0.00" max="10000.00" step="0.01" name="price" onChange={this.handleChange} className="reginput inputstyle" placeholder="$00.00"></input>
                 <div className="checkbox">
-                <input onChange={this.is_Paid} type="checkbox" id="paystatus" name="is_paid"></input>
-                <label htmlFor="paystatus">Paid</label>
+                  <input onChange={this.is_Paid} type="checkbox" id="paystatus" name="is_paid"></input>
+                  <label htmlFor="paystatus">Paid</label>
                 </div>
               </div>
 

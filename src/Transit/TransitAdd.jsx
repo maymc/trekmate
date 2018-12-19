@@ -29,13 +29,21 @@ class TransitAdd extends Component {
       time: null,
       reservation: null,
       price: null,
-      user_id: 1,
-      trip_id: 1
+      user_id: null,
+      trip_id: null
     }
   }
 
   //Lifecycle Methods
-  componentDidMount() { }
+  componentDidMount() {
+    let id = (this.props.location.search).split("?")
+    
+    // console.log('Temp', id[1])
+    this.setState({
+      trip_id: Number(id[2]),
+      user_id: Number(id[1])
+    })
+   }
 
   handleChange = (e) => {
     e.preventDefault();

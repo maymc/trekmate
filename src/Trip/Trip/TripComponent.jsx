@@ -87,20 +87,22 @@ class TripComponent extends Component {
         </div>
         <div className="tripfeed">
           <div className="eventsection">
-            <h3 className="grey"><i className="fas fa-plane"></i> Flights</h3>
+            <h3 className="grey spacebottom"><i className="fas fa-plane"></i> Flights</h3>
             {this.props.flights.map(flight => {
               return (
                 <EventCard key={flight.id} type={'flight'} detail={flight} title={flight.airlines} date={flight.departure_time} />
               )
             })}
+            <Link to={`/flights/add?${trips.user_id}?${trips.id}`}>+ Add a flight</Link>
           </div>
           <div className="eventsection">
-            <h3 className="grey"><i className="fas fa-hotel"></i> Accommodations</h3>
+            <h3 className="grey spacebottom"><i className="fas fa-hotel"></i> Accommodations</h3>
             {this.props.accommodations.map(accommodation => {
               return (
                 <EventCard key={accommodation.id} type={'accommodation'} detail={accommodation} title={accommodation.lodging_name} date={this.dateFormatter(accommodation.check_in_date)} />
               )
             })}
+            <Link to={`/accommodations/add?${trips.user_id}?${trips.id}`}>+ Add an accommodation</Link>
           </div>
           <div className="eventsection">
             <h3 className="grey"><i className="fas fa-hiking"></i> Activities</h3>
@@ -109,35 +111,29 @@ class TripComponent extends Component {
                 <EventCard key={activity.id} type={'actvity'} detail={activity} title={activity.activity_name} date={this.dateFormatter(activity.date)} time={activity.time} />
               )
             })}
+            <Link to={`/activities/add?${trips.user_id}?${trips.id}`}>+ Add an activity</Link>
           </div>
           <div className="eventsection">
-            <h3 className="grey"><i className="fas fa-car-side"></i> Transit</h3>
+            <h3 className="grey spacebottom"><i className="fas fa-car-side"></i> Transit</h3>
             {this.props.transit.map(transit => {
               return (
                 <EventCard key={transit.id} type={'transit'} detail={transit} title={transit.type} date={this.dateFormatter(transit.date)} time={transit.time} />
-                // <div key={transit.id}>
-                //   <h2>Transit</h2>
-                //   <p>Type: {transit.type}</p>
-                //   <p>Date: {transit.date}</p>
-                //   <p>Time: {transit.time}</p>
-                //   <p>Reservation: {transit.reservation}</p>
-                //   <p>Price: {transit.price}</p>
-                // </div>
               )
             })}
+            <Link className="spacetop" to={`/transit/add?${trips.user_id}?${trips.id}`}>+ Add a transit event</Link>
           </div>
         </div>
 
         <div className="tripbar">
           <h3 className="grey" >Add event:</h3>
+          <Link to={`/flights/add?${trips.user_id}?${trips.id}`}>
+            <button className="ghost" ><i className="fas fa-plane"></i> Flight</button>
+          </Link>
           <Link to={`/accommodations/add?${trips.user_id}?${trips.id}`}>
             <button className="ghost" ><i className="fas fa-hotel"></i> Accommodation</button>
           </Link>
           <Link to={`/activities/add??${trips.user_id}?${trips.id}`}>
             <button className="ghost" ><i className="fas fa-hiking"></i> Activity</button>
-          </Link>
-          <Link to={`/flights/add?${trips.user_id}?${trips.id}`}>
-            <button className="ghost" ><i className="fas fa-plane"></i> Flight</button>
           </Link>
           <Link to={`/transit/add?${trips.user_id}?${trips.id}`}>
             <button className="ghost"><i className="fas fa-car-side"></i> Transit</button>
