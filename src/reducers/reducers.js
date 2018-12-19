@@ -9,6 +9,7 @@ import {
   GET_TRIP_BY_ID,
   GET_TRIPS_BY_USER_ID,
   ADD_TRIP,
+  DELETE_TRIP,
 
   GET_ACCOMMODATIONS_BY_TRIP_ID,
   GET_ACCOMMODATION_BY_ID,
@@ -98,7 +99,12 @@ const reducer = (state = {
       return { ...state, tripsByUserId: action.payload }
     case ADD_TRIP:
       return { ...state, form: action.payload }
-
+    case DELETE_TRIP:
+      let updatedState = this.state.filter(trip => {
+        return trip.id !== action.payload;
+      })
+      state.allprops = updatedState;
+      return { ...state }
     //-------Accommodation --------//
     case GET_ACCOMMODATIONS_BY_TRIP_ID:
       console.log("REDUCER - what is at GET_ACCOMMODATION_BY_TRIP_ID?:", action.payload)
