@@ -14,19 +14,33 @@ resetRouter.post('/', (req, res) => {
         subject: 'trekmate',
         text: 'Here is your temporary password: ' + tempPassword
     };
-    // console.log('temp password:', req.body);
+    console.log('temp password:', tempPassword);
     Users
         .where({ email: req.body.email })
         .fetch()
         .then(isAuth => {
             if (!isAuth) {
-                console.log('User not exist')
+                console.log('User not exist', req.body)
             } else {
                 mailgun.messages().send(data, function (error, body) {
                     if (error) {
                         console.log(error);
+                    } else {
+                        requestPassword = () => {
+                            return true;
+                        }
+                        // req.body.isAuth = true;
+
+                        console.log('email send?', req.body);
+
+                        // Users
+                        //     .where({ email: req.body.email })
+                        //     .update({ password: tempPassword })
+                        // console.log('temp', tempPassword)
+
                     }
-                    console.log(body);
+
+
                 })
             }
         }

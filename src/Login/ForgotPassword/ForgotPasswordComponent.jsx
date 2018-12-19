@@ -7,7 +7,7 @@ import axios from "axios";
 // import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-// import { getAllUsers } from '../../actions/actions';
+import { requestPassword } from '../../actions/actions';
 
 class ForgotPassword extends Component {
   constructor(props) {
@@ -15,12 +15,17 @@ class ForgotPassword extends Component {
 
     this.state = {
       email: null,
+      isAuth: false
     }
   }
 
   //Lifecycle Methods
   componentDidMount() {
+
+    console.log("\nrequest password Component mounting...", this.state);
+
     // this.props.dispatch(getAllUsers());
+    // this.props.dispatch(requestPassword())
   }
 
   //Helper Functions
@@ -43,11 +48,14 @@ class ForgotPassword extends Component {
     axios.post('/login/forgotPassword', email)
       .then(email => {
         console.log('this email', email)
+
       })
+    this.props.dispatch(requestPassword());
+    console.log('RESET........', requestPassword())
+    // this.props.history.push(`/login/forgot_password/request`);
 
     // console.log('the email entered:', this.state.email)
   }
-
 
 
   render() {
@@ -78,7 +86,8 @@ class ForgotPassword extends Component {
 
 const mapStateToProps = state => {
   return {
-    // users: state.users
+    email: null,
+    isAuth: false
   }
 }
 

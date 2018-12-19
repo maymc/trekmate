@@ -19,11 +19,8 @@ const accommodationRoutes = require('./routes/accommodationRoutes.js');
 const flightRoutes = require('./routes/flightRoutes.js');
 const transitRoutes = require('./routes/transitRoutes.js');
 const tripRoutes = require('./routes/tripRoutes.js');
-<<<<<<< HEAD
 const resetRoutes = require('./routes/resetRoutes.js');
-=======
 const userRoutes = require('./routes/userRoutes.js');
->>>>>>> d9c3c1815deff5ea1cabd773d5f493c383dcd399
 
 app.use(cors());
 

@@ -15,7 +15,7 @@ import Home from '../Home/Home/HomeComponent';
 import Login from '../Login/Login/LoginComponent';
 import Register from '../Login/Register/RegisterComponent';
 import ForgotPassword from '../Login/ForgotPassword/ForgotPasswordComponent';
-import ResetPassword from '../Login/ResetPassword/ResetPasswordComponent';
+import RequestPassword from '../Login/ResetPassword/RequestPasswordComponent';
 
 //~~~ User Account JSX files ~~~~//
 import Account from '../Account/Account/AccountComponent';
@@ -73,7 +73,7 @@ class App extends Component {
             <Route path='/login/forgotPassword' component={ForgotPassword} />
             <Route path='/auth/login/register' component={Register} />
             <Route exact path='/auth/login' component={Login} />
-            <Route path='/resetEmail' component={ResetPassword} />
+            <Route path='/login/forgot_password/request' component={RequestPassword} />
 
             {/* User account Routes */}
             <Route path='/users/account/:user_id/trips/:trip_id' component={TripComponent} />
