@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 import { DateRangePicker } from 'react-dates';
+import moment from 'moment';
 
 //Import actions
 import { editAccommodation, getAccommodationById } from '../actions/actions';
@@ -63,11 +64,25 @@ class AccommodationEdit extends Component {
     //Redirect to accommodations page
     this.props.history.push(`/accommodation/${this.props.accommodationById.id}`);
   }
+  is_Paid = () => {
+    if (this.state.is_paid === false) {
+      this.setState({
+        is_paid: true
+      })
+    }
+    else {
+      this.setState({
+        is_paid: false
+      })
+    }
+  }
+  getDate = (date) => {
+    return moment(date)
+  }
 
   render() {
     console.log("AccommodationEdit - render - this.props:", this.props);
     console.log('state', this.state)
-    // let { accommodationById } = this.props
 
     return (
       <div className="container col12">
@@ -85,11 +100,11 @@ class AccommodationEdit extends Component {
                   <label className="form-control-placeholder" htmlFor="address">Address</label>
               </div>
               <div>
-                <label className="blue dates">Details</label>
+                <label className="blue formsection">Details</label>
                 <DateRangePicker
-                  startDate={this.state.startDate} // momentPropTypes.momentObj or null,
+                  startDate={this.getDate((this.props.accommodationById.check_in_date))} // momentPropTypes.momentObj or null,
                   startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
-                  endDate={this.state.endDate} // momentPropTypes.momentObj or null,
+                  endDate={this.getDate(this.props.accommodationById.check_out_date)} // momentPropTypes.momentObj or null,
                   endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
                   onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
                   focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
@@ -100,18 +115,26 @@ class AccommodationEdit extends Component {
                 <input type="text" id="rescode" name="eservation_code" onChange={this.handleChange}  className="form-control" defaultValue={this.props.accommodationById.reservation_code} required></input>
                 <label className="form-control-placeholder" htmlFor="rescode">Reservation code</label>
               </div>
-              <div className="form-group">
+              <div className="inline">
+                <label>Price</label>
+                <input type="number" min="0.00" max="10000.00" step="0.01" name="price" onChange={this.handleChange} className="reginput inputstyle" placeholder="$00.00" value={this.props.accommodationById.price} ></input>
+                <div className="checkbox">
+                  <input onChange={this.is_Paid} type="checkbox" id="paystatus" name="is_paid"></input>
+                  <label htmlFor="paystatus">Paid</label>
+                </div>
+              </div>
+              {/* <div className="form-group">
                 <input type="number" id="price" name="price" onChange={this.handleChange}  className="form-control" defaultValue={this.props.accommodationById.price} required></input>
                 <label className="form-control-placeholder" htmlFor="price">Price</label>
               </div>
               <div className="formright checkbox">
                 <input onChange={this.handleChange} type="checkbox" id="paystatus" name="is_paid" defaultValue={this.props.accommodationById.notes} ></input>
                 <label htmlFor="paystatus">Paid</label>
-              </div>
+              </div> */}
         
               <div>
-                <label className="blue dates">Notes</label>
-                <textarea onChange={this.handleChange} name="notes"></textarea>
+                <label className="blue formsection">Notes</label>
+                <textarea onChange={this.handleChange} name="notes" value={this.props.accommodationById.notes}></textarea>
               </div>
               <button type="submit">Update Accommodation</button>
             </div>

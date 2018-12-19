@@ -51,10 +51,12 @@ class EditTrip extends Component {
     this.props.history.push(`/users/account/${this.props.tripById.user_id}/trips/${this.props.tripById.id}`);
   }
 
+  getDate = (date) => {
+    return moment(date)
+  }
+
   render() {
     console.log("sadasdathis.props:", this.props);
-    this.state.startDate = moment(this.props.tripById.start_date);
-    this.state.endDate = moment(this.props.tripById.end_date);
     return (
       <div className="container col12">
       <div className="wrap-form">
@@ -68,7 +70,7 @@ class EditTrip extends Component {
           <div></div>
           <label>State</label>
           <select name="state" onChange={this.handleChange}>
-            <option value={this.props.tripById.country} >{this.props.tripById.state} </option>
+            <option value={this.props.tripById.state} >{this.props.tripById.state} </option>
             <option value="Not Applicable">Not Applicable</option>
             <option value="AK">AK</option>
             <option value="AL">AL</option>
@@ -128,9 +130,9 @@ class EditTrip extends Component {
           <div>
             <label className="blue formsection">Details</label>
             <DateRangePicker
-              startDate={this.state.startDate} // momentPropTypes.momentObj or null,
+              startDate={this.getDate(this.props.tripById.start_date)} // momentPropTypes.momentObj or null,
               startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
-              endDate={this.state.endDate} // momentPropTypes.momentObj or null,
+              endDate={this.getDate(this.props.tripById.end_date)} // momentPropTypes.momentObj or null,
               endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
               onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
               focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,

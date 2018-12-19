@@ -7,6 +7,18 @@ import { connect } from 'react-redux';
 //Import actions
 import { editTransit, getTransitById } from '../actions/actions';
 
+//Date picker
+import 'react-dates/initialize';
+import 'react-dates/lib/css/_datepicker.css';
+import { SingleDatePicker } from 'react-dates';
+
+//Time picker
+import 'rc-time-picker/assets/index.css';
+import moment from 'moment';
+import TimePicker from 'rc-time-picker';
+const format = 'h:mm a';
+// const now = moment().hour(0).minute(0);
+
 class TransitEdit extends Component {
   constructor(props) {
     super(props)
@@ -14,7 +26,7 @@ class TransitEdit extends Component {
     this.state = {
       // id: this.props.transitById.id,
       type: this.props.transitById.type,
-      date: this.props.transitById.date,
+      date: null,
       time: this.props.transitById.time,
       reservation: this.props.transitById.reservation,
       price: this.props.transitById.price,
@@ -54,36 +66,58 @@ class TransitEdit extends Component {
     //Redirect to accommodations page
     this.props.history.push(`/transit/${this.props.transitById.id}`);
   }
+  getDate = (date) => {
+    return moment(date)
+  }
 
   render() {
     console.log("TransitEdit - render - this.props:", this.props);
-
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
+      <div className="container col12">
+      <div className="wrap-form" >
+        <form className="col12" onSubmit={this.handleSubmit}>
+        <div className="formbottom">
+        <h2 className="blue">Transit</h2>
+            <select className="formselect" name='type' onChange={this.handleChange}>
+            <option value={this.props.transitById.type} >{this.props.transitById.type} </option>
+              <option value="shuttle">Shuttle</option>
+              <option value="car-rental">Car Rental</option>
+              <option value="taxi">Taxi</option>
+              <option value="bus">Bus</option>
+              <option value="subway">Train</option>
+              <option value="uber-lyft">Uber/Lyft</option>
+              <option value="walking">Walking</option>
+            </select>
 
-          <label>Type</label>
-          <input onChange={this.handleChange} type='text' name="type" defaultValue={this.props.transitById.type} />
-          <br /><br />
-
-          <label>Date</label>
-          <input onChange={this.handleChange} type='text' name="date" defaultValue={this.props.transitById.date} />
-          <br /><br />
-
-          <label>Time</label>
-          <input onChange={this.handleChange} type='text' name="time" defaultValue={this.props.transitById.time} />
-          <br /><br />
-
-          <label>Reservation</label>
-          <input onChange={this.handleChange} type='text' name="reservation" defaultValue={this.props.transitById.reservation} />
-          <br /><br />
-
+        <div>
+          <label className="blue formsection">Details</label>
+          <SingleDatePicker
+            date={this.getDate(this.props.transitById.date)} // momentPropTypes.momentObj or null
+            onDateChange={date =>this.setState({ date })} // PropTypes.func.isRequired
+            focused={this.state.focused} // PropTypes.bool
+            onFocusChange={({ focused }) => this.setState({ focused })} // PropTypes.func.isRequired
+            id="your_unique_id" // PropTypes.string.isRequired,
+          />
+          <TimePicker showSecond={false}  defaultValue={moment(this.props.transitById.time)} className="reginput" onChange={this.updateTime} format={format} use12Hours inputReadOnly />
+        </div>
+        <div className="form-group">
+          <label>Do you have a reservation?</label>
+          <select name="reservation" onChange={this.handleChange}>
+            <option value={this.props.transitById.reservation}>{this.props.transitById.reservation}</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
+        </div>
+        <div className="form-group">
           <label>Price</label>
-          <input onChange={this.handleChange} type='text' name="price" defaultValue={this.props.transitById.price} />
-          <br /><br />
+          <input type="number" min="0.00" max="10000.00" step="0.01" name="price" onChange={this.handleChange} className="reginput inputstyle" value={this.props.transitById.price}></input>
+        </div>
 
           <button type="submit">Update Transit</button>
+        </div>
+
         </form>
+      </div>
       </div>
     )
   }

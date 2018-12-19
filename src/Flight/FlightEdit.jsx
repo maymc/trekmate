@@ -16,7 +16,7 @@ import 'rc-time-picker/assets/index.css';
 import moment from 'moment';
 import TimePicker from 'rc-time-picker';
 const format = 'h:mm a';
-const now = moment().hour(0).minute(0);
+// const now = moment().hour(0).minute(0);
 
 class FlightEdit extends Component {
   constructor(props) {
@@ -80,11 +80,12 @@ class FlightEdit extends Component {
       arrival_time: value.format(format)
     })
   }
+  getDate = (date) => {
+    return moment(date)
+  }
 
   render() {
     console.log("FlightEdit - render - this.props:", this.props);
-    this.state.startDate = moment(this.props.flightById.departure_date);
-    this.state.endDate = moment(this.props.flightById.arrival_date);
     return (
       <div className="container col12">
       <div className="wrap-form">
@@ -98,9 +99,9 @@ class FlightEdit extends Component {
           <div>
               <label className="blue formsection">Details</label>
               <DateRangePicker
-                startDate={this.state.startDate} // momentPropTypes.momentObj or null,
+                startDate={this.getDate(this.props.flightById.departure_date)} // momentPropTypes.momentObj or null,
                 startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
-                endDate={this.state.endDate} // momentPropTypes.momentObj or null,
+                endDate={this.getDate(this.props.flightById.arrival_date)} // momentPropTypes.momentObj or null,
                 endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
                 onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
                 focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
