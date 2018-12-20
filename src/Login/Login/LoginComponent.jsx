@@ -41,6 +41,7 @@ class Login extends Component {
   }
 
   handleSubmit = (e) => {
+    console.log("Check for this.props.users:", this.props.users);
     e.preventDefault();
     this.props.users.filter(element => {
       if (element.email === this.state.email) {
