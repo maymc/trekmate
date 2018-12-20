@@ -176,19 +176,6 @@ export const editPassword = (password) => {
   }
 }
 
-// export const requestPassword = () => {
-//   return dispatch => {
-//     axios.get('/login/forgotPassword')
-//       .then(res => {
-//         console.log('email send scuessful', res.data)
-//         dispatch({ type: REQUEST_PASSWORD, payload: res.data })
-//       })
-//       .catch(err => {
-//         console.log('error -action send email: ', err);
-//       })
-//   }
-// }
-
 
 //-----------Trip Action-------------//
 export const getAllTrips = () => {

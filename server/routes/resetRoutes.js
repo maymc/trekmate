@@ -11,7 +11,7 @@ resetRouter.post('/', (req, res) => {
     const data = {
         from: 'Abby <abbyzhang21@gmail.com>',
         to: 'abbyzhang21@gmail.com',
-        subject: 'trekmate',
+        subject: 'Trekmate',
         text: 'Here is your temporary password: ' + tempPassword
     };
     console.log('temp password:', tempPassword);
@@ -20,23 +20,17 @@ resetRouter.post('/', (req, res) => {
         .fetch()
         .then(isAuth => {
             if (!isAuth) {
+                res.send({ status: 'failed' })
+
                 console.log('User not exist', req.body)
             } else {
-                mailgun.messages().send(data, function (error, body) {
+                mailgun.messages().send(data, function (error) {
                     if (error) {
                         console.log(error);
                     } else {
-                        // requestPassword = () => {
-                        //     return true;
-                        // }
-                        req.body.isAuth = true;
-
+                        res.send({ status: 'success' })
                         console.log('email send?', req.body);
 
-                        // Users
-                        //     .where({ email: req.body.email })
-                        //     .update({ password: tempPassword })
-                        // console.log('temp', tempPassword)
 
                     }
 
