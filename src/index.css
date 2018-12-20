@@ -115,8 +115,8 @@ textarea, select, input, button {
   }
 
   button.drk:hover {
-    background: #ffffff;
-    color: #870056;
+    background: none;
+    color: #ffffff;
   }
 
   button.drk:active {

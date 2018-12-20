@@ -106,3 +106,9 @@ const mapStateToProps = state => {
   }
 }
 export default connect(mapStateToProps)(TransitDetail);
+
+TransitDetail.defaultProps = {
+  transitById: {
+    id: null,
+  }
+}

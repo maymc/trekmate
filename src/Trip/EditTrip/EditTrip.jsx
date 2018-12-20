@@ -57,25 +57,12 @@ class EditTrip extends Component {
   onClick = () => {
     let tripId = this.props.match.params.id;
     this.props.dispatch(deleteTrip(tripId))
-    // this.props.dispatch(getTripsByUserId(this.props.tripById.user_id));
-
-    // this.props.history.push(`/users/account/${this.props.tripById.user_id}`);
   }
-  // dateFormatter(date) {
-  //   if (date === undefined) {
-  //     return
-  //   }
-  //   else {
-  //     let d = new Date(date)
-  //     var n = d.toDateString();
-  //     return n
-  //   }
-  // }
 
   render() {
     let userId = this.props.tripById.user_id;
     console.log('state', this.state)
-
+    let sd = this.getDate(this.props.tripById.start_date)
     console.log("sadasdathis.props:", this.props);
     return (
       <div className="container col12">
@@ -86,7 +73,7 @@ class EditTrip extends Component {
               {/* <Link className='right' to={`/}`}>Delete trip</Link> */}
               <Link className='right' to={`/users/account/${userId}`} onClick={this.onClick}>Delete trip</Link>
               <div className="form-group">
-                <input type="text" id="city" name="city" onChange={this.handleChange} className="form-control" value={this.props.tripById.city} required></input>
+                <input type="text" id="city" name="city" onChange={this.handleChange} className="form-control" defaultValue={this.props.tripById.city} required></input>
                 <label className="form-control-placeholder" htmlFor="city">City</label>
               </div>
               <div></div>
@@ -146,13 +133,13 @@ class EditTrip extends Component {
                 <option value="WY">WY</option>
               </select>
               <div className="form-group">
-                <input type="text" id="country" name="country" onChange={this.handleChange} className="form-control" value={this.props.tripById.country}></input>
+                <input type="text" id="country" name="country" onChange={this.handleChange} className="form-control" defaultValue={this.props.tripById.country}></input>
                 <label className="form-control-placeholder" htmlFor="country">Country</label>
               </div>
               <div>
                 <label className="blue formsection">Details</label>
                 <DateRangePicker
-                  startDate={this.getDate(this.props.tripById.start_date)} // momentPropTypes.momentObj or null,
+                  startDate={sd} // momentPropTypes.momentObj or null,
                   startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
                   endDate={this.getDate(this.props.tripById.end_date)} // momentPropTypes.momentObj or null,
                   endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
@@ -161,15 +148,6 @@ class EditTrip extends Component {
                   onFocusChange={focusedInput => this.setState({ focusedInput })}   // PropTypes.func.isRequired,
                 />
               </div>
-              {/* <div className="form-group">
-            <input type="text" id="dateone" name="start_date" onChange={this.handleChange} className="form-control" value={this.dateFormatter(this.props.tripById.start_date)}></input>
-            <label className="form-control-placeholder" htmlFor="dateone">Start date</label>
-          </div>
-          <div className="form-group">
-            <input type="text" id="datetwo" name="start_date" onChange={this.handleChange} className="form-control" value={this.dateFormatter(this.props.tripById.end_date)}></input>
-            <label className="form-control-placeholder" htmlFor="datetwo">End date</label>
-          </div> */}
-
               <button type="submit">Update</button>
 
 
@@ -190,3 +168,10 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps)(EditTrip);
+
+
+EditTrip.defaultProps = {
+  tripById: {
+    user_id: "User",
+  }
+}

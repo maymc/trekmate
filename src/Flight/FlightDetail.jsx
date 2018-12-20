@@ -58,7 +58,7 @@ class FlightDetail extends Component {
 
     return (
       <div key={this.props.flightById.id} className="container col12">
-       <div className="pagebanner">
+       <div className="pagebanner blue-bg">
           <i className="spacebottom fas fa-5x fa-plane"></i>
           <h1>{flight.airlines}</h1>
           <Link className="drk" to={`/flights/trip/${this.props.flightById.trip_id}`}>
@@ -99,3 +99,11 @@ const mapStateToProps = state => {
   // }
 }
 export default connect(mapStateToProps)(FlightDetail);
+
+FlightDetail.defaultProps = {
+  flightById: {
+    id: null,
+    airlines: 'Test',
+    notes: 'fack'
+  }
+}

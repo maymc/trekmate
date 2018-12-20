@@ -47,7 +47,7 @@ class ForgotPassword extends Component {
 
           </form>
 
-          <Link to="/login">
+          <Link to="/auth/login">
             Cancel
           </Link>
         </div>
