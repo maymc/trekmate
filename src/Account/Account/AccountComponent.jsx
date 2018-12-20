@@ -72,25 +72,23 @@ class Account extends Component {
 
   render() {
     console.log("\nAccountComponent - this.props:", this.props);
-
+    let user = this.props.userById
+  
     return (
-      <div className="container col3 account">
-        {/* <div className="accountbanner">
-          <div className="userimage">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5av85FUBFtE6pEih8IFJHXT5Z4VT6xKS0EIdifBdqlhcIfkLfQQ" alt="User_image"></img>
-          </div>
-          <div className="userdata">
-            <h1>{this.props.userById.first_name}<span>, {this.props.userById.last_name}</span></h1>
-            <p>{this.props.userById.email}</p>
-            <Link to={`/users/account/edit/${this.props.userById.id}`}>Edit</Link>
-            <Link to={`/users/account/edit_password/${this.props.userById.id}`} >Update Password</Link>
-          </div>
-        </div> */}
-
-        <div className="accountfeed">
+      <div className="container col12">
+        <div className="pagebanner pink-bg userdata">
+          <i className="spacebottom far fa-5x fa-user-circle"></i>
+          <h1>{user.first_name}<span>, {user.last_name}</span></h1>
+          <p>{user.email}</p>
+          <Link className="drk spaceright" to={`/users/account/edit/${user.id}`}>Edit</Link>
+            <Link className="drk" to={`/users/account/edit_password/${user.id}`} >Update Password</Link>
+        </div>
+        <div className="pagebody">
+          <Link to={`/trips/add?${this.props.userById.id}`}>
+            <button className="spacebottom spacetop" type="submit"><i className="fas fa-suitcase"></i> Create new trip</button>
+          </Link>
           {this.props.tripsByUserId.map(trip => {
             return (
-              //Might need an if statement if state or country doesn't exist based on trip location
               <form className="triplist" method="get" action={`/users/account/${trip.user_id}/trips/${trip.id}`}>
                 <div className="triptitle">
                   <h1>{trip.city}<span>, {trip.country}</span></h1>
@@ -105,23 +103,6 @@ class Account extends Component {
               </form>
             )
           })}
-
-        </div>
-
-        <div className="accountbar">
-          <div className="userimage">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5av85FUBFtE6pEih8IFJHXT5Z4VT6xKS0EIdifBdqlhcIfkLfQQ" alt="User_image"></img>
-          </div>
-          <div className="userdata">
-            <h1>{this.props.userById.first_name}<span>, {this.props.userById.last_name}</span></h1>
-            <p>{this.props.userById.email}</p>
-            <Link to={`/users/account/edit/${this.props.userById.id}`}>Edit</Link>
-            <Link to={`/users/account/edit_password/${this.props.userById.id}`} >Update Password</Link>
-          </div>
-          {/* <h3>Create a new trip:</h3> */}
-          <Link to={`/trips/add?${this.props.userById.id}`}>
-            <button type="submit"><i className="fas fa-suitcase"></i> Create new trip</button>
-          </Link>
         </div>
       </div>
     );

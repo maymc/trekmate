@@ -46,7 +46,7 @@ class TripComponent extends Component {
       month[10] = "NOV";
       month[11] = "DEC";
 
-      console.log('Date', d)
+      // console.log('Date', d)
       return {
         day: weekday[d.getDay()],
         date: d.getDate(),
@@ -78,11 +78,12 @@ class TripComponent extends Component {
         <div className="tripfeed">
           <div className="eventsection">
             <h3 className="grey spacebottom"><i className="fas fa-plane"></i> Flights</h3>
-            {/* {this.props.flights.map(flight => {
+            {this.props.flights.map(flight => {
+              console.log('flight date', flight.departure_time)
               return (
-                <EventCard key={flight.id} type={'flight'} detail={flight} title={flight.airlines} date={flight.departure_time} />
+                <EventCard key={flight.id} type={'flight'} detail={flight} title={flight.airlines} date={this.dateFormatter(flight.departure_time)} time={flight.departure_time} />
               )
-            })} */}
+            })}
             <Link to={`/flights/add?${trips.user_id}?${trips.id}`}>+ Add a flight</Link>
           </div>
           <div className="eventsection">

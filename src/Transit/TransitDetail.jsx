@@ -60,7 +60,7 @@ class TransitDetail extends Component {
 
     return (
       <div key={this.props.transitById.id} className="container col12">
-        <div className="pagebanner">
+        <div className="pagebanner blue-bg">
           <i className="spacebottom fas fa-5x fa-car-side"></i>
           <h1>{transit.type}</h1>
           <Link className="drk" to={`/transit/trip/${transit.trip_id}`}>

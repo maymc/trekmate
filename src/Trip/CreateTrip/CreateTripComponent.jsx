@@ -35,7 +35,7 @@ class CreateTrip extends Component {
     console.log('Trip', this.props)
     let id = (this.props.location.search).split("?")
     
-    // console.log('Temp', id[1])
+    console.log('Temp', id[1])
     this.setState({
       user_id: Number(id[1])
     })
