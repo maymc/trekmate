@@ -7,7 +7,7 @@ import axios from "axios";
 // import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-// import { requestPassword } from '../../actions/actions';
+import { requestPassword } from '../../actions/actions';
 
 class ForgotPassword extends Component {
   constructor(props) {
@@ -34,17 +34,21 @@ class ForgotPassword extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    // if (this.state.isAuth == true) {
-    //   console.log('you are auth!!!')
-    // }
+
     const email = this.state;
-    // console.log('this email', email.data);
+    console.log('render>>>>>>', email.email)
+
     axios.post('/login/forgotPassword', email)
       .then(email => {
-        console.log('this email', email.data)
+        console.log('EMAIL>>>>>>', email.data)
         this.setState({
-          data: email.data
+          data: email.data,
         })
+        console.log('this email', email.email);
+        if (email.data.status === 'success') {
+          console.log('render>>>>>>', email.data.email)
+          this.props.dispatch(requestPassword(email.data))
+        }
 
       })
 
@@ -108,7 +112,7 @@ class ForgotPassword extends Component {
 
 const mapStateToProps = state => {
   return {
-    email: null,
+    email: state.email,
     data: state.data
   }
 }

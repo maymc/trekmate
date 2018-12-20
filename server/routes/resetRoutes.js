@@ -20,7 +20,7 @@ resetRouter.post('/', (req, res) => {
         .fetch()
         .then(isAuth => {
             if (!isAuth) {
-                res.send({ status: 'failed' })
+                res.send({ email: req.body.email, status: 'failed' })
 
                 console.log('User not exist', req.body)
             } else {
@@ -28,24 +28,41 @@ resetRouter.post('/', (req, res) => {
                     if (error) {
                         console.log(error);
                     } else {
-                        res.send({ status: 'success' })
+                        res.send({ email: req.body.email, status: 'success' })
                         console.log('email send?', req.body);
 
-
                     }
-
 
                 })
             }
         }
         )
         .catch(err => {
-            console.log("vertify error", err);
-            res.json("vertify error", err);
+            console.log("verify error", err);
+            res.json("verify error", err);
         })
 
 })
 
+resetRouter.put('/request', (req, res) => {
+    const updatedUserPassword = {
+        password: tempPassword
+    }
+    Users
+        .where({ email: req.body.email })
+        .fetch()
+        .then((currentUserPassword) => {
+            return currentUserPassword.save(updatedUserPassword)
+        })
+        .then((result) => {
+            console.log('Updated user', result)
+            res.json(result)
+        })
+        .catch(err => {
+            console.log("\nPUT - edit user password error", err);
+            res.json("PUT - edit user password error", err);
+        })
+})
 
 
 module.exports = resetRouter;

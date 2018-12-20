@@ -1,21 +1,41 @@
 import React, { Component } from 'react';
-// import { requestPassword } from '../../actions/actions';
-// import { connect } from 'react-redux';
-// const tempPassword = Math.random().toString(36).slice(-8);
+import axios from 'axios';
+
+
+import { connect } from 'react-redux';
 
 class RequestPassword extends Component {
     constructor(props) {
         super(props)
+
+        // this.state = {
+        //     email: null,
+        //     password: null
+        // }
     }
-    componentDidMount() {
-        console.log('mounting...');
-        // this.props.dispatch(requestPassword())
+    componentDidMount() { }
+
+    logIn = () => {
+        this.props.history.push(`/auth/login`);
+
     }
     render() {
         return (
-            <h1>check your email!</h1>
+            < div className="container col12 forgotpassword" >
+                <div className="formplace forgotpassword-form">
+                    <h1>Temporary Password Email sent</h1>
+                    <p>An temporary password has been sent to your email. Please login with your temporary password. </p>
+                    <button onClick={this.logIn}>Done</button>
+                </div>
+            </div >
+
         )
     }
 }
 
-export default RequestPassword;
+const mapStateToProps = state => {
+    return state
+}
+
+
+export default connect(mapStateToProps)(RequestPassword);

@@ -11,7 +11,7 @@ export const GET_USER_BY_ID = 'GET_USER_BY_ID';
 export const ADD_USER = 'ADD_USER';
 export const EDIT_USER = 'EDIT_USER';
 export const EDIT_PASSWORD = 'EDIT_PASSWORD';
-// export const REQUEST_PASSWORD = 'REQUEST_PASSWORD';
+export const REQUEST_PASSWORD = 'REQUEST_PASSWORD';
 
 //~~~~~Trips~~~~//
 export const GET_ALL_TRIPS = 'GET_ALL_TRIPS';
@@ -176,6 +176,20 @@ export const editPassword = (password) => {
   }
 }
 
+export const requestPassword = (email) => {
+  return dispatch => {
+    console.log("\nACTION: editPassword:", email)
+
+    axios.put(`/login/forgotPassword/request`, email)
+      .then(response => {
+        console.log('res.......', response)
+        dispatch({ type: REQUEST_PASSWORD, payload: response.data })
+      })
+      .catch(err => {
+        console.log('error- request password:', err)
+      })
+  }
+}
 
 //-----------Trip Action-------------//
 export const getAllTrips = () => {
