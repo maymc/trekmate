@@ -11,7 +11,7 @@
     .tripbanner {
         grid-column: 1/ span 3;
         height: 240px;
-        background: #305BED;
+        background: #4762ad;
         color: white;
         display: grid;
         display: grid;
@@ -98,33 +98,39 @@
 
 
 
-@media only screen and (max-width: 690px) {
+@media only screen and (max-width: 900px) {
+    .tripbanner {
+        height: max-content;
+    }
     .tripname {
         grid-column: 1/ span 2;
         grid-row: 1/1;
+        display: block;
     }
     .tripname h1 {
         font-size: 2em;
-        display: inline-block;
+        display: block;
     }
     .tripname a {
-        float: right;
+        float: left;
     }
     .tripdates {
         grid-column: 1/ span 2;
         grid-row: 2/2
     }
+
 }
 
 @media only screen and (max-width: 600px) {
+    .tripbanner {
+        padding: 10px;
+    }
     .tripfeed {
         grid-column: 1 / span 3;
         grid-row: 3/3;
+        padding: 15px;
     }
     .tripbar {
-        grid-column: 1 / span 3;
-        grid-row: 2/2;  
-        margin-left: 30px;
-        margin-bottom: 30px;
+        display: none;
     }
 }

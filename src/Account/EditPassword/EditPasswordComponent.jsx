@@ -60,7 +60,7 @@ class EditPassword extends Component {
         <div className="formplace updatepassword-form">
 
           <form onSubmit={this.handleSubmit}>
-            <h2>Update your password</h2>
+            <h1>Update password</h1>
 
             <div className="form-group">
               <input autoFocus autoComplete="current-password" type="password" id="currentpassword" name="password" onChange={this.handleChange} className="form-control" required></input>

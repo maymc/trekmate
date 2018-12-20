@@ -4,9 +4,11 @@
     height: 180px;
     padding: 20px;
     text-align: center;
-    float: right;
+    display: inline-block;
+    /* float: right; */
+    color: white;
     margin-left: 15px;
-    background: #305BED;
+    background: #4762ad;
 }
 
 .datecont h3 {
@@ -17,7 +19,8 @@
     margin-bottom: 15px;
 }
 
-@media only screen and (max-width: 690px) {
+
+@media only screen and (max-width: 900px) {
     .datecont {
         padding: 10px;
         height: 50px;

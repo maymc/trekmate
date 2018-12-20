@@ -109,10 +109,10 @@ class FlightEdit extends Component {
               />
           </div> 
           <div className="form-group">
-            <label>Departure Flight:</label>
-            <TimePicker showSecond={false} className="reginput" value={moment(this.props.flightById.departure_time,'h:mm a')} onChange={this.departureTime} use12Hours inputReadOnly />
-            <label className="spaceleft">Return Flight:</label>
-            <TimePicker showSecond={false}className="reginput" value={moment(this.props.flightById.arrival_time,'h:mm a')} onChange={this.returnTime} use12Hours inputReadOnly />
+            <label className="minput">Departure Flight:</label>
+            <TimePicker showSecond={false} className="reginput minput" value={moment(this.props.flightById.departure_time,'h:mm a')} onChange={this.departureTime} use12Hours inputReadOnly />
+            <label className="minput spaceleft">Return Flight:</label>
+            <TimePicker showSecond={false} className="reginput minput" value={moment(this.props.flightById.arrival_time,'h:mm a')} onChange={this.returnTime} use12Hours inputReadOnly />
           </div>
           <div className="form-group">
               <input type="text" id="rescode" name="reservation_code" onChange={this.handleChange} className="form-control" value={this.props.flightById.reservation_code}></input>

@@ -40,3 +40,50 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
+
+.pagebanner {
+  grid-column: 1 / span 4;
+  -webkit-clip-path: polygon(0 0, 100% 20%, 100% 100%, 0% 100%);
+  clip-path: polygon(0 0, 100% 20%, 100% 100%, 0% 100%);
+  background: rgb(71,98,173);
+  background: linear-gradient(333deg, rgba(71,98,173,1) 33%, rgba(87,164,245,1) 100%);
+  padding: 120px 15px 30px 30px;
+  color: white;
+}
+.pagebody {
+  grid-column: 5 / span 8;
+  padding: 145px 30px 30px 30px;
+  /* background: red; */
+}
+.pagebody h2 {
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+.pagesection {
+  width: 100%;
+  margin-bottom: 30px;
+}
+.pagesection div {
+  margin: 15px 15px 0px 0px ;
+
+}
+.pagesection i {
+  width: 15px;
+}
+.pagesection p {
+  margin-top: 15px;
+}
+
+@media only screen and (max-width: 768px) {
+  .pagebanner {
+    grid-column: 1 / span 12;
+    grid-row: 1/1;
+    padding: 90px 15px 30px 30px;
+  }
+  .pagebody {
+    grid-column: 1 / span 12;
+    grid-row: 2/2;
+    padding: 30px;
+  }
+
+}

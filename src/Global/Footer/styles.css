@@ -1,13 +1,13 @@
 .footer {
     grid-column: 1/7;
     grid-row: 3/3;
-    background: #BBE6FD;
+    background: #4762ad;
   }
   
   .footer p {
     display: inline-block;
     margin: 15px;
-    color: #305BED;
+    color: #ffffff;
   }
   
   .right {

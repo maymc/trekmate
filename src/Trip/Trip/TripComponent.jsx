@@ -17,7 +17,6 @@ class TripComponent extends Component {
     let tripId = this.props.match.params.trip_id;
     this.props.dispatch(getAllByTrip(tripId));
 
-
   }
   dateFormatter(date) {
     if (date === undefined) {
@@ -57,15 +56,6 @@ class TripComponent extends Component {
       }
     }
   }
-  timeFormatter(time) {
-    if (time === undefined) {
-      return
-    }
-    else {
-      let d = new Date(time)
-      console.log(d)
-    }
-  }
 
   render() {
     console.log("TripComponent - this.props:", this.props);
@@ -81,7 +71,7 @@ class TripComponent extends Component {
             <Link className="drk" to={`/trips/edit/${trips.id}?${trips.id}?${trips.user_id}`}>Edit trip</Link>
           </div>
           <div className="tripdates">
-            <DateComponent date={this.dateFormatter(trips.start_date)} />
+            <DateComponent className="drk-date" date={this.dateFormatter(trips.start_date)} />
             <DateComponent date={this.dateFormatter(trips.end_date)} />
           </div>
         </div>
@@ -132,7 +122,7 @@ class TripComponent extends Component {
           <Link to={`/accommodations/add?${trips.user_id}?${trips.id}`}>
             <button className="ghost" ><i className="fas fa-hotel"></i> Accommodation</button>
           </Link>
-          <Link to={`/activities/add??${trips.user_id}?${trips.id}`}>
+          <Link to={`/activities/add?${trips.user_id}?${trips.id}`}>
             <button className="ghost" ><i className="fas fa-hiking"></i> Activity</button>
           </Link>
           <Link to={`/transit/add?${trips.user_id}?${trips.id}`}>

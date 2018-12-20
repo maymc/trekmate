@@ -11,13 +11,11 @@ class ActivityDetail extends Component {
     const activityId = this.props.match.params.id;
     console.log("Setting activityId:", activityId);
     console.log("Activity Detail component Mounted Successfully");
-
     this.props.dispatch(getActivityById(activityId));
   }
 
   render() {
     console.log("\nActivityDetail- this.props.activityById:", this.props.activityById)
-
     return (
       <div key={this.props.activityById.id}>
         <p>Activity: {this.props.activityById.activity_name}</p>

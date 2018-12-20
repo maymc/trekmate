@@ -12,10 +12,10 @@ class DateComponent extends Component {
     }
   }
   componentDidMount() {
-    // console.log('DateComp', this.props)
+    console.log('CDM', this.props)
     if (this.props.date === undefined) {
       return
-    }else {
+    } else {
       this.setState({
         day: this.props.date.day,
         date: this.props.date.date,
@@ -24,7 +24,10 @@ class DateComponent extends Component {
       })
     }
   }
+
+
   render() {
+    // console.log('DateComp', this.props)
     // console.log("DateCompState", this.state)
 
     return (
@@ -36,6 +39,13 @@ class DateComponent extends Component {
     );
   }
 }
+// const mapStateToProps = state => {
+//   // return state;
+//   console.log('DateComponent - This is state:', state, this.props)
+//   return state;
+// }
+
+
 
 export default DateComponent;
 

@@ -71,7 +71,7 @@ class Account extends Component {
 
     return (
       <div className="container col3 account">
-        <div className="accountbanner">
+        {/* <div className="accountbanner">
           <div className="userimage">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5av85FUBFtE6pEih8IFJHXT5Z4VT6xKS0EIdifBdqlhcIfkLfQQ" alt="User_image"></img>
           </div>
@@ -81,7 +81,7 @@ class Account extends Component {
             <Link to={`/users/account/edit/${this.props.userById.id}`}>Edit</Link>
             <Link to={`/users/account/edit_password/${this.props.userById.id}`} >Update Password</Link>
           </div>
-        </div>
+        </div> */}
 
         <div className="accountfeed">
           {this.props.tripsByUserId.map(trip => {
@@ -105,6 +105,15 @@ class Account extends Component {
         </div>
 
         <div className="accountbar">
+          <div className="userimage">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5av85FUBFtE6pEih8IFJHXT5Z4VT6xKS0EIdifBdqlhcIfkLfQQ" alt="User_image"></img>
+          </div>
+          <div className="userdata">
+            <h1>{this.props.userById.first_name}<span>, {this.props.userById.last_name}</span></h1>
+            <p>{this.props.userById.email}</p>
+            <Link to={`/users/account/edit/${this.props.userById.id}`}>Edit</Link>
+            <Link to={`/users/account/edit_password/${this.props.userById.id}`} >Update Password</Link>
+          </div>
           {/* <h3>Create a new trip:</h3> */}
           <Link to={`/trips/add?${this.props.userById.id}`}>
             <button type="submit"><i className="fas fa-suitcase"></i> Create new trip</button>

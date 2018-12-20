@@ -1,22 +1,9 @@
 .account {
     grid-auto-rows: min-content;
     grid-column-gap: 10px;
-    background: #f5f5f5;
-}
-
-.accountbanner {
-    grid-column: 1/ span 3;
-    display: grid;
-    grid-template-columns: min-content auto;
-    grid-template-rows: auto;
-    grid-column-gap: 30px;
-    padding: 30px;
-    background: white;
 }
 
 .userimage {
-    grid-column: 1/1;
-    grid-row: 1/1;
     width: 100%;
     width: 150px;
     height: 150px;
@@ -32,13 +19,12 @@
 }
 
 .userdata {
-    grid-column: 2/2;
-    grid-row: 1/1;
     width: 100%;
     height: min-content;
 }
 
 .userdata h1 {
+    margin-top: 15px;
     color: #9d2069;
 }
 
@@ -59,12 +45,14 @@
 .accountfeed {
     grid-column: 1 / span 2;
     padding: 30px;
+    background: #f5f5f5;
+    
 }
 .triplist {
     width: 100%;
     margin-bottom: 30px;
     padding: 30px;
-    background: #305BED;
+    background: #4762ad;
     color: white;
     display: grid;
     grid-template-columns: auto 300px;
@@ -76,29 +64,26 @@
 .triptitle {
     grid-column: 1 / span 1;
     grid-row: 1/ span 2;
-    /* background: black; */
 }
 .tripbutton {
     grid-column: 1 / span 1;
     grid-row: 3/3;
     display: table-cell;
     vertical-align: bottom;
-    background: blue;
+    /* background: blue; */
 }
 .tripdates {
     grid-column: 2 / span 1;
     grid-row: 1 / span 3;
-    /* background: #9d2069; */
 }
 .accountbar {
     grid-column: 3 / span 1;
-    padding: 30px 30px 30px 30px;
-
-    border-left: 2px solid #ffffff;
+    padding: 30px 30px 15px 30px;
+    /* border-left: 2px solid #f5f5f5; */
 }
 
 .accountbar button {
-    margin-bottom: 5px;
+    margin-top: 30px;
     text-align: left;
     font-size: .75em;
     height: 60px;
@@ -124,7 +109,7 @@
 }
 
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 668px) {
     .accountbanner {
         padding: 15px;
     }
@@ -135,9 +120,14 @@
     .accountfeed {
         grid-column: 1 / span 3;
         grid-row: 3/3;
+        padding: 0px;
     }
     .accountbar {
         grid-column: 1 / span 3;
         grid-row: 2/2;  
+    }
+    .triplist {
+        padding: 15px;
+        margin-bottom: 2px;
     }
 }
