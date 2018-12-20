@@ -41,11 +41,12 @@ class FlightDetail extends Component {
       month[9] = "OCT";
       month[10] = "NOV";
       month[11] = "DEC";
+      console.log('Date', d)
       return {
-        dday: weekday[d.getDay()],
-        ddate: d.getDate(),
-        dmonth: month[d.getMonth()],
-        dyear: d.getFullYear()
+        day: weekday[d.getDay()],
+        date: d.getDate(),
+        month: month[d.getMonth()],
+        year: d.getFullYear()
       }
     }
   }
@@ -70,17 +71,13 @@ class FlightDetail extends Component {
           </Link>
           <h2 className="pink" >Review</h2>
           <div className="pagesection">
-            <h3 className="blue">Departure</h3>
             <DateComponent date={this.dateFormatter(flight.departure_date)} />
-            <p><i className="far fa-clock"></i> {flight.departure_time}</p>
-          </div>
-          <div className="pagesection">
-            <h3 className="blue">Return</h3>
             <DateComponent date={this.dateFormatter(flight.arrival_date)} />
-            <p><i className="far fa-clock"></i> {flight.arrival_time}</p>
           </div>
           <div className="pagesection">
             <h3 className="blue">Details</h3>
+            <p><i className="far fa-clock"></i> Departure time: {flight.departure_time}</p>
+            <p><i className="far fa-clock"></i> Return time: {flight.arrival_time}</p>
             <p><i className="fas fa-clipboard-check"></i> Reservation Code: {this.props.flightById.reservation_code}</p>
             <p><i className="fas fa-suitcase"></i> Checked Bags: {flight.checked_in_baggage}</p>
             <p><i className="fas fa-dollar-sign"></i> Price: {this.props.flightById.price}</p>

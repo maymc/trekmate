@@ -46,7 +46,7 @@ class TripComponent extends Component {
       month[10] = "NOV";
       month[11] = "DEC";
 
-      // console.log('Date', d)
+      console.log('Date', d)
       return {
         day: weekday[d.getDay()],
         date: d.getDate(),
@@ -71,7 +71,7 @@ class TripComponent extends Component {
             <Link className="drk" to={`/trips/edit/${trips.id}?${trips.id}?${trips.user_id}`}>Edit trip</Link>
           </div>
           <div className="tripdates">
-            <DateComponent className="drk-date" date={this.dateFormatter(trips.start_date)} />
+            <DateComponent date={this.dateFormatter(trips.start_date)} />
             <DateComponent date={this.dateFormatter(trips.end_date)} />
           </div>
         </div>
