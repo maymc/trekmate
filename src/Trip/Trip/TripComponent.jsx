@@ -79,7 +79,7 @@ class TripComponent extends Component {
           <div className="eventsection">
             <h3 className="grey spacebottom"><i className="fas fa-plane"></i> Flights</h3>
             {this.props.flights.map(flight => {
-              console.log('flight date', flight.departure_time)
+              console.log('flight date', flight.departure_date)
               return (
                 <EventCard key={flight.id} type={'flight'} detail={flight} title={flight.airlines} date={this.dateFormatter(flight.departure_time)} time={flight.departure_time} />
               )
