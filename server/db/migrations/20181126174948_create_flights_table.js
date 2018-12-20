@@ -15,11 +15,11 @@ exports.up = function (knex, Promise) {
     table.timestamp('updated_at').defaultTo(knex.fn.now());
 
     //Create the column then add foreign key
-    table.integer('user_id').unsigned().notNullable();
-    table.foreign('user_id').references('id').inTable('users');
+    table.integer('user_id').unsigned();
+    table.foreign('user_id').references('id').inTable('users').onDelete('CASCADE');
 
     table.integer('trip_id').unsigned().notNullable();
-    table.foreign('trip_id').references('id').inTable('trips');
+    table.foreign('trip_id').references('id').inTable('trips').onDelete('CASCADE');
   });
 }
 
