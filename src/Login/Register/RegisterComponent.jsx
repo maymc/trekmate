@@ -46,7 +46,7 @@ class Register extends Component {
     this.props.dispatch(addUser(this.state));
 
     //Redirect to login page after successful registration
-    this.props.history.push(`/auth/login`);
+    this.props.history.push(`/`);
   }
 
   render() {
