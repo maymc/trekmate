@@ -11,6 +11,7 @@ import {
   GET_TRIPS_BY_USER_ID,
   ADD_TRIP,
   DELETE_TRIP,
+  EDIT_TRIP,
 
   GET_ACCOMMODATIONS_BY_TRIP_ID,
   GET_ACCOMMODATION_BY_ID,
@@ -48,6 +49,7 @@ const reducer = (state = {
   tripsByUserId: [],
   isAuth: false,
   archivedTrip: [],
+  updatedTrip: [],
 
   accommodations: [],
   accommodationsByTripId: [],
@@ -108,6 +110,8 @@ const reducer = (state = {
       return { ...state, form: action.payload }
     case DELETE_TRIP:
       return { ...state, archivedTrip: action.payload }
+    case EDIT_TRIP:
+      return { ...state, updatedTrip: action.payload }
 
     //-------Accommodation --------//
     case GET_ACCOMMODATIONS_BY_TRIP_ID:

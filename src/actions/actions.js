@@ -263,9 +263,11 @@ export const addTrip = (trip) => {
   }
 }
 
-export const editTrip = (trip) => {
-  const { id } = trip;
+export const editTrip = (id, trip) => {
+  // const { id } = trip;
   console.log("\nACTION: editTrip:", trip)
+  console.log("\nACTION: ID Trip:", id)
+
   // console.log("Check id:", id);
   return dispatch => {
     axios.put(`/trips/edit/${id}`, trip)
