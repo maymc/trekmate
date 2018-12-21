@@ -33,8 +33,6 @@ class AccommodationEdit extends Component {
 
   //Lifecycle Methods
   componentDidMount() {
-
-
     //This id comes from the url
     const accommodationId = this.props.match.params.id;
     console.log("Setting accommodationId:", accommodationId);
@@ -44,7 +42,7 @@ class AccommodationEdit extends Component {
 
   //Helper Functions
   handleChange = (e) => {
-    console.log("AccommodationEdit - handleChange");
+    // console.log("AccommodationEdit - handleChange");
     e.preventDefault();
     const { name, value } = e.target;
     this.setState({
@@ -55,10 +53,9 @@ class AccommodationEdit extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log("\nhandleSubmit - AccommodationEdit - this.props:", this.props);
-    console.log("\nhandleSubmit - AccommodationEdit - this.props.accommodationById.id:", this.props.accommodationById.id);
-    console.log("Updated to this.state:", this.state);
-
+    // console.log("\nhandleSubmit - AccommodationEdit - this.props:", this.props);
+    // console.log("\nhandleSubmit - AccommodationEdit - this.props.accommodationById.id:", this.props.accommodationById.id);
+    // console.log("Updated to this.state:", this.state);
     this.props.dispatch(editAccommodation(this.state, this.props.accommodationById.id));
 
     //Redirect to accommodations page
@@ -82,8 +79,6 @@ class AccommodationEdit extends Component {
 
   render() {
     console.log("AccommodationEdit - render - this.props:", this.props);
-    console.log('state', this.state)
-
     return (
       <div className="container col12">
         <div className="wrap-form">
@@ -102,10 +97,12 @@ class AccommodationEdit extends Component {
               <div>
                 <label className="blue formsection">Details</label>
                 <DateRangePicker
-                  startDate={this.getDate((this.props.accommodationById.check_in_date))} // momentPropTypes.momentObj or null,
-                  startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
-                  endDate={this.getDate(this.props.accommodationById.check_out_date)} // momentPropTypes.momentObj or null,
-                  endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
+                  startDatePlaceholderText={this.props.accommodationById.check_in_date}
+                  endDatePlaceholderText={this.props.accommodationById.check_out_date}
+                  startDate={this.state.startDate}
+                  startDateId="your_unique_start_date_id"
+                  endDate={this.state.endDate} 
+                  endDateId="your_unique_end_date_id"
                   onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
                   focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
                   onFocusChange={focusedInput => this.setState({ focusedInput })}   // PropTypes.func.isRequired,
@@ -117,24 +114,15 @@ class AccommodationEdit extends Component {
               </div>
               <div className="inline">
                 <label>Price</label>
-                <input type="number" min="0.00" max="10000.00" step="0.01" name="price" onChange={this.handleChange} className="reginput inputstyle" placeholder="$00.00" value={this.props.accommodationById.price} ></input>
+                <input type="number" min="0.00" max="10000.00" step="0.01" name="price" onChange={this.handleChange} className="reginput inputstyle" placeholder="$00.00" defaultValue={this.props.accommodationById.price}></input>
                 <div className="checkbox">
                   <input onChange={this.is_Paid} type="checkbox" id="paystatus" name="is_paid"></input>
                   <label htmlFor="paystatus">Paid</label>
                 </div>
               </div>
-              {/* <div className="form-group">
-                <input type="number" id="price" name="price" onChange={this.handleChange}  className="form-control" defaultValue={this.props.accommodationById.price} required></input>
-                <label className="form-control-placeholder" htmlFor="price">Price</label>
-              </div>
-              <div className="formright checkbox">
-                <input onChange={this.handleChange} type="checkbox" id="paystatus" name="is_paid" defaultValue={this.props.accommodationById.notes} ></input>
-                <label htmlFor="paystatus">Paid</label>
-              </div> */}
-        
               <div>
                 <label className="blue formsection">Notes</label>
-                <textarea onChange={this.handleChange} name="notes" value={this.props.accommodationById.notes}></textarea>
+                <textarea onChange={this.handleChange} name="notes" defaultValue={this.props.accommodationById.notes}></textarea>
               </div>
               <button type="submit">Update Accommodation</button>
             </div>

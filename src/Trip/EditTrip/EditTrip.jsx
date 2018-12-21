@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 import { DateRangePicker } from 'react-dates';
+
 import moment from 'moment';
 
 //Redux Setup
@@ -19,26 +20,35 @@ class EditTrip extends Component {
     super(props)
 
     this.state = {
+      city: null,
+      state: null,
+      country: null,
       startDate: null,
+      start_date: null,
       endDate: null,
+      end_date: null,
+      collaborators: 1,
+      user_id: null
     }
   }
 
   //Lifecycle Methods
   componentDidMount() {
-    // console.log("CDM Props", this.props)
     let tripId = this.props.match.params.id
-    this.props.dispatch(getTripById(tripId))
 
+    this.props.dispatch(getTripById(tripId))
+    // this.setState({
+    //   startDate: moment(this.props.tripById.start_date) || null,
+    //   endDate: moment(this.props.tripById.end_date) || null
+    // })
   }
 
   //Helper Functions
   handleChange = (e) => {
-    console.log("EditTrip - handleChange")
+    // console.log("EditTrip - handleChange")
     e.preventDefault();
     const { name, value } = e.target;
     this.setState({
-      id: this.props.tripById.id,
       [name]: value
     })
   }
@@ -50,10 +60,15 @@ class EditTrip extends Component {
     //Redirect to trip page
     this.props.history.push(`/users/account/${this.props.tripById.user_id}/trips/${this.props.tripById.id}`);
   }
-
   getDate = (date) => {
-    return moment(date)
+    console.log('date', date)
+    if (date === undefined) {
+      return
+    } else {
+      return moment(date)
+    }
   }
+
   onClick = () => {
     let tripId = this.props.match.params.id;
     this.props.dispatch(deleteTrip(tripId))
@@ -62,7 +77,6 @@ class EditTrip extends Component {
   render() {
     let userId = this.props.tripById.user_id;
     console.log('state', this.state)
-    let sd = this.getDate(this.props.tripById.start_date)
     console.log("sadasdathis.props:", this.props);
     return (
       <div className="container col12">
@@ -139,10 +153,12 @@ class EditTrip extends Component {
               <div>
                 <label className="blue formsection">Details</label>
                 <DateRangePicker
-                  startDate={sd} // momentPropTypes.momentObj or null,
-                  startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
-                  endDate={this.getDate(this.props.tripById.end_date)} // momentPropTypes.momentObj or null,
-                  endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
+                  startDatePlaceholderText={this.props.tripById.start_date}
+                  endDatePlaceholderText={this.props.tripById.end_date}
+                  startDate={this.state.startDate}
+                  startDateId="your_unique_start_date_id"
+                  endDate={this.state.endDate} 
+                  endDateId="your_unique_end_date_id"
                   onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
                   focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
                   onFocusChange={focusedInput => this.setState({ focusedInput })}   // PropTypes.func.isRequired,
@@ -172,6 +188,6 @@ export default connect(mapStateToProps)(EditTrip);
 
 EditTrip.defaultProps = {
   tripById: {
-    user_id: "User",
+    user_id: 0,
   }
 }

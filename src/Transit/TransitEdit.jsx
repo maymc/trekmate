@@ -66,9 +66,6 @@ class TransitEdit extends Component {
     //Redirect to accommodations page
     this.props.history.push(`/transit/${this.props.transitById.id}`);
   }
-  getDate = (date) => {
-    return moment(date)
-  }
 
   render() {
     console.log("TransitEdit - render - this.props:", this.props);
@@ -92,12 +89,13 @@ class TransitEdit extends Component {
         <div>
           <label className="blue formsection">Details</label>
           <SingleDatePicker
-            date={this.getDate(this.props.transitById.date)} // momentPropTypes.momentObj or null
-            onDateChange={date =>this.setState({ date })} // PropTypes.func.isRequired
-            focused={this.state.focused} // PropTypes.bool
-            onFocusChange={({ focused }) => this.setState({ focused })} // PropTypes.func.isRequired
-            id="your_unique_id" // PropTypes.string.isRequired,
-          />
+                placeholder={this.props.transitById.date}
+                date={this.state.date} // momentPropTypes.momentObj or null
+                onDateChange={date =>this.setState({ date })} // PropTypes.func.isRequired
+                focused={this.state.focused} // PropTypes.bool
+                onFocusChange={({ focused }) => this.setState({ focused })} // PropTypes.func.isRequired
+                id="your_unique_id" // PropTypes.string.isRequired,
+              />
           <TimePicker showSecond={false}  defaultValue={moment(this.props.transitById.time)} className="reginput" onChange={this.updateTime} format={format} use12Hours inputReadOnly />
         </div>
         <div className="form-group">
@@ -110,7 +108,7 @@ class TransitEdit extends Component {
         </div>
         <div className="form-group">
           <label>Price</label>
-          <input type="number" min="0.00" max="10000.00" step="0.01" name="price" onChange={this.handleChange} className="reginput inputstyle" value={this.props.transitById.price}></input>
+          <input type="number" min="0.00" max="10000.00" step="0.01" name="price" onChange={this.handleChange} className="reginput inputstyle" defaultValue={this.props.transitById.price}></input>
         </div>
 
           <button type="submit">Update Transit</button>

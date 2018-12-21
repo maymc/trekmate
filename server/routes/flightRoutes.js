@@ -108,7 +108,7 @@ flightRouter.put('/edit/:id', (req, res) => {
     const updatedFlight = {
         airlines: req.body.airlines,
         departure_time: req.body.departure_time,
-        departure_date: req.body.departure_time,
+        departure_date: req.body.departure_date,
         arrival_date: req.body.arrival_date,
         arrival_time: req.body.arrival_time,
         reservation_code: req.body.reservation_code,
