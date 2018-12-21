@@ -10,3 +10,6 @@
 .forgotpassword-form button {
     margin-bottom: 15px;
 }
+.invalid-email {
+    color: red;
+}
