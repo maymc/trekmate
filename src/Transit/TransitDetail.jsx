@@ -74,10 +74,10 @@ class TransitDetail extends Component {
           <h2 className="pink" >Review</h2>
           <div className="pagesection">
             <DateComponent date={this.dateFormatter(transit.date)} />
+            <p><i className="far fa-clock"></i> Time: {transit.time}</p>
           </div>
           <div className="pagesection">
             <h3 className="blue" >Details</h3>
-            <p><i className="far fa-clock"></i> Time: {transit.time}</p>
             <p><i className="fas fa-dollar-sign"></i> Price: {transit.price}</p>
             <p><i className="fas fa-clipboard-check"></i> Reservation: {transit.reservation}</p>
           </div>
