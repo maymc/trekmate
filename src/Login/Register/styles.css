@@ -1,6 +1,6 @@
 .register {
     background: #BBE6FD;
-    grid-template-rows: 9% 82% 9%;
+    grid-template-rows: 30px auto 30px;
 }
 
 .rmapthreeform {
@@ -27,6 +27,7 @@
 @media only screen and (max-width: 600px) {
     .rmapthreeform {
         grid-column: 2 /12;
+        height: max-content;
     }
 }
 

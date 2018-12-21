@@ -12,15 +12,15 @@ class LocationSearch extends Component {
     }
     handleChange = address => { this.setState({ address }) }
     handleSelect = address => { 
-        
         this.setState({ address })
         geocodeByAddress(address)
         .then(results => {
-            console.log('Address', this.state)
             let lodging_name = this.state.address
             let address = results[0].formatted_address
-            this.props.updateAddress(address, lodging_name )
-        }).catch(error => console.error('Error', error)) };
+            this.props.updateAddress(address, lodging_name)
+            geocodeByAddress(address)
+        }).then(latLng => console.log('success', latLng))
+        .catch(error => console.error('Error', error)) };
     
     render() {
         // console.log("search", this.props)

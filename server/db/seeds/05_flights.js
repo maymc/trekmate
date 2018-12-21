@@ -7,9 +7,9 @@ exports.seed = function (knex, Promise) {
       return knex('flights').insert([
         {
           airlines: "JAL",
-          departure_date: "19-01-10",
+          departure_date: "01/10/19",
           departure_time: "12:38:17",
-          arrival_date: "19-01-10",
+          arrival_date: "01/10/19",
           arrival_time: "19:14:31",
           reservation_code: "T23042",
           checked_in_baggage: "4",
@@ -20,9 +20,9 @@ exports.seed = function (knex, Promise) {
         },
         {
           airlines: "Hawaiian Airlines",
-          departure_date: "19-08-04",
+          departure_date: "08/04/19",
           departure_time: "23:21:40",
-          arrival_date: "19-08-04",
+          arrival_date: "08/04/19",
           arrival_time: "08:53:16",
           reservation_code: "T24622S",
           checked_in_baggage: "2",
@@ -32,9 +32,9 @@ exports.seed = function (knex, Promise) {
           trip_id: 7
         }, {
           airlines: "United Airlines",
-          departure_date: "19-02-15",
+          departure_date: "02/15/19",
           departure_time: "00:00:00",
-          arrival_date: "19-02-15",
+          arrival_date: "02/15/19",
           arrival_time: "05:06:45",
           reservation_code: "S72062E",
           checked_in_baggage: "1",
@@ -44,9 +44,9 @@ exports.seed = function (knex, Promise) {
           trip_id: 2
         }, {
           airlines: "United Airlines",
-          departure_date: "19-07-23",
+          departure_date: "07/23/19",
           departure_time: "18:04:34",
-          arrival_date: "19-07-23",
+          arrival_date: "07/23/19",
           arrival_time: "23:14:52",
           reservation_code: "J8482",
           checked_in_baggage: "1",
@@ -56,9 +56,9 @@ exports.seed = function (knex, Promise) {
           trip_id: 8
         }, {
           airlines: "American Airlines",
-          departure_date: "19-04-23",
+          departure_date: "04/23/19",
           departure_time: "15:04:34",
-          arrival_date: "19-04-23",
+          arrival_date: "04/23/19",
           arrival_time: "24:14:52",
           reservation_code: "S46902S",
           checked_in_baggage: "1",
@@ -68,9 +68,9 @@ exports.seed = function (knex, Promise) {
           trip_id: 3
         }, {
           airlines: "United Airlines",
-          departure_date: "19-04-26",
+          departure_date: "04/26/19",
           departure_time: "06:16:55",
-          arrival_date: "19-04-26",
+          arrival_date: "04/26/19",
           arrival_time: "12:14:22",
           reservation_code: "T470X4D",
           checked_in_baggage: "1",
@@ -80,9 +80,9 @@ exports.seed = function (knex, Promise) {
           trip_id: 3
         }, {
           airlines: "Alaska Airlines",
-          departure_date: "19-10-12",
+          departure_date: "10/12/19",
           departure_time: "05:02:03",
-          arrival_date: "19-10-12",
+          arrival_date: "10/12/19",
           arrival_time: "10:22:53",
           reservation_code: "B653",
           checked_in_baggage: "1",
@@ -92,9 +92,9 @@ exports.seed = function (knex, Promise) {
           trip_id: 4
         }, {
           airlines: "Alaska Airlines",
-          departure_date: "19-10-20",
+          departure_date: "10/20/19",
           departure_time: "12:35:20",
-          arrival_date: "19-10-20",
+          arrival_date: "10/20/19",
           arrival_time: "23:44:13",
           reservation_code: "N3020",
           checked_in_baggage: "1",
@@ -104,9 +104,9 @@ exports.seed = function (knex, Promise) {
           trip_id: 4
         }, {
           airlines: "United Airlines",
-          departure_date: "19-03-12",
+          departure_date: "03/12/19",
           departure_time: "00:00:00",
-          arrival_date: "19-03-12",
+          arrival_date: "03/12/19",
           arrival_time: "05:06:45",
           reservation_code: "S72062E",
           checked_in_baggage: "1",
@@ -116,9 +116,9 @@ exports.seed = function (knex, Promise) {
           trip_id: 5
         }, {
           airlines: "United Airlines",
-          departure_date: "19-03-24",
+          departure_date: "03/24/19",
           departure_time: "18:04:34",
-          arrival_date: "19-03-24",
+          arrival_date: "03/24/19",
           arrival_time: "23:14:52",
           reservation_code: "J8482",
           checked_in_baggage: "1",
@@ -129,9 +129,9 @@ exports.seed = function (knex, Promise) {
         },
         {
           airlines: "Alaska Airlines",
-          departure_date: "19-05-05",
+          departure_date: "05/05/19",
           departure_time: "05:02:03",
-          arrival_date: "19-05-05",
+          arrival_date: "05/05/19",
           arrival_time: "10:22:53",
           reservation_code: "B653",
           checked_in_baggage: "1",
@@ -141,9 +141,9 @@ exports.seed = function (knex, Promise) {
           trip_id: 6
         }, {
           airlines: "Alaska Airlines",
-          departure_date: "19-05-10",
+          departure_date: "05/10/19",
           departure_time: "12:35:20",
-          arrival_date: "19-05-10",
+          arrival_date: "05/10/19",
           arrival_time: "23:44:13",
           reservation_code: "N3020",
           checked_in_baggage: "1",
@@ -154,9 +154,9 @@ exports.seed = function (knex, Promise) {
         },
         {
           airlines: "United Airlines",
-          departure_date: "19-08-02",
+          departure_date: "08/02/19",
           departure_time: "18:04:34",
-          arrival_date: "19-08-02",
+          arrival_date: "08/02/19",
           arrival_time: "23:14:52",
           reservation_code: "J8482",
           checked_in_baggage: "1",
@@ -166,9 +166,9 @@ exports.seed = function (knex, Promise) {
           trip_id: 7
         }, {
           airlines: "Hawaiian Airlines",
-          departure_date: "19-01-01",
+          departure_date: "01/01/19",
           departure_time: "23:21:40",
-          arrival_date: "19-01-02",
+          arrival_date: "01/02/19",
           arrival_time: "08:53:16",
           reservation_code: "T24622S",
           checked_in_baggage: "2",
@@ -178,9 +178,9 @@ exports.seed = function (knex, Promise) {
           trip_id: 1
         }, {
           airlines: "United Airlines",
-          departure_date: "19-02-20",
+          departure_date: "02/20/19",
           departure_time: "18:04:34",
-          arrival_date: "19-02-20",
+          arrival_date: "02/20/19",
           arrival_time: "23:14:52",
           reservation_code: "J8482",
           checked_in_baggage: "1",
@@ -191,9 +191,9 @@ exports.seed = function (knex, Promise) {
         },
         {
           airlines: "United Airlines",
-          departure_date: "19-07-28",
+          departure_date: "07/28/19",
           departure_time: "06:16:55",
-          arrival_date: "19-07-28",
+          arrival_date: "07/28/19",
           arrival_time: "12:14:22",
           reservation_code: "T470X4D",
           checked_in_baggage: "1",

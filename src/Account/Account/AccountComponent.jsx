@@ -111,10 +111,16 @@ class Account extends Component {
 }
 
 const mapStateToProps = state => {
-  // return {
-  //   userById: state.userById,
-  //   tripsByUserId: state.tripsByUserId
-  // }
-  return state
+  return {
+    userById: state.userById,
+    tripsByUserId: state.tripsByUserId
+  }
+  // return state
 }
 export default connect(mapStateToProps)(Account);
+
+// Account.defaultProps = {
+//   userById: {
+//     id: 0,
+//   }
+// }

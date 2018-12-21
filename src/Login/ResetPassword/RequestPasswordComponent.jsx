@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 
 
 import { connect } from 'react-redux';
 
 class RequestPassword extends Component {
-    constructor(props) {
-        super(props)
+    // constructor(props) {
+    //     super(props)
 
-        // this.state = {
-        //     email: null,
-        //     password: null
-        // }
-    }
+    //     // this.state = {
+    //     //     email: null,
+    //     //     password: null
+    //     // }
+    // }
     componentDidMount() { }
 
     logIn = () => {

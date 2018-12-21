@@ -100,7 +100,6 @@ class Login extends Component {
       return (
         <Redirect to={`/users/account/${this.props.loginData.userLoginId}`} />
       )
-
     }
     else if (this.props.loginData.isLoggedIn === 401) {
       return (

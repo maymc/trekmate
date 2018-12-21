@@ -35,10 +35,7 @@ class AccommodationAdd extends Component {
 
   //Lifecycle Methods
   componentDidMount() {
-
     let id = (this.props.location.search).split("?")
-
-    // console.log('Temp', id[1])
     this.setState({
       trip_id: Number(id[2]),
       user_id: Number(id[1])
@@ -47,7 +44,6 @@ class AccommodationAdd extends Component {
 
   handleChange = (e) => {
     e.preventDefault();
-
     const { name, value } = e.target;
     this.setState({
       [name]: value
@@ -56,12 +52,7 @@ class AccommodationAdd extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Acc Add Props", this.props)
-    console.log("Acc Add State", this.state);
-
     this.props.dispatch(addAccommodation(this.state));
-
-    //Redirect to accommodations page
     this.props.history.push(`/users/account/${this.state.user_id}/trips/${this.state.trip_id}`);
   }
 
@@ -70,7 +61,6 @@ class AccommodationAdd extends Component {
       lodging_name: lodging_name,
       address: address
     })
-    console.log("Parent method, update address", this.state)
   }
 
   is_Paid = () => {

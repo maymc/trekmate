@@ -25,20 +25,24 @@
         padding: 10px;
         height: 50px;
         display: block;
-        width: 92%;
+        width: 100%;
         margin: 15px 0px 5px 0px;
     }
     .datecont h3 {
         font-size: 1em;
+        line-height: .5em;
         display: inline-block;
     }
     .datecont h1 {
         display: inline-block;
         font-size: 1em;
+        line-height: .5em;
         margin: 0px 15px 0px 15px;
     }
     .datecont p {
         display: inline-block;
+        line-height: .5em;
+        margin: 0px;
     }
 
 }

@@ -68,7 +68,7 @@ class TripComponent extends Component {
             <h1>{trips.city}<span>, {trips.country}</span></h1>
 
 
-            <Link className="drk" to={`/trips/edit/${trips.id}/${trips.user_id}`}>Edit trip</Link>
+            <Link className="drk" to={`/trips/edit/${trips.id}?${trips.id}?${trips.user_id}`}>Edit trip</Link>
           </div>
           <div className="tripdates">
             <DateComponent date={this.dateFormatter(trips.start_date)} />
@@ -79,9 +79,8 @@ class TripComponent extends Component {
           <div className="eventsection">
             <h3 className="grey spacebottom"><i className="fas fa-plane"></i> Flights</h3>
             {this.props.flights.map(flight => {
-              console.log('flight date', flight.departure_time)
               return (
-                <EventCard key={flight.id} type={'flight'} detail={flight} title={flight.airlines} date={this.dateFormatter(flight.departure_time)} time={flight.departure_time} />
+                <EventCard key={flight.id} type={'flight'} detail={flight} title={flight.airlines} date={this.dateFormatter(flight.departure_date)} time={flight.departure_time} />
               )
             })}
             <Link to={`/flights/add?${trips.user_id}?${trips.id}`}>+ Add a flight</Link>
@@ -99,7 +98,7 @@ class TripComponent extends Component {
             <h3 className="grey"><i className="fas fa-hiking"></i> Activities</h3>
             {this.props.activities.map(activity => {
               return (
-                <EventCard key={activity.id} type={'actvity'} detail={activity} title={activity.activity_name} date={this.dateFormatter(activity.date)} time={activity.time} />
+                <EventCard key={activity.id} type={'activity'} detail={activity} title={activity.activity_name} date={this.dateFormatter(activity.date)} time={activity.time} />
               )
             })}
             <Link to={`/activities/add?${trips.user_id}?${trips.id}`}>+ Add an activity</Link>

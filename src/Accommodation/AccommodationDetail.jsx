@@ -109,3 +109,9 @@ const mapStateToProps = state => {
     }
 }
 export default connect(mapStateToProps)(AccommodationDetail);
+
+AccommodationDetail.defaultProps = {
+    accommodationById: {
+      id: null,
+    }
+  }

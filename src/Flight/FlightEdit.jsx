@@ -13,7 +13,7 @@ import { DateRangePicker } from 'react-dates';
 
 //Time picker
 import 'rc-time-picker/assets/index.css';
-import moment from 'moment';
+// import moment from 'moment';
 import TimePicker from 'rc-time-picker';
 const format = 'h:mm a';
 // const now = moment().hour(0).minute(0);
@@ -68,20 +68,20 @@ class FlightEdit extends Component {
     this.props.history.push(`/flight/${this.props.flightById.id}`);
   }
   departureTime = (value) => {
-    // console.log(value.format(format));
+    console.log(value.format(value))
+
     this.setState({
-      departure_time: value.format(format)
+      departure_time: value.format(value)
     })
+    console.log(this.state.departure_time)
   }
 
   returnTime = (value) => {
-    // console.log(value.format(format));
+    console.log(value.format(value))
+
     this.setState({
-      arrival_time: value.format(format)
+      arrival_time: value.format(value)
     })
-  }
-  getDate = (date) => {
-    return moment(date)
   }
 
   render() {
@@ -93,42 +93,45 @@ class FlightEdit extends Component {
           <div className="formbottom">
           <h2 className="blue">Update Flight</h2>
           <div className="form-group">
-            <input type="text" id="flight" name="airlines" onChange={this.handleChange} className="form-control" value={this.props.flightById.airlines}></input>
+            <input type="text" id="flight" name="airlines" onChange={this.departureTime} className="form-control" defaultValue={this.props.flightById.airlines}></input>
             <label className="form-control-placeholder" htmlFor="flight">Airline</label>
           </div>
           <div>
               <label className="blue formsection">Details</label>
               <DateRangePicker
-                startDate={this.getDate(this.props.flightById.departure_date)} // momentPropTypes.momentObj or null,
-                startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
-                endDate={this.getDate(this.props.flightById.arrival_date)} // momentPropTypes.momentObj or null,
-                endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
-                onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
-                focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
-                onFocusChange={focusedInput => this.setState({ focusedInput })}   // PropTypes.func.isRequired,
-              />
+                  startDatePlaceholderText={this.props.flightById.departure_date}
+                  endDatePlaceholderText={this.props.flightById.arrival_date}
+                  startDate={this.state.startDate}
+                  startDateId="your_unique_start_date_id"
+                  endDate={this.state.endDate} 
+                  endDateId="your_unique_end_date_id"
+                  onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
+                  focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
+                  onFocusChange={focusedInput => this.setState({ focusedInput })}   // PropTypes.func.isRequired,
+                />
           </div> 
           <div className="form-group">
             <label className="minput">Departure Flight:</label>
-            <TimePicker showSecond={false} className="reginput minput" value={moment(this.props.flightById.departure_time,'h:mm a')} onChange={this.departureTime} use12Hours inputReadOnly />
+            <TimePicker showSecond={false} placeholder={this.props.flightById.departure_time} className="xxx" onChange={this.departureTime} format={format} use12Hours inputReadOnly />
+            {/* <TimePicker showSecond={false} className="reginput minput" placeholder={this.props.flightById.departure_time}     format={format} onChange={this.departureTime} use12Hours inputReadOnly /> */}
             <label className="minput spaceleft">Return Flight:</label>
-            <TimePicker showSecond={false} className="reginput minput" value={moment(this.props.flightById.arrival_time,'h:mm a')} onChange={this.returnTime} use12Hours inputReadOnly />
+            <TimePicker showSecond={false} className="reginput minput" placeholder={this.props.flightById.arrival_time} onChange={this.returnTime} use12Hours inputReadOnly />
           </div>
           <div className="form-group">
-              <input type="text" id="rescode" name="reservation_code" onChange={this.handleChange} className="form-control" value={this.props.flightById.reservation_code}></input>
+              <input type="text" id="rescode" name="reservation_code" onChange={this.handleChange} className="form-control" defaultValue={this.props.flightById.reservation_code}></input>
               <label className="form-control-placeholder" htmlFor="rescode">Reservation code</label>
           </div>
           <div className="form-group">
-              <input type="number" id="baggage" name="checked_in_baggage" onChange={this.handleChange} className="form-control" value={this.props.flightById.checked_in_baggage}></input>
+              <input type="number" id="baggage" name="checked_in_baggage" onChange={this.handleChange} className="form-control" defaultValue={this.props.flightById.checked_in_baggage}></input>
               <label className="form-control-placeholder" htmlFor="baggage">How many bags are you checking?</label>
           </div>
           <div className="form-group">
               <label>Price</label>
-              <input type="number" min="0.00" max="10000.00" step="0.01" name="price" onChange={this.handleChange} className="reginput inputstyle" value={this.props.flightById.price}></input>
+              <input type="number" min="0.00" max="10000.00" step="0.01" name="price" onChange={this.handleChange} className="reginput inputstyle" defaultValue={this.props.flightById.price}></input>
             </div>
           <div>
               <label className="blue formsection">Notes</label>
-              <textarea onChange={this.handleChange} name="notes" value={this.props.flightById.notes}></textarea>
+              <textarea onChange={this.handleChange} name="notes" defaultValue={this.props.flightById.notes}></textarea>
           </div>
           <button type="submit">Update</button>
           </div>

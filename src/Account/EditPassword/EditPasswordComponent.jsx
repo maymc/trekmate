@@ -55,6 +55,7 @@ class EditPassword extends Component {
 
   render() {
     // const { users } = this.props;
+    console.log('UP', this.props)
     return (
       <div className="container col12">
         <div className="formplace updatepassword-form">
@@ -83,7 +84,7 @@ class EditPassword extends Component {
             <button type="submit">Submit</button>
           </form>
 
-          <Link to={`users/account/${this.props.userById.id}`}>
+          <Link to={`/users/account/${this.props.userById.id}`}>
             Cancel
           </Link>
         </div>

@@ -105,8 +105,7 @@ class TransitAdd extends Component {
             <div className="form-group">
                 <label>Do you have a reservation?</label>
                 <select name="reservation" onChange={this.handleChange}>
-                  <option value="select">Select
-                  </option>
+                  <option value="select">Select</option>
                   <option value="yes">Yes</option>
                   <option value="no">No</option>
                 </select>

@@ -17,13 +17,18 @@ class Home extends Component {
       country: null
     }
   }
+  getdets = (address) => {
+    console.log("get dets", address)
+  }
   updateAddress = (address, lodging_name) => {
-    console.log('update address', address)
-    console.log('update lodging name', lodging_name)
-    // this.setState({
-    //   lodging_name: lodging_name,
-    //   address: address
-    // })
+    let spl = address.split(",")
+    console.log(spl)
+  
+    this.setState({
+      city: spl[0],
+      state: spl[1] || null,
+      country: spl[2] || null,
+    })
     console.log("Parent method, update address", this.state)
   } 
 
@@ -36,7 +41,7 @@ class Home extends Component {
         </div>
         <div className="homecontent">
           <div className="homelocationsearch">
-            <LocationSearch title="Where should we go?" updateAddress={this.updateAddress} />
+            <LocationSearch title="Where should we go?" getdets={this.getdets} updateAddress={this.updateAddress} />
             <h1>{this.state.city}</h1>
           </div>
         </div>
