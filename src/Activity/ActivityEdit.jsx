@@ -28,7 +28,7 @@ class ActivityEdit extends Component {
       activity_name: this.props.activityById.activity_name,
       location: this.props.activityById.location,
       date: this.props.activityById.date,
-      time: this.props.activityById.time,
+      time: null,
       price: this.props.activityById.price,
       type: this.props.activityById.type,
       votes: this.props.activityById.votes,
@@ -42,10 +42,8 @@ class ActivityEdit extends Component {
 
   //Lifecycle Methods
   componentDidMount() {
-
     //This id comes form the url
     const activityId = this.props.match.params.id;
-    console.log("Setting activityId:", activityId);
 
     this.props.dispatch(getActivityById(activityId));
   }
@@ -63,8 +61,8 @@ class ActivityEdit extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log("\nhandleSubmit - ActivityEdit - this.props:", this.props);
-    console.log("\nhandleSubmit - ActivityEdit - this.props.activityById.id:", this.props.activityById.id);
+    // console.log("\nhandleSubmit - ActivityEdit - this.props:", this.props);
+    // console.log("\nhandleSubmit - ActivityEdit - this.props.activityById.id:", this.props.activityById.id);
     console.log("Updated to this.state:", this.state);
 
     this.props.dispatch(editActivity(this.state, this.props.activityById.id));
@@ -72,9 +70,19 @@ class ActivityEdit extends Component {
     //Redirect to accommodations page
     this.props.history.push(`/activity/${this.props.activityById.id}`);
   }
+  setTime = (value) => {
+    console.log("setTime", value.format(format))
 
-  getDate = (date) => {
-    return moment(date)
+    this.setState({
+      time: value.format(format)
+    })
+  }
+  getDate(date) {
+    if (date === undefined ) {
+      return
+    } else {
+      return moment(date)
+    }
   }
 
   render() {
@@ -87,7 +95,7 @@ class ActivityEdit extends Component {
         <div className="formbottom">
           <h2 className="blue">Activity</h2>
           <div className="form-group">
-            <input type="text" id="name" name="activity_name" onChange={this.handleChange} className="form-control" value={this.props.activityById.activity_name} required></input>
+            <input type="text" id="name" name="activity_name" onChange={this.handleChange} className="form-control" defaultValue={this.props.activityById.activity_name} required></input>
             <label className="form-control-placeholder" htmlFor="name">Activity name</label>
           </div>
           <div className="form-group">
@@ -104,20 +112,21 @@ class ActivityEdit extends Component {
           <div>
             <label className="blue formsection">Details</label>
             <SingleDatePicker
-              date={this.getDate(this.props.activityById.date)} // momentPropTypes.momentObj or null
-              onDateChange={date =>this.setState({ date })} // PropTypes.func.isRequired
-              focused={this.state.focused} // PropTypes.bool
-              onFocusChange={({ focused }) => this.setState({ focused })} // PropTypes.func.isRequired
-              id="your_unique_id" // PropTypes.string.isRequired,
-            />
-            <TimePicker showSecond={false}  defaultValue={moment(this.props.activityById.time)} className="reginput" onChange={this.updateTime} format={format} use12Hours inputReadOnly />
+                placeholder={this.props.activityById.date}
+                date={this.getDate(this.state.date)} // momentPropTypes.momentObj or null
+                onDateChange={date =>this.setState({ date })} // PropTypes.func.isRequired
+                focused={this.state.focused} // PropTypes.bool
+                onFocusChange={({ focused }) => this.setState({ focused })} // PropTypes.func.isRequired
+                id="your_unique_id" // PropTypes.string.isRequired,
+              />
+              <TimePicker showSecond={false} placeholder={this.props.activityById.time} defaultValue={this.state.time} className="xxx" onChange={this.setTime} use12Hours inputReadOnly />
           </div>
           <div className="form-group">
             <label>Price</label>
-            <input type="number" min="0.00" max="10000.00" step="0.01" name="price" onChange={this.handleChange} className="reginput inputstyle" value={this.props.activityById.price}></input>
+            <input type="number" min="0.00" max="10000.00" step="0.01" name="price" onChange={this.handleChange} className="reginput inputstyle" defaultValue={this.props.activityById.price}></input>
           </div>
           <div className="form-group">
-            <input type="text" id="image" name="image" onChange={this.handleChange} className="form-control" value={this.props.activityById.image}></input>
+            <input type="text" id="image" name="image" onChange={this.handleChange} className="form-control" defaultValue={this.props.activityById.image}></input>
             <label className="form-control-placeholder" htmlFor="image">Include an image (url)</label>
           </div>
           <div className="form-group">
@@ -131,7 +140,7 @@ class ActivityEdit extends Component {
           </div>
           <div>
             <label className="blue formsection">Notes</label>
-            <textarea onChange={this.handleChange} name="notes" value={this.props.activityById.notes}></textarea>
+            <textarea onChange={this.handleChange} name="notes" defaultValue={this.props.activityById.notes}></textarea>
           </div>
 
           <button type="submit">Update Activity</button>
@@ -151,3 +160,9 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps)(ActivityEdit);
+
+ActivityEdit.defaultProps = {
+  activityById: {
+    id: null,
+  }
+}

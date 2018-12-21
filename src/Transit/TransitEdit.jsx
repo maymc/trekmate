@@ -27,7 +27,7 @@ class TransitEdit extends Component {
       // id: this.props.transitById.id,
       type: this.props.transitById.type,
       date: null,
-      time: this.props.transitById.time,
+      time: null,
       reservation: this.props.transitById.reservation,
       price: this.props.transitById.price,
       user_id: this.props.transitById.user_id,
@@ -66,6 +66,13 @@ class TransitEdit extends Component {
     //Redirect to accommodations page
     this.props.history.push(`/transit/${this.props.transitById.id}`);
   }
+  setTime = (value) => {
+    console.log("setTime", value.format(format))
+
+    this.setState({
+      time: value.format(format)
+    })
+  }
 
   render() {
     console.log("TransitEdit - render - this.props:", this.props);
@@ -96,7 +103,7 @@ class TransitEdit extends Component {
                 onFocusChange={({ focused }) => this.setState({ focused })} // PropTypes.func.isRequired
                 id="your_unique_id" // PropTypes.string.isRequired,
               />
-          <TimePicker showSecond={false}  defaultValue={moment(this.props.transitById.time, 'h:mm a')} className="reginput" onChange={this.updateTime} use12Hours inputReadOnly />
+              <TimePicker showSecond={false} placeholder={this.props.transitById.time} defaultValue={this.state.time} className="xxx" onChange={this.setTime} use12Hours inputReadOnly />
         </div>
         <div className="form-group">
           <label>Do you have a reservation?</label>
