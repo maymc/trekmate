@@ -61,7 +61,7 @@ class EditTrip extends Component {
   }
 
   render() {
-    // let userId = this.props.tripById.user_id;
+    let userId = this.props.tripById.user_id;
     console.log('state', this.state)
     let sd = this.getDate(this.props.tripById.start_date)
     console.log("sadasdathis.props:", this.props);
@@ -82,8 +82,7 @@ class EditTrip extends Component {
           <form className="col12" onSubmit={this.handleSubmit}>
             <div className="formbottom">
               <h2 className="blue inlineblock">Update your trip to {this.props.tripById.city}</h2>
-              {/* <Link className='right' to={`/}`}>Delete trip</Link> */}
-              <Link className='right' to={`/users/account/${this.state.userId}`} onClick={this.onClick}>Delete trip</Link>
+              <Link className='right' to={`/users/account/${userId}`} onClick={this.onClick}>Delete trip</Link>
               <div className="form-group">
                 <input type="text" id="city" name="city" onChange={this.handleChange} className="form-control" defaultValue={this.props.tripById.city} required></input>
                 <label className="form-control-placeholder" htmlFor="city">City</label>
