@@ -93,7 +93,7 @@ tripRouter.post('/add', (req, res) => {
 })
 
 //PUT - edit trip by trip id
-tripRouter.put('/edit/:id', (req, res) => {
+tripRouter.put('/edit/:trip_id/:user_id', (req, res) => {
     const { id } = req.params;
 
     const updatedTrip = {

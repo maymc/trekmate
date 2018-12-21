@@ -4,6 +4,7 @@ import {
   GET_ALL_USERS,
   GET_USER_BY_ID,
   ADD_USER,
+  REQUEST_PASSWORD,
 
   GET_ALL_TRIPS,
   GET_TRIP_BY_ID,
@@ -41,10 +42,11 @@ const reducer = (state = {
 
   users: [],
   userById: {},
-
+  authUserEmail: [],
   trips: [],
   tripById: [],
   tripsByUserId: [],
+  isAuth: false,
   archivedTrip: [],
 
   accommodations: [],
@@ -78,6 +80,10 @@ const reducer = (state = {
         userLoginId: action.data
       }
       return { ...state, loginData: newLoginData };
+
+    case REQUEST_PASSWORD:
+      console.log('reducer request password');
+      return { ...state, email: action.payload }
 
     //-------GET ALL BY TRIP_ID ----------//
     case GET_ALL_BY_TRIP_ID:
