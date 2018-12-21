@@ -45,10 +45,18 @@
   grid-column: 1 / span 4;
   -webkit-clip-path: polygon(0 0, 100% 20%, 100% 100%, 0% 100%);
   clip-path: polygon(0 0, 100% 20%, 100% 100%, 0% 100%);
-  background: rgb(71,98,173);
-  background: linear-gradient(333deg, rgba(71,98,173,1) 33%, rgba(87,164,245,1) 100%);
+  /* background: rgb(71,98,173);
+  background: linear-gradient(333deg, rgba(71,98,173,1) 33%, rgba(87,164,245,1) 100%); */
   padding: 120px 15px 30px 30px;
   color: white;
+}
+.blue-bg {
+  background: rgb(71,98,173);
+  background: linear-gradient(333deg, rgba(71,98,173,1) 33%, rgba(87,164,245,1) 100%);
+}
+.pink-bg {
+  background: rgb(134,28,88);
+  background: linear-gradient(333deg, rgba(134,28,88,1) 33%, rgba(191,38,143,1) 100%);
 }
 .pagebody {
   grid-column: 5 / span 8;
@@ -83,7 +91,7 @@
   .pagebody {
     grid-column: 1 / span 12;
     grid-row: 2/2;
-    padding: 30px;
+    padding: 10px;
   }
 
 }

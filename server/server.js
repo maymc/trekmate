@@ -19,6 +19,7 @@ const accommodationRoutes = require('./routes/accommodationRoutes.js');
 const flightRoutes = require('./routes/flightRoutes.js');
 const transitRoutes = require('./routes/transitRoutes.js');
 const tripRoutes = require('./routes/tripRoutes.js');
+const resetRoutes = require('./routes/resetRoutes.js');
 const userRoutes = require('./routes/userRoutes.js');
 
 app.use(cors());
@@ -46,6 +47,7 @@ app.use('/flights', flightRoutes);
 app.use('/transit', transitRoutes);
 app.use('/trips', tripRoutes);
 app.use('/users', userRoutes);
+app.use('/login/forgotPassword', resetRoutes);
 
 //GET /home
 app.get('/', (req, res) => {

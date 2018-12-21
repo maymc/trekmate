@@ -1,53 +1,10 @@
-.account {
-    grid-auto-rows: min-content;
-    grid-column-gap: 10px;
-}
-
-.userimage {
-    width: 100%;
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-}
-
-.userimage img {
-    width: 100%;
-    height: auto;
-}
-
-.userdata {
-    width: 100%;
-    height: min-content;
-}
-
-.userdata h1 {
-    margin-top: 15px;
-    color: #9d2069;
-}
-
 .userdata h1 span {
     font-size: .5em;
-    color: #bf268f;
 }
-
 .userdata p {
     margin-bottom: 30px;
-    color: #6C6A82;
 }
 
-.userdata a {
-    margin-right: 15px;
-}
-
-.accountfeed {
-    grid-column: 1 / span 2;
-    padding: 30px;
-    background: #f5f5f5;
-    
-}
 .triplist {
     width: 100%;
     margin-bottom: 30px;
@@ -55,7 +12,7 @@
     background: #4762ad;
     color: white;
     display: grid;
-    grid-template-columns: auto 300px;
+    grid-template-columns: auto 303px;
     grid-template-rows: auto auto 36px;
 }
 .triplist h1 span {
@@ -76,19 +33,7 @@
     grid-column: 2 / span 1;
     grid-row: 1 / span 3;
 }
-.accountbar {
-    grid-column: 3 / span 1;
-    padding: 30px 30px 15px 30px;
-    /* border-left: 2px solid #f5f5f5; */
-}
 
-.accountbar button {
-    margin-top: 30px;
-    text-align: left;
-    font-size: .75em;
-    height: 60px;
-    text-align: center;
-}
 
 @media only screen and (max-width: 900px) {
     .triptitle {
@@ -110,24 +55,12 @@
 
 
 @media only screen and (max-width: 668px) {
-    .accountbanner {
-        padding: 15px;
-    }
-    .userimage {
-        width: 70px;
-        height: 70px;
-    }
-    .accountfeed {
-        grid-column: 1 / span 3;
-        grid-row: 3/3;
-        padding: 0px;
-    }
-    .accountbar {
-        grid-column: 1 / span 3;
-        grid-row: 2/2;  
-    }
+
     .triplist {
-        padding: 15px;
+        padding: 10px;
         margin-bottom: 2px;
+    }
+    .tripbutton {
+        width: 92%;
     }
 }

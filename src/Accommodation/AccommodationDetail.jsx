@@ -60,7 +60,7 @@ class AccommodationDetail extends Component {
 
         return (
             <div key={this.props.accommodationById.id} className="container col12">
-                <div className="pagebanner">
+                <div className="pagebanner blue-bg">
                     <i className="spacebottom fas fa-5x fa-bed"></i>
                 <h1>{accom.lodging_name}</h1>
                 <Link className="drk" to={`/flights/trip/${this.props.accommodationById}`}> Delete accommodation
