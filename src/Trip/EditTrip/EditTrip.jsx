@@ -20,29 +20,50 @@ class EditTrip extends Component {
     super(props)
 
     this.state = {
-      city: null,
-      state: null,
-      country: null,
-      startDate: null,
-      start_date: null,
-      endDate: null,
-      end_date: null,
+      id: "",
+      city: this.props.tripById.city || '',
+      state: this.props.tripById.state || '',
+      country: this.props.tripById.country || '',
+      start_date: this.props.tripById.start_date || '',
+      end_date: this.props.tripById.end_date || '',
       collaborators: 1,
-      // user_id: null,
-      user_id: this.props.match.params.user_id
+      user_id: this.props.tripById.user_id || ''
     }
+  }
+
+  //This will set state from props everytime props changes
+  static getDerivedStateFromProps(nextProps, prevState) {
+    console.log("nextProps.tripById:", nextProps.tripById);
+    console.log("prevState:", prevState);
+
+    if (nextProps.tripById !== prevState.tripById) {
+      return {
+        original: {
+          id: nextProps.tripById.id,
+          city: nextProps.tripById.city,
+          state: nextProps.tripById.state,
+          country: nextProps.tripById.country,
+          start_date: nextProps.tripById.start_date,
+          end_date: nextProps.tripById.end_date,
+          collaborators: 1,
+          user_id: nextProps.tripById.user_id
+        }
+      };
+    }
+    else return null;
   }
 
   //Lifecycle Methods
   componentDidMount() {
     let tripId = this.props.match.params.id
+    console.log("Check tripId:", tripId)
 
     this.props.dispatch(getTripById(tripId))
   }
 
   //Helper Functions
   handleChange = (e) => {
-    // console.log("EditTrip - handleChange")
+    console.log("EditTrip - handleChange")
     e.preventDefault();
     const { name, value } = e.target;
     this.setState({
@@ -52,7 +73,13 @@ class EditTrip extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.dispatch(editTrip(this.state, this.props.tripById.id));
+    for (const key in this.state) {
+      if (this.state[key] === "") {
+        this.state[key] = this.state.original[key];
+      }
+    }
+
+    this.props.dispatch(editTrip(this.state));
 
     //Redirect to trip page
     this.props.history.push(`/users/account/${this.props.tripById.user_id}/trips/${this.props.tripById.id}`);
@@ -74,7 +101,7 @@ class EditTrip extends Component {
   render() {
     let userId = this.props.tripById.user_id;
     console.log('state', this.state)
-    console.log("sadasdathis.props:", this.props);
+    console.log("this.props:", this.props);
     return (
       <div className="container col12">
         <div className="wrap-form">

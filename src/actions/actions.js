@@ -265,6 +265,7 @@ export const addTrip = (trip) => {
 
 export const editTrip = (trip) => {
   const { id } = trip;
+  console.log("Check editTrip id:", id);
   console.log("\nACTION: editTrip:", trip)
   // console.log("Check id:", id);
   return dispatch => {

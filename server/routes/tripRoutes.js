@@ -94,7 +94,11 @@ tripRouter.post('/add', (req, res) => {
 
 //PUT - edit trip by trip id
 tripRouter.put('/edit/:id', (req, res) => {
+    console.log("\nAXIOS - editTrip");
+    console.log("\nreq.body:", req.body);
+    console.log("\nreq:", req);
     const { id } = req.params;
+    console.log("\ncheck id:", id);
 
     const updatedTrip = {
         city: req.body.city,
