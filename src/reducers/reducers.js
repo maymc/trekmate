@@ -17,21 +17,25 @@ import {
   GET_ACCOMMODATION_BY_ID,
   GET_ALL_ACCOMMODATIONS,
   ADD_ACCOMMODATION,
+  EDIT_ACCOMMODATION,
 
   GET_ALL_ACTIVITIES,
   GET_ACTIVITY_BY_ID,
   GET_ACTIVITIES_BY_TRIP_ID,
   ADD_ACTIVITY,
+  EDIT_ACTIVITY,
 
   GET_ALL_FLIGHTS,
   GET_FLIGHTS_BY_TRIP_ID,
   GET_FLIGHT_BY_ID,
   ADD_FLIGHT,
+  EDIT_FLIGHT,
 
   GET_ALL_TRANSIT,
   GET_TRANSIT_BY_TRIP_ID,
   GET_TRANSIT_BY_ID,
   ADD_TRANSIT,
+  EDIT_TRANSIT,
 
   GET_ALL_BY_TRIP_ID
 }
@@ -54,18 +58,22 @@ const reducer = (state = {
   accommodations: [],
   accommodationsByTripId: [],
   accommodationById: {},
+  updatedAccommodation: [],
 
   activities: [],
   activitiesByTripId: [],
   activityById: {},
+  updatedActivity: [],
 
   flights: [],
   flightsByTripId: [],
   flightById: {},
+  updatedFlight: [],
 
   transit: [],
   transitByTripId: [],
   transitById: {},
+  updatedTransit: [],
 
   form: {}
 }, action) => {
@@ -128,6 +136,8 @@ const reducer = (state = {
 
     case ADD_ACCOMMODATION:
       return { ...state, form: action.payload }
+    case EDIT_ACCOMMODATION:
+      return { ...state, updatedAccommodation: action.payload }
 
     //-------Activity---------//
     case GET_ALL_ACTIVITIES:
@@ -138,6 +148,8 @@ const reducer = (state = {
       return { ...state, activityById: action.payload }
     case ADD_ACTIVITY:
       return { ...state, form: action.payload }
+    case EDIT_ACTIVITY:
+      return { ...state, updatedActivity: action.payload }
 
     //-------Flight---------//
     case GET_ALL_FLIGHTS:
@@ -148,6 +160,8 @@ const reducer = (state = {
       return { ...state, flightById: action.payload }
     case ADD_FLIGHT:
       return { ...state, form: action.payload }
+    case EDIT_FLIGHT:
+      return { ...state, updatedFlight: action.payload }
 
     //-------Transit --------//
     case GET_ALL_TRANSIT:
@@ -158,6 +172,8 @@ const reducer = (state = {
       return { ...state, transitById: action.payload }
     case ADD_TRANSIT:
       return { ...state, form: action.payload }
+    case EDIT_TRANSIT:
+      return { ...state, updatedTransit: action.payload }
 
 
     default:
