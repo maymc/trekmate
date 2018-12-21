@@ -68,7 +68,7 @@ class TripComponent extends Component {
             <h1>{trips.city}<span>, {trips.country}</span></h1>
 
 
-            <Link className="drk" to={`/trips/edit/${trips.id}/${trips.user_id}`}>Edit trip</Link>
+            <Link className="drk" to={`/trips/edit/${trips.id}?${trips.id}?${trips.user_id}`}>Edit trip</Link>
           </div>
           <div className="tripdates">
             <DateComponent date={this.dateFormatter(trips.start_date)} />
