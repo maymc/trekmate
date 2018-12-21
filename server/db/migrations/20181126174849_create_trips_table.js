@@ -5,8 +5,8 @@ exports.up = function (knex, Promise) {
     table.string('city', 200).notNullable();
     table.string('state', 30).notNullable();
     table.string('country', 90).notNullable();
-    table.string('start_date', 60).notNullable();
-    table.string('end_date', 60).notNullable();
+    table.string('start_date', 100).notNullable();
+    table.string('end_date', 100).notNullable();
     table.string('collaborators').notNullable();
     table.timestamp('created_at').defaultTo(knex.fn.now());
     table.timestamp('updated_at').defaultTo(knex.fn.now());
