@@ -99,7 +99,7 @@ class ActivityEdit extends Component {
                 <label className="form-control-placeholder" htmlFor="name">Activity name</label>
               </div>
               <div className="form-group">
-                <input type="text" id="location" name="location" onChange={this.handleChange} className="form-control" value={this.props.activityById.location} required></input>
+                <input type="text" id="location" name="location" onChange={this.handleChange} className="form-control" defaultValue={this.props.activityById.location} required></input>
                 <label className="form-control-placeholder" htmlFor="location">Location</label>
               </div>
               <select className="formselect" name="type" onChange={this.handleChange}>
