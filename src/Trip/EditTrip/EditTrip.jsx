@@ -21,6 +21,7 @@ class EditTrip extends Component {
     this.state = {
       startDate: null,
       endDate: null,
+      user_id: this.props.match.params.user_id
     }
   }
 
@@ -73,10 +74,21 @@ class EditTrip extends Component {
   // }
 
   render() {
-    let userId = this.props.tripById.user_id;
+    // let userId = this.props.tripById.user_id;
     console.log('state', this.state)
 
     console.log("sadasdathis.props:", this.props);
+    // if (this.props.tripById === undefined) {
+    //   return (
+    //     <p></p>
+    //   )
+    // }
+    // else if (this.props.tripById.length === 0) {
+    //   return (
+    //     <p></p>
+    //   )
+    // }
+    // else {
     return (
       <div className="container col12">
         <div className="wrap-form">
@@ -84,7 +96,7 @@ class EditTrip extends Component {
             <div className="formbottom">
               <h2 className="blue inlineblock">Update your trip to {this.props.tripById.city}</h2>
               {/* <Link className='right' to={`/}`}>Delete trip</Link> */}
-              <Link className='right' to={`/users/account/${userId}`} onClick={this.onClick}>Delete trip</Link>
+              <Link className='right' to={`/users/account/${this.state.userId}`} onClick={this.onClick}>Delete trip</Link>
               <div className="form-group">
                 <input type="text" id="city" name="city" onChange={this.handleChange} className="form-control" value={this.props.tripById.city} required></input>
                 <label className="form-control-placeholder" htmlFor="city">City</label>
@@ -171,17 +183,15 @@ class EditTrip extends Component {
           </div> */}
 
               <button type="submit">Update</button>
-
-
-
             </div>
           </form>
         </div>
       </div>
     );
-  }
-
+  };
 }
+
+// }
 
 const mapStateToProps = state => {
   return {
