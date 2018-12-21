@@ -25,13 +25,13 @@ class TransitEdit extends Component {
 
     this.state = {
       // id: this.props.transitById.id,
-      type: this.props.transitById.type,
-      date: null,
-      time: null,
-      reservation: this.props.transitById.reservation,
-      price: this.props.transitById.price,
-      user_id: this.props.transitById.user_id,
-      trip_id: this.props.transitById.trip_id
+      // type: this.props.transitById.type,
+      // date: null,
+      // time: null,
+      // reservation: this.props.transitById.reservation,
+      // price: this.props.transitById.price,
+      // user_id: this.props.transitById.user_id,
+      // trip_id: this.props.transitById.trip_id
     }
   }
 
@@ -78,51 +78,51 @@ class TransitEdit extends Component {
     console.log("TransitEdit - render - this.props:", this.props);
     return (
       <div className="container col12">
-      <div className="wrap-form" >
-        <form className="col12" onSubmit={this.handleSubmit}>
-        <div className="formbottom">
-        <h2 className="blue">Transit</h2>
-            <select className="formselect" name='type' onChange={this.handleChange}>
-            <option value={this.props.transitById.type} >{this.props.transitById.type} </option>
-              <option value="shuttle">Shuttle</option>
-              <option value="car-rental">Car Rental</option>
-              <option value="taxi">Taxi</option>
-              <option value="bus">Bus</option>
-              <option value="subway">Train</option>
-              <option value="uber-lyft">Uber/Lyft</option>
-              <option value="walking">Walking</option>
-            </select>
+        <div className="wrap-form" >
+          <form className="col12" onSubmit={this.handleSubmit}>
+            <div className="formbottom">
+              <h2 className="blue">Transit</h2>
+              <select className="formselect" name='type' onChange={this.handleChange}>
+                <option value={this.props.transitById.type} >{this.props.transitById.type} </option>
+                <option value="shuttle">Shuttle</option>
+                <option value="car-rental">Car Rental</option>
+                <option value="taxi">Taxi</option>
+                <option value="bus">Bus</option>
+                <option value="subway">Train</option>
+                <option value="uber-lyft">Uber/Lyft</option>
+                <option value="walking">Walking</option>
+              </select>
 
-        <div>
-          <label className="blue formsection">Details</label>
-          <SingleDatePicker
-                placeholder={this.props.transitById.date}
-                date={this.state.date} // momentPropTypes.momentObj or null
-                onDateChange={date =>this.setState({ date })} // PropTypes.func.isRequired
-                focused={this.state.focused} // PropTypes.bool
-                onFocusChange={({ focused }) => this.setState({ focused })} // PropTypes.func.isRequired
-                id="your_unique_id" // PropTypes.string.isRequired,
-              />
-              <TimePicker showSecond={false} placeholder={this.props.transitById.time} defaultValue={this.state.time} className="xxx" onChange={this.setTime} use12Hours inputReadOnly />
-        </div>
-        <div className="form-group">
-          <label>Do you have a reservation?</label>
-          <select name="reservation" onChange={this.handleChange}>
-            <option value={this.props.transitById.reservation}>{this.props.transitById.reservation}</option>
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
-          </select>
-        </div>
-        <div className="form-group">
-          <label>Price</label>
-          <input type="number" min="0.00" max="10000.00" step="0.01" name="price" onChange={this.handleChange} className="reginput inputstyle" defaultValue={this.props.transitById.price}></input>
-        </div>
+              <div>
+                <label className="blue formsection">Details</label>
+                <SingleDatePicker
+                  placeholder={this.props.transitById.date}
+                  date={this.state.date} // momentPropTypes.momentObj or null
+                  onDateChange={date => this.setState({ date })} // PropTypes.func.isRequired
+                  focused={this.state.focused} // PropTypes.bool
+                  onFocusChange={({ focused }) => this.setState({ focused })} // PropTypes.func.isRequired
+                  id="your_unique_id" // PropTypes.string.isRequired,
+                />
+                <TimePicker showSecond={false} placeholder={this.props.transitById.time} defaultValue={this.state.time} className="xxx" onChange={this.setTime} use12Hours inputReadOnly />
+              </div>
+              <div className="form-group">
+                <label>Do you have a reservation?</label>
+                <select name="reservation" onChange={this.handleChange}>
+                  <option value={this.props.transitById.reservation}>{this.props.transitById.reservation}</option>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+              </div>
+              <div className="form-group">
+                <label>Price</label>
+                <input type="number" min="0.00" max="10000.00" step="0.01" name="price" onChange={this.handleChange} className="reginput inputstyle" defaultValue={this.props.transitById.price}></input>
+              </div>
 
-          <button type="submit">Update Transit</button>
-        </div>
+              <button type="submit">Update Transit</button>
+            </div>
 
-        </form>
-      </div>
+          </form>
+        </div>
       </div>
     )
   }
