@@ -18,7 +18,8 @@ class Account extends Component {
     super(props)
     this.state = {
       email: null,
-      tripsByUserId: []
+      tripsByUserId: [],
+      userById: []
     }
   }
 
@@ -73,7 +74,7 @@ class Account extends Component {
   render() {
     console.log("\nAccountComponent - this.props:", this.props);
     let user = this.props.userById
-  
+
     return (
       <div className="container col12">
         <div className="pagebanner pink-bg userdata">
@@ -81,7 +82,7 @@ class Account extends Component {
           <h1>{user.first_name}<span>, {user.last_name}</span></h1>
           <p>{user.email}</p>
           <Link className="drk spaceright" to={`/users/account/edit/${user.id}`}>Edit</Link>
-            <Link className="drk" to={`/users/account/edit_password/${user.id}`} >Update Password</Link>
+          <Link className="drk" to={`/users/account/edit_password/${user.id}`} >Update Password</Link>
         </div>
         <div className="pagebody">
           <Link to={`/trips/add?${this.props.userById.id}`}>
