@@ -63,7 +63,7 @@ class EditTrip extends Component {
   render() {
     let userId = this.props.tripById.user_id;
     console.log('state', this.state)
-    console.log("sadasdathis.props:", this.props);
+    console.log("this.props:", this.props);
     return (
       <div className="container col12">
         <div className="wrap-form">
