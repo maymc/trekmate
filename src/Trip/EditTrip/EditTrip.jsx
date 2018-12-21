@@ -72,10 +72,7 @@ class EditTrip extends Component {
   }
 
   render() {
-<<<<<<< HEAD
-=======
     let userId = this.props.tripById.user_id;
->>>>>>> development
     console.log('state', this.state)
     console.log("sadasdathis.props:", this.props);
     return (
@@ -84,11 +81,7 @@ class EditTrip extends Component {
           <form className="col12" onSubmit={this.handleSubmit}>
             <div className="formbottom">
               <h2 className="blue inlineblock">Update your trip to {this.props.tripById.city}</h2>
-<<<<<<< HEAD
-              <Link className='right' to={`/users/account/${this.state.userId}`} onClick={this.onClick}>Delete trip</Link>
-=======
               <Link className='right' to={`/users/account/${userId}`} onClick={this.onClick}>Delete trip</Link>
->>>>>>> development
               <div className="form-group">
                 <input type="text" id="city" name="city" onChange={this.handleChange} className="form-control" defaultValue={this.props.tripById.city} required></input>
                 <label className="form-control-placeholder" htmlFor="city">City</label>
@@ -160,7 +153,7 @@ class EditTrip extends Component {
                   endDatePlaceholderText={this.props.tripById.end_date}
                   startDate={this.state.startDate}
                   startDateId="your_unique_start_date_id"
-                  endDate={this.state.endDate} 
+                  endDate={this.state.endDate}
                   endDateId="your_unique_end_date_id"
                   onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
                   focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
