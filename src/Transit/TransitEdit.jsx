@@ -96,7 +96,7 @@ class TransitEdit extends Component {
                 onFocusChange={({ focused }) => this.setState({ focused })} // PropTypes.func.isRequired
                 id="your_unique_id" // PropTypes.string.isRequired,
               />
-          <TimePicker showSecond={false}  defaultValue={moment(this.props.transitById.time)} className="reginput" onChange={this.updateTime} format={format} use12Hours inputReadOnly />
+          <TimePicker showSecond={false}  defaultValue={moment(this.props.transitById.time, 'h:mm a')} className="reginput" onChange={this.updateTime} use12Hours inputReadOnly />
         </div>
         <div className="form-group">
           <label>Do you have a reservation?</label>

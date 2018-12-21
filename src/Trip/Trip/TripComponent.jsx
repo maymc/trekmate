@@ -98,7 +98,7 @@ class TripComponent extends Component {
             <h3 className="grey"><i className="fas fa-hiking"></i> Activities</h3>
             {this.props.activities.map(activity => {
               return (
-                <EventCard key={activity.id} type={'actvity'} detail={activity} title={activity.activity_name} date={this.dateFormatter(activity.date)} time={activity.time} />
+                <EventCard key={activity.id} type={'activity'} detail={activity} title={activity.activity_name} date={this.dateFormatter(activity.date)} time={activity.time} />
               )
             })}
             <Link to={`/activities/add?${trips.user_id}?${trips.id}`}>+ Add an activity</Link>

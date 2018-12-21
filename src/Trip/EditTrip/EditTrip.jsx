@@ -7,7 +7,7 @@ import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 import { DateRangePicker } from 'react-dates';
 
-import moment from 'moment';
+// import moment from 'moment';
 
 //Redux Setup
 import { connect } from 'react-redux';
@@ -38,10 +38,6 @@ class EditTrip extends Component {
     let tripId = this.props.match.params.id
 
     this.props.dispatch(getTripById(tripId))
-    // this.setState({
-    //   startDate: moment(this.props.tripById.start_date) || null,
-    //   endDate: moment(this.props.tripById.end_date) || null
-    // })
   }
 
   //Helper Functions
@@ -61,14 +57,14 @@ class EditTrip extends Component {
     //Redirect to trip page
     this.props.history.push(`/users/account/${this.props.tripById.user_id}/trips/${this.props.tripById.id}`);
   }
-  getDate = (date) => {
-    console.log('date', date)
-    if (date === undefined) {
-      return
-    } else {
-      return moment(date)
-    }
-  }
+  // getDate = (date) => {
+  //   console.log('date', date)
+  //   if (date === undefined) {
+  //     return
+  //   } else {
+  //     return moment(date)
+  //   }
+  // }
 
   onClick = () => {
     let tripId = this.props.match.params.id;
@@ -76,27 +72,14 @@ class EditTrip extends Component {
   }
 
   render() {
-    // let userId = this.props.tripById.user_id;
     console.log('state', this.state)
     console.log("sadasdathis.props:", this.props);
-    // if (this.props.tripById === undefined) {
-    //   return (
-    //     <p></p>
-    //   )
-    // }
-    // else if (this.props.tripById.length === 0) {
-    //   return (
-    //     <p></p>
-    //   )
-    // }
-    // else {
     return (
       <div className="container col12">
         <div className="wrap-form">
           <form className="col12" onSubmit={this.handleSubmit}>
             <div className="formbottom">
               <h2 className="blue inlineblock">Update your trip to {this.props.tripById.city}</h2>
-              {/* <Link className='right' to={`/}`}>Delete trip</Link> */}
               <Link className='right' to={`/users/account/${this.state.userId}`} onClick={this.onClick}>Delete trip</Link>
               <div className="form-group">
                 <input type="text" id="city" name="city" onChange={this.handleChange} className="form-control" defaultValue={this.props.tripById.city} required></input>

@@ -77,7 +77,7 @@ class TransitDetail extends Component {
           </div>
           <div className="pagesection">
             <h3 className="blue" >Details</h3>
-            <p><i className="far fa-clock"></i> Time:{transit.time}</p>
+            <p><i className="far fa-clock"></i> Time: {transit.time}</p>
             <p><i className="fas fa-dollar-sign"></i> Price: {transit.price}</p>
             <p><i className="fas fa-clipboard-check"></i> Reservation: {transit.reservation}</p>
           </div>
