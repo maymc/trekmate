@@ -24,8 +24,8 @@ class FlightEdit extends Component {
 
     this.state = {
       airlines: this.props.flightById.airlines,
-      departure_time: null,
-      arrival_time: null,
+      departure_time: this.props.flightById.departure_time,
+      arrival_time: this.props.flightById.arrival_time,
       reservation_code: this.props.flightById.reservation_code,
       checked_in_baggage: this.props.flightById.checked_in_baggage,
       price: this.props.flightById.price,
@@ -44,6 +44,17 @@ class FlightEdit extends Component {
     console.log("Setting flightId:", flightId);
 
     this.props.dispatch(getFlightById(flightId));
+    // this.setState({
+    //   airlines: this.props.flightById.airlines,
+    //   departure_time: this.props.flightById.departure_time,
+    //   arrival_time: this.props.flightById.arrival_time,
+    //   reservation_code: this.props.flightById.reservation_code,
+    //   checked_in_baggage: this.props.flightById.checked_in_baggage,
+    //   price: this.props.flightById.price,
+    //   notes: this.props.flightById.notes,
+    //   user_id: this.props.flightById.user_id,
+    //   trip_id: this.props.flightById.trip_id,
+    // })
   }
 
   handleChange = (e) => {
@@ -68,24 +79,23 @@ class FlightEdit extends Component {
     this.props.history.push(`/flight/${this.props.flightById.id}`);
   }
   departureTime = (value) => {
-    console.log(value.format(format))
+  console.log("setTime", value.format(format))
 
     this.setState({
-      departure_time: value.format(format)
+    departure_time: value.format(format)
     })
-    console.log(this.state.departure_time)
   }
-
-  returnTime = (value) => {
-    console.log(value.format(format))
+  arrivalTime = (value) => {
+  console.log("setTime", value.format(format))
 
     this.setState({
       arrival_time: value.format(format)
     })
-  }
+}
 
   render() {
     console.log("FlightEdit - render - this.props:", this.props);
+    console.log("FlightEdit - render - this.state:", this.state);
     return (
       <div className="container col12">
       <div className="wrap-form">
@@ -93,7 +103,7 @@ class FlightEdit extends Component {
           <div className="formbottom">
           <h2 className="blue">Update Flight</h2>
           <div className="form-group">
-            <input type="text" id="flight" name="airlines" onChange={this.departureTime} className="form-control" defaultValue={this.props.flightById.airlines}></input>
+            <input type="text" id="flight" name="airlines" onChange={this.handleChange} className="form-control" defaultValue={this.props.flightById.airlines}></input>
             <label className="form-control-placeholder" htmlFor="flight">Airline</label>
           </div>
           <div>
@@ -112,9 +122,10 @@ class FlightEdit extends Component {
           </div> 
           <div className="form-group">
             <label className="minput">Departure Flight:</label>
-            <TimePicker showSecond={false} placeholder={this.props.flightById.departure_time} className="xxx" onChange={this.departureTime} use12Hours inputReadOnly />
+            <TimePicker showSecond={false} defaultValue={this.state.departure_time} className="xxx" onChange={this.departureTime} use12Hours inputReadOnly />
             <label className="minput spaceleft">Return Flight:</label>
-            <TimePicker showSecond={false} className="reginput minput" placeholder={this.props.flightById.arrival_time} onChange={this.returnTime} use12Hours inputReadOnly />
+            <TimePicker showSecond={false} defaultValue={this.state.arrival_time} className="xxx" onChange={this.arrivalTime} use12Hours inputReadOnly />
+
           </div>
           <div className="form-group">
               <input type="text" id="rescode" name="reservation_code" onChange={this.handleChange} className="form-control" defaultValue={this.props.flightById.reservation_code}></input>
