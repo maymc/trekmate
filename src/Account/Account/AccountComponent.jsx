@@ -119,8 +119,8 @@ const mapStateToProps = state => {
 }
 export default connect(mapStateToProps)(Account);
 
-// Account.defaultProps = {
-//   userById: {
-//     id: 0,
-//   }
-// }
+Account.defaultProps = {
+  user: {
+    id: 0,
+  }
+}
