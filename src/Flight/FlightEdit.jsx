@@ -93,7 +93,7 @@ class FlightEdit extends Component {
             <div className="formbottom">
               <h2 className="blue">Update Flight</h2>
               <div className="form-group">
-                <input type="text" id="flight" name="airlines" onChange={this.departureTime} className="form-control" defaultValue={this.props.flightById.airlines}></input>
+                <input type="text" id="flight" name="airlines" onChange={this.handleChange} className="form-control" defaultValue={this.props.flightById.airlines}></input>
                 <label className="form-control-placeholder" htmlFor="flight">Airline</label>
               </div>
               <div>
