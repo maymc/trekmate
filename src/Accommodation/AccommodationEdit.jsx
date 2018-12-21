@@ -17,17 +17,17 @@ class AccommodationEdit extends Component {
     super(props)
 
     this.state = {
-      id: this.props.accommodationById.id,
-      lodging_name: this.props.accommodationById.lodging_name,
-      address: this.props.accommodationById.address,
-      check_in_date: this.props.accommodationById.check_in_date,
-      check_out_date: this.props.accommodationById.check_out_date,
-      price: this.props.accommodationById.price,
-      is_paid: this.props.accommodationById.is_paid,
-      reservation_code: this.props.accommodationById.reservation_code,
-      notes: this.props.accommodationById.notes,
-      user_id: this.props.accommodationById.user_id,
-      trip_id: this.props.accommodationById.trip_id
+      // id: this.props.accommodationById.id,
+      // lodging_name: this.props.accommodationById.lodging_name,
+      // address: this.props.accommodationById.address,
+      // check_in_date: this.props.accommodationById.check_in_date,
+      // check_out_date: this.props.accommodationById.check_out_date,
+      // price: this.props.accommodationById.price,
+      // is_paid: this.props.accommodationById.is_paid,
+      // reservation_code: this.props.accommodationById.reservation_code,
+      // notes: this.props.accommodationById.notes,
+      // user_id: this.props.accommodationById.user_id,
+      // trip_id: this.props.accommodationById.trip_id
     }
   }
 
@@ -85,14 +85,14 @@ class AccommodationEdit extends Component {
           <form className="col12" onSubmit={this.handleSubmit}>
 
             <div className="formbottom">
-            <h2 className="blue">Accommodation</h2>
+              <h2 className="blue">Accommodation</h2>
               <div className="form-group">
-                  <input type="text" id="name" name="lodging_name" onChange={this.handleChange} className="form-control" defaultValue={this.props.accommodationById.lodging_name} required></input>
-                  <label className="form-control-placeholder" htmlFor="name">Lodging name</label>
+                <input type="text" id="name" name="lodging_name" onChange={this.handleChange} className="form-control" defaultValue={this.props.accommodationById.lodging_name} required></input>
+                <label className="form-control-placeholder" htmlFor="name">Lodging name</label>
               </div>
               <div className="form-group">
-                  <input type="text" id="address" name="address" onChange={this.handleChange} className="form-control" defaultValue={this.props.accommodationById.address}  required></input>
-                  <label className="form-control-placeholder" htmlFor="address">Address</label>
+                <input type="text" id="address" name="address" onChange={this.handleChange} className="form-control" defaultValue={this.props.accommodationById.address} required></input>
+                <label className="form-control-placeholder" htmlFor="address">Address</label>
               </div>
               <div>
                 <label className="blue formsection">Details</label>
@@ -101,7 +101,7 @@ class AccommodationEdit extends Component {
                   endDatePlaceholderText={this.props.accommodationById.check_out_date}
                   startDate={this.state.startDate}
                   startDateId="your_unique_start_date_id"
-                  endDate={this.state.endDate} 
+                  endDate={this.state.endDate}
                   endDateId="your_unique_end_date_id"
                   onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
                   focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
@@ -109,7 +109,7 @@ class AccommodationEdit extends Component {
                 />
               </div>
               <div className="form-group">
-                <input type="text" id="rescode" name="eservation_code" onChange={this.handleChange}  className="form-control" defaultValue={this.props.accommodationById.reservation_code} required></input>
+                <input type="text" id="rescode" name="eservation_code" onChange={this.handleChange} className="form-control" defaultValue={this.props.accommodationById.reservation_code} required></input>
                 <label className="form-control-placeholder" htmlFor="rescode">Reservation code</label>
               </div>
               <div className="inline">
