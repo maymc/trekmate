@@ -63,6 +63,8 @@ export const loginUser = (user) => {
   return dispatch => {
     axios.post('/auth/login', user)
       .then(response => {
+        const email = JSON.parse(response.config.data).email
+        localStorage.setItem('email', email)
         console.log("ACTION - loginUser response:", response)
 
         dispatch({
