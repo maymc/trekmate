@@ -11,16 +11,16 @@
     .tripbanner {
         grid-column: 1/ span 3;
         height: 240px;
-        background: #305BED;
+        background: #4762ad;
         color: white;
         display: grid;
         display: grid;
         grid-template-columns: auto 300px;
-        background-image: url("https://iconeyecare.com/wp-content/themes/glacial-iconeyecare/images/Locations_Icon_Blue.png");
-        background-size: 7%;
+        background-image: url("https://s3.amazonaws.com/peoplepng/wp-content/uploads/2018/08/28101302/World-Map-PNG.png");
+        background-size: 50%;
         padding: 30px;
-        /* background-position: center right; */
-        /* background-repeat: no-repeat; */
+        background-position: top right;
+        background-repeat: no-repeat;
 
     }
     .tripname {
@@ -48,7 +48,7 @@
     }
     .card {
         border-bottom: 1px solid #d9d9d9;
-        margin: 15px 0px 0px 0px;
+        margin: 15px 0px 15px 0px;
         padding: 15px;
         display: grid;
         background: white;
@@ -98,33 +98,39 @@
 
 
 
-@media only screen and (max-width: 690px) {
+@media only screen and (max-width: 900px) {
+    .tripbanner {
+        height: max-content;
+    }
     .tripname {
         grid-column: 1/ span 2;
         grid-row: 1/1;
+        display: block;
     }
     .tripname h1 {
         font-size: 2em;
-        display: inline-block;
+        display: block;
     }
     .tripname a {
-        float: right;
+        float: left;
     }
     .tripdates {
         grid-column: 1/ span 2;
         grid-row: 2/2
     }
+
 }
 
 @media only screen and (max-width: 600px) {
+    .tripbanner {
+        padding: 10px;
+    }
     .tripfeed {
         grid-column: 1 / span 3;
         grid-row: 3/3;
+        padding: 15px;
     }
     .tripbar {
-        grid-column: 1 / span 3;
-        grid-row: 2/2;  
-        margin-left: 30px;
-        margin-bottom: 30px;
+        display: none;
     }
 }

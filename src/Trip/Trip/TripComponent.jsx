@@ -17,7 +17,6 @@ class TripComponent extends Component {
     let tripId = this.props.match.params.trip_id;
     this.props.dispatch(getAllByTrip(tripId));
 
-
   }
   dateFormatter(date) {
     if (date === undefined) {
@@ -57,15 +56,6 @@ class TripComponent extends Component {
       }
     }
   }
-  timeFormatter(time) {
-    if (time === undefined) {
-      return
-    }
-    else {
-      let d = new Date(time)
-      console.log(d)
-    }
-  }
 
   render() {
     console.log("TripComponent - this.props:", this.props);
@@ -78,7 +68,7 @@ class TripComponent extends Component {
             <h1>{trips.city}<span>, {trips.country}</span></h1>
 
 
-            <Link className="drk" to={`/trips/edit/${trips.id}?${trips.user_id}`}>Edit trip</Link>
+            <Link className="drk" to={`/trips/edit/${trips.id}?${trips.id}?${trips.user_id}`}>Edit trip</Link>
           </div>
           <div className="tripdates">
             <DateComponent date={this.dateFormatter(trips.start_date)} />
@@ -89,8 +79,9 @@ class TripComponent extends Component {
           <div className="eventsection">
             <h3 className="grey spacebottom"><i className="fas fa-plane"></i> Flights</h3>
             {this.props.flights.map(flight => {
+              console.log('flight date', flight.departure_time)
               return (
-                <EventCard key={flight.id} type={'flight'} detail={flight} title={flight.airlines} date={flight.departure_time} />
+                <EventCard key={flight.id} type={'flight'} detail={flight} title={flight.airlines} date={this.dateFormatter(flight.departure_time)} time={flight.departure_time} />
               )
             })}
             <Link to={`/flights/add?${trips.user_id}?${trips.id}`}>+ Add a flight</Link>
@@ -120,7 +111,7 @@ class TripComponent extends Component {
                 <EventCard key={transit.id} type={'transit'} detail={transit} title={transit.type} date={this.dateFormatter(transit.date)} time={transit.time} />
               )
             })}
-            <Link className="spacetop" to={`/transit/add?${trips.user_id}?${trips.id}`}>+ Add a transit event</Link>
+            <Link to={`/transit/add?${trips.user_id}?${trips.id}`}>+ Add a transit event</Link>
           </div>
         </div>
 
@@ -132,7 +123,7 @@ class TripComponent extends Component {
           <Link to={`/accommodations/add?${trips.user_id}?${trips.id}`}>
             <button className="ghost" ><i className="fas fa-hotel"></i> Accommodation</button>
           </Link>
-          <Link to={`/activities/add??${trips.user_id}?${trips.id}`}>
+          <Link to={`/activities/add?${trips.user_id}?${trips.id}`}>
             <button className="ghost" ><i className="fas fa-hiking"></i> Activity</button>
           </Link>
           <Link to={`/transit/add?${trips.user_id}?${trips.id}`}>

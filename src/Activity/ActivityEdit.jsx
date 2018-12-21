@@ -7,6 +7,18 @@ import { connect } from 'react-redux';
 //Import actions
 import { editActivity, getActivityById } from '../actions/actions';
 
+//Date picker
+import 'react-dates/initialize';
+import 'react-dates/lib/css/_datepicker.css';
+import { SingleDatePicker } from 'react-dates';
+
+//Time picker
+import 'rc-time-picker/assets/index.css';
+import moment from 'moment';
+import TimePicker from 'rc-time-picker';
+const format = 'h:mm a';
+// const now = moment().hour(0).minute(0);
+
 class ActivityEdit extends Component {
   constructor(props) {
     super(props)
@@ -61,56 +73,72 @@ class ActivityEdit extends Component {
     this.props.history.push(`/activity/${this.props.activityById.id}`);
   }
 
+  getDate = (date) => {
+    return moment(date)
+  }
+
   render() {
     console.log("ActivityEdit - render - this.props:", this.props);
 
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-
-          <label>Activity</label>
-          <input onChange={this.handleChange} type='text' name="activity_name" defaultValue={this.props.activityById.activity_name} />
-          <br /><br />
-
-          <label>Location</label>
-          <input onChange={this.handleChange} type='text' name="location" defaultValue={this.props.activityById.location} />
-          <br /><br />
-
-          <label>Date</label>
-          <input onChange={this.handleChange} type='text' name="date" defaultValue={this.props.activityById.date} />
-          <br /><br />
-
-          <label>Time</label>
-          <input onChange={this.handleChange} type='text' name="time" defaultValue={this.props.activityById.time} />
-          <br /><br />
-
-          <label>Price</label>
-          <input onChange={this.handleChange} type='text' name="price" defaultValue={this.props.activityById.price} />
-          <br /><br />
-
-          <label>Type</label>
-          <input onChange={this.handleChange} type='text' name="type" defaultValue={this.props.activityById.type} />
-          <br /><br />
-
-          <label>Votes</label>
-          <input onChange={this.handleChange} type='text' name="votes" defaultValue={this.props.activityById.votes} />
-          <br /><br />
-
-          <label>Reservation</label>
-          <input onChange={this.handleChange} type='text' name="reservation" defaultValue={this.props.activityById.reservation} />
-          <br /><br />
-
-          <label>Notes</label>
-          <input onChange={this.handleChange} type='text' name="notes" defaultValue={this.props.activityById.notes} />
-          <br /><br />
-
-          <label>Image Url</label>
-          <input onChange={this.handleChange} type='text' name="image" defaultValue={this.props.activityById.image} />
-          <br /><br />
+      <div className="container col12">
+      <div className="wrap-form">
+        <form className="col12" onSubmit={this.handleSubmit}>
+        <div className="formbottom">
+          <h2 className="blue">Activity</h2>
+          <div className="form-group">
+            <input type="text" id="name" name="activity_name" onChange={this.handleChange} className="form-control" value={this.props.activityById.activity_name} required></input>
+            <label className="form-control-placeholder" htmlFor="name">Activity name</label>
+          </div>
+          <div className="form-group">
+            <input type="text" id="location" name="location" onChange={this.handleChange} className="form-control" value={this.props.activityById.location} required></input>
+            <label className="form-control-placeholder" htmlFor="location">Location</label>
+          </div>
+          <select className="formselect" name="type" onChange={this.handleChange}>
+            <option value={this.props.activityById.type}>{this.props.activityById.type}</option>
+            <option value="sightseeing">Sightseeing</option>
+            <option value="outdoors">Outdoors</option>
+            <option value="indoors">Indoors</option>
+            <option value="food">Food</option>
+          </select>
+          <div>
+            <label className="blue formsection">Details</label>
+            <SingleDatePicker
+              date={this.getDate(this.props.activityById.date)} // momentPropTypes.momentObj or null
+              onDateChange={date =>this.setState({ date })} // PropTypes.func.isRequired
+              focused={this.state.focused} // PropTypes.bool
+              onFocusChange={({ focused }) => this.setState({ focused })} // PropTypes.func.isRequired
+              id="your_unique_id" // PropTypes.string.isRequired,
+            />
+            <TimePicker showSecond={false}  defaultValue={moment(this.props.activityById.time)} className="reginput" onChange={this.updateTime} format={format} use12Hours inputReadOnly />
+          </div>
+          <div className="form-group">
+            <label>Price</label>
+            <input type="number" min="0.00" max="10000.00" step="0.01" name="price" onChange={this.handleChange} className="reginput inputstyle" value={this.props.activityById.price}></input>
+          </div>
+          <div className="form-group">
+            <input type="text" id="image" name="image" onChange={this.handleChange} className="form-control" value={this.props.activityById.image}></input>
+            <label className="form-control-placeholder" htmlFor="image">Include an image (url)</label>
+          </div>
+          <div className="form-group">
+            <label>Do you have a reservation?</label>
+            <select name="reservation" onChange={this.handleChange}>
+              <option value={this.props.activityById.reservation}>{this.props.activityById.reservation}
+              </option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+          <div>
+            <label className="blue formsection">Notes</label>
+            <textarea onChange={this.handleChange} name="notes" value={this.props.activityById.notes}></textarea>
+          </div>
 
           <button type="submit">Update Activity</button>
+        </div>
 
         </form>
+      </div>
       </div>
     )
   }

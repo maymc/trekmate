@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './styles.css'
-import LocationSearch from '../../Global/Search/LocationSearchComponent';
+// import LocationSearch from '../../Global/Search/LocationSearchComponent';
 
 //Date picker
 import 'react-dates/initialize';
@@ -35,7 +35,7 @@ class CreateTrip extends Component {
     console.log('Trip', this.props)
     let id = (this.props.location.search).split("?")
     
-    // console.log('Temp', id[1])
+    console.log('Temp', id[1])
     this.setState({
       user_id: Number(id[1])
     })
@@ -89,7 +89,7 @@ class CreateTrip extends Component {
           <label>State</label>
           <select name="state" onChange={this.handleChange}>
             <option value="select-state">Select State</option>
-            <option value="AK">Not Applicable</option>
+            <option value="Not Applicable">Not Applicable</option>
             <option value="AK">AK</option>
             <option value="AL">AL</option>
             <option value="AZ">AZ</option>

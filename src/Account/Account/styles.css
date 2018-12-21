@@ -1,73 +1,18 @@
-.account {
-    grid-auto-rows: min-content;
-    grid-column-gap: 10px;
-    background: #f5f5f5;
-}
-
-.accountbanner {
-    grid-column: 1/ span 3;
-    display: grid;
-    grid-template-columns: min-content auto;
-    grid-template-rows: auto;
-    grid-column-gap: 30px;
-    padding: 30px;
-    background: white;
-}
-
-.userimage {
-    grid-column: 1/1;
-    grid-row: 1/1;
-    width: 100%;
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-}
-
-.userimage img {
-    width: 100%;
-    height: auto;
-}
-
-.userdata {
-    grid-column: 2/2;
-    grid-row: 1/1;
-    width: 100%;
-    height: min-content;
-}
-
-.userdata h1 {
-    color: #9d2069;
-}
-
 .userdata h1 span {
     font-size: .5em;
-    color: #bf268f;
 }
-
 .userdata p {
     margin-bottom: 30px;
-    color: #6C6A82;
 }
 
-.userdata a {
-    margin-right: 15px;
-}
-
-.accountfeed {
-    grid-column: 1 / span 2;
-    padding: 30px;
-}
 .triplist {
     width: 100%;
     margin-bottom: 30px;
     padding: 30px;
-    background: #305BED;
+    background: #4762ad;
     color: white;
     display: grid;
-    grid-template-columns: auto 300px;
+    grid-template-columns: auto 303px;
     grid-template-rows: auto auto 36px;
 }
 .triplist h1 span {
@@ -76,34 +21,19 @@
 .triptitle {
     grid-column: 1 / span 1;
     grid-row: 1/ span 2;
-    /* background: black; */
 }
 .tripbutton {
     grid-column: 1 / span 1;
     grid-row: 3/3;
     display: table-cell;
     vertical-align: bottom;
-    background: blue;
+    /* background: blue; */
 }
 .tripdates {
     grid-column: 2 / span 1;
     grid-row: 1 / span 3;
-    /* background: #9d2069; */
-}
-.accountbar {
-    grid-column: 3 / span 1;
-    padding: 30px 30px 30px 30px;
-
-    border-left: 2px solid #ffffff;
 }
 
-.accountbar button {
-    margin-bottom: 5px;
-    text-align: left;
-    font-size: .75em;
-    height: 60px;
-    text-align: center;
-}
 
 @media only screen and (max-width: 900px) {
     .triptitle {
@@ -124,20 +54,13 @@
 }
 
 
-@media only screen and (max-width: 600px) {
-    .accountbanner {
-        padding: 15px;
+@media only screen and (max-width: 668px) {
+
+    .triplist {
+        padding: 10px;
+        margin-bottom: 2px;
     }
-    .userimage {
-        width: 70px;
-        height: 70px;
-    }
-    .accountfeed {
-        grid-column: 1 / span 3;
-        grid-row: 3/3;
-    }
-    .accountbar {
-        grid-column: 1 / span 3;
-        grid-row: 2/2;  
+    .tripbutton {
+        width: 92%;
     }
 }

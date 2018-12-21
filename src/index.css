@@ -110,8 +110,8 @@ textarea, select, input, button {
   /* Button Styles for dark background */
   button.drk {
     border: 2px solid #ffffff;
-    color: #ffffff;
-    background: #870056;
+    color: #870056;
+    background: #fff;
   }
 
   button.drk:hover {
@@ -254,6 +254,9 @@ textarea, select, input, button {
   .grey {
     color: #565656;
   }
+  .pink {
+    color: #9d2069;
+  }
 
   .formbottom button {
     margin-top: 30px;
@@ -286,7 +289,10 @@ textarea, select, input, button {
   .spacebottom {
     margin-bottom: 15px;
   }
-
+  .floatright {
+    float: right;
+  }
+  
   .inputstyle {
     padding: 6px;
     height: 48px;
@@ -331,19 +337,28 @@ textarea, select, input, button {
 
 
 @media only screen and (max-width: 600px) {
-    .formtop {
+  .formtop {
       padding: 45px; 
   }
   .formbottom {
     grid-column: 1/13;
-    background: white;
+    /* background: white; */
     padding: 30px 30px 30px 30px;
   }
   .formplace {
     grid-column: 2/12
   }
+  .minput {
+    display: block;
+    margin-top: 15px;
+    margin-left: 0px;
+  }
+
 }
 @media only screen and (min-width: 1024px) {
+  /* .wrap-form {
+    grid-column: 3/11;
+  } */
   .formplace {
       grid-column: 5/9
   }
