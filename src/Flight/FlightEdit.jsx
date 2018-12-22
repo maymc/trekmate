@@ -23,17 +23,9 @@ class FlightEdit extends Component {
     super(props)
 
     this.state = {
-      // airlines: this.props.flightById.airlines,
-      // departure_time: null,
-      // arrival_time: null,
-      // reservation_code: this.props.flightById.reservation_code,
-      // checked_in_baggage: this.props.flightById.checked_in_baggage,
-      // price: this.props.flightById.price,
-      // notes: this.props.flightById.notes,
-      // user_id: this.props.flightById.user_id,
-      // trip_id: this.props.flightById.trip_id,
       startDate: null,
       endDate: null,
+      id: this.props.flightById.id
     }
   }
 
@@ -59,7 +51,7 @@ class FlightEdit extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     console.log("\nhandleSubmit - FlightEdit - this.props:", this.props);
-    console.log("\nhandleSubmit - FlightEdit - this.props.flightById.id:", this.props.flightById.id);
+    // console.log("\nhandleSubmit - FlightEdit - this.props.flightById.id:", this.props.flightById.id);
     console.log("Updated to this.state:", this.state);
 
     this.props.dispatch(editFlight(this.state, this.props.flightById.id));
@@ -84,8 +76,24 @@ class FlightEdit extends Component {
     })
   }
 
+  setDates(array) {
+    console.log('setDates', array)
+    if (this.state.startDate === null) {
+      this.setState({
+        startDate: moment(array[1]),
+        endDate: moment(array[2])
+      })
+    } else {
+      console.log("NOT NULL")
+    }
+  }
+
+
   render() {
+    let dd = (this.props.location.search).split("?")
+    this.setDates(dd)
     console.log("FlightEdit - render - this.props:", this.props);
+    console.log("FlightEdit - render - this.state:", this.state);
     return (
       <div className="container col12">
         <div className="wrap-form">
@@ -99,8 +107,8 @@ class FlightEdit extends Component {
               <div>
                 <label className="blue formsection">Details</label>
                 <DateRangePicker
-                  startDatePlaceholderText={this.props.flightById.departure_date}
-                  endDatePlaceholderText={this.props.flightById.arrival_date}
+                  // startDatePlaceholderText={this.props.flightById.departure_date}
+                  // endDatePlaceholderText={this.props.flightById.arrival_date}
                   startDate={this.state.startDate}
                   startDateId="your_unique_start_date_id"
                   endDate={this.state.endDate}
@@ -166,3 +174,4 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps)(FlightEdit);
+

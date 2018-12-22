@@ -85,16 +85,6 @@ class TransitDetail extends Component {
               <button type='button'>Edit</button>
           </Link>
         </div>
-        {/* <p>Type: {this.props.transitById.type}</p
-        
-
-        <Link to={`/transit/edit/${this.props.transitById.id}`}>
-          <button type='button'>Edit Activity</button>
-        </Link>
-
-        <Link to={`/transit/trip/${this.props.transitById.trip_id}`}>
-          <button type='button'>Back</button>
-        </Link> */}
       </div>
     )
   }

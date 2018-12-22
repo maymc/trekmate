@@ -84,7 +84,7 @@ class AccommodationDetail extends Component {
                         <p><i className="fas fa-clipboard-check"></i> Reservation Code: {accom.reservation_code}</p>
                         <p><i className="far fa-sticky-note"></i> Notes: {accom.notes}</p>
                     </div>
-                    <Link to={`/accommodation/edit/${accom.id}`}>
+                    <Link to={`/accommodation/edit/${accom.id}?${accom.check_in_date}?${accom.check_out_date}`}>
                         <button type='button'>Edit</button>
                     </Link>
                 </div>
