@@ -168,7 +168,7 @@ export const editPassword = (password) => {
   console.log("\nACTION: editPassword:", password)
   console.log("Check id:", id);
   return dispatch => {
-    axios.put(`/users/account/edit_password/${id}`, password)
+    axios.put(`auth/users/account/edit_password/${id}`, password)
       .then(responseFromDB => {
         console.log("\nCheck - responseFromDB:", responseFromDB.data)
         dispatch({ type: EDIT_PASSWORD, payload: responseFromDB.data });
@@ -183,7 +183,7 @@ export const requestPassword = (email) => {
   return dispatch => {
     console.log("\nACTION: editPassword:", email)
 
-    axios.put(`/login/forgotPassword/request`, email)
+    axios.put(`auth/login/forgotPassword/request`, email)
       .then(response => {
         console.log('res.......', response)
         dispatch({ type: REQUEST_PASSWORD, payload: response.data })
