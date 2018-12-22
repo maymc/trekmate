@@ -74,7 +74,7 @@ class Account extends Component {
   render() {
     console.log("\nAccountComponent - this.props:", this.props);
     let user = this.props.userById
-
+    console.log("\nAccountComponent -state:", this.state);
     return (
       <div className="container col12">
         <div className="pagebanner pink-bg userdata">
@@ -120,7 +120,10 @@ const mapStateToProps = state => {
 export default connect(mapStateToProps)(Account);
 
 Account.defaultProps = {
-  user: {
-    id: 0,
-  }
+  userById: {
+    id: 0
+  },
+  tripsByUserId: [{
+    id: 0
+  }]
 }

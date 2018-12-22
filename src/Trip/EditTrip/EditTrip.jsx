@@ -56,6 +56,7 @@ class EditTrip extends Component {
   // }
 
   onClick = () => {
+
     let tripId = this.props.match.params.id;
     this.props.dispatch(deleteTrip(tripId))
   }
@@ -71,6 +72,7 @@ class EditTrip extends Component {
             <div className="formbottom">
               <h2 className="blue inlineblock">Update your trip to {this.props.tripById.city}</h2>
               <Link className='right' to={`/users/account/${userId}`} onClick={this.onClick}>Delete trip</Link>
+
               <div className="form-group">
                 <input type="text" id="city" name="city" onChange={this.handleChange} className="form-control" defaultValue={this.props.tripById.city} required></input>
                 <label className="form-control-placeholder" htmlFor="city">City</label>
