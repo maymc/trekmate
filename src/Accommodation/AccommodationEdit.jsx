@@ -109,7 +109,7 @@ class AccommodationEdit extends Component {
                 />
               </div>
               <div className="form-group">
-                <input type="text" id="rescode" name="eservation_code" onChange={this.handleChange} className="form-control" defaultValue={this.props.accommodationById.reservation_code} required></input>
+                <input type="text" id="rescode" name="reservation_code" onChange={this.handleChange} className="form-control" defaultValue={this.props.accommodationById.reservation_code} required></input>
                 <label className="form-control-placeholder" htmlFor="rescode">Reservation code</label>
               </div>
               <div className="inline">
