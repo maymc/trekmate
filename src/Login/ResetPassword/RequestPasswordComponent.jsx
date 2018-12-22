@@ -25,7 +25,7 @@ class RequestPassword extends Component {
                 <div className="formplace forgotpassword-form">
                     <h1>Temporary Password Email sent</h1>
                     <p>An temporary password has been sent to your email. Please login with your temporary password. </p>
-                    <button onClick={this.logIn}>Done</button>
+                    <button className="spacetop" onClick={this.logIn}>Done</button>
                 </div>
             </div >
 

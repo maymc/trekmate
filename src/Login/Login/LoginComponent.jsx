@@ -8,11 +8,6 @@ import { Link, Redirect } from 'react-router-dom';
 
 //Import actions
 import { loginUser, getAllUsers } from '../../actions/actions';
-// import TripComponent from '../../Trip/Trip/TripComponent';
-
-/// Internal imports
-// import ForgotPassword from '../ForgotPassword/ForgotPasswordComponent.jsx';
-// import Register from '../Register/RegisterComponent.jsx';
 
 class Login extends Component {
   constructor(props) {
@@ -115,7 +110,7 @@ class Login extends Component {
           <div className="mapthreeform">
             <h1>Login</h1>
             <form className="loginform" onSubmit={this.handleSubmit}>
-              <h2>Invalid email or password. Please try again.</h2>
+              <p className="loginerror">Invalid email or password.<br /> Please try again.</p>
               <div className="form-group">
                 <input autoFocus autoComplete="username" type="text" id="email" name="email" onChange={this.handleChange} className="form-control" required></input>
                 <label className="form-control-placeholder" htmlFor="email">Email</label>
