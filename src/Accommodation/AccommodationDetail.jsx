@@ -79,9 +79,9 @@ class AccommodationDetail extends Component {
                     <div className="pagesection">
                         <h3 className="blue" >Details</h3>
                         <p><i className="fas fa-map-marker-alt"></i> Location: {accom.address}</p>
-                        <p><i className="fas fa-clipboard-check"></i> Reservation Code: {accom.reservation_code}</p>
                         <p><i className="fas fa-dollar-sign"></i> Price: {accom.price}</p>
                         <p><i className="fas fa-hand-holding-usd"></i> Is paid? {accom.is_paid}</p>
+                        <p><i className="fas fa-clipboard-check"></i> Reservation Code: {accom.reservation_code}</p>
                         <p><i className="far fa-sticky-note"></i> Notes: {accom.notes}</p>
                     </div>
                     <Link to={`/accommodation/edit/${accom.id}`}>

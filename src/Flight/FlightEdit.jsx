@@ -13,7 +13,7 @@ import { DateRangePicker } from 'react-dates';
 
 //Time picker
 import 'rc-time-picker/assets/index.css';
-// import moment from 'moment';
+import moment from 'moment';
 import TimePicker from 'rc-time-picker';
 const format = 'h:mm a';
 // const now = moment().hour(0).minute(0);
@@ -24,8 +24,8 @@ class FlightEdit extends Component {
 
     this.state = {
       airlines: this.props.flightById.airlines,
-      departure_time: this.props.flightById.departure_time,
-      arrival_time: this.props.flightById.arrival_time,
+      departure_time: null,
+      arrival_time: null,
       reservation_code: this.props.flightById.reservation_code,
       checked_in_baggage: this.props.flightById.checked_in_baggage,
       price: this.props.flightById.price,
@@ -68,19 +68,19 @@ class FlightEdit extends Component {
     this.props.history.push(`/flight/${this.props.flightById.id}`);
   }
   departureTime = (value) => {
-    console.log(value.format(value))
+    console.log(value.format(format))
 
     this.setState({
-      departure_time: value.format(value)
+      departure_time: value.format(format)
     })
     console.log(this.state.departure_time)
   }
 
   returnTime = (value) => {
-    console.log(value.format(value))
+    console.log(value.format(format))
 
     this.setState({
-      arrival_time: value.format(value)
+      arrival_time: value.format(format)
     })
   }
 
@@ -112,8 +112,7 @@ class FlightEdit extends Component {
           </div> 
           <div className="form-group">
             <label className="minput">Departure Flight:</label>
-            <TimePicker showSecond={false} placeholder={this.props.flightById.departure_time} className="xxx" onChange={this.departureTime} format={format} use12Hours inputReadOnly />
-            {/* <TimePicker showSecond={false} className="reginput minput" placeholder={this.props.flightById.departure_time}     format={format} onChange={this.departureTime} use12Hours inputReadOnly /> */}
+            <TimePicker showSecond={false} placeholder={this.props.flightById.departure_time} className="xxx" onChange={this.departureTime} use12Hours inputReadOnly />
             <label className="minput spaceleft">Return Flight:</label>
             <TimePicker showSecond={false} className="reginput minput" placeholder={this.props.flightById.arrival_time} onChange={this.returnTime} use12Hours inputReadOnly />
           </div>

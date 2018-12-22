@@ -4,8 +4,8 @@ exports.up = function (knex, Promise) {
     table.increments();
     table.string('lodging_name', 255).notNullable();
     table.string('address', 100).notNullable();
-    table.string('check_in_date', 30).notNullable();
-    table.string('check_out_date', 30).notNullable();
+    table.string('check_in_date', 100).notNullable();
+    table.string('check_out_date', 100).notNullable();
     table.string('price', 100).notNullable();
     table.string('is_paid').notNullable();
     table.string('reservation_code', 50).notNullable();
