@@ -86,7 +86,7 @@ class TripComponent extends Component {
             <Link to={`/flights/add?${trips.user_id}?${trips.id}`}>+ Add a flight</Link>
           </div>
           <div className="eventsection">
-            <h3 className="grey spacebottom"><i className="fas fa-hotel"></i> Accommodations</h3>
+            <h3 className="grey spacebottom"><i className="fas fa-bed"></i> Accommodations</h3>
             {this.props.accommodations.map(accommodation => {
               return (
                 <EventCard key={accommodation.id} type={'accommodation'} detail={accommodation} title={accommodation.lodging_name} date={this.dateFormatter(accommodation.check_in_date)} />
@@ -120,7 +120,7 @@ class TripComponent extends Component {
             <button className="ghost" ><i className="fas fa-plane"></i> Flight</button>
           </Link>
           <Link to={`/accommodations/add?${trips.user_id}?${trips.id}`}>
-            <button className="ghost" ><i className="fas fa-hotel"></i> Accommodation</button>
+            <button className="ghost" ><i className="fas fa-bed"></i> Accommodation</button>
           </Link>
           <Link to={`/activities/add?${trips.user_id}?${trips.id}`}>
             <button className="ghost" ><i className="fas fa-hiking"></i> Activity</button>

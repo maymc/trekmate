@@ -17,17 +17,9 @@ class AccommodationEdit extends Component {
     super(props)
 
     this.state = {
-      // id: this.props.accommodationById.id,
-      // lodging_name: this.props.accommodationById.lodging_name,
-      // address: this.props.accommodationById.address,
-      // check_in_date: this.props.accommodationById.check_in_date,
-      // check_out_date: this.props.accommodationById.check_out_date,
-      // price: this.props.accommodationById.price,
-      // is_paid: this.props.accommodationById.is_paid,
-      // reservation_code: this.props.accommodationById.reservation_code,
-      // notes: this.props.accommodationById.notes,
-      // user_id: this.props.accommodationById.user_id,
-      // trip_id: this.props.accommodationById.trip_id
+      startDate: null,
+      endDate: null,
+      id: null,
     }
   }
 
@@ -36,6 +28,9 @@ class AccommodationEdit extends Component {
     //This id comes from the url
     const accommodationId = this.props.match.params.id;
     console.log("Setting accommodationId:", accommodationId);
+    this.setState({
+      id: Number(accommodationId)
+    })
 
     this.props.dispatch(getAccommodationById(accommodationId));
   }
@@ -73,12 +68,23 @@ class AccommodationEdit extends Component {
       })
     }
   }
-  getDate = (date) => {
-    return moment(date)
+  setDates(array) {
+    console.log('setDates', array)
+    if (this.state.startDate === null) {
+      this.setState({
+        startDate: moment(array[1]),
+        endDate: moment(array[2]), 
+      })
+    } else {
+      console.log("NOT NULL")
+    }
   }
-
+  
   render() {
+    let dd = (this.props.location.search).split("?")
+    this.setDates(dd)
     console.log("AccommodationEdit - render - this.props:", this.props);
+    console.log("AccommodationEdit - render - this.state:", this.state);
     return (
       <div className="container col12">
         <div className="wrap-form">
@@ -136,7 +142,6 @@ class AccommodationEdit extends Component {
 
 const mapStateToProps = state => {
   return {
-    accommodations: state.accommodations,
     accommodationById: state.accommodationById
   }
 }

@@ -41,7 +41,7 @@ class FlightDetail extends Component {
       month[9] = "OCT";
       month[10] = "NOV";
       month[11] = "DEC";
-      console.log('Date', d)
+      // console.log('Date', d)
       return {
         day: weekday[d.getDay()],
         date: d.getDate(),
@@ -83,7 +83,7 @@ class FlightDetail extends Component {
             <p><i className="fas fa-clipboard-check"></i> Reservation Code: {this.props.flightById.reservation_code}</p>
             <p><i className="far fa-sticky-note"></i> Notes: {this.props.flightById.notes}</p>
           </div>
-          <Link to={`/flight/edit/${this.props.flightById.id}`}>
+          <Link to={`/flight/edit/${this.props.flightById.id}?${this.props.flightById.departure_date}?${this.props.flightById.arrival_date}`}>
             <button type='button'>Edit</button>
           </Link>
        </div>
@@ -102,8 +102,6 @@ export default connect(mapStateToProps)(FlightDetail);
 
 FlightDetail.defaultProps = {
   flightById: {
-    id: null,
-    airlines: 'Test',
-    notes: 'fack'
+    id: null
   }
 }
