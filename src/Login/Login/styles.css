@@ -72,6 +72,11 @@
     margin-top: 10px;
 }
 
+.loginerror {
+    color: red;
+    padding-top: 10px;
+}
+
 
 @media only screen and (max-width: 400px) {
     .maponegrad, .mapone, .maptwograd, .maptwo {
