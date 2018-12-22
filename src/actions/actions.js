@@ -265,9 +265,11 @@ export const addTrip = (trip) => {
   }
 }
 
-export const editTrip = (trip) => {
-  const { id } = trip;
+export const editTrip = (id, trip) => {
+  // const { id } = trip;
   console.log("\nACTION: editTrip:", trip)
+  console.log("\nACTION: ID Trip:", id)
+
   // console.log("Check id:", id);
   return dispatch => {
     axios.put(`/trips/edit/${id}`, trip)
@@ -527,6 +529,11 @@ export const editFlight = (flight) => {
   const { id } = flight;
   console.log("\nACTION: editFlight:", flight)
   console.log("Check id:", id);
+  if (flight.endDate !== null) {
+    flight.arrival_date = flight.endDate._d
+    flight.departure_date = flight.startDate._d.toString()
+  }
+  console.log("\nACTION AFTER: editFlight:", flight)
   return dispatch => {
     axios.put(`/flights/edit/${id}`, flight)
       .then(responseFromDB => {

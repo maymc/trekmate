@@ -18,7 +18,8 @@ class Account extends Component {
     super(props)
     this.state = {
       email: null,
-      tripsByUserId: []
+      tripsByUserId: [],
+      userById: []
     }
   }
 
@@ -118,8 +119,8 @@ const mapStateToProps = state => {
 }
 export default connect(mapStateToProps)(Account);
 
-// Account.defaultProps = {
-//   userById: {
-//     id: 0,
-//   }
-// }
+Account.defaultProps = {
+  user: {
+    id: 0,
+  }
+}

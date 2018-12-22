@@ -19,30 +19,17 @@ class EditTrip extends Component {
   constructor(props) {
     super(props)
 
-    this.state = {
-      city: null,
-      state: null,
-      country: null,
-      startDate: null,
-      start_date: null,
-      endDate: null,
-      end_date: null,
-      collaborators: 1,
-      // user_id: null,
-      user_id: this.props.match.params.user_id
-    }
+    this.state = {}
   }
 
   //Lifecycle Methods
   componentDidMount() {
     let tripId = this.props.match.params.id
-
     this.props.dispatch(getTripById(tripId))
   }
 
   //Helper Functions
   handleChange = (e) => {
-    // console.log("EditTrip - handleChange")
     e.preventDefault();
     const { name, value } = e.target;
     this.setState({
@@ -51,8 +38,10 @@ class EditTrip extends Component {
   }
 
   handleSubmit = (e) => {
+    let tripId = this.props.match.params.id
+
     e.preventDefault();
-    this.props.dispatch(editTrip(this.state, this.props.tripById.id));
+    this.props.dispatch(editTrip(tripId, this.state));
 
     //Redirect to trip page
     this.props.history.push(`/users/account/${this.props.tripById.user_id}/trips/${this.props.tripById.id}`);
@@ -74,7 +63,7 @@ class EditTrip extends Component {
   render() {
     let userId = this.props.tripById.user_id;
     console.log('state', this.state)
-    console.log("sadasdathis.props:", this.props);
+    console.log("this.props:", this.props);
     return (
       <div className="container col12">
         <div className="wrap-form">
@@ -173,7 +162,8 @@ class EditTrip extends Component {
 
 const mapStateToProps = state => {
   return {
-    tripById: state.tripById,
+    // tripById: state.tripById,
+    tripById: state.tripById
   }
 }
 
@@ -185,3 +175,4 @@ EditTrip.defaultProps = {
     user_id: 0,
   }
 }
+
