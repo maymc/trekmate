@@ -73,13 +73,13 @@ class AccommodationEdit extends Component {
     if (this.state.startDate === null) {
       this.setState({
         startDate: moment(array[1]),
-        endDate: moment(array[2]), 
+        endDate: moment(array[2]),
       })
     } else {
       console.log("NOT NULL")
     }
   }
-  
+
   render() {
     let dd = (this.props.location.search).split("?")
     this.setDates(dd)
@@ -121,10 +121,19 @@ class AccommodationEdit extends Component {
               <div className="inline">
                 <label>Price</label>
                 <input type="number" min="0.00" max="10000.00" step="0.01" name="price" onChange={this.handleChange} className="reginput inputstyle" placeholder="$00.00" defaultValue={this.props.accommodationById.price}></input>
-                <div className="checkbox">
+                {/* <div className="checkbox">
                   <input onChange={this.is_Paid} type="checkbox" id="paystatus" name="is_paid"></input>
                   <label htmlFor="paystatus">Paid</label>
-                </div>
+                </div> */}
+              </div>
+              <div className="form-group">
+                <label>Is this paid for?</label>
+                <select name="is_paid" onChange={this.handleChange}>
+                  <option value={this.props.accommodationById.is_paid}>{this.props.accommodationById.is_paid}
+                  </option>
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
               </div>
               <div>
                 <label className="blue formsection">Notes</label>
