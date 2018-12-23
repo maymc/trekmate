@@ -1,6 +1,6 @@
 const express = require('express');
 const authRouter = express.Router();
-const Users = require('../db/models/users.js')
+const Users = require('../db/models/Users')
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const bcrypt = require('bcrypt');
