@@ -69,6 +69,12 @@ export const loginUser = (user) => {
   return dispatch => {
     axios.post('/auth/login', user)
       .then(response => {
+        const email = JSON.parse(response.config.data).email
+        const userId = JSON.parse(response.config.data).userId
+        console.log('response.config.data', response.config.data)
+        localStorage.setItem('email', email)
+        localStorage.setItem('userId', userId)
+
         console.log("ACTION - loginUser response:", response)
 
         dispatch({
@@ -119,6 +125,7 @@ export const getAllUsers = () => {
   }
 }
 export const getUserById = (id) => {
+  console.log('id', id)
   return dispatch => {
     axios.get(`/users/${id}`)
       .then(response => {
@@ -172,7 +179,7 @@ export const editPassword = (password) => {
   console.log("\nACTION: editPassword:", password)
   console.log("Check id:", id);
   return dispatch => {
-    axios.put(`/users/account/edit_password/${id}`, password)
+    axios.put(`/auth/users/account/edit_password/${id}`, password)
       .then(responseFromDB => {
         console.log("\nCheck - responseFromDB:", responseFromDB.data)
         dispatch({ type: EDIT_PASSWORD, payload: responseFromDB.data });
@@ -187,7 +194,7 @@ export const requestPassword = (email) => {
   return dispatch => {
     console.log("\nACTION: editPassword:", email)
 
-    axios.put(`/login/forgotPassword/request`, email)
+    axios.put(`/auth/login/forgotPassword/request`, email)
       .then(response => {
         console.log('res.......', response)
         dispatch({ type: REQUEST_PASSWORD, payload: response.data })

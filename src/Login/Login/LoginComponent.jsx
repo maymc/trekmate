@@ -126,7 +126,7 @@ class Login extends Component {
             <Link to="/auth/login/register">
               <button className="ghost" type="button">Register</button>
             </Link>
-            <Link to="/login/forgotPassword">
+            <Link to="/auth/login/forgotPassword">
               Forgot Password?
         </Link>
           </div>
@@ -165,7 +165,7 @@ class Login extends Component {
             <Link to="/auth/login/register">
               <button className="ghost" type="button">Register</button>
             </Link>
-            <Link to="/login/forgotPassword">
+            <Link to="/auth/login/forgotPassword">
               Forgot Password?
           </Link>
           </div>

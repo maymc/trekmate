@@ -78,28 +78,28 @@ userRouter.put('/account/edit/:id', (req, res) => {
 })
 
 //PUT - edit user password by user id
-userRouter.put('/account/edit_password/:id', (req, res) => {
-  const { id } = req.params;
+// userRouter.put('/account/edit_password/:id', (req, res) => {
+//   const { id } = req.params;
 
-  const updatedUserPassword = {
-    password: req.body.password
-  }
+//   const updatedUserPassword = {
+//     password: req.body.password
+//   }
 
-  Users
-    .where({ id })
-    .fetch()
-    .then((currentUserPassword) => {
-      return currentUserPassword.save(updatedUserPassword)
-    })
-    .then((result) => {
-      console.log('Updated user', result)
-      res.json(result)
-    })
-    .catch(err => {
-      console.log("\nPUT - edit user password error", err);
-      res.json("PUT - edit user password error", err);
-    })
-})
+//   Users
+//     .where({ id })
+//     .fetch()
+//     .then((currentUserPassword) => {
+//       return currentUserPassword.save(updatedUserPassword)
+//     })
+//     .then((result) => {
+//       console.log('Updated user', result)
+//       res.json(result)
+//     })
+//     .catch(err => {
+//       console.log("\nPUT - edit user password error", err);
+//       res.json("PUT - edit user password error", err);
+//     })
+// })
 
 // Delete user by 'id' from the 'user' table
 userRouter.delete('/account/delete/:id', (req, res) => {
