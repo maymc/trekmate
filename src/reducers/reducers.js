@@ -24,6 +24,7 @@ import {
   GET_ACTIVITIES_BY_TRIP_ID,
   ADD_ACTIVITY,
   EDIT_ACTIVITY,
+  DELETE_ACTIVITY,
 
   GET_ALL_FLIGHTS,
   GET_FLIGHTS_BY_TRIP_ID,
@@ -67,6 +68,7 @@ const reducer = (state = {
   activitiesByTripId: [],
   activityById: {},
   updatedActivity: [],
+  archivedActivity: [],
 
   flights: [],
   flightsByTripId: [],
@@ -146,7 +148,6 @@ const reducer = (state = {
       return { ...state, updatedAccommodation: action.payload }
 
     case DELETE_ACCOMMODATION:
-      console.log("REDUCER>>>>>", action.payload)
       return { ...state, archivedAccommodation: action.payload }
 
     //-------Activity---------//
@@ -160,6 +161,9 @@ const reducer = (state = {
       return { ...state, form: action.payload }
     case EDIT_ACTIVITY:
       return { ...state, updatedActivity: action.payload }
+    case DELETE_ACTIVITY:
+      console.log("REDUCER>>>>>", action.payload)
+      return { ...state, archivedAccommodation: action.payload }
 
     //-------Flight---------//
     case GET_ALL_FLIGHTS:
