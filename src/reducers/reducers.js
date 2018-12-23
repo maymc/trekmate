@@ -38,7 +38,8 @@ import {
   ADD_TRANSIT,
   EDIT_TRANSIT,
 
-  GET_ALL_BY_TRIP_ID
+  GET_ALL_BY_TRIP_ID,
+  DELETE_ACCOMMODATION
 }
   from '../actions/actions.js';
 
@@ -60,6 +61,7 @@ const reducer = (state = {
   accommodationsByTripId: [],
   accommodationById: {},
   updatedAccommodation: [],
+  archivedAccommodation: [],
 
   activities: [],
   activitiesByTripId: [],
@@ -139,8 +141,13 @@ const reducer = (state = {
 
     case ADD_ACCOMMODATION:
       return { ...state, form: action.payload }
+
     case EDIT_ACCOMMODATION:
       return { ...state, updatedAccommodation: action.payload }
+
+    case DELETE_ACCOMMODATION:
+      console.log("REDUCER>>>>>", action.payload)
+      return { ...state, archivedAccommodation: action.payload }
 
     //-------Activity---------//
     case GET_ALL_ACTIVITIES:
@@ -166,7 +173,6 @@ const reducer = (state = {
     case EDIT_FLIGHT:
       return { ...state, updatedFlight: action.payload }
     case DELETE_FLIGHT:
-      console.log("REDUCER>>>>>", action.payload)
       return { ...state, archivedFlight: action.payload }
     //-------Transit --------//
     case GET_ALL_TRANSIT:

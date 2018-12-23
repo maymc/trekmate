@@ -27,6 +27,8 @@ export const GET_ACCOMMODATIONS_BY_TRIP_ID = 'GET_ACCOMMODATIONS_BY_TRIP_ID';
 export const GET_ACCOMMODATION_BY_ID = 'GET_ACCOMMODATION_BY_ID';
 export const ADD_ACCOMMODATION = 'ADD_ACCOMMODATION';
 export const EDIT_ACCOMMODATION = 'EDIT_ACCOMMODATION';
+export const DELETE_ACCOMMODATION = 'DELETE_ACCOMMODATION';
+
 // export const GET_ACCOMMODATION_BY_USER_ID = 'GET_ACCOMMODATION_BY_USER_ID';
 
 //~~~~~Activities~~~~//
@@ -379,7 +381,18 @@ export const editAccommodation = (accommodations) => {
       })
   }
 }
-
+export const deleteAccommodation = (id) => {
+  console.log('ACTION DELETE HIT', id);
+  return dispatch => {
+    axios.delete(`/accommodations/delete/${id}`)
+      .then(response => {
+        dispatch({ type: DELETE_ACCOMMODATION, payload: response.data })
+      })
+      .catch(err => {
+        console.log('ERROR IN DELETE ', err)
+      })
+  }
+}
 //-----------Activity Action-------------//
 export const getAllActivities = () => {
 
