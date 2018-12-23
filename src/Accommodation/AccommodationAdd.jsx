@@ -57,8 +57,12 @@ class AccommodationAdd extends Component {
   }
 
   updateAddress = (address, lodging_name) => {
+    console.log("address??", address);
+    console.log("lodging_name??", lodging_name);
+    console.log("lodging_name.split:", lodging_name.split(","));
+
     this.setState({
-      lodging_name: lodging_name,
+      lodging_name: lodging_name.split(",")[0],
       address: address
     })
   }
