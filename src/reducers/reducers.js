@@ -46,7 +46,7 @@ const reducer = (state = {
   loginData: {},
 
   users: [],
-  userById: {},
+  userById: [],
   authUserEmail: [],
   trips: [],
   tripById: [],
@@ -117,6 +117,8 @@ const reducer = (state = {
     case ADD_TRIP:
       return { ...state, form: action.payload }
     case DELETE_TRIP:
+      console.log("REDUCER>>>>>", action.payload)
+
       return { ...state, archivedTrip: action.payload }
     case EDIT_TRIP:
       return { ...state, updatedTrip: action.payload }
