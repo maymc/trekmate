@@ -259,8 +259,8 @@ export const getTripById = (id) => {
 
 export const addTrip = (trip) => {
   console.log("\nACTION: addTrip:", trip)
-  trip.start_date = trip.startDate._d
-  trip.end_date = trip.endDate._d
+  trip.start_date = trip.startDate._d.toString()
+  trip.end_date = trip.endDate._d.toString()
   return dispatch => {
     axios.post('/trips/add', trip)
       .then(responseFromDB => {

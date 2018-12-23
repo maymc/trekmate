@@ -28,9 +28,7 @@ class Header extends Component {
           <a href="/"><h1>TREK<span>mate</span></h1></a>
 
           <form method="get" action={`/users/account/${id}`}> 
-          <button className="ghost" type="submit"><i className="spacebottom far fa-user-circle"></i> {this.props.userById.first_name}</button>
-          {/* <Link to=>{this.props.userById.first_name}</Link> */}
-
+          <button className="ghost" type="submit">{this.props.userById.first_name}</button>
           </form>
     
         </div>

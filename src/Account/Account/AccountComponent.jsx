@@ -82,7 +82,10 @@ class Account extends Component {
           <h1>{user.first_name}<span>, {user.last_name}</span></h1>
           <p>{user.email}</p>
           <Link className="drk spaceright" to={`/users/account/edit/${user.id}`}>Edit</Link>
-          <Link className="drk" to={`/auth/users/account/edit_password/${user.id}`} >Update Password</Link>
+          <Link className="drk spaceright spacebottom" to={`/auth/users/account/edit_password/${user.id}`} >Update Password</Link>
+          <form method="get" action="/auth/logout">
+            <button className='drk spacetop' type='submit'>Logout</button>
+          </form>
         </div>
         <div className="pagebody">
           <Link to={`/trips/add?${this.props.userById.id}`}>

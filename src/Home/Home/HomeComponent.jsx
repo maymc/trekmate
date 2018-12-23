@@ -25,6 +25,7 @@ class Home extends Component {
       startDate: null,
       endDate: null,
       user_id: null,
+      collaborators: 1,
     }
   }
   //Lifecycle Methods
@@ -34,13 +35,13 @@ class Home extends Component {
     
     console.log('H CDM', id)
     this.setState({
-      user_id: id
+      user_id: Number(id)
     })
   }
 
   handleSubmit = (e) => {
     e.preventDefault();
-    if (this.state.user_id === null || this.state.user_id ===  undefined) {
+    if (this.state.user_id === null || this.state.user_id ===  undefined || this.state.user_id === NaN) {
       this.props.history.push(`/auth/login`);
     } else {
       console.log("Homepage - handleSubmit this.props:", this.props);
@@ -58,8 +59,7 @@ class Home extends Component {
   
     this.setState({
       city: spl[0],
-      state: spl[1] || null,
-      country: spl[2] || null,
+      country: spl[2] || spl[1] || null,
     })
     console.log("Parent method, update address", this.state)
   } 
@@ -68,7 +68,7 @@ class Home extends Component {
   render() {
 
     console.log('Home', this.state)
-    if (this.state.city === null && this.state.endDate === null) {
+    if (this.state.city === null && this.state.endDate === null ) {
       return (
         <div className="container col12 home">
           <div id="homeimage" className="animation">

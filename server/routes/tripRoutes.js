@@ -67,6 +67,7 @@ tripRouter.get('/:id', (req, res) => {
 
 //POST new trip into 'Trips' table
 tripRouter.post('/add', (req, res) => {
+    console.log('Trip add', req )
     const payload = {
         city: req.body.city,
         state: req.body.state,

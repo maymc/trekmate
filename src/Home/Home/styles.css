@@ -1,5 +1,7 @@
 .home {
     grid-auto-rows: min-content;
+    /* -webkit-transform: translate3d(0, 0%, 0);
+    transform: translate3d(0, 0%, 0); */
     /* background: purple; */
 }
 
@@ -48,7 +50,6 @@
 .homedateset {
     grid-row: 1/1;
     width: 100%;
-    
     /* background: red; */
     /* display: none; */
 }
