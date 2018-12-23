@@ -64,7 +64,11 @@ export const loginUser = (user) => {
     axios.post('/auth/login', user)
       .then(response => {
         const email = JSON.parse(response.config.data).email
+        const userId = JSON.parse(response.config.data).userId
+        console.log('response.config.data', response.config.data)
         localStorage.setItem('email', email)
+        localStorage.setItem('userId', userId)
+
         console.log("ACTION - loginUser response:", response)
 
         dispatch({
@@ -115,6 +119,7 @@ export const getAllUsers = () => {
   }
 }
 export const getUserById = (id) => {
+  console.log('id', id)
   return dispatch => {
     axios.get(`/users/${id}`)
       .then(response => {

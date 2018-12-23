@@ -113,6 +113,7 @@ authRouter.put('/users/account/edit_password/:id', (req, res) => {
       return bcrypt.hash(password, salt)
     })
     .then(hash => {
+      console.log('hash', hash)
       const updatedUserPassword = {
         password: hash
       }
