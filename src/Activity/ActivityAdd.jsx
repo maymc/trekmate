@@ -114,11 +114,11 @@ class ActivityAdd extends Component {
                 <label className="blue formsection">Details</label>
 
                 <SingleDatePicker
-                  date={this.state.date} // momentPropTypes.momentObj or null
-                  onDateChange={date => this.setState({ date })} // PropTypes.func.isRequired
-                  focused={this.state.focused} // PropTypes.bool
-                  onFocusChange={({ focused }) => this.setState({ focused })} // PropTypes.func.isRequired
-                  id="your_unique_id" // PropTypes.string.isRequired,
+                  date={this.state.date}
+                  onDateChange={date => this.setState({ date })}
+                  focused={this.state.focused}
+                  onFocusChange={({ focused }) => this.setState({ focused })}
+                  id="your_unique_id" 
                 />
                 <TimePicker showSecond={false} defaultValue={now} className="reginput" onChange={this.updateTime} format={format} use12Hours inputReadOnly />
               </div>
@@ -126,10 +126,6 @@ class ActivityAdd extends Component {
                 <label>Price</label>
                 <input type="number" min="0.00" max="10000.00" step="0.01" name="price" onChange={this.handleChange} className="reginput inputstyle" placeholder="$00.00"></input>
               </div>
-              {/* <div className="form-group">
-                <input type="text" id="image" name="image" onChange={this.handleChange} className="form-control" required></input>
-                <label className="form-control-placeholder" htmlFor="image">Include an image (url)</label>
-              </div> */}
               <div className="form-group">
                 <label>Do you have a reservation?</label>
                 <select name="reservation" onChange={this.handleChange}>

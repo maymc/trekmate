@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import './styles.css';
 
-import PlacesAutocomplete, { geocodeByAddress } from 'react-places-autocomplete';
+import PlacesAutocomplete, {
+    geocodeByAddress,
+    getLatLng,
+  } from 'react-places-autocomplete';
+// import PlacesAutocomplete, { geocodeByAddress } from 'react-places-autocomplete';
 
 class LocationSearch extends Component {
     constructor(props) {
@@ -19,8 +23,8 @@ class LocationSearch extends Component {
             let address = results[0].formatted_address
             this.props.updateAddress(address, lodging_name)
             geocodeByAddress(address)
-        }).then(latLng => console.log('success', latLng))
-        .catch(error => console.error('Error', error)) };
+        }).catch(error => console.error('Error', error)) 
+    };
     
     render() {
         // console.log("search", this.props)
