@@ -4,7 +4,7 @@ import DateComponent from '../Global/Date/DateComponent'
 
 //------Redux------//
 import { connect } from 'react-redux';
-import { getTransitById } from '../actions/actions';
+import { getTransitById, deleteTransit } from '../actions/actions';
 
 class TransitDetail extends Component {
 
@@ -54,6 +54,10 @@ class TransitDetail extends Component {
     }
   }
 
+  onClick = () => {
+    let transitId = this.props.match.params.id;
+    this.props.dispatch(deleteTransit(transitId))
+  }
   render() {
     console.log("\nTransitDetail- this.props.transitById:", this.props.transitById)
     const transit = this.props.transitById
@@ -63,7 +67,7 @@ class TransitDetail extends Component {
         <div className="pagebanner blue-bg">
           <i className="spacebottom fas fa-5x fa-car-side"></i>
           <h1>{transit.type}</h1>
-          <Link className="drk" to={`/transit/trip/${transit.trip_id}`}>
+          <Link className="drk" to={`/users/account/${transit.user_id}/trips/${transit.trip_id}`} onClick={this.onClick}>
             Delete transit
           </Link>
         </div>
@@ -81,8 +85,8 @@ class TransitDetail extends Component {
             <p><i className="fas fa-dollar-sign"></i> Price: {transit.price}</p>
             <p><i className="fas fa-clipboard-check"></i> Reservation: {transit.reservation}</p>
           </div>
-          <Link to={`/transit/edit/${transit.id}`}>
-              <button type='button'>Edit</button>
+          <Link to={`/transit/edit/${transit.id}?${transit.date}`}>
+            <button type='button'>Edit</button>
           </Link>
         </div>
       </div>

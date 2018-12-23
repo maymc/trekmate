@@ -24,14 +24,8 @@ class TransitEdit extends Component {
     super(props)
 
     this.state = {
-      // id: this.props.transitById.id,
-      // type: this.props.transitById.type,
-      // date: null,
-      // time: null,
-      // reservation: this.props.transitById.reservation,
-      // price: this.props.transitById.price,
-      // user_id: this.props.transitById.user_id,
-      // trip_id: this.props.transitById.trip_id
+      date: null,
+      id: null
     }
   }
 
@@ -39,6 +33,9 @@ class TransitEdit extends Component {
 
     //This id comes from the url
     const transitId = this.props.match.params.id;
+    this.setState({
+      id: Number(transitId)
+    })
     console.log("Setting transitId:", transitId);
 
     this.props.dispatch(getTransitById(transitId));
@@ -74,8 +71,22 @@ class TransitEdit extends Component {
     })
   }
 
+  setDates(array) {
+    console.log('setDates', array)
+    if (this.state.date === null) {
+      this.setState({
+        date: moment(array[1])
+      })
+    } else {
+      console.log("NOT NULL")
+    }
+  }
+
   render() {
+    let dd = (this.props.location.search).split("?")
+    this.setDates(dd)
     console.log("TransitEdit - render - this.props:", this.props);
+    console.log("TransitEdit - render - this.state:", this.state);
     return (
       <div className="container col12">
         <div className="wrap-form" >
@@ -96,7 +107,6 @@ class TransitEdit extends Component {
               <div>
                 <label className="blue formsection">Details</label>
                 <SingleDatePicker
-                  placeholder={this.props.transitById.date}
                   date={this.state.date} // momentPropTypes.momentObj or null
                   onDateChange={date => this.setState({ date })} // PropTypes.func.isRequired
                   focused={this.state.focused} // PropTypes.bool

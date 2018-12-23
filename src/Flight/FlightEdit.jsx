@@ -31,7 +31,6 @@ class FlightEdit extends Component {
 
   //Lifecycle Methods
   componentDidMount() {
-    //This id comes from the url
     const flightId = this.props.match.params.id;
     console.log("Setting flightId:", flightId);
 
@@ -107,15 +106,13 @@ class FlightEdit extends Component {
               <div>
                 <label className="blue formsection">Details</label>
                 <DateRangePicker
-                  // startDatePlaceholderText={this.props.flightById.departure_date}
-                  // endDatePlaceholderText={this.props.flightById.arrival_date}
                   startDate={this.state.startDate}
                   startDateId="your_unique_start_date_id"
                   endDate={this.state.endDate}
                   endDateId="your_unique_end_date_id"
-                  onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })} // PropTypes.func.isRequired,
-                  focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
-                  onFocusChange={focusedInput => this.setState({ focusedInput })}   // PropTypes.func.isRequired,
+                  onDatesChange={({ startDate, endDate }) => this.setState({ startDate, endDate })}
+                  focusedInput={this.state.focusedInput} 
+                  onFocusChange={focusedInput => this.setState({ focusedInput })} 
                 />
               </div>
               <div className="form-group">

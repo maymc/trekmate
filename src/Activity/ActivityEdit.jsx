@@ -24,19 +24,8 @@ class ActivityEdit extends Component {
     super(props)
 
     this.state = {
-      // id: this.props.activityById.id,
-      // activity_name: this.props.activityById.activity_name,
-      // location: this.props.activityById.location,
-      // date: this.props.activityById.date,
-      // time: null,
-      // price: this.props.activityById.price,
-      // type: this.props.activityById.type,
-      // votes: this.props.activityById.votes,
-      // reservation: this.props.activityById.reservation,
-      // notes: this.props.activityById.notes,
-      // image: this.props.activityById.image,
-      // user_id: this.props.activityById.user_id,
-      // trip_id: this.props.activityById.trip_id
+      date: null,
+      id: null,
     }
   }
 
@@ -44,7 +33,9 @@ class ActivityEdit extends Component {
   componentDidMount() {
     //This id comes form the url
     const activityId = this.props.match.params.id;
-
+    this.setState({
+      id: Number(activityId)
+    })
     this.props.dispatch(getActivityById(activityId));
   }
 
@@ -61,15 +52,15 @@ class ActivityEdit extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    // console.log("\nhandleSubmit - ActivityEdit - this.props:", this.props);
-    // console.log("\nhandleSubmit - ActivityEdit - this.props.activityById.id:", this.props.activityById.id);
-    console.log("Updated to this.state:", this.state);
+    console.log("handleSubmit - Updated to this.state:", this.state);
 
+    //Dispatch editActivity action
     this.props.dispatch(editActivity(this.state, this.props.activityById.id));
 
-    //Redirect to accommodations page
+    //Redirect to activity page
     this.props.history.push(`/activity/${this.props.activityById.id}`);
   }
+
   setTime = (value) => {
     console.log("setTime", value.format(format))
 
@@ -77,16 +68,22 @@ class ActivityEdit extends Component {
       time: value.format(format)
     })
   }
-  getDate(date) {
-    if (date === undefined) {
-      return
+  setDates(array) {
+    console.log('setDates', array)
+    if (this.state.date === null) {
+      this.setState({
+        date: moment(array[1])
+      })
     } else {
-      return moment(date)
+      console.log("NOT NULL")
     }
   }
 
   render() {
+    let dd = (this.props.location.search).split("?")
+    this.setDates(dd)
     console.log("ActivityEdit - render - this.props:", this.props);
+    console.log("ActivityEdit - render - this.state:", this.state);
 
     return (
       <div className="container col12">
@@ -112,8 +109,7 @@ class ActivityEdit extends Component {
               <div>
                 <label className="blue formsection">Details</label>
                 <SingleDatePicker
-                  placeholder={this.props.activityById.date}
-                  date={this.getDate(this.state.date)} // momentPropTypes.momentObj or null
+                  date={this.state.date} // momentPropTypes.momentObj or null
                   onDateChange={date => this.setState({ date })} // PropTypes.func.isRequired
                   focused={this.state.focused} // PropTypes.bool
                   onFocusChange={({ focused }) => this.setState({ focused })} // PropTypes.func.isRequired
@@ -125,10 +121,10 @@ class ActivityEdit extends Component {
                 <label>Price</label>
                 <input type="number" min="0.00" max="10000.00" step="0.01" name="price" onChange={this.handleChange} className="reginput inputstyle" defaultValue={this.props.activityById.price}></input>
               </div>
-              <div className="form-group">
+              {/* <div className="form-group">
                 <input type="text" id="image" name="image" onChange={this.handleChange} className="form-control" defaultValue={this.props.activityById.image}></input>
                 <label className="form-control-placeholder" htmlFor="image">Include an image (url)</label>
-              </div>
+              </div> */}
               <div className="form-group">
                 <label>Do you have a reservation?</label>
                 <select name="reservation" onChange={this.handleChange}>
@@ -154,7 +150,6 @@ class ActivityEdit extends Component {
 }
 const mapStateToProps = state => {
   return {
-    activities: state.activities,
     activityById: state.activityById
   }
 }
