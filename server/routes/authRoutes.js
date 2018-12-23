@@ -118,68 +118,68 @@ authRouter.put('/users/account/edit_password/:id', (req, res) => {
         password: hash
       }
       console.log('hash', hash)
-        Users
-      .where({ id })
-      .fetch()
-      .then((currentUserPassword) => {
-        return currentUserPassword.save(updatedUserPassword)
-      })
-      .then((result) => {
-        console.log('Updated user', result)
-        res.json(result)
-      })
-      .catch(err => {
-        console.log("\nPUT - edit user password error", err);
-        res.json("PUT - edit user password error", err);
-      })
-      })
+      Users
+        .where({ id })
+        .fetch()
+        .then((currentUserPassword) => {
+          return currentUserPassword.save(updatedUserPassword)
+        })
+        .then((result) => {
+          console.log('Updated user', result)
+          res.json(result)
+        })
+        .catch(err => {
+          console.log("\nPUT - edit user password error", err);
+          res.json("PUT - edit user password error", err);
+        })
+    })
 })
 
 // PUT - forgot password route
 authRouter.put('/login/forgotPassword/request', (req, res) => {
   console.log(req.body);
   const tempPassword = generatePassword();
-  
+
   bcrypt.genSalt(12)
-  .then(salt => {
-    console.log('salt', salt)
-    return bcrypt.hash(tempPassword, salt)
-  })
-  .then(hash => {
-    const updatedUserPassword = {
+    .then(salt => {
+      console.log('salt', salt)
+      return bcrypt.hash(tempPassword, salt)
+    })
+    .then(hash => {
+      const updatedUserPassword = {
         password: hash
-    }
-    console.log('updated Password', tempPassword)
-    Users
-      .where({ email: req.body.email })
-      .fetch()
-      .then((currentUserPassword) => {
+      }
+      console.log('updated Password', tempPassword)
+      Users
+        .where({ email: req.body.email })
+        .fetch()
+        .then((currentUserPassword) => {
           return currentUserPassword.save(updatedUserPassword)
-      })
-      .then((result) => {
+        })
+        .then((result) => {
           console.log('Updated user', result)
           res.json(result)
-      })
-      .catch(err => {
+        })
+        .catch(err => {
           console.log("\nPUT - edit user password error", err);
           res.json("PUT - edit user password error", err);
-      })
+        })
     })
-      })
+})
 
-  
-    
-    //https://stackoverflow.com/questions/1497481/javascript-password-generator
-    function generatePassword() {
-      var length = 8,
-          charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
-          retVal = "";
-      for (var i = 0, n = charset.length; i < length; ++i) {
-          retVal += charset.charAt(Math.floor(Math.random() * n));
-      }
-      return retVal;
-    }
-    
+
+
+//https://stackoverflow.com/questions/1497481/javascript-password-generator
+function generatePassword() {
+  var length = 8,
+    charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
+    retVal = "";
+  for (var i = 0, n = charset.length; i < length; ++i) {
+    retVal += charset.charAt(Math.floor(Math.random() * n));
+  }
+  return retVal;
+}
+
 authRouter.post('/login', function (req, res, next) {
   passport.authenticate('local', function (err, user, info) {
     if (err) { return next(err); }

@@ -47,7 +47,7 @@ app.use('/flights', flightRoutes);
 app.use('/transit', transitRoutes);
 app.use('/trips', tripRoutes);
 app.use('/users', userRoutes);
-app.use('/login/forgotPassword', resetRoutes);
+app.use('/auth/login/forgotPassword', resetRoutes);
 
 //GET /home
 app.get('/', (req, res) => {
