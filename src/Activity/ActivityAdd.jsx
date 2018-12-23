@@ -67,9 +67,11 @@ class ActivityAdd extends Component {
     this.props.history.push(`/users/account/${this.state.user_id}/trips/${this.state.trip_id}`);
   }
 
-  updateActivity = (address, lodging_name) => {
+  updateActivity = (address, activity_name) => {
+    console.log("\nactivity_name.split", activity_name.split(","));
+
     this.setState({
-      activity_name: lodging_name,
+      activity_name: activity_name.split(",")[0],
       location: address
     })
     // console.log("Parent method, update address", this.state)

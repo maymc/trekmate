@@ -4,7 +4,7 @@ import DateComponent from '../Global/Date/DateComponent'
 
 //------Redux------//
 import { connect } from 'react-redux';
-import { getActivityById } from '../actions/actions';
+import { getActivityById, deleteActivity } from '../actions/actions';
 
 class ActivityDetail extends Component {
 
@@ -54,41 +54,45 @@ class ActivityDetail extends Component {
     }
   }
 
+  onClick = () => {
+    let activityId = this.props.match.params.id;
+    this.props.dispatch(deleteActivity(activityId))
+  }
   render() {
     console.log("\nActivityDetail- this.props.activityById:", this.props.activityById)
     let activity = this.props.activityById
     return (
       <div className="container col12" key={this.props.activityById.id}>
-      <div className="pagebanner blue-bg">
-        <i className="spacebottom fas fa-5x fa-hiking"></i>
-        <h1>{activity.activity_name}</h1>
-        <Link className="drk" to={`/activity/trip/${activity.trip_id}`}>
+        <div className="pagebanner blue-bg">
+          <i className="spacebottom fas fa-5x fa-hiking"></i>
+          <h1>{activity.activity_name}</h1>
+          <Link className="drk" to={`/users/account/${activity.user_id}/trips/${activity.trip_id}`} onClick={this.onClick}>
             Delete activity
         </Link>
-      </div>
-      <div className="pagebody">
-        <Link to={`/users/account/${activity.user_id}/trips/${activity.trip_id}`}>
-          <i className="fas fa-arrow-left"></i> Back to trip
+        </div>
+        <div className="pagebody">
+          <Link to={`/users/account/${activity.user_id}/trips/${activity.trip_id}`}>
+            <i className="fas fa-arrow-left"></i> Back to trip
         </Link>
-        <h2 className="pink" >Review</h2>
-        <div className="pagesection">
+          <h2 className="pink" >Review</h2>
+          <div className="pagesection">
             <DateComponent date={this.dateFormatter(activity.date)} />
             <p><i className="far fa-clock"></i> Time: {activity.time}</p>
-        </div>
-        <div className="pagesection">
-          <h3 className="blue" >Details</h3>
-          <p><i className="fas fa-certificate"></i> Type: {activity.type}</p>
-          <p><i className="fas fa-map-marker-alt"></i> Location: {activity.location}</p>
-          <p><i className="fas fa-dollar-sign"></i> Price: {activity.price}</p>
-          <p><i className="fas fa-clipboard-check"></i> Reservation: {activity.reservation}</p>
-          <p><i className="far fa-sticky-note"></i> Notes: {activity.notes}</p>
-        </div>
-        <Link to={`/activity/edit/${activity.id}?${activity.date}`}>
-              <button type='button'>Edit</button>
-        </Link>
-        
+          </div>
+          <div className="pagesection">
+            <h3 className="blue" >Details</h3>
+            <p><i className="fas fa-certificate"></i> Type: {activity.type}</p>
+            <p><i className="fas fa-map-marker-alt"></i> Location: {activity.location}</p>
+            <p><i className="fas fa-dollar-sign"></i> Price: {activity.price}</p>
+            <p><i className="fas fa-clipboard-check"></i> Reservation: {activity.reservation}</p>
+            <p><i className="far fa-sticky-note"></i> Notes: {activity.notes}</p>
+          </div>
+          <Link to={`/activity/edit/${activity.id}?${activity.date}`}>
+            <button type='button'>Edit</button>
+          </Link>
 
-      </div>
+
+        </div>
 
         {/* <p>Activity: {this.props.activityById.activity_name}</p>
         <p>Location: {this.props.activityById.location}</p>

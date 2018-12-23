@@ -4,7 +4,7 @@ import DateComponent from '../Global/Date/DateComponent'
 
 //------Redux------//
 import { connect } from 'react-redux';
-import { getAccommodationById } from '../actions/actions';
+import { getAccommodationById, deleteAccommodation } from '../actions/actions';
 
 class AccommodationDetail extends Component {
 
@@ -17,43 +17,47 @@ class AccommodationDetail extends Component {
     }
     dateFormatter(date) {
         if (date === undefined) {
-          return
+            return
         }
         else {
-          let d = new Date(date)
-          let weekday = [];
-          weekday[0] = "Sunday";
-          weekday[1] = "Monday";
-          weekday[2] = "Tuesday";
-          weekday[3] = "Wednesday";
-          weekday[4] = "Thursday";
-          weekday[5] = "Friday";
-          weekday[6] = "Saturday";
-          let month = [];
-          month[0] = "JAN";
-          month[1] = "FEB";
-          month[2] = "MAR";
-          month[3] = "APR";
-          month[4] = "MAY";
-          month[5] = "JUN";
-          month[6] = "JUL";
-          month[7] = "AUG";
-          month[8] = "SEPT";
-          month[9] = "OCT";
-          month[10] = "NOV";
-          month[11] = "DEC";
-    
-          // console.log('Date', d)
-          return {
-            day: weekday[d.getDay()],
-            date: d.getDate(),
-            month: month[d.getMonth()],
-            year: d.getFullYear()
-    
-          }
-        }
-      }
+            let d = new Date(date)
+            let weekday = [];
+            weekday[0] = "Sunday";
+            weekday[1] = "Monday";
+            weekday[2] = "Tuesday";
+            weekday[3] = "Wednesday";
+            weekday[4] = "Thursday";
+            weekday[5] = "Friday";
+            weekday[6] = "Saturday";
+            let month = [];
+            month[0] = "JAN";
+            month[1] = "FEB";
+            month[2] = "MAR";
+            month[3] = "APR";
+            month[4] = "MAY";
+            month[5] = "JUN";
+            month[6] = "JUL";
+            month[7] = "AUG";
+            month[8] = "SEPT";
+            month[9] = "OCT";
+            month[10] = "NOV";
+            month[11] = "DEC";
 
+            // console.log('Date', d)
+            return {
+                day: weekday[d.getDay()],
+                date: d.getDate(),
+                month: month[d.getMonth()],
+                year: d.getFullYear()
+
+            }
+        }
+    }
+
+    onClick = () => {
+        let accommodationId = this.props.match.params.id;
+        this.props.dispatch(deleteAccommodation(accommodationId))
+    }
     render() {
         console.log("\nAccommodationDetail- this.props.accommodationById:", this.props.accommodationById)
         let accom = this.props.accommodationById
@@ -62,8 +66,8 @@ class AccommodationDetail extends Component {
             <div key={this.props.accommodationById.id} className="container col12">
                 <div className="pagebanner blue-bg">
                     <i className="spacebottom fas fa-5x fa-bed"></i>
-                <h1>{accom.lodging_name}</h1>
-                <Link className="drk" to={`/flights/trip/${this.props.accommodationById}`}> Delete accommodation
+                    <h1>{accom.lodging_name}</h1>
+                    <Link className="drk" to={`/users/account/${accom.user_id}/trips/${accom.trip_id}`} onClick={this.onClick}> Delete accommodation
                 </Link>
                 </div>
                 <div className="pagebody">
@@ -112,6 +116,6 @@ export default connect(mapStateToProps)(AccommodationDetail);
 
 AccommodationDetail.defaultProps = {
     accommodationById: {
-      id: null,
+        id: null,
     }
-  }
+}
