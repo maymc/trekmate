@@ -5,7 +5,7 @@ import DateComponent from '../Global/Date/DateComponent'
 
 //------Redux------//
 import { connect } from 'react-redux';
-import { getFlightById } from '../actions/actions';
+import { getFlightById, deleteFlight } from '../actions/actions';
 // import { timingSafeEqual } from 'crypto';
 
 class FlightDetail extends Component {
@@ -21,7 +21,7 @@ class FlightDetail extends Component {
     else {
       let d = new Date(date)
       let weekday = [];
-      weekday[0] =  "Sunday";
+      weekday[0] = "Sunday";
       weekday[1] = "Monday";
       weekday[2] = "Tuesday";
       weekday[3] = "Wednesday";
@@ -50,6 +50,10 @@ class FlightDetail extends Component {
       }
     }
   }
+  onClick = () => {
+    let flightId = this.props.match.params.id;
+    this.props.dispatch(deleteFlight(flightId))
+  }
 
   render() {
     console.log("\nFlightDetail- this.props.flightById:", this.props.flightById)
@@ -58,14 +62,14 @@ class FlightDetail extends Component {
 
     return (
       <div key={this.props.flightById.id} className="container col12">
-       <div className="pagebanner blue-bg">
+        <div className="pagebanner blue-bg">
           <i className="spacebottom fas fa-5x fa-plane"></i>
           <h1>{flight.airlines}</h1>
-          <Link className="drk" to={`/flights/trip/${this.props.flightById.trip_id}`}>
+          <Link className="drk" to={`/users/account/${this.props.flightById.user_id}/trips/${this.props.flightById.trip_id}`} onClick={this.onClick}>
             Delete flight
           </Link>
-       </div>
-       <div className="pagebody">
+        </div>
+        <div className="pagebody">
           <Link to={`/users/account/${this.props.flightById.user_id}/trips/${this.props.flightById.trip_id}`}>
             <i className="fas fa-arrow-left"></i> Back to trip
           </Link>
@@ -86,7 +90,7 @@ class FlightDetail extends Component {
           <Link to={`/flight/edit/${this.props.flightById.id}?${this.props.flightById.departure_date}?${this.props.flightById.arrival_date}`}>
             <button type='button'>Edit</button>
           </Link>
-       </div>
+        </div>
       </div>
     )
   }

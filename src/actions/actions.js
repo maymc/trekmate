@@ -43,6 +43,8 @@ export const GET_FLIGHT_BY_ID = 'GET_FLIGHT_BY_ID';
 export const GET_FLIGHTS_BY_TRIP_ID = 'GET_FLIGHTS_BY_TRIP_ID';
 export const ADD_FLIGHT = 'ADD_FLIGHT';
 export const EDIT_FLIGHT = 'EDIT_FLIGHT';
+export const DELETE_FLIGHT = 'DELETE_FLIGHT';
+
 // export const GET_FLIGHT_BY_USER_ID = 'GET_FLIGHT_BY_USER_ID';
 
 //~~~~~Transit~~~~//
@@ -529,7 +531,7 @@ export const editFlight = (flight) => {
   const { id } = flight;
   flight.arrival_date = flight.endDate._d.toString()
   flight.departure_date = flight.startDate._d.toString()
-  
+
   console.log("Check id:", id);
   console.log("\nACTION: editFlight:", flight)
   return dispatch => {
@@ -544,6 +546,18 @@ export const editFlight = (flight) => {
   }
 }
 
+export const deleteFlight = (id) => {
+  console.log('ACTION DELETE HIT', id);
+  return dispatch => {
+    axios.delete(`/flights/delete/${id}`)
+      .then(response => {
+        dispatch({ type: DELETE_FLIGHT, payload: response.data })
+      })
+      .catch(err => {
+        console.log('ERROR IN DELETE ', err)
+      })
+  }
+}
 
 //---------Transit Action----------//
 export const getAll = () => {
