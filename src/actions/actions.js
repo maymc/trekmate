@@ -445,6 +445,7 @@ export const addActivity = (activity) => {
 
 export const editActivity = (activity) => {
   const { id } = activity;
+  activity.date = activity.date._d
   console.log("\nACTION: editActivity:", activity)
   console.log("Check id:", id);
   return dispatch => {
@@ -592,6 +593,7 @@ export const getTransitByTrip = (id) => {
 }
 export const addTransit = (transit) => {
   console.log("\nACTION: addTransit:", transit)
+  transit.date = transit.date._d.toString()
   return dispatch => {
     axios.post('/transit/add', transit)
       .then(responseFromDB => {
@@ -609,6 +611,7 @@ export const addTransit = (transit) => {
 
 export const editTransit = (transit) => {
   const { id } = transit;
+  transit.date = transit.date._d.toString()
   console.log("\nACTION: edittransit:", transit)
   console.log("Check id:", id);
   return dispatch => {

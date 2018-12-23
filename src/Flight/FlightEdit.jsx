@@ -31,7 +31,6 @@ class FlightEdit extends Component {
 
   //Lifecycle Methods
   componentDidMount() {
-    //This id comes from the url
     const flightId = this.props.match.params.id;
     console.log("Setting flightId:", flightId);
 

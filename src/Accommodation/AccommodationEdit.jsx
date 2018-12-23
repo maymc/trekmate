@@ -103,8 +103,8 @@ class AccommodationEdit extends Component {
               <div>
                 <label className="blue formsection">Details</label>
                 <DateRangePicker
-                  startDatePlaceholderText={this.props.accommodationById.check_in_date}
-                  endDatePlaceholderText={this.props.accommodationById.check_out_date}
+                  // startDatePlaceholderText={this.props.accommodationById.check_in_date}
+                  // endDatePlaceholderText={this.props.accommodationById.check_out_date}
                   startDate={this.state.startDate}
                   startDateId="your_unique_start_date_id"
                   endDate={this.state.endDate}

@@ -81,7 +81,7 @@ class TransitDetail extends Component {
             <p><i className="fas fa-dollar-sign"></i> Price: {transit.price}</p>
             <p><i className="fas fa-clipboard-check"></i> Reservation: {transit.reservation}</p>
           </div>
-          <Link to={`/transit/edit/${transit.id}`}>
+          <Link to={`/transit/edit/${transit.id}?${transit.date}`}>
               <button type='button'>Edit</button>
           </Link>
         </div>
