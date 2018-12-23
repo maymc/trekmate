@@ -83,7 +83,7 @@ class ActivityDetail extends Component {
           <p><i className="fas fa-clipboard-check"></i> Reservation: {activity.reservation}</p>
           <p><i className="far fa-sticky-note"></i> Notes: {activity.notes}</p>
         </div>
-        <Link to={`/activity/edit/${activity.id}`}>
+        <Link to={`/activity/edit/${activity.id}?${activity.date}`}>
               <button type='button'>Edit</button>
         </Link>
         
