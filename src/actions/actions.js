@@ -687,3 +687,7 @@ export const deleteTransit = (id) => {
       })
   }
 }
+
+export const logout = () => {
+  localStorage.clear();
+}

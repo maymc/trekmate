@@ -11,7 +11,7 @@ import DateComponent from '../../Global/Date/DateComponent'
 
 //Redux
 import { connect } from 'react-redux';
-import { getUserById, getTripsByUserId } from '../../actions/actions';
+import { getUserById, getTripsByUserId, logout } from '../../actions/actions';
 
 class Account extends Component {
   constructor(props) {
@@ -83,8 +83,8 @@ class Account extends Component {
           <p>{user.email}</p>
           <Link className="drk spaceright" to={`/users/account/edit/${user.id}`}>Edit</Link>
           <Link className="drk spaceright spacebottom" to={`/auth/users/account/edit_password/${user.id}`} >Update Password</Link>
-          <form method="get" action="/auth/logout">
-            <button className='drk spacetop' type='submit'>Logout</button>
+          <form method="get" action="/">
+            <button className='drk spacetop' type='submit' onClick={logout}>Logout</button>
           </form>
         </div>
         <div className="pagebody">
