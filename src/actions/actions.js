@@ -87,11 +87,11 @@ export const loginUser = (user) => {
 export const getAllByTrip = (id) => {
   return dispatch => {
     return Promise.all([
-      axios.get(`/accommodations/trip/${id}`),
-      axios.get(`/activities/trip/${id}`),
-      axios.get(`/transit/trip/${id}`),
-      axios.get(`/flights/trip/${id}`),
-      axios.get(`/trips/${id}`)
+      axios.get(`http://34.221.37.154:9090/accommodations/trip/${id}`),
+      axios.get(`http://34.221.37.154:9090/activities/trip/${id}`),
+      axios.get(`http://34.221.37.154:9090/transit/trip/${id}`),
+      axios.get(`http://34.221.37.154:9090/flights/trip/${id}`),
+      axios.get(`http://34.221.37.154:9090/trips/${id}`)
     ])
 
       .then(response => {
@@ -107,7 +107,7 @@ export const getAllByTrip = (id) => {
 //---------User Action----------//
 export const getAllUsers = () => {
   return dispatch => {
-    axios.get('/users')
+    axios.get('http://34.221.37.154:9090/users')
       .then(response => {
         console.log('getAllUsers response.data:', response.data)
 
@@ -120,7 +120,7 @@ export const getAllUsers = () => {
 }
 export const getUserById = (id) => {
   return dispatch => {
-    axios.get(`/users/${id}`)
+    axios.get(`http://34.221.37.154:9090/users/${id}`)
       .then(response => {
         console.log("ACTION - getUserById response:", response)
         dispatch({
@@ -156,7 +156,7 @@ export const editUser = (user) => {
   console.log("\nACTION: editUser:", user)
   console.log("Check id:", id);
   return dispatch => {
-    axios.put(`/users/account/edit/${id}`, user)
+    axios.put(`http://34.221.37.154:9090/users/account/edit/${id}`, user)
       .then(responseFromDB => {
         console.log("\nCheck - responseFromDB:", responseFromDB.data)
         dispatch({ type: EDIT_USER, payload: responseFromDB.data });
@@ -172,7 +172,7 @@ export const editPassword = (password) => {
   console.log("\nACTION: editPassword:", password)
   console.log("Check id:", id);
   return dispatch => {
-    axios.put(`/users/account/edit_password/${id}`, password)
+    axios.put(`http://34.221.37.154:9090/users/account/edit_password/${id}`, password)
       .then(responseFromDB => {
         console.log("\nCheck - responseFromDB:", responseFromDB.data)
         dispatch({ type: EDIT_PASSWORD, payload: responseFromDB.data });
@@ -187,7 +187,7 @@ export const requestPassword = (email) => {
   return dispatch => {
     console.log("\nACTION: editPassword:", email)
 
-    axios.put(`/login/forgotPassword/request`, email)
+    axios.put(`http://34.221.37.154:9090/login/forgotPassword/request`, email)
       .then(response => {
         console.log('res.......', response)
         dispatch({ type: REQUEST_PASSWORD, payload: response.data })
@@ -201,7 +201,7 @@ export const requestPassword = (email) => {
 //-----------Trip Action-------------//
 export const getAllTrips = () => {
   return dispatch => {
-    axios.get('/trips')
+    axios.get('http://34.221.37.154:9090/trips')
       .then(response => {
         console.log('trips response......:', response.data)
         dispatch({
@@ -220,7 +220,7 @@ export const getAllTrips = () => {
 
 export const getTripsByUserId = (id) => {
   return dispatch => {
-    axios.get(`/trips/user/${id}`)
+    axios.get(`http://34.221.37.154:9090/trips/user/${id}`)
       .then(response => {
         dispatch({
           type: GET_TRIPS_BY_USER_ID,
@@ -236,7 +236,7 @@ export const getTripsByUserId = (id) => {
 export const getTripById = (id) => {
   return dispatch => {
     // console.log("here???", id)
-    axios.get(`/trips/${id}`)
+    axios.get(`http://34.221.37.154:9090/trips/${id}`)
       .then(response => {
         // console.log("working response?", response);
         dispatch({
@@ -255,7 +255,7 @@ export const addTrip = (trip) => {
   trip.start_date = trip.startDate._d
   trip.end_date = trip.endDate._d
   return dispatch => {
-    axios.post('/trips/add', trip)
+    axios.post('http://34.221.37.154:9090/trips/add', trip)
       .then(responseFromDB => {
         console.log("\naddTrip - responseFromDB.data:", responseFromDB.data);
         dispatch({
@@ -276,7 +276,7 @@ export const editTrip = (id, trip) => {
 
   // console.log("Check id:", id);
   return dispatch => {
-    axios.put(`/trips/edit/${id}`, trip)
+    axios.put(`http://34.221.37.154:9090/trips/edit/${id}`, trip)
       .then(responseFromDB => {
         console.log("\nCheck - responseFromDB:", responseFromDB.data)
         dispatch({ type: EDIT_TRIP, payload: responseFromDB.data });
@@ -290,7 +290,7 @@ export const editTrip = (id, trip) => {
 export const deleteTrip = (id) => {
   console.log('ACTION DELETE DELETE HIT', id);
   return dispatch => {
-    axios.delete(`/trips/delete/${id}`)
+    axios.delete(`http://34.221.37.154:9090/trips/delete/${id}`)
       .then(response => {
         dispatch({ type: DELETE_TRIP, payload: response.data })
       })
@@ -304,7 +304,7 @@ export const deleteTrip = (id) => {
 export const getAllAccommodations = () => {
 
   return dispatch => {
-    axios.get('/accommodations')
+    axios.get('http://34.221.37.154:9090/accommodations')
       .then(response => {
         console.log('ACTION - getAllAccommodations data:', response.data)
         dispatch({
@@ -325,7 +325,7 @@ export const getAccommodationsByTrip = (id) => {
   console.log("ACTION - getAccommodationsByTrip");
 
   return dispatch => {
-    axios.get(`/accommodations/trip/${id}`)
+    axios.get(`http://34.221.37.154:9090/accommodations/trip/${id}`)
       .then(response => {
         dispatch({ type: GET_ACCOMMODATIONS_BY_TRIP_ID, payload: response.data })
       })
@@ -337,7 +337,7 @@ export const getAccommodationsByTrip = (id) => {
 
 export const getAccommodationById = (id) => {
   return dispatch => {
-    axios.get(`/accommodations/${id}`)
+    axios.get(`http://34.221.37.154:9090/accommodations/${id}`)
       .then(response => {
         dispatch({ type: GET_ACCOMMODATION_BY_ID, payload: response.data[0] })
       })
@@ -352,7 +352,7 @@ export const addAccommodation = (accommodation) => {
   accommodation.check_out_date = accommodation.endDate._d
   console.log("\nACTION: addAccommodation", accommodation)
   return dispatch => {
-    axios.post('/accommodations/add', accommodation)
+    axios.post('http://34.221.37.154:9090/accommodations/add', accommodation)
       .then(responseFromDB => {
         // console.log("\naddAccommodation - responseFromDB.data:", responseFromDB.data);
         dispatch({
@@ -373,7 +373,7 @@ export const editAccommodation = (accommodations) => {
   console.log("\nACTION: editAccommodation:", accommodations)
   console.log("Check id:", id);
   return dispatch => {
-    axios.put(`/accommodations/edit/${id}`, accommodations)
+    axios.put(`http://34.221.37.154:9090/accommodations/edit/${id}`, accommodations)
       .then(responseFromDB => {
         console.log("\nCheck - responseFromDB:", responseFromDB.data)
         dispatch({ type: EDIT_ACCOMMODATION, payload: responseFromDB.data });
@@ -386,7 +386,7 @@ export const editAccommodation = (accommodations) => {
 export const deleteAccommodation = (id) => {
   console.log('ACTION DELETE HIT', id);
   return dispatch => {
-    axios.delete(`/accommodations/delete/${id}`)
+    axios.delete(`http://34.221.37.154:9090/accommodations/delete/${id}`)
       .then(response => {
         dispatch({ type: DELETE_ACCOMMODATION, payload: response.data })
       })
@@ -399,7 +399,7 @@ export const deleteAccommodation = (id) => {
 export const getAllActivities = () => {
 
   return dispatch => {
-    axios.get('/activities')
+    axios.get('http://34.221.37.154:9090/activities')
       .then(response => {
         console.log('activity response......:', response.data)
         dispatch({
@@ -420,7 +420,7 @@ export const getActivitiesByTrip = (id) => {
   console.log("ACTION - getActivitiesByTrip");
 
   return dispatch => {
-    axios.get(`/activities/trip/${id}`)
+    axios.get(`http://34.221.37.154:9090/activities/trip/${id}`)
       .then(response => {
         dispatch({ type: GET_ACTIVITIES_BY_TRIP_ID, payload: response.data })
       })
@@ -432,7 +432,7 @@ export const getActivitiesByTrip = (id) => {
 
 export const getActivityById = (id) => {
   return dispatch => {
-    axios.get(`/activities/${id}`)
+    axios.get(`http://34.221.37.154:9090/activities/${id}`)
       .then(response => {
         dispatch({ type: GET_ACTIVITY_BY_ID, payload: response.data[0] })
       })
@@ -446,7 +446,7 @@ export const addActivity = (activity) => {
   activity.date = activity.date._d
   console.log("\nACTION: addActivity:", activity)
   return dispatch => {
-    axios.post('/activities/add', activity)
+    axios.post('http://34.221.37.154:9090/activities/add', activity)
       .then(responseFromDB => {
         console.log("\naddActivity - responseFromDB.data:", responseFromDB.data);
         dispatch({
@@ -466,7 +466,7 @@ export const editActivity = (activity) => {
   console.log("\nACTION: editActivity:", activity)
   console.log("Check id:", id);
   return dispatch => {
-    axios.put(`/activities/edit/${id}`, activity)
+    axios.put(`http://34.221.37.154:9090/activities/edit/${id}`, activity)
       .then(responseFromDB => {
         console.log("\nCheck - responseFromDB:", responseFromDB.data)
         dispatch({ type: EDIT_ACTIVITY, payload: responseFromDB.data });
@@ -480,7 +480,7 @@ export const editActivity = (activity) => {
 export const deleteActivity = (id) => {
   console.log('ACTION DELETE HIT', id);
   return dispatch => {
-    axios.delete(`/activities/delete/${id}`)
+    axios.delete(`http://34.221.37.154:9090/activities/delete/${id}`)
       .then(response => {
         dispatch({ type: DELETE_ACTIVITY, payload: response.data })
       })
@@ -494,7 +494,7 @@ export const deleteActivity = (id) => {
 export const getAllFlights = () => {
 
   return dispatch => {
-    axios.get('/flights')
+    axios.get('http://34.221.37.154:9090/flights')
       .then(response => {
         console.log('flight response......:', response.data)
         dispatch({
@@ -513,7 +513,7 @@ export const getAllFlights = () => {
 
 export const getFlightById = (id) => {
   return dispatch => {
-    axios.get(`/flights/${id}`)
+    axios.get(`http://34.221.37.154:9090/flights/${id}`)
       .then(response => {
         dispatch({ type: GET_FLIGHT_BY_ID, payload: response.data[0] })
       })
@@ -525,7 +525,7 @@ export const getFlightById = (id) => {
 
 export const getFlightsByTrip = (id) => {
   return dispatch => {
-    axios.get(`/flights/trip/${id}`)
+    axios.get(`http://34.221.37.154:9090/flights/trip/${id}`)
       .then(response => {
         dispatch({ type: GET_FLIGHTS_BY_TRIP_ID, payload: response.data })
       })
@@ -542,7 +542,7 @@ export const addFlight = (flight) => {
   console.log("\nACTION After: addFlight:", flight)
 
   return dispatch => {
-    axios.post('/flights/add', flight)
+    axios.post('http://34.221.37.154:9090/flights/add', flight)
       .then(responseFromDB => {
         console.log("\naddFlight - responseFromDB.data:", responseFromDB.data);
         dispatch({
@@ -564,7 +564,7 @@ export const editFlight = (flight) => {
   console.log("Check id:", id);
   console.log("\nACTION: editFlight:", flight)
   return dispatch => {
-    axios.put(`/flights/edit/${id}`, flight)
+    axios.put(`http://34.221.37.154:9090/flights/edit/${id}`, flight)
       .then(responseFromDB => {
         console.log("\nCheck - responseFromDB:", responseFromDB.data)
         dispatch({ type: EDIT_FLIGHT, payload: responseFromDB.data });
@@ -578,7 +578,7 @@ export const editFlight = (flight) => {
 export const deleteFlight = (id) => {
   console.log('ACTION DELETE HIT', id);
   return dispatch => {
-    axios.delete(`/flights/delete/${id}`)
+    axios.delete(`http://34.221.37.154:9090/flights/delete/${id}`)
       .then(response => {
         dispatch({ type: DELETE_FLIGHT, payload: response.data })
       })
@@ -592,7 +592,7 @@ export const deleteFlight = (id) => {
 export const getAll = () => {
 
   return dispatch => {
-    axios.get('/transit')
+    axios.get('http://34.221.37.154:9090/transit')
       .then(response => {
         console.log('transit response......:', response.data)
         dispatch({
@@ -611,7 +611,7 @@ export const getAll = () => {
 
 export const getTransitById = (id) => {
   return dispatch => {
-    axios.get(`/transit/${id}`)
+    axios.get(`http://34.221.37.154:9090/transit/${id}`)
       .then(response => {
         dispatch({ type: GET_TRANSIT_BY_ID, payload: response.data[0] })
       })
@@ -624,7 +624,7 @@ export const getTransitById = (id) => {
 
 export const getTransitByTrip = (id) => {
   return dispatch => {
-    axios.get(`/transit/trip/${id}`)
+    axios.get(`http://34.221.37.154:9090/transit/trip/${id}`)
       .then(response => {
         dispatch({ type: GET_TRANSIT_BY_TRIP_ID, payload: response.data })
       })
@@ -637,7 +637,7 @@ export const addTransit = (transit) => {
   console.log("\nACTION: addTransit:", transit)
   transit.date = transit.date._d.toString()
   return dispatch => {
-    axios.post('/transit/add', transit)
+    axios.post('http://34.221.37.154:9090/transit/add', transit)
       .then(responseFromDB => {
         console.log("\naddTransit - responseFromDB.data:", responseFromDB.data);
         dispatch({
@@ -657,7 +657,7 @@ export const editTransit = (transit) => {
   console.log("\nACTION: edittransit:", transit)
   console.log("Check id:", id);
   return dispatch => {
-    axios.put(`/transit/edit/${id}`, transit)
+    axios.put(`http://34.221.37.154:9090/transit/edit/${id}`, transit)
       .then(responseFromDB => {
         console.log("\nCheck - responseFromDB:", responseFromDB.data)
         dispatch({ type: EDIT_TRANSIT, payload: responseFromDB.data });
@@ -671,7 +671,7 @@ export const editTransit = (transit) => {
 export const deleteTransit = (id) => {
   console.log('ACTION DELETE HIT', id);
   return dispatch => {
-    axios.delete(`/transit/delete/${id}`)
+    axios.delete(`http://34.221.37.154:9090/transit/delete/${id}`)
       .then(response => {
         dispatch({ type: DELETE_TRANSIT, payload: response.data })
       })

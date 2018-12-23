@@ -49,7 +49,7 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "proxy": "http://localhost:9090",
+  "proxy": "http://34.221.37.154:9090",
   "devDependencies": {
     "nodemon": "^1.18.6"
   }
