@@ -24,6 +24,7 @@ import {
   GET_ACTIVITIES_BY_TRIP_ID,
   ADD_ACTIVITY,
   EDIT_ACTIVITY,
+  DELETE_ACTIVITY,
 
   GET_ALL_FLIGHTS,
   GET_FLIGHTS_BY_TRIP_ID,
@@ -37,8 +38,10 @@ import {
   GET_TRANSIT_BY_ID,
   ADD_TRANSIT,
   EDIT_TRANSIT,
+  DELETE_TRANSIT,
 
-  GET_ALL_BY_TRIP_ID
+  GET_ALL_BY_TRIP_ID,
+  DELETE_ACCOMMODATION
 }
   from '../actions/actions.js';
 
@@ -60,11 +63,13 @@ const reducer = (state = {
   accommodationsByTripId: [],
   accommodationById: {},
   updatedAccommodation: [],
+  archivedAccommodation: [],
 
   activities: [],
   activitiesByTripId: [],
   activityById: {},
   updatedActivity: [],
+  archivedActivity: [],
 
   flights: [],
   flightsByTripId: [],
@@ -76,6 +81,7 @@ const reducer = (state = {
   transitByTripId: [],
   transitById: {},
   updatedTransit: [],
+  archivedTransit: [],
 
   form: {}
 }, action) => {
@@ -139,8 +145,12 @@ const reducer = (state = {
 
     case ADD_ACCOMMODATION:
       return { ...state, form: action.payload }
+
     case EDIT_ACCOMMODATION:
       return { ...state, updatedAccommodation: action.payload }
+
+    case DELETE_ACCOMMODATION:
+      return { ...state, archivedAccommodation: action.payload }
 
     //-------Activity---------//
     case GET_ALL_ACTIVITIES:
@@ -153,6 +163,8 @@ const reducer = (state = {
       return { ...state, form: action.payload }
     case EDIT_ACTIVITY:
       return { ...state, updatedActivity: action.payload }
+    case DELETE_ACTIVITY:
+      return { ...state, archivedAccommodation: action.payload }
 
     //-------Flight---------//
     case GET_ALL_FLIGHTS:
@@ -166,7 +178,6 @@ const reducer = (state = {
     case EDIT_FLIGHT:
       return { ...state, updatedFlight: action.payload }
     case DELETE_FLIGHT:
-      console.log("REDUCER>>>>>", action.payload)
       return { ...state, archivedFlight: action.payload }
     //-------Transit --------//
     case GET_ALL_TRANSIT:
@@ -179,7 +190,9 @@ const reducer = (state = {
       return { ...state, form: action.payload }
     case EDIT_TRANSIT:
       return { ...state, updatedTransit: action.payload }
-
+    case DELETE_TRANSIT:
+      console.log("REDUCER>>>>>", action.payload)
+      return { ...state, archivedTransit: action.payload }
 
     default:
       //default is to return original state to do nothing 

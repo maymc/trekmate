@@ -27,6 +27,7 @@ export const GET_ACCOMMODATIONS_BY_TRIP_ID = 'GET_ACCOMMODATIONS_BY_TRIP_ID';
 export const GET_ACCOMMODATION_BY_ID = 'GET_ACCOMMODATION_BY_ID';
 export const ADD_ACCOMMODATION = 'ADD_ACCOMMODATION';
 export const EDIT_ACCOMMODATION = 'EDIT_ACCOMMODATION';
+export const DELETE_ACCOMMODATION = 'DELETE_ACCOMMODATION';
 // export const GET_ACCOMMODATION_BY_USER_ID = 'GET_ACCOMMODATION_BY_USER_ID';
 
 //~~~~~Activities~~~~//
@@ -35,6 +36,8 @@ export const GET_ACTIVITY_BY_ID = 'GET_ACTIVITY_BY_ID';
 export const GET_ACTIVITIES_BY_TRIP_ID = 'GET_ACTIVITY_BY_TRIP_ID';
 export const ADD_ACTIVITY = 'ADD_ACTIVITY';
 export const EDIT_ACTIVITY = 'EDIT_ACTIVITY';
+export const DELETE_ACTIVITY = 'DELETE_ACTIVITY';
+
 // export const GET_ACTIVITY_BY_USER_ID = 'GET_ACTIVITY_BY_USER_ID';
 
 //~~~~~Flights~~~~//
@@ -53,6 +56,7 @@ export const GET_TRANSIT_BY_ID = 'GET_TRANSIT_BY_ID';
 export const GET_TRANSIT_BY_TRIP_ID = 'GET_TRANSIT_BY_TRIP_ID';
 export const ADD_TRANSIT = 'ADD_TRANSIT';
 export const EDIT_TRANSIT = 'EDIT_TRANSIT';
+export const DELETE_TRANSIT = 'DELETE_TRANSIT';
 
 // export const GET_FLIGHT_BY_USER_ID = 'GET_FLIGHT_BY_USER_ID';
 export const GET_FLIGHT_BY_TRIP_ID = 'GET_FLIGHT_BY_TRIP_ID';
@@ -381,7 +385,18 @@ export const editAccommodation = (accommodations) => {
       })
   }
 }
-
+export const deleteAccommodation = (id) => {
+  console.log('ACTION DELETE HIT', id);
+  return dispatch => {
+    axios.delete(`/accommodations/delete/${id}`)
+      .then(response => {
+        dispatch({ type: DELETE_ACCOMMODATION, payload: response.data })
+      })
+      .catch(err => {
+        console.log('ERROR IN DELETE ', err)
+      })
+  }
+}
 //-----------Activity Action-------------//
 export const getAllActivities = () => {
 
@@ -460,6 +475,19 @@ export const editActivity = (activity) => {
       })
       .catch(err => {
         console.log("ERROR - actions editAccommodation:", err);
+      })
+  }
+}
+
+export const deleteActivity = (id) => {
+  console.log('ACTION DELETE HIT', id);
+  return dispatch => {
+    axios.delete(`/activities/delete/${id}`)
+      .then(response => {
+        dispatch({ type: DELETE_ACTIVITY, payload: response.data })
+      })
+      .catch(err => {
+        console.log('ERROR IN DELETE ', err)
       })
   }
 }
@@ -638,6 +666,19 @@ export const editTransit = (transit) => {
       })
       .catch(err => {
         console.log("ERROR - actions editTransit:", err);
+      })
+  }
+}
+
+export const deleteTransit = (id) => {
+  console.log('ACTION DELETE HIT', id);
+  return dispatch => {
+    axios.delete(`/transit/delete/${id}`)
+      .then(response => {
+        dispatch({ type: DELETE_TRANSIT, payload: response.data })
+      })
+      .catch(err => {
+        console.log('ERROR IN DELETE ', err)
       })
   }
 }
