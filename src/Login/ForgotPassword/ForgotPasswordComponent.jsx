@@ -38,7 +38,7 @@ class ForgotPassword extends Component {
     const email = this.state;
     console.log('render>>>>>>', email.email)
 
-    axios.post('/login/forgotPassword', email)
+    axios.post('/auth/login/forgotPassword', email)
       .then(email => {
         console.log('EMAIL>>>>>>', email.data)
         this.setState({
@@ -60,7 +60,7 @@ class ForgotPassword extends Component {
     const status = this.state.data.status;
     console.log("Email sent to user for forgotten password", status);
     if (status === 'success') {
-      return (<Redirect to={`/login/forgot_password/request`}
+      return (<Redirect to={`/auth/login/forgotPassword/request`}
       />
       )
     }

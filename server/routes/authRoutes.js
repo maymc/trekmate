@@ -1,6 +1,6 @@
 const express = require('express');
 const authRouter = express.Router();
-const Users = require('../db/models/users.js')
+const Users = require('../db/models/Users')
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const bcrypt = require('bcrypt');
@@ -69,6 +69,7 @@ passport.use(new LocalStrategy({ usernameField: 'email' }, (email, password, don
 
 const SALT_ROUND = 12
 
+//authenticated register route
 authRouter.post('/login/register', (req, res) => {
   console.log("req.body here:", req.body);
   const { email, password, first_name, last_name } = req.body;
@@ -102,11 +103,82 @@ authRouter.post('/login/register', (req, res) => {
     })
 })
 
-// authRouter.post('/login', passport.authenticate('local'), (err, req, res) => {
-//   console.log('\nerr:', err);
-//   console.log('\nreq:', req);
-//   res.json("\ntesting");
-// })
+//PUT - edit user password by user id
+authRouter.put('/users/account/edit_password/:id', (req, res) => {
+  const { id } = req.params;
+  const { password } = req.body;
+  bcrypt.genSalt(12)
+    .then(salt => {
+      console.log('salt', salt)
+      return bcrypt.hash(password, salt)
+    })
+    .then(hash => {
+      console.log('hash', hash)
+      const updatedUserPassword = {
+        password: hash
+      }
+      console.log('hash', hash)
+      Users
+        .where({ id })
+        .fetch()
+        .then((currentUserPassword) => {
+          return currentUserPassword.save(updatedUserPassword)
+        })
+        .then((result) => {
+          console.log('Updated user', result)
+          res.json(result)
+        })
+        .catch(err => {
+          console.log("\nPUT - edit user password error", err);
+          res.json("PUT - edit user password error", err);
+        })
+    })
+})
+
+// PUT - forgot password route
+authRouter.put('/login/forgotPassword/request', (req, res) => {
+  console.log(req.body);
+  const tempPassword = generatePassword();
+
+  bcrypt.genSalt(12)
+    .then(salt => {
+      console.log('salt', salt)
+      return bcrypt.hash(tempPassword, salt)
+    })
+    .then(hash => {
+      const updatedUserPassword = {
+        password: hash
+      }
+      console.log('updated Password', tempPassword)
+      Users
+        .where({ email: req.body.email })
+        .fetch()
+        .then((currentUserPassword) => {
+          return currentUserPassword.save(updatedUserPassword)
+        })
+        .then((result) => {
+          console.log('Updated user', result)
+          res.json(result)
+        })
+        .catch(err => {
+          console.log("\nPUT - edit user password error", err);
+          res.json("PUT - edit user password error", err);
+        })
+    })
+})
+
+
+
+//https://stackoverflow.com/questions/1497481/javascript-password-generator
+function generatePassword() {
+  var length = 8,
+    charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
+    retVal = "";
+  for (var i = 0, n = charset.length; i < length; ++i) {
+    retVal += charset.charAt(Math.floor(Math.random() * n));
+  }
+  return retVal;
+}
 
 authRouter.post('/login', function (req, res, next) {
   passport.authenticate('local', function (err, user, info) {
@@ -118,7 +190,6 @@ authRouter.post('/login', function (req, res, next) {
     });
   })(req, res, next);
 });
-
 
 
 authRouter.get('/logout', (req, res) => {
