@@ -56,6 +56,7 @@ export const GET_TRANSIT_BY_ID = 'GET_TRANSIT_BY_ID';
 export const GET_TRANSIT_BY_TRIP_ID = 'GET_TRANSIT_BY_TRIP_ID';
 export const ADD_TRANSIT = 'ADD_TRANSIT';
 export const EDIT_TRANSIT = 'EDIT_TRANSIT';
+export const DELETE_TRANSIT = 'DELETE_TRANSIT';
 
 // export const GET_FLIGHT_BY_USER_ID = 'GET_FLIGHT_BY_USER_ID';
 export const GET_FLIGHT_BY_TRIP_ID = 'GET_FLIGHT_BY_TRIP_ID';
@@ -663,6 +664,19 @@ export const editTransit = (transit) => {
       })
       .catch(err => {
         console.log("ERROR - actions editTransit:", err);
+      })
+  }
+}
+
+export const deleteTransit = (id) => {
+  console.log('ACTION DELETE HIT', id);
+  return dispatch => {
+    axios.delete(`/transit/delete/${id}`)
+      .then(response => {
+        dispatch({ type: DELETE_TRANSIT, payload: response.data })
+      })
+      .catch(err => {
+        console.log('ERROR IN DELETE ', err)
       })
   }
 }

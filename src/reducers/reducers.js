@@ -38,6 +38,7 @@ import {
   GET_TRANSIT_BY_ID,
   ADD_TRANSIT,
   EDIT_TRANSIT,
+  DELETE_TRANSIT,
 
   GET_ALL_BY_TRIP_ID,
   DELETE_ACCOMMODATION
@@ -80,6 +81,7 @@ const reducer = (state = {
   transitByTripId: [],
   transitById: {},
   updatedTransit: [],
+  archivedTransit: [],
 
   form: {}
 }, action) => {
@@ -162,7 +164,6 @@ const reducer = (state = {
     case EDIT_ACTIVITY:
       return { ...state, updatedActivity: action.payload }
     case DELETE_ACTIVITY:
-      console.log("REDUCER>>>>>", action.payload)
       return { ...state, archivedAccommodation: action.payload }
 
     //-------Flight---------//
@@ -189,7 +190,9 @@ const reducer = (state = {
       return { ...state, form: action.payload }
     case EDIT_TRANSIT:
       return { ...state, updatedTransit: action.payload }
-
+    case DELETE_TRANSIT:
+      console.log("REDUCER>>>>>", action.payload)
+      return { ...state, archivedTransit: action.payload }
 
     default:
       //default is to return original state to do nothing 
