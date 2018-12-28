@@ -17,7 +17,7 @@ import { addTrip } from '../../actions/actions';
 
 class Home extends Component {
   constructor(props) {
-    super(props) 
+    super(props)
     this.state = {
       city: null,
       state: "",
@@ -32,7 +32,7 @@ class Home extends Component {
   componentDidMount() {
     console.log('Trip', this.props)
     let id = localStorage.userId
-    
+
     console.log('H CDM', id)
     this.setState({
       user_id: Number(id)
@@ -41,12 +41,12 @@ class Home extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    if (this.state.user_id === null || this.state.user_id ===  undefined || this.state.user_id === NaN) {
+    if (this.state.user_id === null || this.state.user_id === undefined || this.state.user_id === NaN) {
       this.props.history.push(`/auth/login`);
     } else {
       console.log("Homepage - handleSubmit this.props:", this.props);
       console.log("New trip has been created!", this.state);
-  
+
       this.props.dispatch(addTrip(this.state));
       this.props.history.push(`/users/account/${this.state.user_id}`);
     }
@@ -56,19 +56,19 @@ class Home extends Component {
   updateAddress = (address, lodging_name) => {
     let spl = address.split(",")
     console.log(spl)
-  
+
     this.setState({
       city: spl[0],
       country: spl[2] || spl[1] || null,
     })
     console.log("Parent method, update address", this.state)
-  } 
+  }
 
 
   render() {
 
     console.log('Home', this.state)
-    if (this.state.city === null && this.state.endDate === null ) {
+    if (this.state.city === null && this.state.endDate === null) {
       return (
         <div className="container col12 home">
           <div id="homeimage" className="animation">
@@ -88,8 +88,8 @@ class Home extends Component {
             <img src="https://cdn.dribbble.com/users/722246/screenshots/4400319/loading_crescor_dribbble.gif" alt="Travel animation"></img>
           </div>
           <div className="homecontent">
-          <div className="homedateset">
-            <h1 className="blue spacebottom">{this.state.city},<span>{this.state.country}</span></h1>
+            <div className="homedateset">
+              <h1 className="blue spacebottom">{this.state.city},<span>{this.state.country}</span></h1>
               <h3 className="spacebottom">When are we going?</h3>
               <DateRangePicker
                 startDate={this.state.startDate} // momentPropTypes.momentObj or null,
@@ -116,8 +116,8 @@ class Home extends Component {
             <img src="https://cdn.dribbble.com/users/722246/screenshots/4400319/loading_crescor_dribbble.gif" alt="Travel animation"></img>
           </div>
           <div className="homecontent">
-          <div className="homedateset">
-            <h1 className="blue spacebottom">{this.state.city},<span>{this.state.country}</span></h1>
+            <div className="homedateset">
+              <h1 className="blue spacebottom">{this.state.city},<span>{this.state.country}</span></h1>
               <h3 className="spacebottom">When are we going?</h3>
               <DateRangePicker
                 startDate={this.state.startDate} // momentPropTypes.momentObj or null,
