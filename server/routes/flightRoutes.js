@@ -71,7 +71,7 @@ flightRouter.get('/trip/:trip_id', (req, res) => {
 
 //POST new flight into 'Flights' table
 flightRouter.post('/add', (req, res) => {
-    console.log("Flight route", req.body)
+    // console.log("Flight route", req.body)
     const newflight = {
         airlines: req.body.airlines,
         departure_time: req.body.departure_time,
@@ -126,7 +126,7 @@ flightRouter.put('/edit/:id', (req, res) => {
             return currentFlight.save(updatedFlight);
         })
         .then((result) => {
-            console.log('Updated flight', result)
+            // console.log('Updated flight', result)
             res.json(result)
         })
         .catch(err => {

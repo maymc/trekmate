@@ -10,7 +10,7 @@ class ActivityDetail extends Component {
 
   componentDidMount() {
     const activityId = this.props.match.params.id;
-    console.log("Setting activityId:", activityId);
+    // console.log("Setting activityId:", activityId);
     console.log("Activity Detail component Mounted Successfully");
     this.props.dispatch(getActivityById(activityId));
   }
@@ -59,7 +59,7 @@ class ActivityDetail extends Component {
     this.props.dispatch(deleteActivity(activityId))
   }
   render() {
-    console.log("\nActivityDetail- this.props.activityById:", this.props.activityById)
+    // console.log("\nActivityDetail- this.props.activityById:", this.props.activityById)
     let activity = this.props.activityById
     return (
       <div className="container col12" key={this.props.activityById.id}>

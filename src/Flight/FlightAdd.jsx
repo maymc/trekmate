@@ -40,16 +40,16 @@ class FlightAdd extends Component {
   //Lifecycle Methods
   componentDidMount() {
     let id = (this.props.location.search).split("?")
-    
+
     // console.log('Temp', id[1])
     this.setState({
       trip_id: Number(id[2]),
       user_id: Number(id[1])
     })
-   }
+  }
 
   handleChange = (e) => {
-    console.log('Flight', this.props)
+    // console.log('Flight', this.props)
     e.preventDefault();
     const { name, value } = e.target;
     this.setState({
@@ -59,8 +59,8 @@ class FlightAdd extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log("FlightAdd - handleSubmit this.props:", this.props);
-    console.log("Flight Added!", this.state);
+    // console.log("FlightAdd - handleSubmit this.props:", this.props);
+    // console.log("Flight Added!", this.state);
 
     this.props.dispatch(addFlight(this.state));
     this.props.history.push(`/users/account/${this.state.user_id}/trips/${this.state.trip_id}`);
@@ -83,18 +83,18 @@ class FlightAdd extends Component {
   }
 
   render() {
-    console.log('flight', this.state)
+    // console.log('flight', this.state)
     return (
       <div className="container col12">
         <div className="wrap-form">
           <form className="col12" onSubmit={this.handleSubmit}>
             <div className="formbottom">
-            <h2 className="blue">Flight</h2>
-            <div className="form-group">
-              <input type="text" id="flight" name="airlines" onChange={this.handleChange} className="form-control" required></input>
-              <label className="form-control-placeholder" htmlFor="flight">Airline</label>
-            </div>
-            <div>
+              <h2 className="blue">Flight</h2>
+              <div className="form-group">
+                <input type="text" id="flight" name="airlines" onChange={this.handleChange} className="form-control" required></input>
+                <label className="form-control-placeholder" htmlFor="flight">Airline</label>
+              </div>
+              <div>
                 <label className="blue formsection">Details</label>
                 <DateRangePicker
                   startDate={this.state.startDate} // momentPropTypes.momentObj or null,
@@ -105,31 +105,31 @@ class FlightAdd extends Component {
                   focusedInput={this.state.focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
                   onFocusChange={focusedInput => this.setState({ focusedInput })}   // PropTypes.func.isRequired,
                 />
-            </div> 
-            <div className="form-group">
-              <label>Departure Flight:</label>
-              <TimePicker showSecond={false}  defaultValue={now} className="reginput" onChange={this.departureTime} format={format} use12Hours inputReadOnly />
-              <label className="spaceleft">Return Flight:</label>
-              <TimePicker showSecond={false}  defaultValue={now} className="reginput" onChange={this.returnTime} format={format} use12Hours inputReadOnly />
-            </div>
+              </div>
+              <div className="form-group">
+                <label>Departure Flight:</label>
+                <TimePicker showSecond={false} defaultValue={now} className="reginput" onChange={this.departureTime} format={format} use12Hours inputReadOnly />
+                <label className="spaceleft">Return Flight:</label>
+                <TimePicker showSecond={false} defaultValue={now} className="reginput" onChange={this.returnTime} format={format} use12Hours inputReadOnly />
+              </div>
 
-            <div className="form-group">
+              <div className="form-group">
                 <input type="text" id="rescode" name="reservation_code" onChange={this.handleChange} className="form-control" required></input>
                 <label className="form-control-placeholder" htmlFor="rescode">Reservation code</label>
-            </div>
-            <div className="form-group">
+              </div>
+              <div className="form-group">
                 <input type="number" id="baggage" name="checked_in_baggage" onChange={this.handleChange} className="form-control" required></input>
                 <label className="form-control-placeholder" htmlFor="baggage">How many bags are you checking?</label>
-            </div>
-            <div className="form-group">
+              </div>
+              <div className="form-group">
                 <label>Price</label>
                 <input type="number" min="0.00" max="10000.00" step="0.01" name="price" onChange={this.handleChange} className="reginput inputstyle" placeholder="$00.00"></input>
               </div>
-            <div>
+              <div>
                 <label className="blue formsection">Notes</label>
                 <textarea onChange={this.handleChange} name="notes"></textarea>
-            </div>
-            <button type="submit">Add Flight</button>
+              </div>
+              <button type="submit">Add Flight</button>
             </div>
 
 

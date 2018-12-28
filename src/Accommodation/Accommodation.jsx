@@ -11,7 +11,7 @@ class Accommodation extends Component {
   componentDidMount() {
     //This id comes from the url
     const tripId = this.props.match.params.id;
-    console.log("Setting tripId:", tripId);
+    // console.log("Setting tripId:", tripId);
     console.log('\nAccommodation Component Mounted Successfully!');
     // this.props.dispatch(getAllAccommodations());
     this.props.dispatch(getAccommodationsByTrip(tripId));
@@ -19,7 +19,7 @@ class Accommodation extends Component {
 
   //App Component - render html elements
   render() {
-    console.log('\nAccommodations.jsx - this.props.accommodationsByTripId:', this.props.accommodationsByTripId)
+    // console.log('\nAccommodations.jsx - this.props.accommodationsByTripId:', this.props.accommodationsByTripId)
 
     return this.props.accommodationsByTripId.map(accommodationElem => {
       return (

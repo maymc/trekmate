@@ -15,7 +15,7 @@ class Activity extends Component {
 
   //App Component - render html elements
   render() {
-    console.log('\nActivity.jsx - this.props.activitiesByTripId:', this.props.activitiesByTripId)
+    // console.log('\nActivity.jsx - this.props.activitiesByTripId:', this.props.activitiesByTripId)
 
     return (this.props.activitiesByTripId.map(activityElem => {
       return (

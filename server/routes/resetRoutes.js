@@ -14,7 +14,7 @@ resetRouter.post('/', (req, res) => {
         subject: 'Trekmate',
         text: 'Here is your temporary password: ' + tempPassword
     };
-    console.log('temp password:', tempPassword);
+    // console.log('temp password:', tempPassword);
     Users
         .where({ email: req.body.email })
         .fetch()
@@ -22,14 +22,14 @@ resetRouter.post('/', (req, res) => {
             if (!isAuth) {
                 res.send({ email: req.body.email, status: 'failed' })
 
-                console.log('User not exist', req.body)
+                // console.log('User not exist', req.body)
             } else {
                 mailgun.messages().send(data, function (error) {
                     if (error) {
                         console.log(error);
                     } else {
                         res.send({ email: req.body.email, status: 'success' })
-                        console.log('email send?', req.body);
+                        // console.log('email send?', req.body);
 
                     }
 
@@ -55,7 +55,7 @@ resetRouter.put('/request', (req, res) => {
             return currentUserPassword.save(updatedUserPassword)
         })
         .then((result) => {
-            console.log('Updated user', result)
+            // console.log('Updated user', result)
             res.json(result)
         })
         .catch(err => {

@@ -24,7 +24,7 @@ class EditPassword extends Component {
   componentDidMount() {
     //This id comes form the url
     const userId = this.props.match.params.id;
-    console.log("Setting userId:", userId);
+    // console.log("Setting userId:", userId);
 
     this.props.dispatch(getUserById(userId));
   }
@@ -42,10 +42,10 @@ class EditPassword extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log("\nhandleSubmit - EditPasswordComponent - this.props:", this.props);
-    console.log("\nhandleSubmit - EditPasswordComponent - this.props.userById.id:", this.props.userById.id);
+    // console.log("\nhandleSubmit - EditPasswordComponent - this.props:", this.props);
+    // console.log("\nhandleSubmit - EditPasswordComponent - this.props.userById.id:", this.props.userById.id);
 
-    console.log("User password has been updated! - this.state:", this.state);
+    // console.log("User password has been updated! - this.state:", this.state);
 
     this.props.dispatch(editPassword(this.state, this.props.userById.id));
 
@@ -55,7 +55,7 @@ class EditPassword extends Component {
 
   render() {
     // const { users } = this.props;
-    console.log('UP', this.props)
+    // console.log('UP', this.props)
     return (
       <div className="container col12">
         <div className="formplace updatepassword-form">

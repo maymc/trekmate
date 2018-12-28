@@ -25,7 +25,7 @@ class Account extends Component {
 
   componentDidMount() {
     let userId = this.props.match.params.id;
-    console.log("Setting userId:", userId);
+    // console.log("Setting userId:", userId);
     console.log("\nAccountComponent Mounted Successfully");
 
     this.props.dispatch(getUserById(userId));
@@ -74,8 +74,8 @@ class Account extends Component {
   render() {
     console.log("\nAccountComponent - this.props:", this.props);
     let user = this.props.userById
-    console.log("\nAccountComponent -state:", this.state);
-    console.log(">>>>>>>>", localStorage.userId);
+    // console.log("\nAccountComponent -state:", this.state);
+    // console.log(">>>>>>>>", localStorage.userId);
     if (localStorage.userId === undefined) {
       return (
         <div className="container col12">

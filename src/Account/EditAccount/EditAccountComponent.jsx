@@ -25,7 +25,7 @@ class EditAccount extends Component {
 
     //This id comes form the url
     const userId = this.props.match.params.id;
-    console.log("Setting userId:", userId);
+    // console.log("Setting userId:", userId);
 
     this.props.dispatch(getUserById(userId));
   }
@@ -44,9 +44,9 @@ class EditAccount extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log("\nhandleSubmit - UserEdit - this.props:", this.props);
-    console.log("\nhandleSubmit - UserEdit - this.props.userById.id:", this.props.userById.id);
-    console.log("Updated to this.state:", this.state);
+    // console.log("\nhandleSubmit - UserEdit - this.props:", this.props);
+    // console.log("\nhandleSubmit - UserEdit - this.props.userById.id:", this.props.userById.id);
+    // console.log("Updated to this.state:", this.state);
 
     this.props.dispatch(editUser(this.state, this.props.userById.id));
 
@@ -55,7 +55,7 @@ class EditAccount extends Component {
   }
 
   render() {
-    console.log('props', this.props)
+    // console.log('props', this.props)
     return (
       <div className="container col12">
         <div className="formplace">

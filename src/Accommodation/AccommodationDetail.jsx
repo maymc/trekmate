@@ -10,7 +10,7 @@ class AccommodationDetail extends Component {
 
     componentDidMount() {
         const accommodationId = this.props.match.params.id;
-        console.log("Setting accommodationId:", accommodationId);
+        // console.log("Setting accommodationId:", accommodationId);
         console.log("Accommodation Detail component Mounted Successfully");
 
         this.props.dispatch(getAccommodationById(accommodationId));
@@ -59,7 +59,7 @@ class AccommodationDetail extends Component {
         this.props.dispatch(deleteAccommodation(accommodationId))
     }
     render() {
-        console.log("\nAccommodationDetail- this.props.accommodationById:", this.props.accommodationById)
+        // console.log("\nAccommodationDetail- this.props.accommodationById:", this.props.accommodationById)
         let accom = this.props.accommodationById
 
         return (

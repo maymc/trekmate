@@ -52,7 +52,7 @@ class ActivityEdit extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log("handleSubmit - Updated to this.state:", this.state);
+    // console.log("handleSubmit - Updated to this.state:", this.state);
 
     //Dispatch editActivity action
     this.props.dispatch(editActivity(this.state, this.props.activityById.id));
@@ -62,14 +62,14 @@ class ActivityEdit extends Component {
   }
 
   setTime = (value) => {
-    console.log("setTime", value.format(format))
+    // console.log("setTime", value.format(format))
 
     this.setState({
       time: value.format(format)
     })
   }
   setDates(array) {
-    console.log('setDates', array)
+    // console.log('setDates', array)
     if (this.state.date === null) {
       this.setState({
         date: moment(array[1])
@@ -82,8 +82,8 @@ class ActivityEdit extends Component {
   render() {
     let dd = (this.props.location.search).split("?")
     this.setDates(dd)
-    console.log("ActivityEdit - render - this.props:", this.props);
-    console.log("ActivityEdit - render - this.state:", this.state);
+    // console.log("ActivityEdit - render - this.props:", this.props);
+    // console.log("ActivityEdit - render - this.state:", this.state);
 
     return (
       <div className="container col12">

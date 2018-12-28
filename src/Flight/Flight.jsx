@@ -10,14 +10,14 @@ class Flight extends Component {
   componentDidMount() {
     //This id comes from the url
     let flightId = this.props.match.params.id;
-    console.log("Setting flightId:", flightId);
+    // console.log("Setting flightId:", flightId);
     console.log('\nFlight Component Mounted Successfully!');
     this.props.dispatch(getFlightsByTrip(flightId));
   }
 
   //App Component - render html elements
   render() {
-    console.log('\nFlight.jsx - this.props.flightsByTripId:', this.props.flightsByTripId)
+    // console.log('\nFlight.jsx - this.props.flightsByTripId:', this.props.flightsByTripId)
 
     return (this.props.flightsByTripId.map(flightElem => {
       return (

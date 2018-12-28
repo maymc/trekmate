@@ -119,7 +119,7 @@ transitRouter.put('/edit/:id', (req, res) => {
             return currentTransit.save(updatedTransit)
         })
         .then((result) => {
-            console.log('Updated transit', result)
+            // console.log('Updated transit', result)
             res.json(result)
         })
         .catch(err => {

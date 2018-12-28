@@ -6,7 +6,7 @@ const Users = require('../db/models/Users.js');
 
 //GET trip by user_id and trip_id
 userRouter.get('/account/:user_id/trips/:trip_id', (req, res) => {
-  console.log("req.params:", req.params);
+  // console.log("req.params:", req.params);
 
   const { id } = req.params;
 
@@ -68,7 +68,7 @@ userRouter.put('/account/edit/:id', (req, res) => {
       return currentUserPassword.save(updatedUserPassword)
     })
     .then((result) => {
-      console.log('Updated user', result)
+      // console.log('Updated user', result)
       res.json(result)
     })
     .catch(err => {

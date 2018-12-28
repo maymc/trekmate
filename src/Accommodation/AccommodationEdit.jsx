@@ -27,7 +27,7 @@ class AccommodationEdit extends Component {
   componentDidMount() {
     //This id comes from the url
     const accommodationId = this.props.match.params.id;
-    console.log("Setting accommodationId:", accommodationId);
+    // console.log("Setting accommodationId:", accommodationId);
     this.setState({
       id: Number(accommodationId)
     })
@@ -69,7 +69,7 @@ class AccommodationEdit extends Component {
     }
   }
   setDates(array) {
-    console.log('setDates', array)
+    // console.log('setDates', array)
     if (this.state.startDate === null) {
       this.setState({
         startDate: moment(array[1]),
@@ -83,8 +83,8 @@ class AccommodationEdit extends Component {
   render() {
     let dd = (this.props.location.search).split("?")
     this.setDates(dd)
-    console.log("AccommodationEdit - render - this.props:", this.props);
-    console.log("AccommodationEdit - render - this.state:", this.state);
+    // console.log("AccommodationEdit - render - this.props:", this.props);
+    // console.log("AccommodationEdit - render - this.state:", this.state);
     return (
       <div className="container col12">
         <div className="wrap-form">

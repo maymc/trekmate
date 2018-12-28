@@ -67,7 +67,7 @@ tripRouter.get('/:id', (req, res) => {
 
 //POST new trip into 'Trips' table
 tripRouter.post('/add', (req, res) => {
-    console.log('Trip add', req )
+    // console.log('Trip add', req )
     const payload = {
         city: req.body.city,
         state: req.body.state,
@@ -114,7 +114,7 @@ tripRouter.put('/edit/:id', (req, res) => {
             return currentTrip.save(updatedTrip)
         })
         .then((result) => {
-            console.log('Updated trip', result)
+            // console.log('Updated trip', result)
             res.json(result)
         })
         .catch(err => {

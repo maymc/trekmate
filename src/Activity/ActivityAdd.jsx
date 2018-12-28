@@ -60,8 +60,8 @@ class ActivityAdd extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log("ActivityAdd - handleSubmit this.props:", this.props);
-    console.log("Activity Added!", this.state);
+    // console.log("ActivityAdd - handleSubmit this.props:", this.props);
+    // console.log("Activity Added!", this.state);
 
     this.props.dispatch(addActivity(this.state));
     this.props.history.push(`/users/account/${this.state.user_id}/trips/${this.state.trip_id}`);
@@ -120,7 +120,7 @@ class ActivityAdd extends Component {
                   onDateChange={date => this.setState({ date })}
                   focused={this.state.focused}
                   onFocusChange={({ focused }) => this.setState({ focused })}
-                  id="your_unique_id" 
+                  id="your_unique_id"
                 />
                 <TimePicker showSecond={false} defaultValue={now} className="reginput" onChange={this.updateTime} format={format} use12Hours inputReadOnly />
               </div>

@@ -58,7 +58,7 @@ class App extends Component {
 
   //Lifecycle Methods
   componentDidMount() {
-    console.log("\nApp Mounting...:", this.props);
+    // console.log("\nApp Mounting...:", this.props);
   }
 
   //App Component - render html elements

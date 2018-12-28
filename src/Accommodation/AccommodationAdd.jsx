@@ -57,9 +57,9 @@ class AccommodationAdd extends Component {
   }
 
   updateAddress = (address, lodging_name) => {
-    console.log("address??", address);
-    console.log("lodging_name??", lodging_name);
-    console.log("lodging_name.split:", lodging_name.split(","));
+    // console.log("address??", address);
+    // console.log("lodging_name??", lodging_name);
+    // console.log("lodging_name.split:", lodging_name.split(","));
 
     this.setState({
       lodging_name: lodging_name.split(",")[0],
@@ -81,7 +81,7 @@ class AccommodationAdd extends Component {
   }
 
   render() {
-    console.log('Props', this.state)
+    // console.log('Props', this.state)
     return (
       <div className="container col12">
         <div className="wrap-form">
