@@ -70,10 +70,10 @@ class App extends Component {
           <Switch>
             {/* Login Routes */}
             <Route exact path='/' component={Home} />
+            <Route path='/auth/login/forgotPassword/request' component={RequestPassword} />
             <Route path='/auth/login/forgotPassword' component={ForgotPassword} />
             <Route path='/auth/login/register' component={Register} />
             <Route exact path='/auth/login' component={Login} />
-            <Route path='/auth/login/forgotPassword/request' component={RequestPassword} />
 
             {/* User account Routes */}
             <Route path='/users/account/:user_id/trips/:trip_id' component={TripComponent} />
