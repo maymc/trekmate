@@ -75,41 +75,83 @@ class Account extends Component {
     console.log("\nAccountComponent - this.props:", this.props);
     let user = this.props.userById
     console.log("\nAccountComponent -state:", this.state);
-    return (
-      <div className="container col12">
-        <div className="pagebanner pink-bg userdata">
-          <i className="spacebottom far fa-5x fa-user-circle"></i>
-          <h1>{user.first_name}<span>, {user.last_name}</span></h1>
-          <p>{user.email}</p>
-          <Link className="drk spaceright" to={`/users/account/edit/${user.id}`}>Edit</Link>
-          <Link className="drk spaceright spacebottom" to={`/auth/users/account/edit_password/${user.id}`} >Update Password</Link>
-          <form method="get" action="/">
-            <button className='drk spacetop' type='submit' onClick={logout}>Logout</button>
-          </form>
+    console.log(">>>>>>>>", localStorage.userId);
+    if (localStorage.userId === undefined) {
+      return (
+        <div className="container col12">
+          <div className="pagebanner pink-bg userdata">
+            <i className="spacebottom far fa-5x fa-user-circle"></i>
+            <h1>{user.first_name}<span>, {user.last_name}</span></h1>
+            <p>{user.email}</p>
+            <Link className="drk spaceright" to={`/users/account/edit/${user.id}`}>Edit</Link>
+            <Link className="drk spaceright spacebottom" to={`/auth/users/account/edit_password/${user.id}`} >Update Password</Link>
+            <form method="get" action="/">
+              <button className='drk spacetop' type='submit'>Login</button>
+            </form>
+          </div>
+          <div className="pagebody">
+            <Link to={`/trips/add?${this.props.userById.id}`}>
+              <button className="spacebottom spacetop" type="submit"><i className="fas fa-suitcase"></i> Create new trip</button>
+            </Link>
+            {this.props.tripsByUserId.map(trip => {
+              return (
+                <form className="triplist" method="get" action={`/users/account/${trip.user_id}/trips/${trip.id}`}>
+                  <div className="triptitle">
+                    <h1>{trip.city}<span>, {trip.country}</span></h1>
+                  </div>
+                  <div className="tripbutton">
+                    <button className="drk" type="submit">View trip</button>
+                  </div>
+                  <div className="tripdates">
+                    <DateComponent date={this.dateFormatter(trip.start_date)} />
+                    <DateComponent date={this.dateFormatter(trip.end_date)} />
+                  </div>
+                </form>
+              )
+            })}
+          </div>
         </div>
-        <div className="pagebody">
-          <Link to={`/trips/add?${this.props.userById.id}`}>
-            <button className="spacebottom spacetop" type="submit"><i className="fas fa-suitcase"></i> Create new trip</button>
-          </Link>
-          {this.props.tripsByUserId.map(trip => {
-            return (
-              <form className="triplist" method="get" action={`/users/account/${trip.user_id}/trips/${trip.id}`}>
-                <div className="triptitle">
-                  <h1>{trip.city}<span>, {trip.country}</span></h1>
-                </div>
-                <div className="tripbutton">
-                  <button className="drk" type="submit">View trip</button>
-                </div>
-                <div className="tripdates">
-                  <DateComponent date={this.dateFormatter(trip.start_date)} />
-                  <DateComponent date={this.dateFormatter(trip.end_date)} />
-                </div>
-              </form>
-            )
-          })}
+      )
+    } else {
+      return (
+
+        <div className="container col12">
+          <div className="pagebanner pink-bg userdata">
+            <i className="spacebottom far fa-5x fa-user-circle"></i>
+            <h1>{user.first_name}<span>, {user.last_name}</span></h1>
+            <p>{user.email}</p>
+            <Link className="drk spaceright" to={`/users/account/edit/${user.id}`}>Edit</Link>
+            <Link className="drk spaceright spacebottom" to={`/auth/users/account/edit_password/${user.id}`} >Update Password</Link>
+
+            <form method="get" action="/">
+              <button className='drk spacetop' type='submit' onClick={logout}>Logout</button>
+            </form>
+          </div>
+          <div className="pagebody">
+            <Link to={`/trips/add?${this.props.userById.id}`}>
+              <button className="spacebottom spacetop" type="submit"><i className="fas fa-suitcase"></i> Create new trip</button>
+            </Link>
+            {this.props.tripsByUserId.map(trip => {
+              return (
+                <form className="triplist" method="get" action={`/users/account/${trip.user_id}/trips/${trip.id}`}>
+                  <div className="triptitle">
+                    <h1>{trip.city}<span>, {trip.country}</span></h1>
+                  </div>
+                  <div className="tripbutton">
+                    <button className="drk" type="submit">View trip</button>
+                  </div>
+                  <div className="tripdates">
+                    <DateComponent date={this.dateFormatter(trip.start_date)} />
+                    <DateComponent date={this.dateFormatter(trip.end_date)} />
+                  </div>
+                </form>
+              )
+            })}
+          </div>
         </div>
-      </div>
-    );
+      )
+    }
+
   }
 }
 

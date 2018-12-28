@@ -196,7 +196,7 @@ authRouter.get('/logout', (req, res) => {
   console.log('auth logout!!!')
   req.logout()
   console.log('auth logout, after logout!!')
-  res.redirect('/')
+  // res.redirect('/')
   console.log('auth logout, after redirect!!')
 })
 

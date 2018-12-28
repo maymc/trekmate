@@ -15,13 +15,19 @@ class Header extends Component {
   //     }
   //   }
   componentDidMount() {
-    console.log("Setting localStorage userId:", localStorage.userId);
-    this.props.dispatch(getUserById(localStorage.userId));
-    this.props.dispatch(getUserById(id));
+    // console.log("Setting localStorage userId:", localStorage.userId);
+    if (localStorage.userId) {
+      this.props.dispatch(getUserById(localStorage.userId));
+      this.props.dispatch(getUserById(id));
+
+    }
+
   }
 
   render() {
     console.log('props!!', this.props)
+    console.log("Setting localStorage userId:", localStorage.userId);
+
     if (localStorage.email) {
       return (
         <div className="header">
