@@ -1,3 +1,7 @@
+<img src="https://github.com/maymc/trekmate/blob/development/images/trekmate_home.png" width="500">
+<img src="https://github.com/maymc/trekmate/blob/development/images/trekmate_trips.png" width="500">
+<img src="https://github.com/maymc/trekmate/blob/development/images/trekmate_tripDetails.png" width="500">
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
